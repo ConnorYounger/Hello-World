@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SimonSays : MonoBehaviour
 {
-    public string[] possibleButtonInputs;
+    public SimonSaysInputs[] possibleButtonInputs;
 
     public int maxMemory = 100;
     private int currentMemory = 0;
@@ -35,7 +35,7 @@ public class SimonSays : MonoBehaviour
         {
             int rand = Random.Range(0, possibleButtonInputs.Length);
 
-            buttonList.Add(possibleButtonInputs[rand]);
+            buttonList.Add(possibleButtonInputs[rand].inputName);
         }
 
         buttonListSave.AddRange(buttonList);
@@ -45,9 +45,7 @@ public class SimonSays : MonoBehaviour
     {
         if(currentMemory >= maxMemory)
         {
-            currentMemory = maxMemory;
-
-            Debug.Log("Win");
+            PlayerWin();
         }
         else
         {
@@ -58,6 +56,15 @@ public class SimonSays : MonoBehaviour
 
             GenerateNewCombination();
         }
+    }
+
+    void PlayerWin()
+    {
+        currentMemory = maxMemory;
+
+        playerHasWon = true;
+
+        Debug.Log("Win");
     }
 
     void Update()
