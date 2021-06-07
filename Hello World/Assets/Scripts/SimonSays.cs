@@ -6,17 +6,22 @@ public class SimonSays : MonoBehaviour
 {
     public string[] possibleButtonInputs;
 
-    public float memoryValue;
+    public int maxMemory = 100;
+    private int currentMemory = 0;
 
     public int startingNumb = 2;
     public int maxNumb = 7;
     private int difficulty;
 
     public List<string> buttonList;
+    private List<string> buttonListSave;
+
+    private bool playerHasWon;
 
     void Start()
     {
         buttonList = new List<string>();
+        buttonListSave = new List<string>();
 
         GenerateNewCombination();
     }
@@ -24,6 +29,7 @@ public class SimonSays : MonoBehaviour
     void GenerateNewCombination()
     {
         buttonList.Clear();
+        buttonListSave.Clear();
 
         for(int i = 0; i < startingNumb + difficulty; i++)
         {
@@ -31,17 +37,24 @@ public class SimonSays : MonoBehaviour
 
             buttonList.Add(possibleButtonInputs[rand]);
         }
+
+        buttonListSave.AddRange(buttonList);
     }
 
     void CombinationFinished()
     {
-        if(difficulty == maxNumb - startingNumb)
+        if(currentMemory >= maxMemory)
         {
+            currentMemory = maxMemory;
+
             Debug.Log("Win");
         }
         else
         {
-            difficulty++;
+            if(difficulty < maxNumb - startingNumb)
+            {
+                difficulty++;
+            }
 
             GenerateNewCombination();
         }
@@ -49,9 +62,49 @@ public class SimonSays : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if (!playerHasWon)
+        {
+            PlayerInput();
+        }
+    }
+
+    void PlayerInput()
+    {
+        if (Input.anyKeyDown)
+        {
+            if (Input.GetButtonDown(buttonList[0]))
+            {
+                RemoveInput();
+            }
+            else
+            {
+                ResetCombination();
+            }
+        }
+    }
+
+    void RemoveInput()
+    {
+        buttonList.RemoveAt(0);
+
+        if(buttonList.Count == 0)
         {
             CombinationFinished();
+
+            currentMemory += 10;
+        }
+    }
+
+    void ResetCombination()
+    {
+        buttonList.Clear();
+        buttonList.AddRange(buttonListSave);
+
+        currentMemory -= 5;
+
+        if(currentMemory < 0)
+        {
+            currentMemory = 0;
         }
     }
 }
