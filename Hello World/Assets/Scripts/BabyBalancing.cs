@@ -9,7 +9,6 @@ public class BabyBalancing : MonoBehaviour
     public float tiltMultiplier = 1;
     public float playerRotateSpeed = 1;
     private float balanceValue = 0;
-
     private bool canTilt = true;
 
     [Header("UI")]
