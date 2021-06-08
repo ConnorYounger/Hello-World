@@ -95,6 +95,7 @@ public class SimonSays : MonoBehaviour
             }
 
             GenerateNewCombination();
+            RemovePlayerInputUI();
         }
     }
 
@@ -140,23 +141,15 @@ public class SimonSays : MonoBehaviour
         for (int i = 0; i < comboPanel.transform.childCount; i++)
         {
             comboPanel.transform.GetChild(i).gameObject.SetActive(false);
-
-            //AddPlayerInputButton(comboPanel.transform.GetChild(i).GetComponent<Image>().sprite);
         }
     }
 
     void AddPlayerInputButton(Sprite sprite)
     {
-        for(int i = 0; 0 < buttonListSave.Count; i++)
-        {
-            if(i == playerInputPanel.transform.childCount)
-            {
-                GameObject button = Instantiate(inputButtonPrefab, comboPanel.transform.position, comboPanel.transform.rotation);
-                button.transform.SetParent(comboPanel.transform);
+        GameObject button = Instantiate(inputButtonPrefab, playerInputPanel.transform.position, playerInputPanel.transform.rotation);
+        button.transform.SetParent(playerInputPanel.transform);
 
-                button.GetComponent<Image>().sprite = sprite;
-            }
-        }
+        button.GetComponent<Image>().sprite = sprite;
     }
 
     void ShowComboUI()
@@ -172,6 +165,9 @@ public class SimonSays : MonoBehaviour
     // Remove the button from the combo
     void RemoveInput()
     {
+        int childIndex = comboPanel.transform.childCount - buttonList.Count;
+        AddPlayerInputButton(comboPanel.transform.GetChild(childIndex).GetComponent<Image>().sprite);
+
         buttonList.RemoveAt(0);
 
         // Check to see if the combo is finished
@@ -202,6 +198,16 @@ public class SimonSays : MonoBehaviour
             currentMemory = 0;
         }
 
+        RemovePlayerInputUI();
         ShowComboUI();
+    }
+
+    void RemovePlayerInputUI()
+    {
+        // Clear UI elements
+        for (int i = 0; i < playerInputPanel.transform.childCount; i++)
+        {
+            Destroy(playerInputPanel.transform.GetChild(i).gameObject);
+        }
     }
 }
