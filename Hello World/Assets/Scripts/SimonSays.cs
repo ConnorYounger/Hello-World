@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SimonSays : MonoBehaviour
 {
@@ -9,28 +10,31 @@ public class SimonSays : MonoBehaviour
 
     public int maxMemory = 100;
     private int currentMemory = 0;
-
     public int startingNumb = 2;
     public int maxNumb = 7;
     private int difficulty;
 
-    public List<string> buttonList;
+    private List<string> buttonList;
     private List<string> buttonListSave;
 
+    [Header("UI Elements")]
     public GameObject comboPanel;
     public GameObject playerInputPanel;
     public GameObject inputButtonPrefab;
+    public GameObject winUI;
 
-    public float fadeInMultiplier = 1;
+    public Slider memoryMetreSlider;
 
     private bool playerHasWon;
-    public bool startCombo;
+    private bool startCombo;
 
     void Start()
     {
         // Assign Lists
         buttonList = new List<string>();
         buttonListSave = new List<string>();
+
+        memoryMetreSlider.maxValue = maxMemory;
 
         GenerateNewCombination();
     }
@@ -103,10 +107,11 @@ public class SimonSays : MonoBehaviour
     void PlayerWin()
     {
         currentMemory = maxMemory;
+        UpdateMemoryMetre();
 
         playerHasWon = true;
 
-        Debug.Log("Win");
+        winUI.SetActive(true);
     }
 
     void Update()
@@ -173,9 +178,11 @@ public class SimonSays : MonoBehaviour
         // Check to see if the combo is finished
         if(buttonList.Count == 0)
         {
-            CombinationFinished();
-
             currentMemory += 10;
+
+            UpdateMemoryMetre();
+
+            CombinationFinished();
         }
 
         if (startCombo)
@@ -193,10 +200,12 @@ public class SimonSays : MonoBehaviour
         currentMemory -= 5;
 
         // Stop the player's memory from going below 0
-        if(currentMemory < 0)
+        if (currentMemory < 0)
         {
             currentMemory = 0;
         }
+
+        UpdateMemoryMetre();
 
         RemovePlayerInputUI();
         ShowComboUI();
@@ -209,5 +218,10 @@ public class SimonSays : MonoBehaviour
         {
             Destroy(playerInputPanel.transform.GetChild(i).gameObject);
         }
+    }
+
+    void UpdateMemoryMetre()
+    {
+        memoryMetreSlider.value = currentMemory;
     }
 }
