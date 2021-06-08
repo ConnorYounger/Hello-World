@@ -6,11 +6,7 @@ public class MovingObjectBabyHand : MonoBehaviour
 {
     public bool rightHand = true;
 
-    [HideInInspector] public bool rightHandCanPickUp;
-    [HideInInspector] public bool leftHandCanPickUp;
-
-    private bool rightHandHasObject;
-    private bool leftHandHasObject;
+    [HideInInspector] public bool canPickUpObject = true;
 
     public float maxDistance = 50;
     public float movementSpeed = 1;
@@ -42,9 +38,16 @@ public class MovingObjectBabyHand : MonoBehaviour
 
     void RightPickUpInput()
     {
-        if (Input.GetButtonDown("Fire1") && rightHandCanPickUp && !rightHandHasObject)
+        if (Input.GetButtonDown("Fire1"))
         {
-            handPickUpCollision.PickUpObject();
+            if (canPickUpObject && !heldObject)
+            {
+                handPickUpCollision.PickUpObject();
+            }
+            else if(heldObject)
+            {
+                DropObject();
+            }
         }
     }
 
@@ -54,7 +57,16 @@ public class MovingObjectBabyHand : MonoBehaviour
         heldObject.transform.parent = handObject.transform;
         heldObject.transform.position = handPickUpCollision.transform.position;
 
+        heldObject.GetComponent<Rigidbody>().isKinematic = true;
+    }
 
+    void DropObject()
+    {
+        heldObject.transform.parent = null;
+
+        heldObject.GetComponent<Rigidbody>().isKinematic = false;
+
+        heldObject = null;
     }
 
     void LeftPickUpInput()
@@ -71,8 +83,6 @@ public class MovingObjectBabyHand : MonoBehaviour
         }
         else
         {
-            Debug.Log(Vector3.Distance(handObject.transform.position, startionPos));
-
             handObject.transform.position = Vector3.Slerp(handObject.transform.position, startionPos, .5f * Time.deltaTime);
         }
     }

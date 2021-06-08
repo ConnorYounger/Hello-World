@@ -15,52 +15,36 @@ public class HandPickUpCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        for (int i = 0; i < colliders.Count; i++)
+        if (other.GetComponent<Rigidbody>())
         {
-            Debug.Log("Check List");
+            colliders.Add(other);
 
-            if(other != colliders[i])
-            {
-                Debug.Log("Add " + other);
+            //other.GetComponent<Rigidbody>().isKinematic = true;
 
-                colliders.Add(other);
-
-                SetParentBool(true);
-            }
+            SetParentBool(true);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        List<Collider> allColliders = new List<Collider>();
-        allColliders = colliders;
-
-        foreach(Collider collider in allColliders)
+        if (other.GetComponent<Rigidbody>())
         {
-            if(other == collider)
-            {
-                colliders.Remove(other);
+            colliders.Remove(other);
 
-                SetParentBool(false);
-            }
+            //other.GetComponent<Rigidbody>().isKinematic = false;
+
+            SetParentBool(false);
         }
     }
 
     void SetParentBool(bool value)
     {
-        if (parentHandObject.rightHand)
-        {
-            parentHandObject.rightHandCanPickUp = value;
-        }
-        else
-        {
-            parentHandObject.leftHandCanPickUp = value;
-        }
+        parentHandObject.canPickUpObject = value;
     }
 
     public void PickUpObject()
     {
-        parentHandObject.PickUpObject(colliders[1].gameObject);
+        parentHandObject.PickUpObject(colliders[colliders.Count - 1].gameObject);
     }
 
     void Update()
