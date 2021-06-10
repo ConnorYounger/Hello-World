@@ -71,7 +71,17 @@ public class MovingObjectBabyHand : MonoBehaviour
 
     void LeftPickUpInput()
     {
-
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if (canPickUpObject && !heldObject)
+            {
+                handPickUpCollision.PickUpObject();
+            }
+            else if (heldObject)
+            {
+                DropObject();
+            }
+        }
     }
 
     void RightHandInput()
@@ -87,8 +97,17 @@ public class MovingObjectBabyHand : MonoBehaviour
         }
     }
 
+    // Right joystick
     void LeftHandInput()
     {
-
+        if (Vector3.Distance(handObject.transform.position, startionPos) < maxDistance)
+        {
+            Vector3 rotation = new Vector3(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical"), 0);
+            handObject.transform.position += rotation * Time.deltaTime * movementSpeed;
+        }
+        else
+        {
+            handObject.transform.position = Vector3.Slerp(handObject.transform.position, startionPos, .5f * Time.deltaTime);
+        }
     }
 }
