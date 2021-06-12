@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class SimonSays : MonoBehaviour
 {
@@ -28,6 +29,13 @@ public class SimonSays : MonoBehaviour
     private bool playerHasWon;
     private bool startCombo;
 
+    public InputAction inputAction;
+    public List<InputActionMap> inputActionMap;
+    public InputActionAsset inputActionMapAsset;
+    public MiniGameInputs miniGameInputs;
+
+    MiniGameInputs controls;
+
     void Start()
     {
         // Assign Lists
@@ -37,6 +45,80 @@ public class SimonSays : MonoBehaviour
         memoryMetreSlider.maxValue = maxMemory;
 
         GenerateNewCombination();
+
+        SetInputActions();
+    }
+
+    void SetInputActions()
+    {
+        inputActionMap = new List<InputActionMap>();
+
+        //for(int i = 0; i < inputActionMapAsset.FindActionMap("SimonSays").actions.Count; i++)
+        //{
+        //    inputActionMap.Add(inputActionMapAsset.FindActionMap("SimonSays").actions[i].actionMap);
+        //}
+
+        inputActionMap.Add(inputActionMapAsset.FindActionMap("SimonSays").actions[0].actionMap);
+    }
+
+    private void Awake()
+    {
+        controls = new MiniGameInputs();
+
+        //controls.SimonSays.Click1.performed += ctx => TestThingy();
+        controls.SimonSays.AnyInput.performed += ctx => TestThingy(controls.SimonSays.AnyInput);
+        //controls.SimonSays.AnyInput.performed += ctx => TestThingy2(controls.SimonSays.AnyInput);
+    }
+
+    private void OnEnable()
+    {
+        controls.SimonSays.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.SimonSays.Disable();
+    }
+
+    public void TestThingy(InputAction action)
+    {
+        foreach(InputAction iaction in inputActionMapAsset)
+        {
+            if(action.name == iaction.name)
+            {
+                Debug.Log("Better Works" + iaction.name);
+            }
+
+            Debug.Log(iaction);
+        }
+
+        if(action.name == inputAction.name)
+        {
+            Debug.Log("Actually Works");
+        }
+
+        //if (action == inputActionMapAsset.FindAction(inputAction.name))
+        //{
+        //    Debug.Log("Actualy Works");
+        //}
+    }
+
+    public void TestThingy2(InputAction action)
+    {
+        foreach (InputBinding iaction in inputActionMapAsset.actionMaps[0].bindings)
+        {
+            foreach (InputBinding bi in action.bindings)
+            {
+                if (bi.name == iaction.name)
+                {
+                    Debug.Log("Actually Works");
+                }
+            }
+        }
+
+        Debug.Log(action);
+
+        Debug.Log("Wokrs I think");
     }
 
     // Generate a new combo list
@@ -118,8 +200,13 @@ public class SimonSays : MonoBehaviour
     {
         if (!playerHasWon)
         {
-            PlayerInput();
+            //PlayerInput();
         }
+
+        //if (inputActionMapAsset.FindActionMap("SimonSays").Contains())
+        //{
+
+        //}
     }
 
     void PlayerInput()
@@ -137,6 +224,8 @@ public class SimonSays : MonoBehaviour
                 ResetCombination();
             }
         }
+
+        //if(controls.SimonSays.)
     }
 
     void RemoveComboUI()
