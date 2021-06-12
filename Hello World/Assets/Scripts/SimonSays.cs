@@ -15,8 +15,8 @@ public class SimonSays : MonoBehaviour
     public int maxNumb = 7;
     private int difficulty;
 
-    private List<string> buttonList;
-    private List<string> buttonListSave;
+    private List<SimonSaysInputs> buttonList;
+    private List<SimonSaysInputs> buttonListSave;
 
     [Header("UI Elements")]
     public GameObject comboPanel;
@@ -28,46 +28,44 @@ public class SimonSays : MonoBehaviour
 
     private bool playerHasWon;
     private bool startCombo;
+    private bool correctInput;
+    public bool playerCanInput = true;
 
-    public InputAction inputAction;
-    public List<InputActionMap> inputActionMap;
-    public InputActionAsset inputActionMapAsset;
-    public MiniGameInputs miniGameInputs;
-
-    MiniGameInputs controls;
-
-    void Start()
-    {
-        // Assign Lists
-        buttonList = new List<string>();
-        buttonListSave = new List<string>();
-
-        memoryMetreSlider.maxValue = maxMemory;
-
-        GenerateNewCombination();
-
-        SetInputActions();
-    }
-
-    void SetInputActions()
-    {
-        inputActionMap = new List<InputActionMap>();
-
-        //for(int i = 0; i < inputActionMapAsset.FindActionMap("SimonSays").actions.Count; i++)
-        //{
-        //    inputActionMap.Add(inputActionMapAsset.FindActionMap("SimonSays").actions[i].actionMap);
-        //}
-
-        inputActionMap.Add(inputActionMapAsset.FindActionMap("SimonSays").actions[0].actionMap);
-    }
+    private MiniGameInputs controls;
 
     private void Awake()
     {
         controls = new MiniGameInputs();
 
-        //controls.SimonSays.Click1.performed += ctx => TestThingy();
-        controls.SimonSays.AnyInput.performed += ctx => TestThingy(controls.SimonSays.AnyInput);
-        //controls.SimonSays.AnyInput.performed += ctx => TestThingy2(controls.SimonSays.AnyInput);
+        SetInputActions();
+    }
+    
+    void SetInputActions()
+    {
+        controls.SimonSays.AnyInput.performed += ctx => PlayerAnyInput();
+        controls.SimonSays.Click1.performed += ctx => PlayerInput(controls.SimonSays.Click1);
+        controls.SimonSays.Click2.performed += ctx => PlayerInput(controls.SimonSays.Click2);
+        controls.SimonSays.AltClick1.performed += ctx => PlayerInput(controls.SimonSays.AltClick1);
+        controls.SimonSays.AltClick2.performed += ctx => PlayerInput(controls.SimonSays.AltClick2);
+        controls.SimonSays.ButtonA.performed += ctx => PlayerInput(controls.SimonSays.ButtonA);
+        controls.SimonSays.ButtonB.performed += ctx => PlayerInput(controls.SimonSays.ButtonB);
+        controls.SimonSays.ButtonX.performed += ctx => PlayerInput(controls.SimonSays.ButtonX);
+        controls.SimonSays.ButtonY.performed += ctx => PlayerInput(controls.SimonSays.ButtonY);
+        controls.SimonSays.DPadRight.performed += ctx => PlayerInput(controls.SimonSays.DPadRight);
+        controls.SimonSays.DPadLeft.performed += ctx => PlayerInput(controls.SimonSays.DPadLeft);
+        controls.SimonSays.DPadUp.performed += ctx => PlayerInput(controls.SimonSays.DPadUp);
+        controls.SimonSays.DPadDown.performed += ctx => PlayerInput(controls.SimonSays.DPadDown);
+    }
+
+    void Start()
+    {
+        // Assign Lists
+        buttonList = new List<SimonSaysInputs>();
+        buttonListSave = new List<SimonSaysInputs>();
+
+        memoryMetreSlider.maxValue = maxMemory;
+
+        GenerateNewCombination();
     }
 
     private void OnEnable()
@@ -80,45 +78,22 @@ public class SimonSays : MonoBehaviour
         controls.SimonSays.Disable();
     }
 
-    public void TestThingy(InputAction action)
+    public void PlayerInput(InputAction action)
     {
-        foreach(InputAction iaction in inputActionMapAsset)
-        {
-            if(action.name == iaction.name)
-            {
-                Debug.Log("Better Works" + iaction.name);
-            }
-
-            Debug.Log(iaction);
-        }
-
-        if(action.name == inputAction.name)
+        if(playerCanInput && !playerHasWon && action.name == buttonList[0].inputName)
         {
             Debug.Log("Actually Works");
-        }
 
-        //if (action == inputActionMapAsset.FindAction(inputAction.name))
-        //{
-        //    Debug.Log("Actualy Works");
-        //}
+            correctInput = true;
+        }
     }
 
-    public void TestThingy2(InputAction action)
+    void PlayerAnyInput()
     {
-        foreach (InputBinding iaction in inputActionMapAsset.actionMaps[0].bindings)
+        if (playerCanInput && !playerHasWon)
         {
-            foreach (InputBinding bi in action.bindings)
-            {
-                if (bi.name == iaction.name)
-                {
-                    Debug.Log("Actually Works");
-                }
-            }
+            Invoke("CalculateInput", 0.1f);
         }
-
-        Debug.Log(action);
-
-        Debug.Log("Wokrs I think");
     }
 
     // Generate a new combo list
@@ -139,7 +114,7 @@ public class SimonSays : MonoBehaviour
         {
             int rand = Random.Range(0, possibleButtonInputs.Count);
 
-            buttonList.Add(possibleButtonInputs[rand].inputName);
+            buttonList.Add(possibleButtonInputs[rand]);
 
             AddButtonToComboPanel(possibleButtonInputs[rand]);
         }
@@ -196,26 +171,14 @@ public class SimonSays : MonoBehaviour
         winUI.SetActive(true);
     }
 
-    void Update()
+    void CalculateInput()
     {
-        if (!playerHasWon)
+        if (playerCanInput)
         {
-            //PlayerInput();
-        }
+            playerCanInput = false;
 
-        //if (inputActionMapAsset.FindActionMap("SimonSays").Contains())
-        //{
-
-        //}
-    }
-
-    void PlayerInput()
-    {
-        // Check to see if there is an input from the player
-        if (Input.anyKeyDown)
-        {
             // Check to see if the input matches the correct button in the combo
-            if (Input.GetButtonDown(buttonList[0]))
+            if (correctInput)
             {
                 RemoveInput();
             }
@@ -224,8 +187,6 @@ public class SimonSays : MonoBehaviour
                 ResetCombination();
             }
         }
-
-        //if(controls.SimonSays.)
     }
 
     void RemoveComboUI()
@@ -259,6 +220,8 @@ public class SimonSays : MonoBehaviour
     // Remove the button from the combo
     void RemoveInput()
     {
+        correctInput = false;
+
         int childIndex = comboPanel.transform.childCount - buttonList.Count;
         AddPlayerInputButton(comboPanel.transform.GetChild(childIndex).GetComponent<Image>().sprite);
 
@@ -278,6 +241,8 @@ public class SimonSays : MonoBehaviour
         {
             RemoveComboUI();
         }
+
+        playerCanInput = true;
     }
 
     // When the player inputs the wrong button
@@ -298,6 +263,8 @@ public class SimonSays : MonoBehaviour
 
         RemovePlayerInputUI();
         ShowComboUI();
+
+        playerCanInput = true;
     }
 
     void RemovePlayerInputUI()

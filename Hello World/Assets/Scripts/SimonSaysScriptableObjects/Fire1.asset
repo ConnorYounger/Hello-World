@@ -12,5 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a388b8c1fd37f438d53ad695e524b2, type: 3}
   m_Name: Fire1
   m_EditorClassIdentifier: 
-  inputName: Fire1
+  inputName: Click1
   inputSprite: {fileID: 21300000, guid: 3ab4ed82855c51d418cc86bd9652a64e, type: 3}
+  inputActionMap:
+    m_Name: Input
+    m_Id: 4a86ca21-ec26-4938-b7a8-4839cf81f697
+    m_Asset: {fileID: 0}
+    m_Actions:
+    - m_Name: Click1
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 45c105ee-b490-491e-8f59-2a0cb46729dd
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    m_Bindings:
+    - m_Name: 
+      m_Id: bdb9ff26-3716-446c-b0c1-04decba40a11
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Click1
+      m_Flags: 0

@@ -1262,7 +1262,25 @@ MonoBehaviour:
     type: 3}
   winUI: {fileID: 1830879826}
   memoryMetreSlider: {fileID: 934056672}
-  inputAction: {fileID: 0}
+  inputAction:
+    m_Name: Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 49dffc6c-2df8-459a-b3f0-23fb0247d6fe
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4f8ea20e-7f07-4dae-a08a-67c5bf436a55
+      m_Path: <Keyboard>/anyKey
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input
+      m_Flags: 0
+  inputActionMap: []
+  inputActionMapAsset: {fileID: -944628639613478452, guid: 7dac4c2af2b336143b7b503e7dec1463,
+    type: 3}
 --- !u!4 &1615638004
 Transform:
   m_ObjectHideFlags: 0
@@ -1335,6 +1353,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 471bf002-2055-45b6-8e6d-7d917d4734c9
     m_ActionName: SimonSays/ButtonY[/Keyboard/w,/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3ed2f57-c513-46c7-8c58-8b2a3472d5ba
+    m_ActionName: SimonSays/AnyInput[/Keyboard/anyKey,/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonNorth,/XInputControllerWindows/rightTrigger,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/rightShoulder,/XInputControllerWindows/leftShoulder,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right,/XInputControllerWindows/dpad/down]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: SimonSays

@@ -89,6 +89,38 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DPadRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""6540be99-9cfd-4f70-9720-11df30a65572"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DPadLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""a84fb04c-26f5-4c39-a7f5-be452ad26a1e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DPadUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""613a5028-a6f2-4566-8ba8-3463756f42bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DPadDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""db7bc8a9-087f-454b-bb10-0d6bdeda0665"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -369,94 +401,6 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3e6f7098-c6e9-4aba-a0b8-fb7b2f0393c1"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnyInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e59b83d6-aa20-49e4-93ab-49cc08265ecc"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnyInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""35f8afe3-ffd9-4abd-a3ef-f10ca0a90f97"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnyInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bbc4c8b3-6cb4-47d2-8068-88f53371c03c"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnyInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""21567669-e695-4dc2-8593-d8b218ea9925"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnyInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""76bd5bbc-46f9-4a0a-b8db-ca56d21f529a"",
-                    ""path"": ""<Gamepad>/rightStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnyInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6238c41f-fcc6-42e3-b173-0f1d5817a8c9"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnyInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b80d3aa0-b6d5-4b31-a136-7b3665e017cb"",
-                    ""path"": ""<Gamepad>/rightStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnyInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1f8392a7-afc6-4042-8dfd-d74a529e33bb"",
                     ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
@@ -498,6 +442,116 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""action"": ""AnyInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""981785a2-9823-4223-8bd2-d3f66294bfa7"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03922809-f0b3-4ba9-8fde-b2e5d1ff59cf"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebf23e5a-deaa-481c-b153-6785b794ed66"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPadRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a920c1a6-82ea-4eef-885b-6c5f73eec1b0"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPadRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b57050ae-fcb6-4b2e-93ba-2b9045409a55"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPadUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ac40953-1bd3-4267-a194-06263df7873e"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPadUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a727db65-6cfa-4afd-b3c5-4772bec259db"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPadDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0dfb3c5-8adf-4885-9ded-399641a06424"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPadDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1aebbb5a-ecca-48a4-801b-bbfca0670a4d"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPadLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""814359cf-114f-4482-83ec-07e8107aaef4"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPadLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -515,6 +569,10 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_SimonSays_ButtonX = m_SimonSays.FindAction("ButtonX", throwIfNotFound: true);
         m_SimonSays_ButtonY = m_SimonSays.FindAction("ButtonY", throwIfNotFound: true);
         m_SimonSays_AnyInput = m_SimonSays.FindAction("AnyInput", throwIfNotFound: true);
+        m_SimonSays_DPadRight = m_SimonSays.FindAction("DPadRight", throwIfNotFound: true);
+        m_SimonSays_DPadLeft = m_SimonSays.FindAction("DPadLeft", throwIfNotFound: true);
+        m_SimonSays_DPadUp = m_SimonSays.FindAction("DPadUp", throwIfNotFound: true);
+        m_SimonSays_DPadDown = m_SimonSays.FindAction("DPadDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -573,6 +631,10 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_SimonSays_ButtonX;
     private readonly InputAction m_SimonSays_ButtonY;
     private readonly InputAction m_SimonSays_AnyInput;
+    private readonly InputAction m_SimonSays_DPadRight;
+    private readonly InputAction m_SimonSays_DPadLeft;
+    private readonly InputAction m_SimonSays_DPadUp;
+    private readonly InputAction m_SimonSays_DPadDown;
     public struct SimonSaysActions
     {
         private @MiniGameInputs m_Wrapper;
@@ -586,6 +648,10 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         public InputAction @ButtonX => m_Wrapper.m_SimonSays_ButtonX;
         public InputAction @ButtonY => m_Wrapper.m_SimonSays_ButtonY;
         public InputAction @AnyInput => m_Wrapper.m_SimonSays_AnyInput;
+        public InputAction @DPadRight => m_Wrapper.m_SimonSays_DPadRight;
+        public InputAction @DPadLeft => m_Wrapper.m_SimonSays_DPadLeft;
+        public InputAction @DPadUp => m_Wrapper.m_SimonSays_DPadUp;
+        public InputAction @DPadDown => m_Wrapper.m_SimonSays_DPadDown;
         public InputActionMap Get() { return m_Wrapper.m_SimonSays; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -622,6 +688,18 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @AnyInput.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInput;
                 @AnyInput.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInput;
                 @AnyInput.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInput;
+                @DPadRight.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadRight;
+                @DPadRight.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadRight;
+                @DPadRight.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadRight;
+                @DPadLeft.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadLeft;
+                @DPadLeft.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadLeft;
+                @DPadLeft.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadLeft;
+                @DPadUp.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadUp;
+                @DPadUp.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadUp;
+                @DPadUp.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadUp;
+                @DPadDown.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadDown;
+                @DPadDown.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadDown;
+                @DPadDown.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadDown;
             }
             m_Wrapper.m_SimonSaysActionsCallbackInterface = instance;
             if (instance != null)
@@ -653,6 +731,18 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @AnyInput.started += instance.OnAnyInput;
                 @AnyInput.performed += instance.OnAnyInput;
                 @AnyInput.canceled += instance.OnAnyInput;
+                @DPadRight.started += instance.OnDPadRight;
+                @DPadRight.performed += instance.OnDPadRight;
+                @DPadRight.canceled += instance.OnDPadRight;
+                @DPadLeft.started += instance.OnDPadLeft;
+                @DPadLeft.performed += instance.OnDPadLeft;
+                @DPadLeft.canceled += instance.OnDPadLeft;
+                @DPadUp.started += instance.OnDPadUp;
+                @DPadUp.performed += instance.OnDPadUp;
+                @DPadUp.canceled += instance.OnDPadUp;
+                @DPadDown.started += instance.OnDPadDown;
+                @DPadDown.performed += instance.OnDPadDown;
+                @DPadDown.canceled += instance.OnDPadDown;
             }
         }
     }
@@ -668,5 +758,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnButtonX(InputAction.CallbackContext context);
         void OnButtonY(InputAction.CallbackContext context);
         void OnAnyInput(InputAction.CallbackContext context);
+        void OnDPadRight(InputAction.CallbackContext context);
+        void OnDPadLeft(InputAction.CallbackContext context);
+        void OnDPadUp(InputAction.CallbackContext context);
+        void OnDPadDown(InputAction.CallbackContext context);
     }
 }

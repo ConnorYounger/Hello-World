@@ -12,5 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a388b8c1fd37f438d53ad695e524b2, type: 3}
   m_Name: Jump
   m_EditorClassIdentifier: 
-  inputName: Jump
+  inputName: ButtonA
   inputSprite: {fileID: 21300000, guid: 0d3bab7dca982564097e1492c14de6aa, type: 3}
+  inputActionMap:
+    m_Name: Input
+    m_Id: 75f169d4-b57a-4906-8e00-7bce04a5bf0a
+    m_Asset: {fileID: 0}
+    m_Actions:
+    - m_Name: ButtonA
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 0cfeea3a-7755-4752-8861-a19823730c8d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    m_Bindings:
+    - m_Name: 
+      m_Id: f16d4694-e9fa-4db3-9737-ba11934bbae6
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: ButtonA
+      m_Flags: 0
