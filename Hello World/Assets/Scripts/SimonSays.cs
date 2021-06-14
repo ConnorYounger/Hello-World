@@ -43,8 +43,6 @@ public class SimonSays : MonoBehaviour
     void SetInputActions()
     {
         controls.SimonSays.AnyInput.performed += ctx => PlayerAnyInput();
-        //controls.SimonSays.Click1.performed += ctx => PlayerInput(controls.SimonSays.Click1);
-        //controls.SimonSays.Click2.performed += ctx => PlayerInput(controls.SimonSays.Click2);
         controls.SimonSays.AltClick1.performed += ctx => PlayerInput(controls.SimonSays.AltClick1);
         controls.SimonSays.AltClick2.performed += ctx => PlayerInput(controls.SimonSays.AltClick2);
         controls.SimonSays.ButtonA.performed += ctx => PlayerInput(controls.SimonSays.ButtonA);

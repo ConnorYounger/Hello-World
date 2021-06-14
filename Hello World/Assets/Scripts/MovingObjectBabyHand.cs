@@ -29,11 +29,17 @@ public class MovingObjectBabyHand : MonoBehaviour
         {
             controls.HoldingObjects.RightHandMovement.performed += ctx => move = ctx.ReadValue<Vector2>();
             controls.HoldingObjects.RightHandMovement.canceled += ctx => move = Vector2.zero;
+
+            controls.HoldingObjects.RightHandGrab.performed += ctx => PickUpObject(ctx.ReadValue<float>());
+            //controls.HoldingObjects.RightHandGrab.canceled += ctx => PickUpObject(0);
         }
         else
         {
             controls.HoldingObjects.LeftHandMovement.performed += ctx => move = ctx.ReadValue<Vector2>();
             controls.HoldingObjects.LeftHandMovement.canceled += ctx => move = Vector2.zero;
+
+            controls.HoldingObjects.LeftHandGrab.performed += ctx => PickUpObject(ctx.ReadValue<float>());
+            //controls.HoldingObjects.LeftHandGrab.canceled += ctx => PickUpObject(0);
         }
     }
 
@@ -54,31 +60,7 @@ public class MovingObjectBabyHand : MonoBehaviour
 
     void Update()
     {
-        if (rightHand)
-        {
-            RightPickUpInput();
-        }
-        else
-        {
-            LeftPickUpInput();
-        }
-
         HandMovement();
-    }
-
-    void RightPickUpInput()
-    {
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    if (canPickUpObject && !heldObject)
-        //    {
-        //        handPickUpCollision.PickUpObject();
-        //    }
-        //    else if(heldObject)
-        //    {
-        //        DropObject();
-        //    }
-        //}
     }
 
     public void PickUpObject(GameObject obj)
@@ -99,19 +81,18 @@ public class MovingObjectBabyHand : MonoBehaviour
         heldObject = null;
     }
 
-    void LeftPickUpInput()
+    void PickUpObject(float value)
     {
-        //if (Input.GetButtonDown("Fire2"))
-        //{
-        //    if (canPickUpObject && !heldObject)
-        //    {
-        //        handPickUpCollision.PickUpObject();
-        //    }
-        //    else if (heldObject)
-        //    {
-        //        DropObject();
-        //    }
-        //}
+        if (value >= 1 && canPickUpObject && !heldObject)
+        {
+            handPickUpCollision.PickUpObject();
+        }
+        else if (heldObject)
+        {
+            DropObject();
+        }
+
+        Debug.Log(value);
     }
 
     void HandMovement()
