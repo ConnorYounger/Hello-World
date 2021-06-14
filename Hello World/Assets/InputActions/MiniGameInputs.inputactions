@@ -519,6 +519,90 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "HoldingObjects",
+            "id": "54c3036c-f84a-4b2b-a785-50b1177b318a",
+            "actions": [
+                {
+                    "name": "LeftHandMovement",
+                    "type": "PassThrough",
+                    "id": "bc5c61ec-6bb9-418d-b703-45dd446f326b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightHandMovement",
+                    "type": "PassThrough",
+                    "id": "0fbf5a5e-e18e-497b-8eb3-57e4450ef35b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LeftHandGrab",
+                    "type": "Button",
+                    "id": "bcd5df9f-cf28-43b3-a251-46d7a5b26ae3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightHandGrab",
+                    "type": "Button",
+                    "id": "e155206c-ed75-4c3c-b028-7f2a959f5d3e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fbd90330-17dc-42a3-bf4c-efd731d5a432",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftHandMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1601c110-4bf1-41e0-a8f9-bd1006dbd285",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHandMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7db59cbf-1ebb-47e6-9936-5479f3d49629",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftHandGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fbf30cb1-d460-45d8-b247-0b04aff97eb1",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightHandGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

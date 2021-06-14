@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MovingObjectBabyHand : MonoBehaviour
 {
@@ -16,6 +17,35 @@ public class MovingObjectBabyHand : MonoBehaviour
     public HandPickUpCollision handPickUpCollision;
 
     private Vector3 startionPos;
+    private Vector2 move;
+
+    private MiniGameInputs controls;
+
+    private void Awake()
+    {
+        controls = new MiniGameInputs();
+
+        if (rightHand)
+        {
+            controls.HoldingObjects.RightHandMovement.performed += ctx => move = ctx.ReadValue<Vector2>();
+            controls.HoldingObjects.RightHandMovement.canceled += ctx => move = Vector2.zero;
+        }
+        else
+        {
+            controls.HoldingObjects.LeftHandMovement.performed += ctx => move = ctx.ReadValue<Vector2>();
+            controls.HoldingObjects.LeftHandMovement.canceled += ctx => move = Vector2.zero;
+        }
+    }
+
+    private void OnEnable()
+    {
+        controls.HoldingObjects.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.HoldingObjects.Disable();
+    }
 
     void Start()
     {
@@ -26,29 +56,29 @@ public class MovingObjectBabyHand : MonoBehaviour
     {
         if (rightHand)
         {
-            RightHandInput();
             RightPickUpInput();
         }
         else
         {
-            LeftHandInput();
             LeftPickUpInput();
         }
+
+        HandMovement();
     }
 
     void RightPickUpInput()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            if (canPickUpObject && !heldObject)
-            {
-                handPickUpCollision.PickUpObject();
-            }
-            else if(heldObject)
-            {
-                DropObject();
-            }
-        }
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    if (canPickUpObject && !heldObject)
+        //    {
+        //        handPickUpCollision.PickUpObject();
+        //    }
+        //    else if(heldObject)
+        //    {
+        //        DropObject();
+        //    }
+        //}
     }
 
     public void PickUpObject(GameObject obj)
@@ -71,39 +101,25 @@ public class MovingObjectBabyHand : MonoBehaviour
 
     void LeftPickUpInput()
     {
-        if (Input.GetButtonDown("Fire2"))
-        {
-            if (canPickUpObject && !heldObject)
-            {
-                handPickUpCollision.PickUpObject();
-            }
-            else if (heldObject)
-            {
-                DropObject();
-            }
-        }
+        //if (Input.GetButtonDown("Fire2"))
+        //{
+        //    if (canPickUpObject && !heldObject)
+        //    {
+        //        handPickUpCollision.PickUpObject();
+        //    }
+        //    else if (heldObject)
+        //    {
+        //        DropObject();
+        //    }
+        //}
     }
 
-    void RightHandInput()
+    void HandMovement()
     {
         if(Vector3.Distance(handObject.transform.position, startionPos) < maxDistance)
         {
-            Vector3 rotation = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-            handObject.transform.position += rotation * Time.deltaTime * movementSpeed;
-        }
-        else
-        {
-            handObject.transform.position = Vector3.Slerp(handObject.transform.position, startionPos, .5f * Time.deltaTime);
-        }
-    }
-
-    // Right joystick
-    void LeftHandInput()
-    {
-        if (Vector3.Distance(handObject.transform.position, startionPos) < maxDistance)
-        {
-            Vector3 rotation = new Vector3(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical"), 0);
-            handObject.transform.position += rotation * Time.deltaTime * movementSpeed;
+            Vector2 movement = new Vector2(move.x, move.y) * Time.deltaTime * movementSpeed;
+            handObject.transform.Translate(movement);
         }
         else
         {

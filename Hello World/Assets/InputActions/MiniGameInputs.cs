@@ -532,6 +532,90 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""HoldingObjects"",
+            ""id"": ""54c3036c-f84a-4b2b-a785-50b1177b318a"",
+            ""actions"": [
+                {
+                    ""name"": ""LeftHandMovement"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""bc5c61ec-6bb9-418d-b703-45dd446f326b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RightHandMovement"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""0fbf5a5e-e18e-497b-8eb3-57e4450ef35b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""LeftHandGrab"",
+                    ""type"": ""Button"",
+                    ""id"": ""bcd5df9f-cf28-43b3-a251-46d7a5b26ae3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RightHandGrab"",
+                    ""type"": ""Button"",
+                    ""id"": ""e155206c-ed75-4c3c-b028-7f2a959f5d3e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""fbd90330-17dc-42a3-bf4c-efd731d5a432"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftHandMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1601c110-4bf1-41e0-a8f9-bd1006dbd285"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightHandMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7db59cbf-1ebb-47e6-9936-5479f3d49629"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftHandGrab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fbf30cb1-d460-45d8-b247-0b04aff97eb1"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightHandGrab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -551,6 +635,12 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_SimonSays_DPadLeft = m_SimonSays.FindAction("DPadLeft", throwIfNotFound: true);
         m_SimonSays_DPadUp = m_SimonSays.FindAction("DPadUp", throwIfNotFound: true);
         m_SimonSays_DPadDown = m_SimonSays.FindAction("DPadDown", throwIfNotFound: true);
+        // HoldingObjects
+        m_HoldingObjects = asset.FindActionMap("HoldingObjects", throwIfNotFound: true);
+        m_HoldingObjects_LeftHandMovement = m_HoldingObjects.FindAction("LeftHandMovement", throwIfNotFound: true);
+        m_HoldingObjects_RightHandMovement = m_HoldingObjects.FindAction("RightHandMovement", throwIfNotFound: true);
+        m_HoldingObjects_LeftHandGrab = m_HoldingObjects.FindAction("LeftHandGrab", throwIfNotFound: true);
+        m_HoldingObjects_RightHandGrab = m_HoldingObjects.FindAction("RightHandGrab", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -725,6 +815,63 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         }
     }
     public SimonSaysActions @SimonSays => new SimonSaysActions(this);
+
+    // HoldingObjects
+    private readonly InputActionMap m_HoldingObjects;
+    private IHoldingObjectsActions m_HoldingObjectsActionsCallbackInterface;
+    private readonly InputAction m_HoldingObjects_LeftHandMovement;
+    private readonly InputAction m_HoldingObjects_RightHandMovement;
+    private readonly InputAction m_HoldingObjects_LeftHandGrab;
+    private readonly InputAction m_HoldingObjects_RightHandGrab;
+    public struct HoldingObjectsActions
+    {
+        private @MiniGameInputs m_Wrapper;
+        public HoldingObjectsActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftHandMovement => m_Wrapper.m_HoldingObjects_LeftHandMovement;
+        public InputAction @RightHandMovement => m_Wrapper.m_HoldingObjects_RightHandMovement;
+        public InputAction @LeftHandGrab => m_Wrapper.m_HoldingObjects_LeftHandGrab;
+        public InputAction @RightHandGrab => m_Wrapper.m_HoldingObjects_RightHandGrab;
+        public InputActionMap Get() { return m_Wrapper.m_HoldingObjects; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(HoldingObjectsActions set) { return set.Get(); }
+        public void SetCallbacks(IHoldingObjectsActions instance)
+        {
+            if (m_Wrapper.m_HoldingObjectsActionsCallbackInterface != null)
+            {
+                @LeftHandMovement.started -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnLeftHandMovement;
+                @LeftHandMovement.performed -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnLeftHandMovement;
+                @LeftHandMovement.canceled -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnLeftHandMovement;
+                @RightHandMovement.started -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnRightHandMovement;
+                @RightHandMovement.performed -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnRightHandMovement;
+                @RightHandMovement.canceled -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnRightHandMovement;
+                @LeftHandGrab.started -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnLeftHandGrab;
+                @LeftHandGrab.performed -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnLeftHandGrab;
+                @LeftHandGrab.canceled -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnLeftHandGrab;
+                @RightHandGrab.started -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnRightHandGrab;
+                @RightHandGrab.performed -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnRightHandGrab;
+                @RightHandGrab.canceled -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnRightHandGrab;
+            }
+            m_Wrapper.m_HoldingObjectsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @LeftHandMovement.started += instance.OnLeftHandMovement;
+                @LeftHandMovement.performed += instance.OnLeftHandMovement;
+                @LeftHandMovement.canceled += instance.OnLeftHandMovement;
+                @RightHandMovement.started += instance.OnRightHandMovement;
+                @RightHandMovement.performed += instance.OnRightHandMovement;
+                @RightHandMovement.canceled += instance.OnRightHandMovement;
+                @LeftHandGrab.started += instance.OnLeftHandGrab;
+                @LeftHandGrab.performed += instance.OnLeftHandGrab;
+                @LeftHandGrab.canceled += instance.OnLeftHandGrab;
+                @RightHandGrab.started += instance.OnRightHandGrab;
+                @RightHandGrab.performed += instance.OnRightHandGrab;
+                @RightHandGrab.canceled += instance.OnRightHandGrab;
+            }
+        }
+    }
+    public HoldingObjectsActions @HoldingObjects => new HoldingObjectsActions(this);
     public interface ISimonSaysActions
     {
         void OnClick1(InputAction.CallbackContext context);
@@ -740,5 +887,12 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnDPadLeft(InputAction.CallbackContext context);
         void OnDPadUp(InputAction.CallbackContext context);
         void OnDPadDown(InputAction.CallbackContext context);
+    }
+    public interface IHoldingObjectsActions
+    {
+        void OnLeftHandMovement(InputAction.CallbackContext context);
+        void OnRightHandMovement(InputAction.CallbackContext context);
+        void OnLeftHandGrab(InputAction.CallbackContext context);
+        void OnRightHandGrab(InputAction.CallbackContext context);
     }
 }
