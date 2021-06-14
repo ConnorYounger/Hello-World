@@ -43,8 +43,8 @@ public class SimonSays : MonoBehaviour
     void SetInputActions()
     {
         controls.SimonSays.AnyInput.performed += ctx => PlayerAnyInput();
-        controls.SimonSays.Click1.performed += ctx => PlayerInput(controls.SimonSays.Click1);
-        controls.SimonSays.Click2.performed += ctx => PlayerInput(controls.SimonSays.Click2);
+        //controls.SimonSays.Click1.performed += ctx => PlayerInput(controls.SimonSays.Click1);
+        //controls.SimonSays.Click2.performed += ctx => PlayerInput(controls.SimonSays.Click2);
         controls.SimonSays.AltClick1.performed += ctx => PlayerInput(controls.SimonSays.AltClick1);
         controls.SimonSays.AltClick2.performed += ctx => PlayerInput(controls.SimonSays.AltClick2);
         controls.SimonSays.ButtonA.performed += ctx => PlayerInput(controls.SimonSays.ButtonA);
@@ -55,6 +55,12 @@ public class SimonSays : MonoBehaviour
         controls.SimonSays.DPadLeft.performed += ctx => PlayerInput(controls.SimonSays.DPadLeft);
         controls.SimonSays.DPadUp.performed += ctx => PlayerInput(controls.SimonSays.DPadUp);
         controls.SimonSays.DPadDown.performed += ctx => PlayerInput(controls.SimonSays.DPadDown);
+
+        controls.SimonSays.Click1.performed += ctx => TriggerInput(controls.SimonSays.Click1, ctx.ReadValue<float>());
+        controls.SimonSays.Click1.canceled += ctx => TriggerInput(controls.SimonSays.Click1, 0);
+
+        controls.SimonSays.Click2.performed += ctx => TriggerInput(controls.SimonSays.Click2, ctx.ReadValue<float>());
+        controls.SimonSays.Click2.canceled += ctx => TriggerInput(controls.SimonSays.Click2, 0);
     }
 
     void Start()
@@ -76,6 +82,16 @@ public class SimonSays : MonoBehaviour
     private void OnDisable()
     {
         controls.SimonSays.Disable();
+    }
+
+    void TriggerInput(InputAction action, float i)
+    {
+        if (i >= 1 && playerCanInput)
+        {
+            PlayerInput(action);
+
+            Invoke("CalculateInput", 0.1f);
+        }
     }
 
     public void PlayerInput(InputAction action)

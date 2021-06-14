@@ -7,15 +7,15 @@
             "actions": [
                 {
                     "name": "Click1",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "b3a47a68-186c-4af8-85d7-0a79f0c4d612",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "Click2",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "0253c554-a5de-4792-8957-63431e1194c5",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -114,7 +114,7 @@
                 {
                     "name": "",
                     "id": "1e765069-5877-4760-91f3-2bffa87b2b78",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -125,7 +125,7 @@
                 {
                     "name": "",
                     "id": "f883f96c-486d-4581-96fb-d04b7fa6d0ad",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -335,28 +335,6 @@
                     "name": "",
                     "id": "456ccda5-059d-46a0-a6ba-7c2ac5e30c2f",
                     "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AnyInput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f4e1ac2b-4cc5-4777-96a1-49b83e48c71e",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AnyInput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "90e853c5-8d90-4f3d-9279-b647be76b7fd",
-                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
