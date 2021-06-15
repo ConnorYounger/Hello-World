@@ -12,6 +12,10 @@ public class MovingObjectBabyHand : MonoBehaviour
 
     public float maxDistance = 50;
     public float movementSpeed = 1;
+    private float randomMoveX;
+    private float randomMoveY;
+    private float randomMoveMultiplier = 20;
+    private float rMM = 1;
 
     public GameObject handObject;
     public GameObject otherHandObject;
@@ -21,6 +25,7 @@ public class MovingObjectBabyHand : MonoBehaviour
 
     private Vector3 startionPos;
     private Vector2 move;
+    private Vector2 randomMove;
 
     private MiniGameInputs controls;
 
@@ -60,6 +65,8 @@ public class MovingObjectBabyHand : MonoBehaviour
     {
         startionPos = handObject.transform.position;
         spawnBox = GameObject.Find("SpawnBoxZone");
+
+        RandomMoveDirection();
     }
 
     void Update()
@@ -67,8 +74,7 @@ public class MovingObjectBabyHand : MonoBehaviour
         HandMovement();
         OtherHandCollision();
         SpawnNewObject();
-
-        Debug.Log(Time.deltaTime.ToString() + " " + canSpawnObject + " / " + canPickUpObject + " / " + heldObject);
+        RandomHandMovements();
     }
 
     void SpawnNewObject()
@@ -93,6 +99,11 @@ public class MovingObjectBabyHand : MonoBehaviour
     {
         if(obj != null)
         {
+            if (otherHandObject.GetComponent<MovingObjectBabyHand>().heldObject != null && obj == otherHandObject.GetComponent<MovingObjectBabyHand>().heldObject)
+            {
+                otherHandObject.GetComponent<MovingObjectBabyHand>().DropObject();
+            }
+
             heldObject = obj;
             heldObject.transform.parent = handObject.transform;
             heldObject.transform.position = handPickUpCollision.transform.position;
@@ -140,10 +151,6 @@ public class MovingObjectBabyHand : MonoBehaviour
         {
             DropObject();
         }
-        else if (canSpawnObject && !heldObject)
-        {
-            //PickUpObject(spawnBox.GetComponent<SpawnObjectBox>().SpawnObject());
-        }
     }
 
     void HandMovement()
@@ -157,5 +164,51 @@ public class MovingObjectBabyHand : MonoBehaviour
         {
             handObject.transform.position = Vector3.Slerp(handObject.transform.position, startionPos, .5f * Time.deltaTime);
         }
+    }
+
+    void RandomHandMovements()
+    {
+        if(move.x > 0 || move.y > 0)
+        {
+            rMM = randomMoveMultiplier;
+        }
+        else
+        {
+            rMM = 1;
+        }
+
+        float multiplier = 0.2f * rMM;
+
+        if(randomMove.x > randomMoveX)
+        {
+            randomMove = new Vector2(randomMove.x - multiplier * Time.deltaTime, randomMove.y);
+        }
+        else
+        {
+            randomMove = new Vector2(randomMove.x + multiplier * Time.deltaTime, randomMove.y);
+        }
+
+        if (randomMove.y > randomMoveY)
+        {
+            randomMove = new Vector2(randomMove.x, randomMove.y - multiplier * Time.deltaTime);
+
+        }
+        else
+        {
+            randomMove = new Vector2(randomMove.x, randomMove.y + multiplier * Time.deltaTime);
+        }
+
+        Debug.Log(rMM);
+
+        //randomMove = new Vector2(randomMoveX, randomMoveY);
+        handObject.transform.Translate(randomMove * Time.deltaTime);
+    }
+
+    void RandomMoveDirection()
+    {
+        randomMoveX = Random.Range(-0.2f * (rMM / 4), 0.2f * (rMM / 4));
+        randomMoveY = Random.Range(-0.2f * (rMM / 4), 0.2f * (rMM / 4));
+
+        Invoke("RandomMoveDirection", 10 * Time.deltaTime);
     }
 }
