@@ -16,11 +16,13 @@ public class Workout : MonoBehaviour
     public float tiltAngle = 45;
     public float holdTime = 3;
     public float resetCoolDownTime = 2;
+    public float movementMultiplier = 2;
     private float resetCoolDown;
     private float currentHoldTime;
 
     private bool reset;
     private bool gameFinished;
+    private bool moveDown;
 
     private Vector2 rightMove;
     private Vector2 leftMove;
@@ -34,9 +36,7 @@ public class Workout : MonoBehaviour
 
     public Animator animator;
 
-    [Header("Height Variables")]
-    public Transform finishLocation;
-    public Transform startingLocation;
+    private Vector3 startingLocation;
 
     private MiniGameInputs controls;
 
@@ -53,6 +53,8 @@ public class Workout : MonoBehaviour
     {
         sitUpSlider.maxValue = sitUpGoal;
         patienceSlider.maxValue = startingPatience;
+
+        startingLocation = baby.transform.position;
     }
 
     void SetInputActions()
@@ -74,6 +76,8 @@ public class Workout : MonoBehaviour
         {
             resetCoolDown -= Time.deltaTime;
         }
+
+        MoveToStartingPos();
     }
 
 
@@ -92,6 +96,9 @@ public class Workout : MonoBehaviour
         if(Mathf.Abs(rightMove.y) > (tiltAngle / 100) && Mathf.Abs(leftMove.y) > (tiltAngle / 100) && !reset)
         {
             currentHoldTime += Time.deltaTime;
+
+            if(!moveDown)
+                baby.transform.position = new Vector3(baby.transform.position.x, baby.transform.position.y + Time.deltaTime * movementMultiplier, baby.transform.position.z);
         }
         else if (currentHoldTime > 0)
         {
@@ -113,13 +120,13 @@ public class Workout : MonoBehaviour
             animator.SetBool("FallOverLeft", false);
             animator.SetBool("GetUp", true);
         }
-
-
     }
 
     void FailedSitUp()
     {
         animator.SetBool("GetUp", false);
+
+        moveDown = true;
 
         if (Mathf.Abs(rightMove.y) < (tiltAngle / 100))
         {
@@ -160,6 +167,8 @@ public class Workout : MonoBehaviour
     {
         reset = true;
 
+        moveDown = true;
+
         sitUpCount++;
 
         UpdateSliders();
@@ -188,5 +197,25 @@ public class Workout : MonoBehaviour
     {
         sitUpSlider.value = sitUpCount;
         patienceSlider.value = currentPatience;
+    }
+
+    void MoveToStartingPos()
+    {
+        if (moveDown)
+        {
+            if (baby.transform.position.y > startingLocation.y)
+            {
+                baby.transform.position = new Vector3(baby.transform.position.x, baby.transform.position.y - Time.deltaTime * movementMultiplier, baby.transform.position.z);
+
+                Debug.Log("Move Down");
+            }
+
+            if (baby.transform.position.y < startingLocation.y)
+            {
+                baby.transform.position = new Vector3(baby.transform.position.x, startingLocation.y, baby.transform.position.z);
+
+                moveDown = false;
+            }
+        }
     }
 }

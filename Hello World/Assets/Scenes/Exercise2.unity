@@ -568,6 +568,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestBones
       objectReference: {fileID: 0}
+    - target: {fileID: 2162195280808118412, guid: 8ea83060eb6b84a4b856bb2f6ddd2517,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2888725536035623189, guid: 8ea83060eb6b84a4b856bb2f6ddd2517,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -1267,12 +1272,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffcc444f3a443954b801327d3f1d6478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baby: {fileID: 0}
+  baby: {fileID: 1576043297}
   sitUpGoal: 10
   startingPatience: 10
   tiltAngle: 45
   holdTime: 2
   resetCoolDownTime: 1
+  movementMultiplier: 0.3
   sitUpSlider: {fileID: 638287658}
   patienceSlider: {fileID: 144539903}
   winScreen: {fileID: 1505713744}
@@ -2143,7 +2149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576043297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.27, y: 4.118, z: -4.04}
+  m_LocalPosition: {x: 8.27, y: 3.578, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 914825417}
