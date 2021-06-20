@@ -15,6 +15,8 @@ public class Workout : MonoBehaviour
 
     public float tiltAngle = 45;
     public float holdTime = 3;
+    public float resetCoolDownTime = 2;
+    private float resetCoolDown;
     private float currentHoldTime;
 
     private bool reset;
@@ -23,11 +25,18 @@ public class Workout : MonoBehaviour
     private Vector2 rightMove;
     private Vector2 leftMove;
 
+    [Header("Ui Elements")]
     public Slider sitUpSlider;
     public Slider patienceSlider;
 
     public GameObject winScreen;
     public GameObject loseScreen;
+
+    public Animator animator;
+
+    [Header("Height Variables")]
+    public Transform finishLocation;
+    public Transform startingLocation;
 
     private MiniGameInputs controls;
 
@@ -60,6 +69,11 @@ public class Workout : MonoBehaviour
             SitUp();
             CheckForSucessfulSitUp();
         }
+
+        if(resetCoolDown > 0)
+        {
+            resetCoolDown -= Time.deltaTime;
+        }
     }
 
 
@@ -91,14 +105,35 @@ public class Workout : MonoBehaviour
             }
         }
 
-        if(reset && rightMove == Vector2.zero && leftMove == Vector2.zero)
+        if(reset && rightMove == Vector2.zero && leftMove == Vector2.zero && resetCoolDown <= 0)
         {
             reset = false;
+
+            animator.SetBool("FallOverRight", false);
+            animator.SetBool("FallOverLeft", false);
+            animator.SetBool("GetUp", true);
         }
+
+
     }
 
     void FailedSitUp()
     {
+        animator.SetBool("GetUp", false);
+
+        if (Mathf.Abs(rightMove.y) < (tiltAngle / 100))
+        {
+            animator.SetBool("FallOverRight", true);
+            Debug.Log("Tilt Right");
+        }
+        else if (Mathf.Abs(leftMove.y) < (tiltAngle / 100))
+        {
+            animator.SetBool("FallOverLeft", true);
+            Debug.Log("Tilt Left");
+        }
+
+        resetCoolDown = resetCoolDownTime;
+
         reset = true;
 
         currentHoldTime = 0;
