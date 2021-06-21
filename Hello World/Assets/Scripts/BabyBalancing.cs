@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BabyBalancing : MonoBehaviour
 {
@@ -14,6 +15,27 @@ public class BabyBalancing : MonoBehaviour
     [Header("UI")]
     public GameObject babyFellEGO;
 
+    private MiniGameInputs controls;
+    private Vector2 move;
+
+    private void Awake()
+    {
+        controls = new MiniGameInputs();
+
+        controls.HoldingObjects.RightHandMovement.performed += ctx => move = ctx.ReadValue<Vector2>();
+        //controls.HoldingObjects.RightHandMovement.canceled += ctx => move = Vector2.zero;
+    }
+
+    private void OnEnable()
+    {
+        controls.HoldingObjects.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.HoldingObjects.Disable();
+    }
+
     void Update()
     {
         if (canTilt)
@@ -21,11 +43,13 @@ public class BabyBalancing : MonoBehaviour
             Tilt();
             PlayerMovement();
         }
+
+        Debug.Log(move);
     }
 
     void PlayerMovement()
     {
-        Vector3 rotation = new Vector3(transform.rotation.x, transform.rotation.y, Input.GetAxis("Horizontal"));
+        Vector3 rotation = new Vector3(transform.rotation.x, transform.rotation.y, move.x);
         transform.Rotate(rotation * Time.deltaTime * playerRotateSpeed);
     }
 
