@@ -15,25 +15,31 @@ public class HandPickUpCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Rigidbody>())
+        if (other.GetComponent<Rigidbody>() && other.tag == "Object")
         {
             colliders.Add(other);
 
-            //other.GetComponent<Rigidbody>().isKinematic = true;
-
             SetParentBool(true);
+        }
+        else if (other.name == "SpawnBoxZone")
+        {
+            SetParentBool(true);
+            parentHandObject.canSpawnObject = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Rigidbody>())
+        if (other.GetComponent<Rigidbody>() && other.tag == "Object")
         {
             colliders.Remove(other);
 
-            //other.GetComponent<Rigidbody>().isKinematic = false;
-
             SetParentBool(false);
+        }
+        else if (other.name == "SpawnBoxZone")
+        {
+            SetParentBool(false);
+            parentHandObject.canSpawnObject = false;
         }
     }
 
@@ -45,10 +51,5 @@ public class HandPickUpCollision : MonoBehaviour
     public void PickUpObject()
     {
         parentHandObject.PickUpObject(colliders[colliders.Count - 1].gameObject);
-    }
-
-    void Update()
-    {
-        
     }
 }

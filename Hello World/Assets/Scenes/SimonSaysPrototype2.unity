@@ -627,7 +627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &714638071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1226,6 +1226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1615638004}
   - component: {fileID: 1615638003}
+  - component: {fileID: 1615638005}
   m_Layer: 0
   m_Name: MiniGameManager (Simon)
   m_TagString: Untagged
@@ -1261,6 +1262,25 @@ MonoBehaviour:
     type: 3}
   winUI: {fileID: 1830879826}
   memoryMetreSlider: {fileID: 934056672}
+  inputAction:
+    m_Name: Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 49dffc6c-2df8-459a-b3f0-23fb0247d6fe
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4f8ea20e-7f07-4dae-a08a-67c5bf436a55
+      m_Path: <Keyboard>/anyKey
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input
+      m_Flags: 0
+  inputActionMap: []
+  inputActionMapAsset: {fileID: -944628639613478452, guid: 7dac4c2af2b336143b7b503e7dec1463,
+    type: 3}
 --- !u!4 &1615638004
 Transform:
   m_ObjectHideFlags: 0
@@ -1275,6 +1295,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1615638005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615638002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7dac4c2af2b336143b7b503e7dec1463,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3a47a68-186c-4af8-85d7-0a79f0c4d612
+    m_ActionName: SimonSays/Click1[/Mouse/leftButton,/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0253c554-a5de-4792-8957-63431e1194c5
+    m_ActionName: SimonSays/Click2[/Mouse/rightButton,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 818f0f0a-4903-4093-bcff-43fc3715127f
+    m_ActionName: SimonSays/AltClick1[/Keyboard/q,/XInputControllerWindows/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cada3223-d8be-4e12-b4d7-1e14fc674b55
+    m_ActionName: SimonSays/AltClick2[/Keyboard/e,/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1f65f325-1905-490e-9027-ce037be7ca7a
+    m_ActionName: SimonSays/ButtonA[/Keyboard/s,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e2571135-849f-49b9-836b-cfbf79a8182e
+    m_ActionName: SimonSays/ButtonB[/Keyboard/d,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4466d137-e88a-4dc7-8494-c46a08fed53d
+    m_ActionName: SimonSays/ButtonX[/Keyboard/a,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 471bf002-2055-45b6-8e6d-7d917d4734c9
+    m_ActionName: SimonSays/ButtonY[/Keyboard/w,/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3ed2f57-c513-46c7-8c58-8b2a3472d5ba
+    m_ActionName: SimonSays/AnyInput[/Keyboard/anyKey,/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonNorth,/XInputControllerWindows/rightTrigger,/XInputControllerWindows/leftTrigger,/XInputControllerWindows/rightShoulder,/XInputControllerWindows/leftShoulder,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right,/XInputControllerWindows/dpad/down]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: SimonSays
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1648107528
 GameObject:
   m_ObjectHideFlags: 0
