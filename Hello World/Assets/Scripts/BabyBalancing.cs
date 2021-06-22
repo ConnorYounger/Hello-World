@@ -13,7 +13,6 @@ public class BabyBalancing : MonoBehaviour
     private bool canTilt = true;
 
     [Header("UI")]
-    public GameObject babyRotatePoint;
     public GameObject babyFellEGO;
 
     private MiniGameInputs controls;
