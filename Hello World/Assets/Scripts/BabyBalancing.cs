@@ -13,6 +13,7 @@ public class BabyBalancing : MonoBehaviour
     private bool canTilt = true;
 
     [Header("UI")]
+    public GameObject babyRotatePoint;
     public GameObject babyFellEGO;
 
     private MiniGameInputs controls;
@@ -23,7 +24,6 @@ public class BabyBalancing : MonoBehaviour
         controls = new MiniGameInputs();
 
         controls.HoldingObjects.RightHandMovement.performed += ctx => move = ctx.ReadValue<Vector2>();
-        //controls.HoldingObjects.RightHandMovement.canceled += ctx => move = Vector2.zero;
     }
 
     private void OnEnable()
@@ -43,8 +43,6 @@ public class BabyBalancing : MonoBehaviour
             Tilt();
             PlayerMovement();
         }
-
-        Debug.Log(move);
     }
 
     void PlayerMovement()
