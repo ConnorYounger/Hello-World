@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class Exercise6BabyMovement : MonoBehaviour
 {
+    public bool simpleMovement = true;
     public float movementSpeed = 1;
+    public float stepTime = 0.16f;
+    private float currentStepTime;
+    public float stepCoolDownTime = 1;
+
+    public Animator animator;
 
     private MiniGameInputs controls;
     private Vector2 move;
     private Vector2 tilt;
 
+    private bool canMove = true;
+    private int dir;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
 
-        //controls.HoldingObjects.RightHandMovement.performed += ctx => tilt = ctx.ReadValue<Vector2>();
-
         controls.HoldingObjects.LeftHandMovement.performed += ctx => move = ctx.ReadValue<Vector2>();
-        //controls.HoldingObjects.LeftHandMovement.canceled += ctx => move = Vector2.zero;
+
+        controls.HoldingObjects.LeftHandGrab.performed += ctx => PlayerMovement(ctx.ReadValue<float>(), true);
+
+        controls.HoldingObjects.RightHandGrab.performed += ctx => PlayerMovement(ctx.ReadValue<float>(), false);
     }
 
     private void OnEnable()
@@ -32,14 +42,86 @@ public class Exercise6BabyMovement : MonoBehaviour
 
     private void Update()
     {
-        PlayerMovement();
+        if (simpleMovement)
+            SimplePlayerMovement();
+        else
+            ComplexPlayerMovement();
+
+        MoveForward();
     }
 
-    void PlayerMovement()
+    void PlayerMovement(float value, bool leftFoot)
     {
-        Debug.Log(move);
+        if(canMove && value >= 1 && !simpleMovement)
+        {
+            if (leftFoot)
+            {
+                if (animator.GetInteger("babyFoot") == 0 || animator.GetInteger("babyFoot") == 3)
+                {
+                    animator.SetInteger("babyFoot", 2);
+                    dir = -1;
+                }
+                else
+                {
+                    animator.SetInteger("babyFoot", 0);
+                    dir = 1;
+                }
+            }
+            else
+            {
+                if (animator.GetInteger("babyFoot") == 1 || animator.GetInteger("babyFoot") == 2)
+                {
+                    animator.SetInteger("babyFoot", 3);
+                    dir = -1;
+                }
+                else
+                {
+                    animator.SetInteger("babyFoot", 1);
+                    dir = 1;
+                }
+            }
 
-        Vector3 movement = new Vector3(move.x, transform.position.y, move.y) * Time.deltaTime * movementSpeed;
-        transform.Translate(transform.right * move.y * Time.deltaTime * movementSpeed);
+            //animator.SetBool("babyLeftFoot", leftFoot);
+            Debug.Log("babyLeftFoot");
+
+            currentStepTime = stepTime;
+
+            canMove = false;
+
+            Invoke("ReseMovementCoolDown", stepCoolDownTime);
+        }
+    }
+
+    void MoveForward()
+    {
+        if(currentStepTime > 0)
+        {
+            currentStepTime -= Time.deltaTime;
+
+            transform.position = transform.position + (transform.forward * Time.deltaTime * movementSpeed) * dir;
+        }
+    }
+
+    void ReseMovementCoolDown()
+    {
+        canMove = true;
+    }
+
+    void ComplexPlayerMovement()
+    {
+        //Movement
+
+
+        // Rotation
+        Vector3 rotation = new Vector3(transform.rotation.x, move.x, transform.rotation.z);
+        transform.Rotate(rotation * Time.deltaTime * 100);
+    }
+
+    void SimplePlayerMovement()
+    {
+        transform.position = transform.position + (transform.forward * move.y * Time.deltaTime * movementSpeed);
+
+        Vector3 rotation = new Vector3(transform.rotation.x, move.x, transform.rotation.z);
+        transform.Rotate(rotation * Time.deltaTime * 100);
     }
 }
