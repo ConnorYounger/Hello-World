@@ -40,6 +40,6 @@ public class Exercise6BabyMovement : MonoBehaviour
         Debug.Log(move);
 
         Vector3 movement = new Vector3(move.x, transform.position.y, move.y) * Time.deltaTime * movementSpeed;
-        transform.Translate(movement);
+        transform.Translate(transform.right * move.y * Time.deltaTime * movementSpeed);
     }
 }
