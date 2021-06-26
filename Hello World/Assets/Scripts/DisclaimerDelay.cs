@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DisclaimerDelay : MonoBehaviour
 {
     public string sceneToLoad;
+    public int timeToWait;
 
     private void Start()
     {
@@ -14,7 +15,7 @@ public class DisclaimerDelay : MonoBehaviour
 
     IEnumerator DelayForTime()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(timeToWait);
         LoadNextScene();
     }
 

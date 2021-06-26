@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class MenuCameraSwitcher : MonoBehaviour
 {
+    /*
     [Header("Main Camera")]
     public GameObject mainCam;
 
@@ -13,6 +14,7 @@ public class MenuCameraSwitcher : MonoBehaviour
     public GameObject changetableCam;
     public GameObject playmatCam;
     public GameObject doorCam;
+    */
 
     [Header("Camera keys")]
     public InputAction cam1;
@@ -50,6 +52,7 @@ public class MenuCameraSwitcher : MonoBehaviour
 
     private void Start()
     {
+        // Update these calls with UI selection
         cam1.performed += _ => SwitchCamera("cam1");
         cam2.performed += _ => SwitchCamera("cam2");
         cam3.performed += _ => SwitchCamera("cam3");
