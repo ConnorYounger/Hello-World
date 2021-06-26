@@ -1418,7 +1418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &411022042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1438,6 +1438,54 @@ MonoBehaviour:
   changetableCam: {fileID: 1190161778}
   playmatCam: {fileID: 1683963984}
   doorCam: {fileID: 0}
+  cam1:
+    m_Name: Cam 1
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6f509e71-cac5-44f7-9d91-3d9facd0f396
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  cam2:
+    m_Name: Cam 2
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 92f79b1f-a7dd-4b2b-860b-ad566c9d2846
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  cam3:
+    m_Name: Cam 3
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e3d298ae-2b42-457d-8356-3a08da5303bb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  cam4:
+    m_Name: Cam 4
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 34ec3533-4a3c-4c3e-aeb5-822fab5b94e9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  cam5:
+    m_Name: Cam 5
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: cc47a181-7994-4e56-9a60-2ff09224e426
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  cam6:
+    m_Name: Cam 6
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f4bc8b61-7e31-45fc-abd3-ffd7ac0be2cd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!4 &411022043
 Transform:
   m_ObjectHideFlags: 0
@@ -7967,6 +8015,7 @@ GameObject:
   - component: {fileID: 1989554918}
   - component: {fileID: 1989554917}
   - component: {fileID: 1989554919}
+  - component: {fileID: 1989554920}
   m_Layer: 0
   m_Name: CM StateDrivenCamera1
   m_TagString: Untagged
@@ -8091,6 +8140,121 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1989554920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989554916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466fa40174b0272498a7bb94db68f930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  shelfCam: {fileID: 0}
+  cribCam: {fileID: 0}
+  toyboxCam: {fileID: 0}
+  changetableCam: {fileID: 0}
+  playmatCam: {fileID: 0}
+  doorCam: {fileID: 0}
+  cam1:
+    m_Name: Cam 1
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 57c7688e-ed2c-493c-befe-c774e241eaac
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: e59da9dc-7b35-4567-96ae-4527d64752f8
+      m_Path: <Keyboard>/1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Cam 1
+      m_Flags: 0
+  cam2:
+    m_Name: Cam 2
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1dae79e7-c508-4e26-be90-93d43f4547af
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 043d551e-309c-4fc1-bc5f-bc356fdbc074
+      m_Path: <Keyboard>/2
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Cam 2
+      m_Flags: 0
+  cam3:
+    m_Name: Cam 3
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3bd30ab5-bec6-4572-806e-902969ddbe73
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 6f3a4f5f-3e90-4017-bd6f-40fa2a2cbd09
+      m_Path: <Keyboard>/3
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Cam 3
+      m_Flags: 0
+  cam4:
+    m_Name: Cam 4
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: eef7d5c2-5f0f-4f8e-b55b-1af6b4fbf67a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 45e4a8f3-0565-4d29-abd7-fd00d7dbfdaa
+      m_Path: <Keyboard>/4
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Cam 4
+      m_Flags: 0
+  cam5:
+    m_Name: Cam 5
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5e9814d9-dd64-4702-b16e-b96a1ed7d363
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 735f1059-b071-4fef-826a-4c1f1859f7b1
+      m_Path: <Keyboard>/5
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Cam 5
+      m_Flags: 0
+  cam6:
+    m_Name: Cam 6
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8d90159d-c9d7-4a5e-9e79-e272ec18948b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 669aaf1d-1190-4793-bf77-c34cb8604f86
+      m_Path: <Keyboard>/6
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Cam 6
+      m_Flags: 0
 --- !u!1 &1998363950
 GameObject:
   m_ObjectHideFlags: 0
