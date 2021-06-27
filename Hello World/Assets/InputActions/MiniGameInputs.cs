@@ -616,6 +616,33 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""QWOP"",
+            ""id"": ""4e1789d8-3995-4a30-86d4-0b500e215cb1"",
+            ""actions"": [
+                {
+                    ""name"": ""Click1"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a110672-c471-422f-9fbb-a591cbde0e5f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b47bf34f-bee2-4670-89e0-219bca47265e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -641,6 +668,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_HoldingObjects_RightHandMovement = m_HoldingObjects.FindAction("RightHandMovement", throwIfNotFound: true);
         m_HoldingObjects_LeftHandGrab = m_HoldingObjects.FindAction("LeftHandGrab", throwIfNotFound: true);
         m_HoldingObjects_RightHandGrab = m_HoldingObjects.FindAction("RightHandGrab", throwIfNotFound: true);
+        // QWOP
+        m_QWOP = asset.FindActionMap("QWOP", throwIfNotFound: true);
+        m_QWOP_Click1 = m_QWOP.FindAction("Click1", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -872,6 +902,39 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         }
     }
     public HoldingObjectsActions @HoldingObjects => new HoldingObjectsActions(this);
+
+    // QWOP
+    private readonly InputActionMap m_QWOP;
+    private IQWOPActions m_QWOPActionsCallbackInterface;
+    private readonly InputAction m_QWOP_Click1;
+    public struct QWOPActions
+    {
+        private @MiniGameInputs m_Wrapper;
+        public QWOPActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Click1 => m_Wrapper.m_QWOP_Click1;
+        public InputActionMap Get() { return m_Wrapper.m_QWOP; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(QWOPActions set) { return set.Get(); }
+        public void SetCallbacks(IQWOPActions instance)
+        {
+            if (m_Wrapper.m_QWOPActionsCallbackInterface != null)
+            {
+                @Click1.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
+                @Click1.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
+                @Click1.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
+            }
+            m_Wrapper.m_QWOPActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Click1.started += instance.OnClick1;
+                @Click1.performed += instance.OnClick1;
+                @Click1.canceled += instance.OnClick1;
+            }
+        }
+    }
+    public QWOPActions @QWOP => new QWOPActions(this);
     public interface ISimonSaysActions
     {
         void OnClick1(InputAction.CallbackContext context);
@@ -894,5 +957,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnRightHandMovement(InputAction.CallbackContext context);
         void OnLeftHandGrab(InputAction.CallbackContext context);
         void OnRightHandGrab(InputAction.CallbackContext context);
+    }
+    public interface IQWOPActions
+    {
+        void OnClick1(InputAction.CallbackContext context);
     }
 }
