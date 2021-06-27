@@ -628,14 +628,6 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""Click2"",
-                    ""type"": ""Button"",
-                    ""id"": ""590c0d6e-4bca-461e-b427-68f5041c56c9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -647,17 +639,6 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Click1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ec378a74-3460-4495-b23c-767a5ac0de5d"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Click2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -690,7 +671,6 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         // QWOP
         m_QWOP = asset.FindActionMap("QWOP", throwIfNotFound: true);
         m_QWOP_Click1 = m_QWOP.FindAction("Click1", throwIfNotFound: true);
-        m_QWOP_Click2 = m_QWOP.FindAction("Click2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -927,13 +907,11 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputActionMap m_QWOP;
     private IQWOPActions m_QWOPActionsCallbackInterface;
     private readonly InputAction m_QWOP_Click1;
-    private readonly InputAction m_QWOP_Click2;
     public struct QWOPActions
     {
         private @MiniGameInputs m_Wrapper;
         public QWOPActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Click1 => m_Wrapper.m_QWOP_Click1;
-        public InputAction @Click2 => m_Wrapper.m_QWOP_Click2;
         public InputActionMap Get() { return m_Wrapper.m_QWOP; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -946,9 +924,6 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @Click1.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
                 @Click1.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
                 @Click1.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
-                @Click2.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick2;
-                @Click2.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick2;
-                @Click2.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick2;
             }
             m_Wrapper.m_QWOPActionsCallbackInterface = instance;
             if (instance != null)
@@ -956,9 +931,6 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @Click1.started += instance.OnClick1;
                 @Click1.performed += instance.OnClick1;
                 @Click1.canceled += instance.OnClick1;
-                @Click2.started += instance.OnClick2;
-                @Click2.performed += instance.OnClick2;
-                @Click2.canceled += instance.OnClick2;
             }
         }
     }
@@ -989,6 +961,5 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     public interface IQWOPActions
     {
         void OnClick1(InputAction.CallbackContext context);
-        void OnClick2(InputAction.CallbackContext context);
     }
 }
