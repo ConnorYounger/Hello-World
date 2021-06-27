@@ -708,6 +708,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 630901157536116255, guid: 5b3a2a90c4de37d45bc5af1ce137c55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.312
+      objectReference: {fileID: 0}
     - target: {fileID: 3409217791547560344, guid: 5b3a2a90c4de37d45bc5af1ce137c55d,
         type: 3}
       propertyPath: m_RootOrder
@@ -1166,6 +1171,12 @@ MonoBehaviour:
   metreArrow: {fileID: 1587151710}
   dimentions: 180
   babyBalancing: {fileID: 1079807623}
+--- !u!1 &686217909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 146642, guid: c089639d805ce704aa6ba68219626aa9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1453927674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &722130440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1380,7 @@ MonoBehaviour:
   maxBalanceValue: 90
   tiltMultiplier: 0.2
   playerRotateSpeed: 100
-  babyRotatePoint: {fileID: 0}
+  babyRotatePoint: {fileID: 686217909}
   babyFellEGO: {fileID: 597686221}
 --- !u!4 &1079807624
 Transform:
@@ -1651,7 +1662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1304867324
 MonoBehaviour:
   m_ObjectHideFlags: 0
