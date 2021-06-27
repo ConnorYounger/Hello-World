@@ -1,16 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class QWOP : MonoBehaviour
 {
-    public GameObject leftArm;
-    public GameObject rightArm;
-    public GameObject leftLeg;
-    public GameObject rightLeg;
-    public GameObject body;
-    public GameObject head;
-
     public GameObject instructionText;
     public GameObject qText;
     public GameObject wText;
@@ -20,102 +14,71 @@ public class QWOP : MonoBehaviour
     public WinWithToy winWithToy;
     public CountDownBar countdown;
 
+    private MiniGameInputs controls;
+
+    private Animator anim;
+
     //add bools for each limb to stop from moving backwards too much. 
 
     private char lastPressed;
+    private bool isLeftMovement = true;
+    private bool isRightMovement = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        lastPressed = 'P';
+        anim = GetComponent<Animator>();
+        controls = new MiniGameInputs();
+        SetInputActions();
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetInputActions()
     {
-        if (winWithToy.gameWon == false && countdown.countdownBar.value > 0)
+        controls.QWOP.Click1.performed += ctx => LeftMovement();
+        controls.QWOP.Click2.performed += ctx => RightMovement();
+    }
+
+    private void OnEnable()
+    {
+        controls.QWOP.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.QWOP.Disable();
+    }
+
+    void LeftMovement()
+    {
+        if (isLeftMovement == true)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                qText.SetActive(false);
-                if (lastPressed == 'P')
-                {
-                    leftArm.transform.position = Vector3.MoveTowards(leftArm.transform.position,
-                    new Vector3(leftArm.transform.position.x, leftArm.transform.position.y, leftArm.transform.position.z + 0.5f), 1);
-                    lastPressed = 'Q';
-                }
-                else
-                {
-                    leftArm.transform.position = Vector3.MoveTowards(leftArm.transform.position,
-                    new Vector3(leftArm.transform.position.x, leftArm.transform.position.y, leftArm.transform.position.z - 0.5f), 1);
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                wText.SetActive(false);
-                if (lastPressed == 'O')
-                {
-                    rightArm.transform.position = Vector3.Lerp(rightArm.transform.position,
-                    new Vector3(rightArm.transform.position.x, rightArm.transform.position.y, rightArm.transform.position.z + 0.5f), 1);
-                    lastPressed = 'W';
-                }
-                else
-                {
-                    rightArm.transform.position = Vector3.Lerp(rightArm.transform.position,
-                    new Vector3(rightArm.transform.position.x, rightArm.transform.position.y, rightArm.transform.position.z - 0.5f), 1);
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                oText.SetActive(false);
-                if (lastPressed == 'Q')
-                {
-                    rightLeg.transform.position = Vector3.Lerp(rightLeg.transform.position,
-                    new Vector3(rightLeg.transform.position.x, rightLeg.transform.position.y, rightLeg.transform.position.z + 0.5f), 1);
-                    body.transform.position = Vector3.Lerp(body.transform.position,
-                    new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z + 0.25f), 1);
-                    head.transform.position = Vector3.Lerp(head.transform.position,
-                    new Vector3(head.transform.position.x, head.transform.position.y, head.transform.position.z + 0.25f), 1);
-                    lastPressed = 'O';
-                }
-                else
-                {
-                    rightLeg.transform.position = Vector3.Lerp(rightLeg.transform.position,
-                    new Vector3(rightLeg.transform.position.x, rightLeg.transform.position.y, rightLeg.transform.position.z - 0.5f), 1);
-                    body.transform.position = Vector3.Lerp(body.transform.position,
-                    new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 0.25f), 1);
-                    head.transform.position = Vector3.Lerp(head.transform.position,
-                    new Vector3(head.transform.position.x, head.transform.position.y, head.transform.position.z - 0.25f), 1);
-                    lastPressed = 'O';
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                pText.SetActive(false);
-                instructionText.SetActive(false);
-                if (lastPressed == 'W')
-                {
-                    leftLeg.transform.position = Vector3.Lerp(leftLeg.transform.position, 
-                    new Vector3(leftLeg.transform.position.x, leftLeg.transform.position.y, leftLeg.transform.position.z + 0.5f), 1);
-                    body.transform.position = Vector3.Lerp(body.transform.position,
-                    new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z + 0.25f), 1);
-                    head.transform.position = Vector3.Lerp(head.transform.position,
-                    new Vector3(head.transform.position.x, head.transform.position.y, head.transform.position.z + 0.25f), 1);
-                    lastPressed = 'P';
-                }
-                else
-                {
-                    leftLeg.transform.position = Vector3.Lerp(leftLeg.transform.position,
-                    new Vector3(leftLeg.transform.position.x, leftLeg.transform.position.y, leftLeg.transform.position.z - 0.5f), 1);
-                    body.transform.position = Vector3.Lerp(body.transform.position,
-                    new Vector3(body.transform.position.x, body.transform.position.y, body.transform.position.z - 0.25f), 1);
-                    head.transform.position = Vector3.Lerp(head.transform.position,
-                    new Vector3(head.transform.position.x, head.transform.position.y, head.transform.position.z - 0.25f), 1);
-                }
-            }
+            anim.SetBool("leftPressed", true);
+            anim.SetBool("rightPressed", false);
+            anim.SetBool("wrongPressed", false);
+            isLeftMovement = false;
+            isRightMovement = true;
+        }
+        else
+        {
+            anim.SetBool("wrongPressed", true);
+            anim.SetBool("rightPressed", false);
+            anim.SetBool("leftPressed", false);
+        }
+    }
+    void RightMovement()
+    {
+        if (isRightMovement == true)
+        {
+            anim.SetBool("rightPressed", true);
+            anim.SetBool("leftPressed", false);
+            anim.SetBool("wrongPressed", false);
+            isRightMovement = false;
+            isLeftMovement = true;
+        }
+        else
+        {
+            anim.SetBool("wrongPressed", true);
+            anim.SetBool("rightPressed", false);
+            anim.SetBool("leftPressed", false);
         }
     }
 }

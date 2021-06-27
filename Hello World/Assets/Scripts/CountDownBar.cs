@@ -4,14 +4,19 @@ using UnityEngine.UI;
 public class CountDownBar : MonoBehaviour
 {
     public static bool allowInputs;
+    private bool countDown = true;
+    public float countDownTime = 60;
 
     public Slider countdownBar;
-    private bool countDown = true;
-
-    public float countDownTime = 60;
     public GameObject loseText;
-
     public WinWithToy winWithToy;
+    private Animator anim;
+    public GameObject baby;
+
+    private void Awake()
+    {
+        anim = baby.GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -31,6 +36,7 @@ public class CountDownBar : MonoBehaviour
             {
                 countDown = false;
                 allowInputs = false;
+                anim.SetBool("timeOut", true);
                 loseText.SetActive(true);
             }
             else

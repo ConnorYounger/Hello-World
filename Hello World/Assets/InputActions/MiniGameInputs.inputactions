@@ -615,6 +615,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Click2",
+                    "type": "Button",
+                    "id": "590c0d6e-4bca-461e-b427-68f5041c56c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -626,6 +634,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Click1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec378a74-3460-4495-b23c-767a5ac0de5d",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
