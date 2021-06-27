@@ -20,6 +20,16 @@ public class RollOver : MonoBehaviour
         SetInputActions();
     }
 
+    private void OnEnable()
+    {
+        controls.RollOver.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.RollOver.Disable();
+    }
+
     void SetInputActions()
     {
         controls.RollOver.Key1.performed += ctx => FirstSwing();
