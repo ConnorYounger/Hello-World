@@ -54,7 +54,7 @@ public class BabyBalancing : MonoBehaviour
 
     void Tilt()
     {
-        Debug.Log(move);
+        //Debug.Log(move);
 
         if (transform.localRotation.z > 0 && transform.localRotation.z < CalculateMaxBalanceValue())
         {

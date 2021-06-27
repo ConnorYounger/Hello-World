@@ -109,12 +109,12 @@ public class Exercise6BabyMovement : MonoBehaviour
 
     void ComplexPlayerMovement()
     {
-        //Movement
-
-
         // Rotation
-        Vector3 rotation = new Vector3(transform.rotation.x, move.x, transform.rotation.z);
-        transform.Rotate(rotation * Time.deltaTime * 100);
+        if (currentStepTime > 0)
+        {
+            Vector3 rotation = new Vector3(transform.rotation.x, move.x, transform.rotation.z);
+            transform.Rotate(rotation * Time.deltaTime * 100);
+        }
     }
 
     void SimplePlayerMovement()
@@ -123,5 +123,10 @@ public class Exercise6BabyMovement : MonoBehaviour
 
         Vector3 rotation = new Vector3(transform.rotation.x, move.x, transform.rotation.z);
         transform.Rotate(rotation * Time.deltaTime * 100);
+    }
+
+    public void Exersise6Win()
+    {
+        Debug.Log("You did it!");
     }
 }
