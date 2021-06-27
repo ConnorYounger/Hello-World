@@ -628,6 +628,14 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Click2"",
+                    ""type"": ""Button"",
+                    ""id"": ""590c0d6e-4bca-461e-b427-68f5041c56c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -639,6 +647,120 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Click1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec378a74-3460-4495-b23c-767a5ac0de5d"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""RollOver"",
+            ""id"": ""2527bfc7-f1ef-4ecf-b852-2d56ab0157ea"",
+            ""actions"": [
+                {
+                    ""name"": ""Key1"",
+                    ""type"": ""Button"",
+                    ""id"": ""95fd99bb-d8f9-473c-b9b7-9b05ebeffce2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Key2"",
+                    ""type"": ""Button"",
+                    ""id"": ""51f8c0ca-5c91-4691-ac94-fbd1ee1018f4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Key3"",
+                    ""type"": ""Button"",
+                    ""id"": ""f198de43-fc8e-41ab-9447-62da1ceaa43a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Key4"",
+                    ""type"": ""Button"",
+                    ""id"": ""499a45c6-d6a5-4bf9-b66a-0d88aa7c6291"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Key5"",
+                    ""type"": ""Button"",
+                    ""id"": ""35c94b72-242c-4587-9ade-d5d911084c8f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c71eada6-a6b3-4b30-bbd0-4b6ab1adf8f1"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Key1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1e89670-22cb-4c7a-a067-b797b65e16fd"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Key2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d33dce07-8c49-4acb-b325-7dc6da2cff10"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Key3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c787bdfd-2cef-4858-baab-39292ee23ae5"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Key4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e5700e0-c987-4c21-9b1d-a1fbcf28e546"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Key5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -671,6 +793,14 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         // QWOP
         m_QWOP = asset.FindActionMap("QWOP", throwIfNotFound: true);
         m_QWOP_Click1 = m_QWOP.FindAction("Click1", throwIfNotFound: true);
+        m_QWOP_Click2 = m_QWOP.FindAction("Click2", throwIfNotFound: true);
+        // RollOver
+        m_RollOver = asset.FindActionMap("RollOver", throwIfNotFound: true);
+        m_RollOver_Key1 = m_RollOver.FindAction("Key1", throwIfNotFound: true);
+        m_RollOver_Key2 = m_RollOver.FindAction("Key2", throwIfNotFound: true);
+        m_RollOver_Key3 = m_RollOver.FindAction("Key3", throwIfNotFound: true);
+        m_RollOver_Key4 = m_RollOver.FindAction("Key4", throwIfNotFound: true);
+        m_RollOver_Key5 = m_RollOver.FindAction("Key5", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -907,11 +1037,13 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputActionMap m_QWOP;
     private IQWOPActions m_QWOPActionsCallbackInterface;
     private readonly InputAction m_QWOP_Click1;
+    private readonly InputAction m_QWOP_Click2;
     public struct QWOPActions
     {
         private @MiniGameInputs m_Wrapper;
         public QWOPActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Click1 => m_Wrapper.m_QWOP_Click1;
+        public InputAction @Click2 => m_Wrapper.m_QWOP_Click2;
         public InputActionMap Get() { return m_Wrapper.m_QWOP; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -924,6 +1056,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @Click1.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
                 @Click1.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
                 @Click1.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
+                @Click2.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick2;
+                @Click2.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick2;
+                @Click2.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick2;
             }
             m_Wrapper.m_QWOPActionsCallbackInterface = instance;
             if (instance != null)
@@ -931,10 +1066,78 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @Click1.started += instance.OnClick1;
                 @Click1.performed += instance.OnClick1;
                 @Click1.canceled += instance.OnClick1;
+                @Click2.started += instance.OnClick2;
+                @Click2.performed += instance.OnClick2;
+                @Click2.canceled += instance.OnClick2;
             }
         }
     }
     public QWOPActions @QWOP => new QWOPActions(this);
+
+    // RollOver
+    private readonly InputActionMap m_RollOver;
+    private IRollOverActions m_RollOverActionsCallbackInterface;
+    private readonly InputAction m_RollOver_Key1;
+    private readonly InputAction m_RollOver_Key2;
+    private readonly InputAction m_RollOver_Key3;
+    private readonly InputAction m_RollOver_Key4;
+    private readonly InputAction m_RollOver_Key5;
+    public struct RollOverActions
+    {
+        private @MiniGameInputs m_Wrapper;
+        public RollOverActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Key1 => m_Wrapper.m_RollOver_Key1;
+        public InputAction @Key2 => m_Wrapper.m_RollOver_Key2;
+        public InputAction @Key3 => m_Wrapper.m_RollOver_Key3;
+        public InputAction @Key4 => m_Wrapper.m_RollOver_Key4;
+        public InputAction @Key5 => m_Wrapper.m_RollOver_Key5;
+        public InputActionMap Get() { return m_Wrapper.m_RollOver; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(RollOverActions set) { return set.Get(); }
+        public void SetCallbacks(IRollOverActions instance)
+        {
+            if (m_Wrapper.m_RollOverActionsCallbackInterface != null)
+            {
+                @Key1.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey1;
+                @Key1.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey1;
+                @Key1.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey1;
+                @Key2.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey2;
+                @Key2.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey2;
+                @Key2.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey2;
+                @Key3.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey3;
+                @Key3.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey3;
+                @Key3.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey3;
+                @Key4.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey4;
+                @Key4.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey4;
+                @Key4.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey4;
+                @Key5.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey5;
+                @Key5.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey5;
+                @Key5.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey5;
+            }
+            m_Wrapper.m_RollOverActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Key1.started += instance.OnKey1;
+                @Key1.performed += instance.OnKey1;
+                @Key1.canceled += instance.OnKey1;
+                @Key2.started += instance.OnKey2;
+                @Key2.performed += instance.OnKey2;
+                @Key2.canceled += instance.OnKey2;
+                @Key3.started += instance.OnKey3;
+                @Key3.performed += instance.OnKey3;
+                @Key3.canceled += instance.OnKey3;
+                @Key4.started += instance.OnKey4;
+                @Key4.performed += instance.OnKey4;
+                @Key4.canceled += instance.OnKey4;
+                @Key5.started += instance.OnKey5;
+                @Key5.performed += instance.OnKey5;
+                @Key5.canceled += instance.OnKey5;
+            }
+        }
+    }
+    public RollOverActions @RollOver => new RollOverActions(this);
     public interface ISimonSaysActions
     {
         void OnClick1(InputAction.CallbackContext context);
@@ -961,5 +1164,14 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     public interface IQWOPActions
     {
         void OnClick1(InputAction.CallbackContext context);
+        void OnClick2(InputAction.CallbackContext context);
+    }
+    public interface IRollOverActions
+    {
+        void OnKey1(InputAction.CallbackContext context);
+        void OnKey2(InputAction.CallbackContext context);
+        void OnKey3(InputAction.CallbackContext context);
+        void OnKey4(InputAction.CallbackContext context);
+        void OnKey5(InputAction.CallbackContext context);
     }
 }
