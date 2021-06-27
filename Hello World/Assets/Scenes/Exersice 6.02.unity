@@ -287,6 +287,9 @@ MonoBehaviour:
   tiltMultiplier: 0.2
   playerRotateSpeed: 100
   babyFellEGO: {fileID: 0}
+  spine: {fileID: 0}
+  bottom: {fileID: 0}
+  bottomRotateDifference: 3
 --- !u!4 &34332342
 Transform:
   m_ObjectHideFlags: 0
@@ -425,6 +428,9 @@ MonoBehaviour:
   tiltMultiplier: 0.2
   playerRotateSpeed: -100
   babyFellEGO: {fileID: 1375807232}
+  spine: {fileID: 670507799}
+  bottom: {fileID: 0}
+  bottomRotateDifference: 3
 --- !u!1 &447745359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1023,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637159776}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &670507799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 178678, guid: deed1b89f12656745bedab2d10b1eb03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1722383882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &798830531
 GameObject:
   m_ObjectHideFlags: 0

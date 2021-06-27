@@ -9,7 +9,7 @@ public class BabyBalancingHead : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Floor" && babyBalancingScript)
+        if (other.name == "Floor")
             babyBalancingScript.BabyFell();
         else if (other.name == "WinZone" && babyMovementScript)
             babyMovementScript.Exersise6Win();
