@@ -1171,12 +1171,6 @@ MonoBehaviour:
   metreArrow: {fileID: 1587151710}
   dimentions: 180
   babyBalancing: {fileID: 1079807623}
---- !u!1 &686217909 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 146642, guid: c089639d805ce704aa6ba68219626aa9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1453927674}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &722130440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1374,6 @@ MonoBehaviour:
   maxBalanceValue: 90
   tiltMultiplier: 0.2
   playerRotateSpeed: 100
-  babyRotatePoint: {fileID: 686217909}
   babyFellEGO: {fileID: 597686221}
 --- !u!4 &1079807624
 Transform:
@@ -1438,7 +1431,7 @@ GameObject:
   - component: {fileID: 1097345824}
   - component: {fileID: 1097345828}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1645,6 +1638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   babyBalancingScript: {fileID: 1079807623}
+  babyMovementScript: {fileID: 0}
 --- !u!1 &1304867323
 GameObject:
   m_ObjectHideFlags: 0
