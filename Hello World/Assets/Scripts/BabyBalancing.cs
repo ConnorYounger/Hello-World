@@ -18,6 +18,10 @@ public class BabyBalancing : MonoBehaviour
     private MiniGameInputs controls;
     private Vector2 move;
 
+    [Header("Baby Balancing Points")]
+    public GameObject spine;
+    public GameObject bottom;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
@@ -46,41 +50,41 @@ public class BabyBalancing : MonoBehaviour
 
     void PlayerMovement()
     {
-        //Vector3 rotation = new Vector3(transform.rotation.x, transform.rotation.y, move.x);
-        Vector3 rotation = new Vector3(transform.localRotation.x, transform.localRotation.y, move.x);
+        //Vector3 rotation = new Vector3(transform.localRotation.x, transform.localRotation.y, move.x);
+        Vector3 rotation = new Vector3(spine.transform.localRotation.x, move.x, spine.transform.localRotation.z);
         //transform.Rotate(rotation * Time.deltaTime * playerRotateSpeed);
-        transform.Rotate(rotation * Time.deltaTime * playerRotateSpeed);
+        spine.transform.Rotate(rotation * Time.deltaTime * playerRotateSpeed);
     }
 
     void Tilt()
     {
         //Debug.Log(move);
 
-        if (transform.localRotation.z > 0 && transform.localRotation.z < CalculateMaxBalanceValue())
+        if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y < CalculateMaxBalanceValue())
         {
-            //transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z + (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), transform.rotation.w);
-            transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), transform.localRotation.w);
+            //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), transform.localRotation.w);
+            spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, spine.transform.localRotation.y + (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), spine.transform.localRotation.z, spine.transform.localRotation.w);
         }
-        else if (transform.localRotation.z < 0 && transform.localRotation.z > -CalculateMaxBalanceValue())
+        else if (spine.transform.localRotation.y < 0 && spine.transform.localRotation.y > -CalculateMaxBalanceValue())
         {
-            //transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z - (tiltMultiplier * Time.deltaTime) * CalculateTiltSmoothValue(), transform.rotation.w);
-            transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z - (tiltMultiplier * Time.deltaTime) * CalculateTiltSmoothValue(), transform.localRotation.w);
+            //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z - (tiltMultiplier * Time.deltaTime) * CalculateTiltSmoothValue(), transform.localRotation.w);
+            spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, spine.transform.localRotation.y - (tiltMultiplier * Time.deltaTime) * CalculateTiltSmoothValue(), spine.transform.localRotation.z, spine.transform.localRotation.w);
         }
-        else if (transform.localRotation.z == 0)
+        else if (spine.transform.localRotation.y == 0)
         {
             int rand = Random.Range(0, 2);
             balanceValue = rand > 0 ? -0.001f : 0.001f;
 
-            //transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, CalculateRotationValue(balanceValue), transform.rotation.w);
-            transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, CalculateRotationValue(balanceValue), transform.localRotation.w);
+            //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, CalculateRotationValue(balanceValue), transform.localRotation.w);
+            spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, CalculateRotationValue(balanceValue), spine.transform.localRotation.z, spine.transform.localRotation.w);
         }
     }
 
     float CalculateTiltSmoothValue()
     {
         float value = 0;
-        //value = 1 + Mathf.Abs(transform.rotation.z) / CalculateMaxBalanceValue();
-        value = 1 + Mathf.Abs(transform.localRotation.z) / CalculateMaxBalanceValue();
+        //value = 1 + Mathf.Abs(transform.localRotation.z) / CalculateMaxBalanceValue();
+        value = 1 + Mathf.Abs(spine.transform.localRotation.y) / CalculateMaxBalanceValue();
 
         float tiltSmoothValue = Mathf.Pow(value, 3);
         return tiltSmoothValue;
@@ -105,8 +109,8 @@ public class BabyBalancing : MonoBehaviour
 
     public void Restart()
     {
-        //transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, 0, transform.rotation.w);
-        transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, 0, transform.localRotation.w);
+        //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, 0, transform.localRotation.w);
+        spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, 0, spine.transform.localRotation.z, spine.transform.localRotation.w);
         canTilt = true;
 
         babyFellEGO.SetActive(false);
