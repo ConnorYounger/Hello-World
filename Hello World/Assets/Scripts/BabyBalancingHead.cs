@@ -5,9 +5,13 @@ using UnityEngine;
 public class BabyBalancingHead : MonoBehaviour
 {
     public BabyBalancing babyBalancingScript;
+    public Exercise6BabyMovement babyMovementScript;
 
     private void OnTriggerEnter(Collider other)
     {
-        babyBalancingScript.BabyFell();
+        if (other.name == "Floor" && babyBalancingScript)
+            babyBalancingScript.BabyFell();
+        else if (other.name == "WinZone" && babyMovementScript)
+            babyMovementScript.Exersise6Win();
     }
 }
