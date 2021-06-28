@@ -9,7 +9,7 @@ public class InteractiveObject : MonoBehaviour
 	public GameObject DoorWindow;
 
 	void OnGUI() {
-			GUI.Label(new Rect(10, 10, 100, 20), "Baby Room  Version 1.0");
+			//GUI.Label(new Rect(10, 10, 100, 20), "Baby Room  Version 1.0");
 		}
 
 	public enum eInteractiveState

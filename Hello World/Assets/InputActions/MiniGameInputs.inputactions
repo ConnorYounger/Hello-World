@@ -603,6 +603,155 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "QWOP",
+            "id": "4e1789d8-3995-4a30-86d4-0b500e215cb1",
+            "actions": [
+                {
+                    "name": "Click1",
+                    "type": "Button",
+                    "id": "5a110672-c471-422f-9fbb-a591cbde0e5f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Click2",
+                    "type": "Button",
+                    "id": "590c0d6e-4bca-461e-b427-68f5041c56c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b47bf34f-bee2-4670-89e0-219bca47265e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec378a74-3460-4495-b23c-767a5ac0de5d",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "RollOver",
+            "id": "2527bfc7-f1ef-4ecf-b852-2d56ab0157ea",
+            "actions": [
+                {
+                    "name": "Key1",
+                    "type": "Button",
+                    "id": "95fd99bb-d8f9-473c-b9b7-9b05ebeffce2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Key2",
+                    "type": "Button",
+                    "id": "51f8c0ca-5c91-4691-ac94-fbd1ee1018f4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Key3",
+                    "type": "Button",
+                    "id": "f198de43-fc8e-41ab-9447-62da1ceaa43a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Key4",
+                    "type": "Button",
+                    "id": "499a45c6-d6a5-4bf9-b66a-0d88aa7c6291",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Key5",
+                    "type": "Button",
+                    "id": "35c94b72-242c-4587-9ade-d5d911084c8f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c71eada6-a6b3-4b30-bbd0-4b6ab1adf8f1",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1e89670-22cb-4c7a-a067-b797b65e16fd",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d33dce07-8c49-4acb-b325-7dc6da2cff10",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c787bdfd-2cef-4858-baab-39292ee23ae5",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e5700e0-c987-4c21-9b1d-a1fbcf28e546",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

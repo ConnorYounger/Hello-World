@@ -708,6 +708,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 630901157536116255, guid: 5b3a2a90c4de37d45bc5af1ce137c55d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.312
+      objectReference: {fileID: 0}
     - target: {fileID: 3409217791547560344, guid: 5b3a2a90c4de37d45bc5af1ce137c55d,
         type: 3}
       propertyPath: m_RootOrder
@@ -1369,7 +1374,6 @@ MonoBehaviour:
   maxBalanceValue: 90
   tiltMultiplier: 0.2
   playerRotateSpeed: 100
-  babyRotatePoint: {fileID: 0}
   babyFellEGO: {fileID: 597686221}
 --- !u!4 &1079807624
 Transform:
@@ -1427,7 +1431,7 @@ GameObject:
   - component: {fileID: 1097345824}
   - component: {fileID: 1097345828}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1634,6 +1638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   babyBalancingScript: {fileID: 1079807623}
+  babyMovementScript: {fileID: 0}
 --- !u!1 &1304867323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,7 +1656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1304867324
 MonoBehaviour:
   m_ObjectHideFlags: 0
