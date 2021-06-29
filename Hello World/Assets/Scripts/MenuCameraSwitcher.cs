@@ -138,7 +138,7 @@ public class MenuCameraSwitcher : MonoBehaviour
 
     private IEnumerator ChangeCanvasUI(GameObject canvas)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         canvas.SetActive(true);
     }
 
