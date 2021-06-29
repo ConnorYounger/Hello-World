@@ -13,6 +13,11 @@ public class MenuController : MonoBehaviour
     public GameObject playmatCanvas;
     public GameObject doorCanvas;
 
+    [Header("UI Panels")]
+    public GameObject panelOptions;
+    public GameObject panelDisplay;
+    public GameObject panelAudio;
+
     [Header("UI Buttons")]
     public Button btnPlay;
     public Button btnOptions;
@@ -32,6 +37,8 @@ public class MenuController : MonoBehaviour
     public Button btnCribBack;
     public Button btnExitYes;
     public Button btnExitNo;
+    public Button btnDisplayBack;
+    public Button btnAudioBack;
 
     [Header("Camera keys")]
     public InputAction cam1;
@@ -80,9 +87,10 @@ public class MenuController : MonoBehaviour
         btnToyBox.onClick.AddListener(delegate { NavigateMenus("Playmat"); });
         btnToyBoxBack.onClick.AddListener(delegate { NavigateMenus("Shelf"); });
         
-        //btnDisplay.onClick.AddListener(delegate { NavigateMenus("xxx"); });
-        //btnAudio.onClick.AddListener(delegate { NavigateMenus("xxx"); });
+        btnDisplay.onClick.AddListener(DisplayOptions);
+        btnAudio.onClick.AddListener(AudioOptions);
         btnChangeTableBack.onClick.AddListener(delegate { NavigateMenus("Shelf"); });
+        btnDisplayBack.onClick.AddListener(GoToOptionsTop);
         
         //btnNewGame.onClick.AddListener(delegate { NavigateMenus("xxx"); });
         //btnContinue.onClick.AddListener(delegate { NavigateMenus("xxx"); });
@@ -103,6 +111,25 @@ public class MenuController : MonoBehaviour
         cam4.performed += _ => NavigateMenus("cam4");
         cam5.performed += _ => NavigateMenus("cam5");
         cam6.performed += _ => NavigateMenus("cam6");
+    }
+
+    private void DisplayOptions()
+    {
+        panelOptions.SetActive(false);
+        panelDisplay.SetActive(true);
+    }
+
+    private void AudioOptions()
+    {
+        panelOptions.SetActive(false);
+        panelAudio.SetActive(true);
+    }
+
+    private void GoToOptionsTop()
+    {        
+        panelAudio.SetActive(false);
+        panelDisplay.SetActive(false);
+        panelOptions.SetActive(true);
     }
 
     private void NavigateMenus(string menuToSwitch)
