@@ -12,7 +12,6 @@ public class MenuCameraSwitcher : MonoBehaviour
     public GameObject playmatCanvas;
     public GameObject doorCanvas;
     
-
     [Header("Camera keys")]
     public InputAction cam1;
     public InputAction cam2;

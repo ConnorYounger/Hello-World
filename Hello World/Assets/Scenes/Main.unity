@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 75444003}
   - component: {fileID: 75444002}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Button_PlaymatBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 106637204}
   - component: {fileID: 106637203}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: ButtonToyBoxBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 108169406}
   - component: {fileID: 108169405}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_Discovery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2093,7 +2093,7 @@ GameObject:
   - component: {fileID: 273862618}
   - component: {fileID: 273862617}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button_ExitYes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2114,10 +2114,10 @@ RectTransform:
   m_Father: {fileID: 170455898}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -200}
+  m_SizeDelta: {x: 600, y: 133.33333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273862617
 MonoBehaviour:
@@ -2337,7 +2337,7 @@ GameObject:
   - component: {fileID: 360184854}
   - component: {fileID: 360184857}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_CycleLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2850,7 +2850,7 @@ GameObject:
   - component: {fileID: 451102675}
   - component: {fileID: 451102674}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button_Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2871,10 +2871,10 @@ RectTransform:
   m_Father: {fileID: 837004108}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -200}
-  m_SizeDelta: {x: 600, y: 133.33333}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &451102674
 MonoBehaviour:
@@ -4185,7 +4185,7 @@ GameObject:
   - component: {fileID: 632003194}
   - component: {fileID: 632003193}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button_ToyBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4540,7 +4540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &675804321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5261,7 +5261,7 @@ GameObject:
   - component: {fileID: 841838784}
   - component: {fileID: 841838783}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button_ChangeTableBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5488,7 +5488,7 @@ GameObject:
   - component: {fileID: 884598497}
   - component: {fileID: 884598496}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_NewGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5884,10 +5884,10 @@ RectTransform:
   m_Father: {fileID: 170455898}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -66.666664}
+  m_SizeDelta: {x: 600, y: 133.33333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &980272967
 MonoBehaviour:
@@ -5928,7 +5928,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 980272968}
   m_OnClick:
     m_PersistentCalls:
@@ -7483,7 +7483,7 @@ GameObject:
   - component: {fileID: 1185123632}
   - component: {fileID: 1185123631}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button_CribBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8315,7 +8315,7 @@ GameObject:
   - component: {fileID: 1283338694}
   - component: {fileID: 1283338693}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button_Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8535,7 +8535,7 @@ GameObject:
   - component: {fileID: 1350951452}
   - component: {fileID: 1350951454}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text_Exercise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9276,7 +9276,7 @@ GameObject:
   - component: {fileID: 1484729512}
   - component: {fileID: 1484729511}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button_Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9297,10 +9297,10 @@ RectTransform:
   m_Father: {fileID: 837004108}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -333.3333}
-  m_SizeDelta: {x: 600, y: 133.33333}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484729511
 MonoBehaviour:
@@ -9916,7 +9916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1589060863
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10518,7 +10518,7 @@ GameObject:
   - component: {fileID: 1678356708}
   - component: {fileID: 1678356707}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10539,10 +10539,10 @@ RectTransform:
   m_Father: {fileID: 837004108}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -66.666664}
-  m_SizeDelta: {x: 600, y: 133.33333}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1678356707
 MonoBehaviour:
@@ -11018,7 +11018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Discovery
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b3911d2a15307194a8f21553efdb9488, type: 2}
   m_sharedMaterial: {fileID: -4850446429164390386, guid: b3911d2a15307194a8f21553efdb9488,
@@ -11402,7 +11402,7 @@ GameObject:
   - component: {fileID: 1849144573}
   - component: {fileID: 1849144572}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11776,7 +11776,7 @@ GameObject:
   - component: {fileID: 1891633726}
   - component: {fileID: 1891633725}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button_ExitNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11797,10 +11797,10 @@ RectTransform:
   m_Father: {fileID: 170455898}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -333.3333}
+  m_SizeDelta: {x: 600, y: 133.33333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891633725
 MonoBehaviour:
@@ -12264,7 +12264,7 @@ GameObject:
   - component: {fileID: 1947937433}
   - component: {fileID: 1947937436}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button_Exercise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12405,7 +12405,7 @@ GameObject:
   - component: {fileID: 1957904898}
   - component: {fileID: 1957904897}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button_Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12527,7 +12527,7 @@ GameObject:
   - component: {fileID: 1960335429}
   - component: {fileID: 1960335432}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button_CycleRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
