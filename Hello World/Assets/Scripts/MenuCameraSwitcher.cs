@@ -3,18 +3,14 @@ using UnityEngine.InputSystem;
 
 public class MenuCameraSwitcher : MonoBehaviour
 {
-    /*
-    [Header("Main Camera")]
-    public GameObject mainCam;
-
-    [Header("Menu Cameras")]
-    public GameObject shelfCam;
-    public GameObject cribCam;
-    public GameObject toyboxCam;
-    public GameObject changetableCam;
-    public GameObject playmatCam;
-    public GameObject doorCam;
-    */
+    [Header("Menu Canvas")]
+    public GameObject shelfCanvas;
+    public GameObject cribCanvas;
+    public GameObject toyboxCanvas;
+    public GameObject changetableCanvas;
+    public GameObject playmatCanvas;
+    public GameObject doorCanvas;
+    
 
     [Header("Camera keys")]
     public InputAction cam1;
@@ -28,6 +24,7 @@ public class MenuCameraSwitcher : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        animator.Play("Shelf");
     }
 
     private void OnEnable()
@@ -52,6 +49,8 @@ public class MenuCameraSwitcher : MonoBehaviour
 
     private void Start()
     {
+        ResetCanvasUI();
+
         // Update these calls with UI selection
         cam1.performed += _ => SwitchCamera("cam1");
         cam2.performed += _ => SwitchCamera("cam2");
@@ -67,24 +66,70 @@ public class MenuCameraSwitcher : MonoBehaviour
         {
             case "cam1":
                 animator.Play("Shelf");
+                ResetCanvasUI();
                 break;
             case "cam2":
                 animator.Play("Playmat");
+                playmatCanvas.SetActive(true);
+                
+                shelfCanvas.SetActive(false);
+                toyboxCanvas.SetActive(false);
+                cribCanvas.SetActive(false);
+                changetableCanvas.SetActive(false);
+                doorCanvas.SetActive(false);
                 break;
             case "cam3":
                 animator.Play("Toy Box");
+                toyboxCanvas.SetActive(true);
+
+                shelfCanvas.SetActive(false);
+                cribCanvas.SetActive(false);
+                playmatCanvas.SetActive(false);
+                changetableCanvas.SetActive(false);
+                doorCanvas.SetActive(false);
                 break;
             case "cam4":
                 animator.Play("Change Table");
+                changetableCanvas.SetActive(true);
+
+                shelfCanvas.SetActive(false);
+                toyboxCanvas.SetActive(false);
+                cribCanvas.SetActive(false);
+                playmatCanvas.SetActive(false);
+                doorCanvas.SetActive(false);
                 break;
             case "cam5":
                 animator.Play("Crib");
+                cribCanvas.SetActive(true);
+
+                shelfCanvas.SetActive(false);
+                toyboxCanvas.SetActive(false);
+                playmatCanvas.SetActive(false);
+                changetableCanvas.SetActive(false);
+                doorCanvas.SetActive(false);
                 break;
             case "cam6":
                 animator.Play("Door");
+                doorCanvas.SetActive(true);
+
+                shelfCanvas.SetActive(false);
+                toyboxCanvas.SetActive(false);
+                cribCanvas.SetActive(false);
+                playmatCanvas.SetActive(false);
+                changetableCanvas.SetActive(false);
                 break;
             default: break;
         }
 
+    }
+
+    private void ResetCanvasUI()
+    {
+        shelfCanvas.SetActive(true);
+        toyboxCanvas.SetActive(false);
+        cribCanvas.SetActive(false);
+        playmatCanvas.SetActive(false);
+        changetableCanvas.SetActive(false);
+        doorCanvas.SetActive(false);
     }
 }
