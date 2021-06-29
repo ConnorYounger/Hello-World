@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -66,61 +67,79 @@ public class MenuCameraSwitcher : MonoBehaviour
         {
             case "cam1":
                 animator.Play("Shelf");
-                ResetCanvasUI();
+
+                playmatCanvas.SetActive(false);
+                toyboxCanvas.SetActive(false);
+                cribCanvas.SetActive(false);
+                changetableCanvas.SetActive(false);
+                doorCanvas.SetActive(false);
+
+                StartCoroutine(ChangeCanvasUI(shelfCanvas));
                 break;
             case "cam2":
                 animator.Play("Playmat");
-                playmatCanvas.SetActive(true);
                 
                 shelfCanvas.SetActive(false);
                 toyboxCanvas.SetActive(false);
                 cribCanvas.SetActive(false);
                 changetableCanvas.SetActive(false);
                 doorCanvas.SetActive(false);
+
+                StartCoroutine(ChangeCanvasUI(playmatCanvas));
                 break;
             case "cam3":
                 animator.Play("Toy Box");
-                toyboxCanvas.SetActive(true);
 
                 shelfCanvas.SetActive(false);
                 cribCanvas.SetActive(false);
                 playmatCanvas.SetActive(false);
                 changetableCanvas.SetActive(false);
                 doorCanvas.SetActive(false);
+
+                StartCoroutine(ChangeCanvasUI(toyboxCanvas));
                 break;
             case "cam4":
                 animator.Play("Change Table");
-                changetableCanvas.SetActive(true);
 
                 shelfCanvas.SetActive(false);
                 toyboxCanvas.SetActive(false);
                 cribCanvas.SetActive(false);
                 playmatCanvas.SetActive(false);
                 doorCanvas.SetActive(false);
+
+                StartCoroutine(ChangeCanvasUI(changetableCanvas));
                 break;
             case "cam5":
                 animator.Play("Crib");
-                cribCanvas.SetActive(true);
 
                 shelfCanvas.SetActive(false);
                 toyboxCanvas.SetActive(false);
                 playmatCanvas.SetActive(false);
                 changetableCanvas.SetActive(false);
                 doorCanvas.SetActive(false);
+                
+                StartCoroutine(ChangeCanvasUI(cribCanvas));
                 break;
             case "cam6":
                 animator.Play("Door");
-                doorCanvas.SetActive(true);
 
                 shelfCanvas.SetActive(false);
                 toyboxCanvas.SetActive(false);
                 cribCanvas.SetActive(false);
                 playmatCanvas.SetActive(false);
                 changetableCanvas.SetActive(false);
+
+                StartCoroutine(ChangeCanvasUI(doorCanvas));
                 break;
             default: break;
         }
 
+    }
+
+    private IEnumerator ChangeCanvasUI(GameObject canvas)
+    {
+        yield return new WaitForSeconds(2);
+        canvas.SetActive(true);
     }
 
     private void ResetCanvasUI()
