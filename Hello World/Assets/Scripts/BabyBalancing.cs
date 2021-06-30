@@ -12,6 +12,11 @@ public class BabyBalancing : MonoBehaviour
     private float balanceValue = 0;
     private bool canTilt = true;
 
+    public bool balanceWin = true;
+    public float winAngle = 20;
+    public float winAngleHoldTime = 5;
+    private float currentHoldTime;
+
     [Header("UI")]
     public GameObject babyFellEGO;
 
@@ -46,7 +51,45 @@ public class BabyBalancing : MonoBehaviour
         {
             Tilt();
             PlayerMovement();
+            BalanceWinCheck();
         }
+    }
+
+    void BalanceWinCheck()
+    {
+        if (balanceWin)
+        {
+            if(withinWinAngle())
+            {
+                if(currentHoldTime < winAngleHoldTime)
+                {
+                    currentHoldTime += Time.deltaTime;
+                }
+                else
+                {
+                    AngelWin();
+                }
+            }
+            else
+            {
+                currentHoldTime = 0;
+            }
+        }
+    }
+
+    void AngelWin()
+    {
+        canTilt = false;
+
+        Debug.Log("Player Win");
+    }
+
+    bool withinWinAngle()
+    {
+        if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y < CalculateRotationValue(winAngle) || spine.transform.localRotation.y < 0 && spine.transform.localRotation.y > -CalculateRotationValue(winAngle))
+            return true;
+        else
+            return false;
     }
 
     void PlayerMovement()
