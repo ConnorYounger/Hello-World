@@ -765,6 +765,33 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Blinking"",
+            ""id"": ""22f1f073-523c-4f8a-b9b5-468415ae1079"",
+            ""actions"": [
+                {
+                    ""name"": ""Key1"",
+                    ""type"": ""Button"",
+                    ""id"": ""4bdf2778-4ec0-428e-bfeb-d543b8415c00"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f17a0374-01da-447b-976e-eb7d3096b7a0"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Key1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -801,6 +828,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_RollOver_Key3 = m_RollOver.FindAction("Key3", throwIfNotFound: true);
         m_RollOver_Key4 = m_RollOver.FindAction("Key4", throwIfNotFound: true);
         m_RollOver_Key5 = m_RollOver.FindAction("Key5", throwIfNotFound: true);
+        // Blinking
+        m_Blinking = asset.FindActionMap("Blinking", throwIfNotFound: true);
+        m_Blinking_Key1 = m_Blinking.FindAction("Key1", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1138,6 +1168,39 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         }
     }
     public RollOverActions @RollOver => new RollOverActions(this);
+
+    // Blinking
+    private readonly InputActionMap m_Blinking;
+    private IBlinkingActions m_BlinkingActionsCallbackInterface;
+    private readonly InputAction m_Blinking_Key1;
+    public struct BlinkingActions
+    {
+        private @MiniGameInputs m_Wrapper;
+        public BlinkingActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Key1 => m_Wrapper.m_Blinking_Key1;
+        public InputActionMap Get() { return m_Wrapper.m_Blinking; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BlinkingActions set) { return set.Get(); }
+        public void SetCallbacks(IBlinkingActions instance)
+        {
+            if (m_Wrapper.m_BlinkingActionsCallbackInterface != null)
+            {
+                @Key1.started -= m_Wrapper.m_BlinkingActionsCallbackInterface.OnKey1;
+                @Key1.performed -= m_Wrapper.m_BlinkingActionsCallbackInterface.OnKey1;
+                @Key1.canceled -= m_Wrapper.m_BlinkingActionsCallbackInterface.OnKey1;
+            }
+            m_Wrapper.m_BlinkingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Key1.started += instance.OnKey1;
+                @Key1.performed += instance.OnKey1;
+                @Key1.canceled += instance.OnKey1;
+            }
+        }
+    }
+    public BlinkingActions @Blinking => new BlinkingActions(this);
     public interface ISimonSaysActions
     {
         void OnClick1(InputAction.CallbackContext context);
@@ -1173,5 +1236,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnKey3(InputAction.CallbackContext context);
         void OnKey4(InputAction.CallbackContext context);
         void OnKey5(InputAction.CallbackContext context);
+    }
+    public interface IBlinkingActions
+    {
+        void OnKey1(InputAction.CallbackContext context);
     }
 }
