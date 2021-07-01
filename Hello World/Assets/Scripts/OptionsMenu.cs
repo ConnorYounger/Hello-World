@@ -38,6 +38,7 @@ public class OptionsMenu : MonoBehaviour
     {
         resolutions = Screen.resolutions;
         resolutionIndex = 0;
+        isFullscreen = Screen.fullScreen;
 
         PopulateResolutions();
         UpdateTextElements();
