@@ -31,10 +31,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void Awake()
     {
-        if (!PlayerPrefs.HasKey("Resolution"))
-        {
-            resolutionIndex = 3;
-        }
         if (!PlayerPrefs.HasKey("Fullscreen"))
         {
             isFullscreen = true;
@@ -44,12 +40,15 @@ public class OptionsMenu : MonoBehaviour
     private void Start()
     {
         resolutions = Screen.resolutions;
+        resolutionIndex = 0;
+
         PopulateResolutions();
         UpdateTextElements();
 
         btnResolutionDown.onClick.AddListener(delegate { UpdateResolution(-1); });
         btnResolutionUp.onClick.AddListener(delegate { UpdateResolution(1); });
         btnFullscreenOff.onClick.AddListener(ToggleFullscreen);
+        btnFullscreenOn.onClick.AddListener(ToggleFullscreen);
         btnApplyDisplay.onClick.AddListener(SaveDisplayOptions);
     }
 
@@ -60,14 +59,8 @@ public class OptionsMenu : MonoBehaviour
 
     private void SaveDisplayOptions()
     {
-        switch (resolutionIndex)
-        {
-            case 0:
-                PlayerPrefs.SetInt("Resolution", 0);
-                RefreshResolution();
-                RefreshFullscreen();
-                break;
-        }
+        SetResolution();
+        RefreshFullscreen();
     }
 
     private void RefreshFullscreen()
@@ -75,10 +68,10 @@ public class OptionsMenu : MonoBehaviour
         Screen.fullScreen = isFullscreen;
     }
 
-    private void RefreshResolution()
+    private void SetResolution()
     {
-        //Screen.width = 
-            //Screen.height
+        Resolution res = resolutions[resolutionIndex];
+        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
     }
 
     private void UpdateResolution(int v)
@@ -98,7 +91,7 @@ public class OptionsMenu : MonoBehaviour
         {
             btnResolutionDown.interactable = false;
         }
-        else if (resolutionIndex == 4)
+        else if (resolutionIndex == resolutions.Length)
         {
             btnResolutionUp.interactable = false;
         } else 
@@ -121,15 +114,16 @@ public class OptionsMenu : MonoBehaviour
 
     private void PopulateResolutions()
     {
-        foreach (var item in resolutions)
+        for (int i  = 0; i < resolutions.Length; i++)
         {
-            resolutionsText.Add(item.ToString());
+            var res = resolutions[i].width + "x" + resolutions[i].height;
+            resolutionsText.Add(res);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                resolutionIndex = i;
+            }
         }
-        /*resolutions.Add("1366x768");
-        resolutions.Add("1536x864");
-        resolutions.Add("1440x900");
-        resolutions.Add("1920x1080");
-        resolutions.Add("2560x1440");*/
     }
 
     public void SetVolume()
