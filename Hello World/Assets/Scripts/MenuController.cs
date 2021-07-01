@@ -40,39 +40,11 @@ public class MenuController : MonoBehaviour
     public Button btnDisplayBack;
     public Button btnAudioBack;
 
-    [Header("Camera keys")]
-    public InputAction cam1;
-    public InputAction cam2;
-    public InputAction cam3;
-    public InputAction cam4;
-    public InputAction cam5;
-    public InputAction cam6;
-
     private Animator animator;
     private void Awake()
     {
         animator = GetComponent<Animator>();
         animator.Play("Shelf");
-    }
-
-    private void OnEnable()
-    {
-        cam1.Enable();
-        cam2.Enable();
-        cam3.Enable();
-        cam4.Enable();
-        cam5.Enable();
-        cam6.Enable();
-    }
-
-    private void OnDisable()
-    {
-        cam1.Disable();
-        cam2.Disable();
-        cam3.Disable();
-        cam4.Disable();
-        cam5.Disable();
-        cam6.Disable();
     }
 
     private void Start()
@@ -134,21 +106,11 @@ public class MenuController : MonoBehaviour
                 changetableCanvas.SetActive(false);
                 doorCanvas.SetActive(false);
                 toyboxCanvas.SetActive(false);
-
-                //playmatCanvas.SetActive(false);
-                //cribCanvas.SetActive(false);
-
                 StartCoroutine(ChangeCanvasUI(shelfCanvas));
                 break;
             case "Playmat":
                 animator.Play("Playmat");
                 toyboxCanvas.SetActive(false);
-
-                //shelfCanvas.SetActive(false);
-                //cribCanvas.SetActive(false);
-                //changetableCanvas.SetActive(false);
-                //doorCanvas.SetActive(false);
-
                 StartCoroutine(ChangeCanvasUI(playmatCanvas));
                 break;
             case "Toy Box":
@@ -156,43 +118,21 @@ public class MenuController : MonoBehaviour
                 shelfCanvas.SetActive(false);
                 cribCanvas.SetActive(false);
                 playmatCanvas.SetActive(false);
-                
-                //changetableCanvas.SetActive(false);
-                //doorCanvas.SetActive(false);
-
                 StartCoroutine(ChangeCanvasUI(toyboxCanvas));
                 break;
             case "Change Table":
                 animator.Play("Change Table");
                 shelfCanvas.SetActive(false);
-                
-                //toyboxCanvas.SetActive(false);
-                //cribCanvas.SetActive(false);
-                //playmatCanvas.SetActive(false);
-                //doorCanvas.SetActive(false);
-
                 StartCoroutine(ChangeCanvasUI(changetableCanvas));
                 break;
             case "Crib":
                 animator.Play("Crib");
                 toyboxCanvas.SetActive(false);
-
-                //shelfCanvas.SetActive(false);
-                //playmatCanvas.SetActive(false);
-                //changetableCanvas.SetActive(false);
-                //doorCanvas.SetActive(false);
-
                 StartCoroutine(ChangeCanvasUI(cribCanvas));
                 break;
             case "Door":
                 animator.Play("Door");
                 shelfCanvas.SetActive(false);
-                
-                //toyboxCanvas.SetActive(false);
-                //cribCanvas.SetActive(false);
-                //playmatCanvas.SetActive(false);
-                //changetableCanvas.SetActive(false);
-
                 StartCoroutine(ChangeCanvasUI(doorCanvas));
                 break;
             default: break;

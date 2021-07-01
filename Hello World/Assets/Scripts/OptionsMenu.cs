@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class OptionsMenu : MonoBehaviour
     public Button btnSFXUp;
     public Button btnSFXDown;
     public Button btnApplyAudio;
+    public Sprite filledSprite;
+    public Sprite emptySprite;
+
+    public AudioMixer audioMixer;
 
     private int _volume, _sfx;
     
@@ -29,14 +34,6 @@ public class OptionsMenu : MonoBehaviour
     private int resolutionIndex;
     private bool isFullscreen;
 
-    private void Awake()
-    {
-        if (!PlayerPrefs.HasKey("Fullscreen"))
-        {
-            isFullscreen = true;
-        }
-    }
-
     private void Start()
     {
         resolutions = Screen.resolutions;
@@ -50,6 +47,16 @@ public class OptionsMenu : MonoBehaviour
         btnFullscreenOff.onClick.AddListener(ToggleFullscreen);
         btnFullscreenOn.onClick.AddListener(ToggleFullscreen);
         btnApplyDisplay.onClick.AddListener(SaveDisplayOptions);
+
+        //_volume = audioMixer.GetFloat("Music");
+
+        btnVolumeUp.onClick.AddListener(delegate { UpdateVolume(10); });
+        btnVolumeDown.onClick.AddListener(delegate { UpdateVolume(-10); });
+    }
+
+    private void UpdateVolume(int v)
+    {
+        audioMixer.SetFloat("Music", v);
     }
 
     private void ToggleFullscreen()
