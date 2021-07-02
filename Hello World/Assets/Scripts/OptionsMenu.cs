@@ -9,18 +9,22 @@ using UnityEngine.Audio;
 public class OptionsMenu : MonoBehaviour
 {
     [Header("Audio UI")]
-    public Button btnVolumeUp;
-    public Button btnVolumeDown;
+    public Button btnMusicUp;
+    public Button btnMusicDown;
     public Button btnSFXUp;
     public Button btnSFXDown;
     public Button btnApplyAudio;
     public Sprite filledSprite;
     public Sprite emptySprite;
 
-    public AudioMixer audioMixer;
+    public AudioMixer musicMixer;
+    public AudioMixer SFXMixer;
 
-    private int _volume, _sfx;
-    
+    private float currentMusicVolume, currentSFXVolume;
+
+    [Header("Audio Sprites")]
+    public Image music10, music20, music30, music40, music50, music60, music70, music80, music90, music100;
+
     [Header("Display UI")]
     public Button btnResolutionUp;
     public Button btnResolutionDown;
@@ -49,15 +53,39 @@ public class OptionsMenu : MonoBehaviour
         btnFullscreenOn.onClick.AddListener(ToggleFullscreen);
         btnApplyDisplay.onClick.AddListener(SaveDisplayOptions);
 
-        //_volume = audioMixer.GetFloat("Music");
+        btnMusicUp.onClick.AddListener(delegate { SetMusicVolume(10f); });
+        btnMusicDown.onClick.AddListener(delegate { SetMusicVolume(-10f); });
 
-        btnVolumeUp.onClick.AddListener(delegate { UpdateVolume(10); });
-        btnVolumeDown.onClick.AddListener(delegate { UpdateVolume(-10); });
+        btnSFXUp.onClick.AddListener(delegate { SetSFXVolume(10f); });
+        btnSFXDown.onClick.AddListener(delegate { SetSFXVolume(-10f); });
     }
 
-    private void UpdateVolume(int v)
+    public float GetMusicVolume()
     {
-        audioMixer.SetFloat("Music", v);
+        float value;
+        bool result = musicMixer.GetFloat("Music", out value);
+        if (result)
+        {
+            return value;
+        }
+        else
+        {
+            return 0f;
+        }
+    }
+
+    public float GetSFXVolume()
+    {
+        float value;
+        bool result = SFXMixer.GetFloat("SFX", out value);
+        if (result)
+        {
+            return value;
+        }
+        else
+        {
+            return 0f;
+        }
     }
 
     private void ToggleFullscreen()
@@ -99,7 +127,7 @@ public class OptionsMenu : MonoBehaviour
         {
             btnResolutionDown.interactable = false;
         }
-        else if (resolutionIndex == resolutions.Length)
+        else if (resolutionIndex == resolutions.Length -1)
         {
             btnResolutionUp.interactable = false;
         } else 
@@ -118,6 +146,20 @@ public class OptionsMenu : MonoBehaviour
             btnFullscreenOn.interactable = true;
             btnFullscreenOff.interactable = false;
         }
+
+        if (currentMusicVolume == -80)
+        {
+            btnMusicDown.interactable = false;
+        }
+        else if (currentMusicVolume == 20)
+        {
+            btnMusicUp.interactable = false;
+        }
+        else
+        {
+            btnMusicDown.interactable = true;
+            btnMusicUp.interactable = true;
+        }
     }
 
     private void PopulateResolutions()
@@ -134,12 +176,33 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
-    public void SetVolume()
+    //TODO: Test when audio is implemented!!!
+    public void SetMusicVolume(float v)
     {
-
+        currentMusicVolume = GetMusicVolume() + v;
+        musicMixer.SetFloat("Music", currentMusicVolume);
+        UpdateMusicSprites();
     }
 
-    public void SetSFX()
+    public void SetSFXVolume(float v)
+    {
+        currentSFXVolume = GetSFXVolume() + v;
+        SFXMixer.SetFloat("SFX", currentSFXVolume);
+        UpdateSFXSprites();
+    }
+
+    private void UpdateMusicSprites()
+    {
+        switch (currentMusicVolume)
+        {
+            case -80:
+
+            default:
+                break;
+        }
+    }
+
+    private void UpdateSFXSprites()
     {
 
     }
