@@ -356,17 +356,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hello World is a game designed with the aim to educate about the physical,
+  m_text: "Hello World is a game designed with the aim to educate about the physical,
     cognitive, social and emotional development milestones that babies go through
-    in the first year of life.
-
-
-
-    This game uses representations of average ages
-    for the milestones but all babies develop at different speeds so many will develop
-    ahead or behind the ages used in this game.
-
-'
+    in the first year of life. \r\n\r\nOnly a small selection of the many milestones
+    are represented throughout the gameplay and will offer a snapshot of a babies
+    development.\r\n\r\nThis game uses representations of average ages for the milestones
+    but all babies develop at different speeds so many will develop ahead or behind
+    the ages used in this game.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b3911d2a15307194a8f21553efdb9488, type: 2}
   m_sharedMaterial: {fileID: -4850446429164390386, guid: b3911d2a15307194a8f21553efdb9488,
@@ -538,7 +534,7 @@ GameObject:
   - component: {fileID: 1300237438}
   - component: {fileID: 1300237437}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DelayController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
