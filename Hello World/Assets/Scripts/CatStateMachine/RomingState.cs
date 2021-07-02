@@ -39,16 +39,25 @@ namespace StatePattern
 
         void SearchForPlayer()
         {
-            RaycastHit hit;
-            Vector3 rayAngle = (enemy.player.transform.position - enemy.transform.position).normalized;
-            float distance = Vector3.Distance(enemy.transform.position, enemy.player.transform.position);
-            
-            Physics.Raycast(enemy.transform.position, rayAngle, out hit);
-            Debug.DrawLine(enemy.transform.position, hit.point, Color.blue);
-
-            if (!Physics.Raycast(enemy.transform.position, rayAngle, out hit, distance))
+            if(idleCoolDownTimer <= 0 && Vector3.Distance(enemy.transform.position, enemy.player.transform.position) < pointFindDistance)
             {
-                enemy.SetState(new AttackState(enemy));
+                RaycastHit hit;
+                Vector3 rayAngle = (enemy.player.transform.position - enemy.transform.position).normalized;
+                float distance = Vector3.Distance(enemy.transform.position, enemy.player.transform.position);
+
+                Physics.Raycast(enemy.transform.position, rayAngle, out hit);
+                Debug.DrawLine(enemy.transform.position, hit.point, Color.blue);
+
+                if (!Physics.Raycast(enemy.transform.position, rayAngle, out hit, distance))
+                {
+                    //enemy.SetState(new EngagePlayerState(enemy));
+                }
+
+                if (hit.collider != null && hit.collider.gameObject == enemy.player.gameObject)
+                {
+                    enemy.SetState(new EngagePlayerState(enemy));
+                    Debug.DrawLine(enemy.transform.position, hit.collider.transform.position, Color.cyan);
+                }
             }
         }
 
