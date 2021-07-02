@@ -752,6 +752,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Blinking",
+            "id": "22f1f073-523c-4f8a-b9b5-468415ae1079",
+            "actions": [
+                {
+                    "name": "Key1",
+                    "type": "Button",
+                    "id": "4bdf2778-4ec0-428e-bfeb-d543b8415c00",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f17a0374-01da-447b-976e-eb7d3096b7a0",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
