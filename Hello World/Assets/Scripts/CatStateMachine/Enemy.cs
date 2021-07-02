@@ -10,8 +10,10 @@ namespace StatePattern
         public GameObject player;
 
         public GameObject wanderPointCollection;
+        public GameObject idlePointCollection;
 
         public float stateWaitTime = 10;
+        public float idleCoolDownTime = 10;
 
         private State currentState;
 

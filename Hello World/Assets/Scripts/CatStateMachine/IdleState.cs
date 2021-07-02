@@ -15,7 +15,7 @@ namespace StatePattern
             if(timer < enemy.stateWaitTime)
             {
                 timer += Time.deltaTime;
-                Debug.Log(timer);
+                //Debug.Log(timer);
             }
             else
             {
@@ -27,6 +27,7 @@ namespace StatePattern
         {
             Debug.Log("Entering Idle State");
 
+            enemy.navAgent.SetDestination(enemy.transform.position);
             timer = 0;
         }
 
