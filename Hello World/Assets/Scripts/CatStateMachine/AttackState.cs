@@ -14,7 +14,7 @@ namespace StatePattern
 
             if (distance > 4)
             {
-                enemy.SetState(new AlertState(enemy));
+                //enemy.SetState(new AlertState(enemy));
             }
         }
 
