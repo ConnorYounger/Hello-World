@@ -23,7 +23,26 @@ public class OptionsMenu : MonoBehaviour
     private float currentMusicVolume, currentSFXVolume;
 
     [Header("Audio Sprites")]
-    public Image music10, music20, music30, music40, music50, music60, music70, music80, music90, music100;
+    public Image music10;
+    public Image music20;
+    public Image music30;
+    public Image music40;
+    public Image music50;
+    public Image music60;
+    public Image music70;
+    public Image music80;
+    public Image music90;
+    public Image music100;
+    public Image sfx10;
+    public Image sfx20;
+    public Image sfx30;
+    public Image sfx40;
+    public Image sfx50;
+    public Image sfx60;
+    public Image sfx70;
+    public Image sfx80;
+    public Image sfx90;
+    public Image sfx100;
 
     [Header("Display UI")]
     public Button btnResolutionUp;
@@ -46,6 +65,8 @@ public class OptionsMenu : MonoBehaviour
 
         PopulateResolutions();
         UpdateTextElements();
+        UpdateMusicSprites();
+        UpdateSFXSprites();
 
         btnResolutionDown.onClick.AddListener(delegate { UpdateResolution(-1); });
         btnResolutionUp.onClick.AddListener(delegate { UpdateResolution(1); });
@@ -196,7 +217,146 @@ public class OptionsMenu : MonoBehaviour
         switch (currentMusicVolume)
         {
             case -80:
+                music10.sprite = emptySprite;
+                music20.sprite = emptySprite; 
+                music30.sprite = emptySprite; 
+                music40.sprite = emptySprite; 
+                music50.sprite = emptySprite;
+                music60.sprite = emptySprite; 
+                music70.sprite = emptySprite; 
+                music80.sprite = emptySprite;
+                music90.sprite = emptySprite; 
+                music100.sprite = emptySprite;
+                break;
+            case -70:
+                music10.sprite = filledSprite;
 
+                music20.sprite = emptySprite;
+                music30.sprite = emptySprite; 
+                music40.sprite = emptySprite;
+                music50.sprite = emptySprite;
+                music60.sprite = emptySprite;
+                music70.sprite = emptySprite;
+                music80.sprite = emptySprite;
+                music90.sprite = emptySprite;
+                music100.sprite = emptySprite;
+                break;
+            case -60:
+                music10.sprite = filledSprite;
+                music20.sprite = filledSprite;
+
+                music30.sprite = emptySprite; 
+                music40.sprite = emptySprite;
+                music50.sprite = emptySprite;
+                music60.sprite = emptySprite;
+                music70.sprite = emptySprite;
+                music80.sprite = emptySprite;
+                music90.sprite = emptySprite;
+                music100.sprite = emptySprite;
+                break;
+            case -50:
+                music10.sprite = filledSprite;
+                music20.sprite = filledSprite;
+                music30.sprite = filledSprite;
+                
+                music40.sprite = emptySprite; 
+                music50.sprite = emptySprite;
+                music60.sprite = emptySprite; 
+                music70.sprite = emptySprite; 
+                music80.sprite = emptySprite; 
+                music90.sprite = emptySprite; 
+                music100.sprite = emptySprite;
+                break;
+            case -40:
+                music10.sprite = filledSprite; 
+                music20.sprite = filledSprite; 
+                music30.sprite = filledSprite;
+                music40.sprite = filledSprite; 
+
+                music50.sprite = emptySprite;
+                music60.sprite = emptySprite; 
+                music70.sprite = emptySprite; 
+                music80.sprite = emptySprite; 
+                music90.sprite = emptySprite; 
+                music100.sprite = emptySprite;
+                break;
+            case -30:
+                music10.sprite = filledSprite; 
+                music20.sprite = filledSprite; 
+                music30.sprite = filledSprite; 
+                music40.sprite = filledSprite;
+                music50.sprite = filledSprite;
+
+                music60.sprite = emptySprite; 
+                music70.sprite = emptySprite; 
+                music80.sprite = emptySprite; 
+                music90.sprite = emptySprite; 
+                music100.sprite = emptySprite;
+                break;
+            case -20:
+                music10.sprite = filledSprite; 
+                music20.sprite = filledSprite;
+                music30.sprite = filledSprite; 
+                music40.sprite = filledSprite; 
+                music50.sprite = filledSprite;
+                music60.sprite = filledSprite;
+
+                music70.sprite = emptySprite; 
+                music80.sprite = emptySprite; 
+                music90.sprite = emptySprite; 
+                music100.sprite = emptySprite;
+                break;
+            case -10:
+                music10.sprite = filledSprite; 
+                music20.sprite = filledSprite; 
+                music30.sprite = filledSprite; 
+                music40.sprite = filledSprite; 
+                music50.sprite = filledSprite; 
+                music60.sprite = filledSprite; 
+                music70.sprite = filledSprite; 
+                
+                music80.sprite = emptySprite; 
+                music90.sprite = emptySprite; 
+                music100.sprite = emptySprite;
+                break;
+            case 0:
+                music10.sprite = filledSprite; 
+                music20.sprite = filledSprite; 
+                music30.sprite = filledSprite; 
+                music40.sprite = filledSprite; 
+                music50.sprite = filledSprite; 
+                music60.sprite = filledSprite; 
+                music70.sprite = filledSprite; 
+                music80.sprite = filledSprite; 
+                
+                music90.sprite = emptySprite; 
+                music100.sprite = emptySprite;
+                break;
+            case 10:
+                music10.sprite = filledSprite; 
+                music20.sprite = filledSprite; 
+                music30.sprite = filledSprite; 
+                music40.sprite = filledSprite; 
+                music50.sprite = filledSprite; 
+                music60.sprite = filledSprite; 
+                music70.sprite = filledSprite; 
+                music80.sprite = filledSprite; 
+                music90.sprite = filledSprite; 
+                
+                music100.sprite = emptySprite;
+                break;
+            case 20:
+                music10.sprite = filledSprite; 
+                music20.sprite = filledSprite; 
+                music30.sprite = filledSprite; 
+                music40.sprite = filledSprite; 
+                music50.sprite = filledSprite;
+                music60.sprite = filledSprite; 
+                music70.sprite = filledSprite; 
+                music80.sprite = filledSprite;
+                music90.sprite = filledSprite; 
+                music100.sprite = filledSprite;
+                break;
             default:
                 break;
         }
@@ -204,6 +364,151 @@ public class OptionsMenu : MonoBehaviour
 
     private void UpdateSFXSprites()
     {
+        switch (currentSFXVolume)
+        {
+            case -80:
+                sfx10.sprite = emptySprite;
+                sfx20.sprite = emptySprite;
+                sfx30.sprite = emptySprite;
+                sfx40.sprite = emptySprite;
+                sfx50.sprite = emptySprite;
+                sfx60.sprite = emptySprite;
+                sfx70.sprite = emptySprite;
+                sfx80.sprite = emptySprite;
+                sfx90.sprite = emptySprite;
+                sfx100.sprite = emptySprite;
+                break;
+            case -70:
+                sfx10.sprite = filledSprite;
 
+                sfx20.sprite = emptySprite;
+                sfx30.sprite = emptySprite;
+                sfx40.sprite = emptySprite;
+                sfx50.sprite = emptySprite;
+                sfx60.sprite = emptySprite;
+                sfx70.sprite = emptySprite;
+                sfx80.sprite = emptySprite;
+                sfx90.sprite = emptySprite;
+                sfx100.sprite = emptySprite;
+                break;
+            case -60:
+                sfx10.sprite = filledSprite;
+                sfx20.sprite = filledSprite;
+
+                sfx30.sprite = emptySprite;
+                sfx40.sprite = emptySprite;
+                sfx50.sprite = emptySprite;
+                sfx60.sprite = emptySprite;
+                sfx70.sprite = emptySprite;
+                sfx80.sprite = emptySprite;
+                sfx90.sprite = emptySprite;
+                sfx100.sprite = emptySprite;
+                break;
+            case -50:
+                sfx10.sprite = filledSprite;
+                sfx20.sprite = filledSprite;
+                sfx30.sprite = filledSprite;
+
+                sfx40.sprite = emptySprite;
+                sfx50.sprite = emptySprite;
+                sfx60.sprite = emptySprite;
+                sfx70.sprite = emptySprite;
+                sfx80.sprite = emptySprite;
+                sfx90.sprite = emptySprite;
+                sfx100.sprite = emptySprite;
+                break;
+            case -40:
+                sfx10.sprite = filledSprite;
+                sfx20.sprite = filledSprite;
+                sfx30.sprite = filledSprite;
+                sfx40.sprite = filledSprite;
+
+                sfx50.sprite = emptySprite;
+                sfx60.sprite = emptySprite;
+                sfx70.sprite = emptySprite;
+                sfx80.sprite = emptySprite;
+                sfx90.sprite = emptySprite;
+                sfx100.sprite = emptySprite;
+                break;
+            case -30:
+                sfx10.sprite = filledSprite;
+                sfx20.sprite = filledSprite;
+                sfx30.sprite = filledSprite;
+                sfx40.sprite = filledSprite;
+                sfx50.sprite = filledSprite;
+
+                sfx60.sprite = emptySprite;
+                sfx70.sprite = emptySprite;
+                sfx80.sprite = emptySprite;
+                sfx90.sprite = emptySprite;
+                sfx100.sprite = emptySprite;
+                break;
+            case -20:
+                sfx10.sprite = filledSprite;
+                sfx20.sprite = filledSprite;
+                sfx30.sprite = filledSprite;
+                sfx40.sprite = filledSprite;
+                sfx50.sprite = filledSprite;
+                sfx60.sprite = filledSprite;
+
+                sfx70.sprite = emptySprite;
+                sfx80.sprite = emptySprite;
+                sfx90.sprite = emptySprite;
+                sfx100.sprite = emptySprite;
+                break;
+            case -10:
+                sfx10.sprite = filledSprite;
+                sfx20.sprite = filledSprite;
+                sfx30.sprite = filledSprite;
+                sfx40.sprite = filledSprite;
+                sfx50.sprite = filledSprite;
+                sfx60.sprite = filledSprite;
+                sfx70.sprite = filledSprite;
+
+                sfx80.sprite = emptySprite;
+                sfx90.sprite = emptySprite;
+                sfx100.sprite = emptySprite;
+                break;
+            case 0:
+                sfx10.sprite = filledSprite;
+                sfx20.sprite = filledSprite;
+                sfx30.sprite = filledSprite;
+                sfx40.sprite = filledSprite;
+                sfx50.sprite = filledSprite;
+                sfx60.sprite = filledSprite;
+                sfx70.sprite = filledSprite;
+                sfx80.sprite = filledSprite;
+
+                sfx90.sprite = emptySprite;
+                sfx100.sprite = emptySprite;
+                break;
+            case 10:
+                sfx10.sprite = filledSprite;
+                sfx20.sprite = filledSprite;
+                sfx30.sprite = filledSprite;
+                sfx40.sprite = filledSprite;
+                sfx50.sprite = filledSprite;
+                sfx60.sprite = filledSprite;
+                sfx70.sprite = filledSprite;
+                sfx80.sprite = filledSprite;
+                sfx90.sprite = filledSprite;
+
+                sfx100.sprite = emptySprite;
+                break;
+            case 20:
+                sfx10.sprite = filledSprite;
+                sfx20.sprite = filledSprite;
+                sfx30.sprite = filledSprite;
+                sfx40.sprite = filledSprite;
+                sfx50.sprite = filledSprite;
+                sfx60.sprite = filledSprite;
+                sfx70.sprite = filledSprite;
+                sfx80.sprite = filledSprite;
+                sfx90.sprite = filledSprite;
+                sfx100.sprite = filledSprite;
+                break;
+            default:
+                break;
+        }
     }
 }
