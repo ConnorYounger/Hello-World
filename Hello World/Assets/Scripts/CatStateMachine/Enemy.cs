@@ -11,6 +11,7 @@ namespace StatePattern
 
         public GameObject wanderPointCollection;
         public GameObject idlePointCollection;
+        public Transform[] otherBabies;
 
         public float stateWaitTime = 10;
         public float idleCoolDownTime = 10;

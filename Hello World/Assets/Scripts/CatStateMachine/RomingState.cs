@@ -15,10 +15,13 @@ namespace StatePattern
         private bool hasReachedDestination;
         private bool foundIdlePoint;
 
+        private string state;
+
         private Transform targetPoint;
         private Transform lastTargetPoint;
 
         private List<Transform> possiblePoints;
+        private List<Vector3> debugLines;
 
         public override void Tick()
         {
@@ -35,23 +38,28 @@ namespace StatePattern
 
             if(idleCoolDownTimer > 0)
                 idleCoolDownTimer -= 1 * Time.deltaTime;
+
+            DrawDebugLines();
+        }
+
+        void DrawDebugLines()
+        {
+            if(debugLines.Count > 0)
+            {
+                foreach(Vector3 transform in debugLines)
+                {
+                    Debug.DrawLine(enemy.transform.position, transform, Color.grey);
+                }
+            }
         }
 
         void SearchForPlayer()
         {
             if(idleCoolDownTimer <= 0 && Vector3.Distance(enemy.transform.position, enemy.player.transform.position) < pointFindDistance)
             {
-                RaycastHit hit;
-                Vector3 rayAngle = (enemy.player.transform.position - enemy.transform.position).normalized;
-                float distance = Vector3.Distance(enemy.transform.position, enemy.player.transform.position);
-
-                Physics.Raycast(enemy.transform.position, rayAngle, out hit);
+                RaycastHit hit = CalculateHit(enemy.transform.position, enemy.player.transform.position);
+                
                 Debug.DrawLine(enemy.transform.position, hit.point, Color.blue);
-
-                if (!Physics.Raycast(enemy.transform.position, rayAngle, out hit, distance))
-                {
-                    //enemy.SetState(new EngagePlayerState(enemy));
-                }
 
                 if (hit.collider != null && hit.collider.gameObject == enemy.player.gameObject)
                 {
@@ -67,10 +75,18 @@ namespace StatePattern
             {
                 hasReachedDestination = true;
 
-                if (!foundIdlePoint)
-                    CheckForClosePoints();
-                else
-                    enemy.SetState(new IdleState(enemy));
+                switch (state)
+                {
+                    case "CheckForClosePoints":
+                        CheckForClosePoints();
+                        break;
+                    case "FoundIdlePoint":
+                        enemy.SetState(new IdleState(enemy));
+                        break;
+                    case "FoundNPCBaby":
+                        enemy.SetState(new NPCEngageState(enemy));
+                        break;
+                }
             }
         }
 
@@ -97,7 +113,6 @@ namespace StatePattern
             if (possiblePoints.Count > 0)
             {
                 // Pick a random transform 
-
                 int rand = Random.Range(0, possiblePoints.Count);
 
                 targetPoint = possiblePoints[rand];
@@ -132,6 +147,7 @@ namespace StatePattern
         void SearchForIdlePoint()
         {
             possiblePoints.Clear();
+            debugLines.Clear();
 
             if (enemy.idlePointCollection)
             {
@@ -142,44 +158,98 @@ namespace StatePattern
                     if (Vector3.Distance(enemy.transform.position, point.position) < pointFindDistance)
                     {
                         // Check to see if the cat can see the idle spot
-                        RaycastHit hit;
-                        Physics.Raycast(enemy.transform.position, point.position, out hit);
+                        RaycastHit hit = CalculateHit(enemy.transform.position, point.position);
 
                         Debug.DrawLine(enemy.transform.position, hit.point, Color.green);
 
+                        debugLines.Add(hit.point);
+
                         // If the cat can see the idle point, add it to the list of possible points
-                        if(hit.collider != null && hit.collider.transform == point)
+                        if (hit.collider != null && hit.collider.gameObject == point.gameObject)
                         {
                             possiblePoints.Add(point);
                         }
+                    }
+                }
 
-                        // If there are possible points, find the closest idle spot out of all the possible points
-                        if(possiblePoints.Count > 0)
+                SetCloestPossiblePoint(true);
+            }
+
+            SearchForOtherBabies();
+        }
+
+        void SearchForOtherBabies()
+        {
+            possiblePoints.Clear();
+
+            if(enemy.otherBabies.Length > 0)
+            {
+                foreach(Transform baby in enemy.otherBabies)
+                {
+                    if(Vector3.Distance(enemy.transform.position, baby.position) < pointFindDistance)
+                    {
+                        // Check to see if the cat can see the baby
+                        RaycastHit hit = CalculateHit(enemy.transform.position, baby.position);
+
+                        Debug.DrawLine(enemy.transform.position, hit.point, Color.green);
+
+                        debugLines.Add(hit.point);
+
+                        // If the cat can see the baby, add it to the list of possible points
+                        if (hit.collider != null && hit.collider.gameObject == baby.gameObject)
                         {
-                            float distance = pointFindDistance;
-                            int index = 0;
-
-                            for (int i = 0; i < possiblePoints.Count; i++)
-                            {
-                                // Compare each possible point's distance
-                                if (Vector3.Distance(enemy.transform.position, possiblePoints[i].position) < distance)
-                                {
-                                    distance = Vector3.Distance(enemy.transform.position, possiblePoints[i].position);
-                                    index = i;
-                                }
-                            }
-
-                            foundIdlePoint = true;
-
-                            // Set the target point to the closest idle point the cat can see
-                            targetPoint = possiblePoints[index];
-                            enemy.navAgent.SetDestination(targetPoint.position);
-
-                            Debug.Log("FOUND IDLE SPOT: " + targetPoint);
+                            possiblePoints.Add(baby);
                         }
                     }
                 }
+
+                SetCloestPossiblePoint(false);
             }
+        }
+
+        void SetCloestPossiblePoint(bool idlePoint)
+        {
+            // If there are possible points, find the closest idle spot out of all the possible points
+            if (possiblePoints.Count > 0)
+            {
+                float distance = pointFindDistance;
+                int index = 0;
+
+                for (int i = 0; i < possiblePoints.Count; i++)
+                {
+                    // Compare each possible point's distance
+                    if (Vector3.Distance(enemy.transform.position, possiblePoints[i].position) < distance)
+                    {
+                        distance = Vector3.Distance(enemy.transform.position, possiblePoints[i].position);
+                        index = i;
+                    }
+                }
+
+                if (idlePoint)
+                {
+                    foundIdlePoint = true;
+                    state = "FoundIdlePoint";
+                }
+                else
+                {
+                    state = "FoundNPCBaby";
+                }
+
+                // Set the target point to the closest idle point the cat can see
+                targetPoint = possiblePoints[index];
+                enemy.navAgent.SetDestination(targetPoint.position);
+
+                Debug.Log("FOUND IDLE SPOT: " + targetPoint);
+            }
+        }
+
+        RaycastHit CalculateHit(Vector3 start, Vector3 end)
+        {
+            RaycastHit hit;
+            Vector3 rayAngle = (end - start).normalized;
+
+            Physics.Raycast(start, rayAngle, out hit);
+            return hit;
         }
 
         public override void OnStateEnter()
@@ -187,7 +257,9 @@ namespace StatePattern
             Debug.Log("Entering Roming State");
 
             foundIdlePoint = false;
+            state = "CheckForClosePoints";
             possiblePoints = new List<Transform>();
+            debugLines = new List<Vector3>();
             lastTargetPoint = enemy.transform;
             idleCoolDownTimer = enemy.idleCoolDownTime;
 
