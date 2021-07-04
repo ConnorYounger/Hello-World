@@ -1476,8 +1476,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 168}
-  m_SizeDelta: {x: 322.3933, y: 34.4925}
+  m_AnchoredPosition: {x: -288, y: 206}
+  m_SizeDelta: {x: 161.2, y: 34.4925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &575752990
 MonoBehaviour:
@@ -1491,10 +1491,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba34328dfb9a65449b317e9cf0a9c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finalPress: {fileID: 0}
   countDownTime: 60
   countdownBar: {fileID: 575752991}
-  winWithToy: {fileID: 0}
-  baby: {fileID: 0}
+  baby: {fileID: 577926527}
 --- !u!114 &575752991
 MonoBehaviour:
   m_ObjectHideFlags: 0
