@@ -48,7 +48,7 @@ public class StaminaSlider : MonoBehaviour
             {
                 countDown = true;
                 allowInputs = true;
-                finalPress.startMovement = false;
+                movementCheck.startMovement = false;
                 anim.SetBool("tiredStart", false);
             }
         }
