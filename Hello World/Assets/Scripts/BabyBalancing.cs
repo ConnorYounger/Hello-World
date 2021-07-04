@@ -28,6 +28,8 @@ public class BabyBalancing : MonoBehaviour
     public GameObject bottom;
     public float bottomRotateDifference = 3;
 
+    public Animator animator;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
