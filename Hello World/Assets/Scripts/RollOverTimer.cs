@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class CountDownBar : MonoBehaviour
+public class RollOverTimer : MonoBehaviour
 {
     public static bool allowInputs;
     private bool countDown = true;
@@ -9,7 +11,8 @@ public class CountDownBar : MonoBehaviour
 
     public Slider countdownBar;
     public GameObject loseText;
-    public WinWithToy winWithToy;
+    public bool rollWin = false;
+
     private Animator anim;
     public GameObject baby;
 
@@ -25,7 +28,7 @@ public class CountDownBar : MonoBehaviour
 
     private void Update()
     {
-        if (winWithToy.gameWon == false)
+        if (rollWin == false)
         {
             if (countDown)
             {
@@ -36,7 +39,7 @@ public class CountDownBar : MonoBehaviour
             {
                 countDown = false;
                 allowInputs = false;
-                anim.SetBool("timeOut", true);
+                anim.SetBool("loseTime", true);
                 loseText.SetActive(true);
             }
             else
