@@ -11,7 +11,6 @@ public class StaminaSlider : MonoBehaviour
     public float countDownTime = 60;
 
     public Slider countdownBar;
-    //public GameObject loseText;
     private Animator anim;
     public GameObject baby;
 
@@ -44,7 +43,6 @@ public class StaminaSlider : MonoBehaviour
                 anim.SetBool("secondPress", false);
                 anim.SetBool("thirdPress", false);
                 anim.SetBool("fourthPress", false);
-                //loseText.SetActive(true);
             }
             else
             {
