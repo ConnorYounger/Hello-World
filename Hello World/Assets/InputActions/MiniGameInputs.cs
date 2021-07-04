@@ -792,6 +792,52 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MainMenu"",
+            ""id"": ""aa5f2c9c-e259-4918-ab6c-68922087488d"",
+            ""actions"": [
+                {
+                    ""name"": ""CursorMovement"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""faf2dbd6-522e-431f-b8d2-d1045308b94e"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""277fd313-593c-41b1-8bfc-983ec93c91a6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3d0ec0e7-746e-44f1-95cc-2cb18ddbce71"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CursorMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7da8704-642c-4890-9cc3-565b9501a022"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -831,6 +877,10 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         // Blinking
         m_Blinking = asset.FindActionMap("Blinking", throwIfNotFound: true);
         m_Blinking_Key1 = m_Blinking.FindAction("Key1", throwIfNotFound: true);
+        // MainMenu
+        m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
+        m_MainMenu_CursorMovement = m_MainMenu.FindAction("CursorMovement", throwIfNotFound: true);
+        m_MainMenu_Select = m_MainMenu.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1201,6 +1251,47 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         }
     }
     public BlinkingActions @Blinking => new BlinkingActions(this);
+
+    // MainMenu
+    private readonly InputActionMap m_MainMenu;
+    private IMainMenuActions m_MainMenuActionsCallbackInterface;
+    private readonly InputAction m_MainMenu_CursorMovement;
+    private readonly InputAction m_MainMenu_Select;
+    public struct MainMenuActions
+    {
+        private @MiniGameInputs m_Wrapper;
+        public MainMenuActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CursorMovement => m_Wrapper.m_MainMenu_CursorMovement;
+        public InputAction @Select => m_Wrapper.m_MainMenu_Select;
+        public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MainMenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMainMenuActions instance)
+        {
+            if (m_Wrapper.m_MainMenuActionsCallbackInterface != null)
+            {
+                @CursorMovement.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCursorMovement;
+                @CursorMovement.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCursorMovement;
+                @CursorMovement.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCursorMovement;
+                @Select.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnSelect;
+            }
+            m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @CursorMovement.started += instance.OnCursorMovement;
+                @CursorMovement.performed += instance.OnCursorMovement;
+                @CursorMovement.canceled += instance.OnCursorMovement;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+            }
+        }
+    }
+    public MainMenuActions @MainMenu => new MainMenuActions(this);
     public interface ISimonSaysActions
     {
         void OnClick1(InputAction.CallbackContext context);
@@ -1240,5 +1331,10 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     public interface IBlinkingActions
     {
         void OnKey1(InputAction.CallbackContext context);
+    }
+    public interface IMainMenuActions
+    {
+        void OnCursorMovement(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }
