@@ -28,6 +28,7 @@ namespace StatePattern
             Debug.Log("Entering Idle State");
 
             enemy.navAgent.SetDestination(enemy.transform.position);
+            enemy.animator.SetBool("isWalking", false);
             timer = 0;
         }
 
