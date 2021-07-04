@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RollOver : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class RollOver : MonoBehaviour
     private bool fourthPress = false;
     public bool startMovement = false;
     public bool finalPress = false;
+
+    public GameObject winText;
     public StaminaSlider movementCheck;
 
     private char lastPressed;
@@ -105,12 +108,13 @@ public class RollOver : MonoBehaviour
             anim.SetBool("tiredStart", false);
             finalPress = true;
             movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
+            winText.SetActive(true);
             lastPressed = 'F';
         }
     }
 
-    void Update()
+    public void SwitchScene(string scene)
     {
-        
+        SceneManager.LoadScene(scene);
     }
 }
