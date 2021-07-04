@@ -48,11 +48,13 @@ public class RollOver : MonoBehaviour
     void FirstSwing()
     {
         if(lastPressed == 'A')
-        anim.SetBool("firstPress", true);
-        anim.SetBool("tiredStart", false);
-        firstPress = true;
-        movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
-        lastPressed = 'B';
+        {
+            anim.SetBool("firstPress", true);
+            anim.SetBool("tiredStart", false);
+            firstPress = true;
+            movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
+            lastPressed = 'B';
+        }
     }
 
     void SecondSwing()
@@ -77,33 +79,33 @@ public class RollOver : MonoBehaviour
             anim.SetBool("tiredStart", false);
             thirdPress = true;
             movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
-            lastPressed = 'C';
+            lastPressed = 'D';
         }
     }
 
     void FourthSwing()
     {
-        if (thirdPress == true && lastPressed == 'C')
+        if (thirdPress == true && lastPressed == 'D')
         {
             anim.SetBool("thirdPress", false);
             anim.SetBool("fourthPress", true);
             anim.SetBool("tiredStart", false);
             fourthPress = true;
             movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
-            lastPressed = 'D';
+            lastPressed = 'E';
         }
     }
 
     void FullRoll()
     {
-        if (fourthPress == true && lastPressed == 'D')
+        if (fourthPress == true && lastPressed == 'E')
         {
             anim.SetBool("fourthPress", false);
             anim.SetBool("finalPress", true);
             anim.SetBool("tiredStart", false);
             finalPress = true;
             movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
-            lastPressed = 'E';
+            lastPressed = 'F';
         }
     }
 

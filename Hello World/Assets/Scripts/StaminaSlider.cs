@@ -29,9 +29,11 @@ public class StaminaSlider : MonoBehaviour
     {
         if (movementCheck.finalPress == false && movementCheck.firstPress == true)
         {
-            countdownBar.value -= Time.deltaTime;
-            
-
+            if (countDown)
+            {
+                countdownBar.value -= Time.deltaTime;
+            }
+      
             if (countdownBar.value <= 0)
             {
                 countDown = false;
