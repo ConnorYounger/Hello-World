@@ -7,7 +7,7 @@ public class StaminaSlider : MonoBehaviour
 {
     public static bool allowInputs;
     private bool countDown = true;
-    public RollOver finalPress;
+    public RollOver movementCheck;
     public float countDownTime = 60;
 
     public Slider countdownBar;
@@ -27,24 +27,29 @@ public class StaminaSlider : MonoBehaviour
 
     private void Update()
     {
-        if (finalPress == false)
+        if (movementCheck.finalPress == false && movementCheck.firstPress == true)
         {
-            if (countDown == true)
-            {
-                countdownBar.value -= Time.deltaTime;
-            }
+            countdownBar.value -= Time.deltaTime;
+            
 
             if (countdownBar.value <= 0)
             {
                 countDown = false;
                 allowInputs = false;
-                //anim.SetBool("timeOut", true);
+                movementCheck.startMovement = true;
+                anim.SetBool("tiredStart", true);
+                anim.SetBool("firstPress", false);
+                anim.SetBool("secondPress", false);
+                anim.SetBool("thirdPress", false);
+                anim.SetBool("fourthPress", false);
                 //loseText.SetActive(true);
             }
             else
             {
                 countDown = true;
                 allowInputs = true;
+                finalPress.startMovement = false;
+                anim.SetBool("tiredStart", false);
             }
         }
     }
