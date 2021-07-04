@@ -25,6 +25,8 @@ namespace StatePattern
 
         void ReachedPlayer()
         {
+            enemy.animator.SetBool("isWalking", false);
+
             coolDownTimer = enemy.idleCoolDownTime;
 
             hasReachedPlayer = true;
