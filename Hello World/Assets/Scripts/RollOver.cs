@@ -14,6 +14,7 @@ public class RollOver : MonoBehaviour
     private bool fourthPress = false;
     public bool startMovement = false;
     public bool finalPress = false;
+    public bool rollWin = false;
 
     public GameObject winText;
     public StaminaSlider movementCheck;
@@ -109,6 +110,7 @@ public class RollOver : MonoBehaviour
             finalPress = true;
             movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
             winText.SetActive(true);
+            rollWin = true;
             lastPressed = 'F';
         }
     }

@@ -11,7 +11,7 @@ public class RollOverTimer : MonoBehaviour
 
     public Slider countdownBar;
     public GameObject loseText;
-    public bool rollWin = false;
+    public RollOver rollWin;
 
     private Animator anim;
     public GameObject baby;
@@ -28,7 +28,7 @@ public class RollOverTimer : MonoBehaviour
 
     private void Update()
     {
-        if (rollWin == false)
+        if (rollWin.rollWin == false)
         {
             if (countDown)
             {
