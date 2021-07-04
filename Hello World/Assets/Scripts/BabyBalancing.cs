@@ -12,7 +12,7 @@ public class BabyBalancing : MonoBehaviour
     private float balanceValue = 0;
     private bool canTilt = true;
 
-    public bool balanceWin = true;
+    public bool sitting = true;
     public float winAngle = 20;
     public float winAngleHoldTime = 5;
     private float currentHoldTime;
@@ -59,7 +59,7 @@ public class BabyBalancing : MonoBehaviour
 
     void BalanceWinCheck()
     {
-        if (balanceWin)
+        if (sitting)
         {
             if(withinWinAngle())
             {
@@ -96,8 +96,14 @@ public class BabyBalancing : MonoBehaviour
 
     void PlayerMovement()
     {
+        int dir = 1;
+        if (sitting)
+            dir = -1;
+        else
+            dir = 1;
+
         //Vector3 rotation = new Vector3(transform.localRotation.x, transform.localRotation.y, move.x);
-        Vector3 rotation = new Vector3(spine.transform.localRotation.x, -move.x, spine.transform.localRotation.z);
+        Vector3 rotation = new Vector3(spine.transform.localRotation.x, move.x * dir, spine.transform.localRotation.z);
         //transform.Rotate(rotation * Time.deltaTime * playerRotateSpeed);
         spine.transform.Rotate(rotation * Time.deltaTime * playerRotateSpeed);
     }
