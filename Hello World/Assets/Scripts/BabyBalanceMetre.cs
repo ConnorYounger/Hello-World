@@ -16,7 +16,8 @@ public class BabyBalanceMetre : MonoBehaviour
 
     void UpdateArrowPosition()
     {
-        float pos = babyBalancing.gameObject.transform.rotation.z / babyBalancing.CalculateMaxBalanceValue();
+        GameObject spine = babyBalancing.spine;
+        float pos = (-spine.transform.localRotation.y) / babyBalancing.CalculateMaxBalanceValue();
         pos = Mathf.Clamp(pos, -0.7f, 0.7f);
 
         metreArrow.transform.position = new Vector3(transform.position.x + (pos * 250), metreArrow.transform.position.y, metreArrow.transform.position.z);
