@@ -908,9 +908,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
             ""id"": ""aa5f2c9c-e259-4918-ab6c-68922087488d"",
             ""actions"": [
                 {
-                    ""name"": ""CursorMovement"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""faf2dbd6-522e-431f-b8d2-d1045308b94e"",
+                    ""name"": ""Navigate"",
+                    ""type"": ""Value"",
+                    ""id"": ""b2661e97-0a4a-4770-beeb-cc94a57c049f"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -922,17 +922,36 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""04de4a64-53a1-4ff9-92a4-778bfa98ff46"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""3d0ec0e7-746e-44f1-95cc-2cb18ddbce71"",
+                    ""id"": ""1d6e0e77-6737-42a8-b8f2-ee6297b00678"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea1aa9ba-e82c-4511-b8a2-8a6cccfb65ba"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CursorMovement"",
+                    ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -944,6 +963,17 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e257ee45-1c92-4e3e-92ae-f7ae05c84eed"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -989,8 +1019,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_Blinking_Key1 = m_Blinking.FindAction("Key1", throwIfNotFound: true);
         // MainMenu
         m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
-        m_MainMenu_CursorMovement = m_MainMenu.FindAction("CursorMovement", throwIfNotFound: true);
+        m_MainMenu_Navigate = m_MainMenu.FindAction("Navigate", throwIfNotFound: true);
         m_MainMenu_Select = m_MainMenu.FindAction("Select", throwIfNotFound: true);
+        m_MainMenu_Cancel = m_MainMenu.FindAction("Cancel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1365,14 +1396,16 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     // MainMenu
     private readonly InputActionMap m_MainMenu;
     private IMainMenuActions m_MainMenuActionsCallbackInterface;
-    private readonly InputAction m_MainMenu_CursorMovement;
+    private readonly InputAction m_MainMenu_Navigate;
     private readonly InputAction m_MainMenu_Select;
+    private readonly InputAction m_MainMenu_Cancel;
     public struct MainMenuActions
     {
         private @MiniGameInputs m_Wrapper;
         public MainMenuActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CursorMovement => m_Wrapper.m_MainMenu_CursorMovement;
+        public InputAction @Navigate => m_Wrapper.m_MainMenu_Navigate;
         public InputAction @Select => m_Wrapper.m_MainMenu_Select;
+        public InputAction @Cancel => m_Wrapper.m_MainMenu_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1382,22 +1415,28 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_MainMenuActionsCallbackInterface != null)
             {
-                @CursorMovement.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCursorMovement;
-                @CursorMovement.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCursorMovement;
-                @CursorMovement.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCursorMovement;
+                @Navigate.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigate;
+                @Navigate.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigate;
+                @Navigate.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnNavigate;
                 @Select.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnSelect;
                 @Select.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnSelect;
                 @Select.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnSelect;
+                @Cancel.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnCancel;
             }
             m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @CursorMovement.started += instance.OnCursorMovement;
-                @CursorMovement.performed += instance.OnCursorMovement;
-                @CursorMovement.canceled += instance.OnCursorMovement;
+                @Navigate.started += instance.OnNavigate;
+                @Navigate.performed += instance.OnNavigate;
+                @Navigate.canceled += instance.OnNavigate;
                 @Select.started += instance.OnSelect;
                 @Select.performed += instance.OnSelect;
                 @Select.canceled += instance.OnSelect;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
             }
         }
     }
@@ -1444,7 +1483,8 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     }
     public interface IMainMenuActions
     {
-        void OnCursorMovement(InputAction.CallbackContext context);
+        void OnNavigate(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
 }
