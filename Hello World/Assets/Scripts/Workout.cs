@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class Workout : MonoBehaviour
 {
@@ -218,10 +217,5 @@ public class Workout : MonoBehaviour
                 moveDown = false;
             }
         }
-    }
-
-    public void SwitchScene(string scene)
-    {
-        SceneManager.LoadScene(scene);
     }
 }

@@ -66,11 +66,11 @@ public class ExercisePicker : MonoBehaviour
         exerciseNames.Add("Workout");
         exerciseNames.Add("The little one said");
         exerciseNames.Add("Jelly on a plate");
-        //exerciseNames.Add("Open, shut them");
-        //exerciseNames.Add("Popstar");
+        exerciseNames.Add("Open, shut them");
+        exerciseNames.Add("Popstar");
         exerciseNames.Add("Off you go");
-        //exerciseNames.Add("Copycat");
-        //exerciseNames.Add("Monkey monkey");
-        //exerciseNames.Add("One small step");
+        exerciseNames.Add("Copycat");
+        exerciseNames.Add("Monkey monkey");
+        exerciseNames.Add("One small step");
     }
 }

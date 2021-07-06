@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class SimonSays : MonoBehaviour
 {
@@ -24,7 +23,6 @@ public class SimonSays : MonoBehaviour
     public GameObject playerInputPanel;
     public GameObject inputButtonPrefab;
     public GameObject winUI;
-    public GameObject uIElements;
 
     public Slider memoryMetreSlider;
 
@@ -184,7 +182,6 @@ public class SimonSays : MonoBehaviour
 
         playerHasWon = true;
 
-        uIElements.SetActive(false);
         winUI.SetActive(true);
     }
 
@@ -296,10 +293,5 @@ public class SimonSays : MonoBehaviour
     void UpdateMemoryMetre()
     {
         memoryMetreSlider.value = currentMemory;
-    }
-
-    public void SwitchScene(string scene)
-    {
-        SceneManager.LoadScene(scene);
     }
 }
