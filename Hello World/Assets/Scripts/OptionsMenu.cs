@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -112,6 +113,7 @@ public class OptionsMenu : MonoBehaviour
     private void ToggleFullscreen()
     {
         isFullscreen = !isFullscreen;
+        EventSystem.current.SetSelectedGameObject(btnApplyDisplay.gameObject, new AxisEventData(EventSystem.current));
     }
 
     private void SaveDisplayOptions()
@@ -147,11 +149,14 @@ public class OptionsMenu : MonoBehaviour
         if (resolutionIndex == 0)
         {
             btnResolutionDown.interactable = false;
+            EventSystem.current.SetSelectedGameObject(btnResolutionUp.gameObject, new AxisEventData(EventSystem.current));
         }
         else if (resolutionIndex == resolutions.Length -1)
         {
             btnResolutionUp.interactable = false;
-        } else 
+            EventSystem.current.SetSelectedGameObject(btnResolutionDown.gameObject, new AxisEventData(EventSystem.current));
+        }
+        else 
         { 
             btnResolutionDown.interactable = true; 
             btnResolutionUp.interactable = true; 
@@ -168,13 +173,31 @@ public class OptionsMenu : MonoBehaviour
             btnFullscreenOff.interactable = false;
         }
 
+        if (currentSFXVolume == -80)
+        {
+            btnSFXDown.interactable = false;
+            EventSystem.current.SetSelectedGameObject(btnSFXUp.gameObject, new AxisEventData(EventSystem.current));
+        }
+        else if (currentSFXVolume == 20)
+        {
+            btnSFXUp.interactable = false;
+            EventSystem.current.SetSelectedGameObject(btnSFXDown.gameObject, new AxisEventData(EventSystem.current));
+        }
+        else
+        {
+            btnSFXDown.interactable = true;
+            btnSFXUp.interactable = true;
+        }
+
         if (currentMusicVolume == -80)
         {
             btnMusicDown.interactable = false;
+            EventSystem.current.SetSelectedGameObject(btnMusicUp.gameObject, new AxisEventData(EventSystem.current));
         }
         else if (currentMusicVolume == 20)
         {
             btnMusicUp.interactable = false;
+            EventSystem.current.SetSelectedGameObject(btnMusicDown.gameObject, new AxisEventData(EventSystem.current));
         }
         else
         {

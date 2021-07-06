@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    public EventSystem eventSystem;
+    private EventSystem eventSystem;
         
     [Header("Menu Canvas")]
     public GameObject shelfCanvas;
@@ -54,7 +54,6 @@ public class MenuController : MonoBehaviour
     private void Start()
     {
         eventSystem = EventSystem.current;
-        Debug.Log(eventSystem.firstSelectedGameObject.name);
 
         ResetCanvasUI();
         
