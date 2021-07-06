@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinWithToy : MonoBehaviour
 {
@@ -25,5 +26,10 @@ public class WinWithToy : MonoBehaviour
             anim.SetBool("gotBall", true);
             gameWon = true;
         }
+    }
+
+    public void SwitchScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

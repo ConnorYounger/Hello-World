@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class CountDownBar : MonoBehaviour
 {
@@ -26,24 +27,39 @@ public class CountDownBar : MonoBehaviour
 
     private void Update()
     {
-        if (winWithToy.gameWon == false)
+        Timer();
+    }
+    private IEnumerator LoseCondition()
+    {
+        countDown = false;
+        allowInputs = false;
+        anim.SetBool("timeOut", true);
+        loseText.SetActive(true);
+        yield return new WaitForSeconds(2.2f);
+        baby.GetComponent<AudioSource>().Play();
+
+    }
+
+    private void Timer()
+    {
+        if (winWithToy.gameWon == false && countDown)
         {
             if (countDown) //Scale the countdown time to go faster than the refill time
                 countdownBar.value -= Time.deltaTime;
-
-            //If we are at 0, start to refill
             if (countdownBar.value <= 0)
             {
-                countDown = false;
-                allowInputs = false;
-                anim.SetBool("timeOut", true);
-                loseText.SetActive(true);
+                StartCoroutine(LoseCondition());
+
             }
             else
             {
                 countDown = true;
                 allowInputs = true;
             }
+
         }
     }
+
+
+
 }
