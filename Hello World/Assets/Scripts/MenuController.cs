@@ -88,14 +88,14 @@ public class MenuController : MonoBehaviour
     {
         panelOptions.SetActive(false);
         panelDisplay.SetActive(true);
-        eventSystem.SetSelectedGameObject(btnDisplayBack.gameObject, new AxisEventData(eventSystem));
+        eventSystem.SetSelectedGameObject(btnDisplayBack.gameObject, new BaseEventData(eventSystem));
     }
 
     private void AudioOptions()
     {
         panelOptions.SetActive(false);
         panelAudio.SetActive(true);
-        eventSystem.SetSelectedGameObject(btnAudioBack.gameObject, new AxisEventData(eventSystem));
+        eventSystem.SetSelectedGameObject(btnAudioBack.gameObject, new BaseEventData(eventSystem));
     }
 
     private void GoToOptionsTop()
@@ -103,7 +103,7 @@ public class MenuController : MonoBehaviour
         panelAudio.SetActive(false);
         panelDisplay.SetActive(false);
         panelOptions.SetActive(true);
-        eventSystem.SetSelectedGameObject(btnDisplay.gameObject, new AxisEventData(eventSystem));
+        eventSystem.SetSelectedGameObject(btnDisplay.gameObject, new BaseEventData(eventSystem));
     }
 
     private void NavigateMenus(string menuToSwitch)
@@ -132,7 +132,7 @@ public class MenuController : MonoBehaviour
             case "Change Table":
                 animator.Play("Change Table");
                 shelfCanvas.SetActive(false);
-                StartCoroutine(ChangeCanvasUI(changetableCanvas, btnDisplay.gameObject));
+                StartCoroutine(ChangeCanvasUI(changetableCanvas, btnChangeTableBack.gameObject));
 
                 break;
             case "Crib":
@@ -154,7 +154,7 @@ public class MenuController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         canvas.SetActive(true);
-        eventSystem.SetSelectedGameObject(btn, new AxisEventData(eventSystem));
+        eventSystem.SetSelectedGameObject(btn, new BaseEventData(eventSystem));
     }
 
     private void ResetCanvasUI()
