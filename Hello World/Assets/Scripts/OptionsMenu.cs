@@ -73,17 +73,17 @@ public class OptionsMenu : MonoBehaviour
         UpdateMusicSprites();
         UpdateSFXSprites();
 
-        btnResolutionDown.onClick.AddListener(delegate { UpdateResolution(-1); });
-        btnResolutionUp.onClick.AddListener(delegate { UpdateResolution(1); });
+        btnResolutionDown.onClick.AddListener(ResolutionDown);
+        btnResolutionUp.onClick.AddListener(ResolutionUp);
         btnFullscreenOff.onClick.AddListener(ToggleFullscreen);
         btnFullscreenOn.onClick.AddListener(ToggleFullscreen);
         btnApplyDisplay.onClick.AddListener(SaveDisplayOptions);
 
-        btnMusicUp.onClick.AddListener(delegate { SetMusicVolume(10f); });
-        btnMusicDown.onClick.AddListener(delegate { SetMusicVolume(-10f); });
+        btnMusicUp.onClick.AddListener(MusicVolumeUp);
+        btnMusicDown.onClick.AddListener(MusicVolumeDown);
 
-        btnSFXUp.onClick.AddListener(delegate { SetSFXVolume(10f); });
-        btnSFXDown.onClick.AddListener(delegate { SetSFXVolume(-10f); });
+        btnSFXUp.onClick.AddListener(SFXVolumeUp);
+        btnSFXDown.onClick.AddListener(SFXVolumeDown);
     }
 
     public float GetMusicVolume()
@@ -137,10 +137,22 @@ public class OptionsMenu : MonoBehaviour
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
     }
 
-    private void UpdateResolution(int v)
+    private void ResolutionUp()
     {
-        resolutionIndex = resolutionIndex + v;
-        UpdateTextElements();
+        if (resolutionIndex != resolutions.Length - 1)
+        {
+            resolutionIndex = resolutionIndex + 1;
+            UpdateTextElements();
+        }
+    }
+    
+    private void ResolutionDown()
+    {
+        if (resolutionIndex != 0)
+        {
+            resolutionIndex = resolutionIndex - 1;
+            UpdateTextElements();
+        }
     }
 
     private void UpdateTextElements()
@@ -150,21 +162,20 @@ public class OptionsMenu : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (resolutionIndex == 0)
         {
             btnResolutionDown.interactable = false;
-            //EventSystem.current.SetSelectedGameObject(btnResolutionUp.gameObject, new BaseEventData(EventSystem.current));
         }
         else if (resolutionIndex == resolutions.Length -1)
         {
             btnResolutionUp.interactable = false;
-            //EventSystem.current.SetSelectedGameObject(btnResolutionDown.gameObject, new BaseEventData(EventSystem.current));
         }
         else 
         { 
             btnResolutionDown.interactable = true; 
             btnResolutionUp.interactable = true; 
-        }
+        }*/
 
         if (isFullscreen)
         {
@@ -176,23 +187,23 @@ public class OptionsMenu : MonoBehaviour
             btnFullscreenOn.interactable = true;
             btnFullscreenOff.interactable = false;
         }
-
+        /*
         if (currentSFXVolume == -80)
         {
-            btnSFXDown.interactable = false;
-            //EventSystem.current.SetSelectedGameObject(btnSFXUp.gameObject, new BaseEventData(EventSystem.current));
+            //EventSystem.current.SetSelectedGameObject(btnSFXUp.gameObject);
+            //btnSFXDown.interactable = false;
         }
         else if (currentSFXVolume == 20)
         {
-            btnSFXUp.interactable = false;
-            //EventSystem.current.SetSelectedGameObject(btnSFXDown.gameObject, new BaseEventData(EventSystem.current));
+            //EventSystem.current.SetSelectedGameObject(btnSFXDown.gameObject);
+            //btnSFXUp.interactable = false;
         }
         else
         {
             btnSFXDown.interactable = true;
             btnSFXUp.interactable = true;
-        }
-
+        }*/
+        /*
         if (currentMusicVolume == -80)
         {
             btnMusicDown.interactable = false;
@@ -207,7 +218,7 @@ public class OptionsMenu : MonoBehaviour
         {
             btnMusicDown.interactable = true;
             btnMusicUp.interactable = true;
-        }
+        }*/
     }
 
     private void PopulateResolutions()
@@ -225,18 +236,44 @@ public class OptionsMenu : MonoBehaviour
     }
 
     //TODO: Test when audio is implemented!!!
-    public void SetMusicVolume(float v)
+    public void MusicVolumeUp()
     {
-        currentMusicVolume = GetMusicVolume() + v;
-        musicMixer.SetFloat("Music", currentMusicVolume);
-        UpdateMusicSprites();
+        if (currentMusicVolume != 20)
+        {
+            currentMusicVolume = GetMusicVolume() + 10;
+            musicMixer.SetFloat("Music", currentMusicVolume);
+            UpdateMusicSprites();
+        }
     }
 
-    public void SetSFXVolume(float v)
+    public void MusicVolumeDown()
     {
-        currentSFXVolume = GetSFXVolume() + v;
-        SFXMixer.SetFloat("SFX", currentSFXVolume);
-        UpdateSFXSprites();
+        if (currentMusicVolume != -80)
+        {
+            currentMusicVolume = GetMusicVolume() - 10;
+            musicMixer.SetFloat("Music", currentMusicVolume);
+            UpdateMusicSprites();
+        }
+    }
+
+    public void SFXVolumeUp()
+    {
+        if (currentSFXVolume != 20)
+        {
+            currentSFXVolume = GetSFXVolume() + 10;
+            SFXMixer.SetFloat("SFX", currentSFXVolume);
+            UpdateSFXSprites();
+        }
+    }
+
+    public void SFXVolumeDown()
+    {
+        if (currentSFXVolume != -80)
+        {
+            currentSFXVolume = GetSFXVolume() - 10;
+            SFXMixer.SetFloat("SFX", currentSFXVolume);
+            UpdateSFXSprites();
+        }
     }
 
     private void PopulateSprites()
