@@ -153,12 +153,12 @@ public class OptionsMenu : MonoBehaviour
         if (resolutionIndex == 0)
         {
             btnResolutionDown.interactable = false;
-            EventSystem.current.SetSelectedGameObject(btnResolutionUp.gameObject, new BaseEventData(EventSystem.current));
+            //EventSystem.current.SetSelectedGameObject(btnResolutionUp.gameObject, new BaseEventData(EventSystem.current));
         }
         else if (resolutionIndex == resolutions.Length -1)
         {
             btnResolutionUp.interactable = false;
-            EventSystem.current.SetSelectedGameObject(btnResolutionDown.gameObject, new BaseEventData(EventSystem.current));
+            //EventSystem.current.SetSelectedGameObject(btnResolutionDown.gameObject, new BaseEventData(EventSystem.current));
         }
         else 
         { 
@@ -180,12 +180,12 @@ public class OptionsMenu : MonoBehaviour
         if (currentSFXVolume == -80)
         {
             btnSFXDown.interactable = false;
-            EventSystem.current.SetSelectedGameObject(btnSFXUp.gameObject, new BaseEventData(EventSystem.current));
+            //EventSystem.current.SetSelectedGameObject(btnSFXUp.gameObject, new BaseEventData(EventSystem.current));
         }
         else if (currentSFXVolume == 20)
         {
             btnSFXUp.interactable = false;
-            EventSystem.current.SetSelectedGameObject(btnSFXDown.gameObject, new BaseEventData(EventSystem.current));
+            //EventSystem.current.SetSelectedGameObject(btnSFXDown.gameObject, new BaseEventData(EventSystem.current));
         }
         else
         {
@@ -196,12 +196,12 @@ public class OptionsMenu : MonoBehaviour
         if (currentMusicVolume == -80)
         {
             btnMusicDown.interactable = false;
-            EventSystem.current.SetSelectedGameObject(btnMusicUp.gameObject, new BaseEventData(EventSystem.current));
+            //EventSystem.current.SetSelectedGameObject(btnMusicUp.gameObject, new BaseEventData(EventSystem.current));
         }
         else if (currentMusicVolume == 20)
         {
             btnMusicUp.interactable = false;
-            EventSystem.current.SetSelectedGameObject(btnMusicDown.gameObject, new BaseEventData(EventSystem.current));
+            //EventSystem.current.SetSelectedGameObject(btnMusicDown.gameObject, new BaseEventData(EventSystem.current));
         }
         else
         {
