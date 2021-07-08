@@ -162,21 +162,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void Update()
     {
-        /*
-        if (resolutionIndex == 0)
-        {
-            btnResolutionDown.interactable = false;
-        }
-        else if (resolutionIndex == resolutions.Length -1)
-        {
-            btnResolutionUp.interactable = false;
-        }
-        else 
-        { 
-            btnResolutionDown.interactable = true; 
-            btnResolutionUp.interactable = true; 
-        }*/
-
         if (isFullscreen)
         {
             btnFullscreenOn.interactable = false;
@@ -187,38 +172,6 @@ public class OptionsMenu : MonoBehaviour
             btnFullscreenOn.interactable = true;
             btnFullscreenOff.interactable = false;
         }
-        /*
-        if (currentSFXVolume == -80)
-        {
-            //EventSystem.current.SetSelectedGameObject(btnSFXUp.gameObject);
-            //btnSFXDown.interactable = false;
-        }
-        else if (currentSFXVolume == 20)
-        {
-            //EventSystem.current.SetSelectedGameObject(btnSFXDown.gameObject);
-            //btnSFXUp.interactable = false;
-        }
-        else
-        {
-            btnSFXDown.interactable = true;
-            btnSFXUp.interactable = true;
-        }*/
-        /*
-        if (currentMusicVolume == -80)
-        {
-            btnMusicDown.interactable = false;
-            //EventSystem.current.SetSelectedGameObject(btnMusicUp.gameObject, new BaseEventData(EventSystem.current));
-        }
-        else if (currentMusicVolume == 20)
-        {
-            btnMusicUp.interactable = false;
-            //EventSystem.current.SetSelectedGameObject(btnMusicDown.gameObject, new BaseEventData(EventSystem.current));
-        }
-        else
-        {
-            btnMusicDown.interactable = true;
-            btnMusicUp.interactable = true;
-        }*/
     }
 
     private void PopulateResolutions()
@@ -235,6 +188,8 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+
+    #region Audio
     //TODO: Test when audio is implemented!!!
     public void MusicVolumeUp()
     {
@@ -540,4 +495,5 @@ public class OptionsMenu : MonoBehaviour
                 break;
         }
     }
+    #endregion
 }
