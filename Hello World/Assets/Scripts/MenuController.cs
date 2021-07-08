@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+    private EventSystem eventSystem;
+        
     [Header("Menu Canvas")]
     public GameObject shelfCanvas;
     public GameObject cribCanvas;
@@ -49,6 +53,8 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
+        eventSystem = EventSystem.current;
+
         ResetCanvasUI();
         
         btnPlay.onClick.AddListener(delegate { NavigateMenus("Toy Box"); });
@@ -58,7 +64,7 @@ public class MenuController : MonoBehaviour
         btnDiscovery.onClick.AddListener(delegate { NavigateMenus("Crib"); });
         btnToyBox.onClick.AddListener(delegate { NavigateMenus("Playmat"); });
         btnToyBoxBack.onClick.AddListener(delegate { NavigateMenus("Shelf"); });
-        
+
         btnDisplay.onClick.AddListener(DisplayOptions);
         btnAudio.onClick.AddListener(AudioOptions);
         btnChangeTableBack.onClick.AddListener(delegate { NavigateMenus("Shelf"); });
@@ -82,12 +88,14 @@ public class MenuController : MonoBehaviour
     {
         panelOptions.SetActive(false);
         panelDisplay.SetActive(true);
+        eventSystem.SetSelectedGameObject(btnDisplayBack.gameObject, new BaseEventData(eventSystem));
     }
 
     private void AudioOptions()
     {
         panelOptions.SetActive(false);
         panelAudio.SetActive(true);
+        eventSystem.SetSelectedGameObject(btnAudioBack.gameObject, new BaseEventData(eventSystem));
     }
 
     private void GoToOptionsTop()
@@ -95,6 +103,7 @@ public class MenuController : MonoBehaviour
         panelAudio.SetActive(false);
         panelDisplay.SetActive(false);
         panelOptions.SetActive(true);
+        eventSystem.SetSelectedGameObject(btnDisplay.gameObject, new BaseEventData(eventSystem));
     }
 
     private void NavigateMenus(string menuToSwitch)
@@ -106,44 +115,46 @@ public class MenuController : MonoBehaviour
                 changetableCanvas.SetActive(false);
                 doorCanvas.SetActive(false);
                 toyboxCanvas.SetActive(false);
-                StartCoroutine(ChangeCanvasUI(shelfCanvas));
+                StartCoroutine(ChangeCanvasUI(shelfCanvas, btnPlay.gameObject));
                 break;
             case "Playmat":
                 animator.Play("Playmat");
                 toyboxCanvas.SetActive(false);
-                StartCoroutine(ChangeCanvasUI(playmatCanvas));
+                StartCoroutine(ChangeCanvasUI(playmatCanvas, btnExercise.gameObject));
                 break;
             case "Toy Box":
                 animator.Play("Toy Box");
                 shelfCanvas.SetActive(false);
                 cribCanvas.SetActive(false);
                 playmatCanvas.SetActive(false);
-                StartCoroutine(ChangeCanvasUI(toyboxCanvas));
+                StartCoroutine(ChangeCanvasUI(toyboxCanvas, btnDiscovery.gameObject));
                 break;
             case "Change Table":
                 animator.Play("Change Table");
                 shelfCanvas.SetActive(false);
-                StartCoroutine(ChangeCanvasUI(changetableCanvas));
+                StartCoroutine(ChangeCanvasUI(changetableCanvas, btnChangeTableBack.gameObject));
+
                 break;
             case "Crib":
                 animator.Play("Crib");
                 toyboxCanvas.SetActive(false);
-                StartCoroutine(ChangeCanvasUI(cribCanvas));
+                StartCoroutine(ChangeCanvasUI(cribCanvas, btnNewGame.gameObject));
                 break;
             case "Door":
                 animator.Play("Door");
                 shelfCanvas.SetActive(false);
-                StartCoroutine(ChangeCanvasUI(doorCanvas));
+                StartCoroutine(ChangeCanvasUI(doorCanvas, btnExitYes.gameObject));
                 break;
             default: break;
         }
 
     }
 
-    private IEnumerator ChangeCanvasUI(GameObject canvas)
+    private IEnumerator ChangeCanvasUI(GameObject canvas, GameObject btn)
     {
         yield return new WaitForSeconds(1.5f);
         canvas.SetActive(true);
+        eventSystem.SetSelectedGameObject(btn, new BaseEventData(eventSystem));
     }
 
     private void ResetCanvasUI()
