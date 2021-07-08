@@ -609,7 +609,7 @@
             "id": "4e1789d8-3995-4a30-86d4-0b500e215cb1",
             "actions": [
                 {
-                    "name": "Click1",
+                    "name": "LeftMovement1",
                     "type": "Button",
                     "id": "5a110672-c471-422f-9fbb-a591cbde0e5f",
                     "expectedControlType": "Button",
@@ -617,9 +617,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Click2",
+                    "name": "LeftMovement2",
+                    "type": "Button",
+                    "id": "d57c018c-75af-48e7-8845-442f9c904926",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightMovement1",
                     "type": "Button",
                     "id": "590c0d6e-4bca-461e-b427-68f5041c56c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightMovement2",
+                    "type": "Button",
+                    "id": "f5b9c6e1-9fd0-405d-85d3-d495585aba41",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -628,23 +644,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "ca75b5b2-d7e4-4de4-8924-445fb0f1cd26",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Click1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ec401a9a-fc28-48f6-8a85-3c3996008c0d",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Click1",
+                    "action": "LeftMovement1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -655,18 +660,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Click1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "62454087-b52c-4c68-bbf0-d5c8504c520e",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Click2",
+                    "action": "LeftMovement1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -677,7 +671,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Click2",
+                    "action": "RightMovement1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -688,7 +682,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Click2",
+                    "action": "RightMovement1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "432791c7-1bcc-47e6-8fb6-0f8f02bc2ffa",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftMovement2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec5bded2-6917-49c0-b515-4c4f58267928",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightMovement2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

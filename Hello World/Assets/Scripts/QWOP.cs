@@ -33,8 +33,10 @@ public class QWOP : MonoBehaviour
 
     void SetInputActions()
     {
-        controls.QWOP.Click1.performed += ctx => LeftMovement();
-        controls.QWOP.Click2.performed += ctx => RightMovement();
+        controls.QWOP.LeftMovement1.performed += ctx => LeftMovement();
+        controls.QWOP.LeftMovement2.performed += ctx => LeftMovement1();
+        controls.QWOP.RightMovement1.performed += ctx => RightMovement();
+        controls.QWOP.RightMovement2.performed += ctx => RightMovement1();
     }
 
     private void OnEnable()
@@ -60,10 +62,33 @@ public class QWOP : MonoBehaviour
         else
         {
             anim.SetBool("wrongPressed", true);
-            anim.SetBool("rightPressed", false);
             anim.SetBool("leftPressed", false);
+            anim.SetBool("leftPressed1", false);
+            anim.SetBool("rightPressed", false);
+            anim.SetBool("rightPressed1", false);
         }
     }
+
+    void LeftMovement1()
+    {
+        if (isLeftMovement == true)
+        {
+            anim.SetBool("leftPressed1", true);
+            anim.SetBool("rightPressed1", false);
+            anim.SetBool("wrongPressed", false);
+            isLeftMovement = false;
+            isRightMovement = true;
+        }
+        else
+        {
+            anim.SetBool("wrongPressed", true);
+            anim.SetBool("leftPressed", false);
+            anim.SetBool("leftPressed1", false);
+            anim.SetBool("rightPressed", false);
+            anim.SetBool("rightPressed1", false);
+        }
+    }
+
     void RightMovement()
     {
         if (isRightMovement == true)
@@ -78,7 +103,29 @@ public class QWOP : MonoBehaviour
         {
             anim.SetBool("wrongPressed", true);
             anim.SetBool("rightPressed", false);
+            anim.SetBool("rightPressed1", false);
             anim.SetBool("leftPressed", false);
+            anim.SetBool("leftPressed1", false);
+        }
+    }
+
+    void RightMovement1()
+    {
+        if (isRightMovement == true)
+        {
+            anim.SetBool("rightPressed1", true);
+            anim.SetBool("leftPressed1", false);
+            anim.SetBool("wrongPressed", false);
+            isRightMovement = false;
+            isLeftMovement = true;
+        }
+        else
+        {
+            anim.SetBool("wrongPressed", true);
+            anim.SetBool("rightPressed", false);
+            anim.SetBool("rightPressed1", false);
+            anim.SetBool("leftPressed", false);
+            anim.SetBool("leftPressed1", false);
         }
     }
 }
