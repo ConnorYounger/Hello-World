@@ -162,8 +162,15 @@ public class Workout : MonoBehaviour
             }
             //
 
+            if(checkpoint1Left && checkpoint1Right)
+            {
+                animator.SetInteger("Stage", 1);
+            }
+
             if (checkpoint2Left && checkpoint2Right)
             {
+                animator.SetInteger("Stage", 2);
+
                 SucessfulSitUp();
             }
 
@@ -229,6 +236,8 @@ public class Workout : MonoBehaviour
     void FailedSitUp()
     {
         animator.SetBool("GetUp", false);
+        animator.SetBool("Fail", true);
+        StartCoroutine("ResetAnimator");
 
         //moveDown = true;
 
@@ -270,6 +279,14 @@ public class Workout : MonoBehaviour
         }
     }
 
+    IEnumerator ResetAnimator()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetInteger("Stage", 0);
+        animator.SetBool("Fail", false);
+    }
+
     void CheckForSucessfulSitUp()
     {
         if(currentHoldTime >= holdTime)
@@ -294,6 +311,8 @@ public class Workout : MonoBehaviour
         {
             Win();
         }
+
+        StartCoroutine("ResetAnimator");
     }
 
     void ResetCheckPoints()
