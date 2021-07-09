@@ -21,9 +21,20 @@ public class Workout : MonoBehaviour
     private float resetCoolDown;
     private float currentHoldTime;
 
+    [Header("Buffers")]
+    public float inputYBuffer = 0.05f;
+    public float inputXBuffer = 0.05f;
+    public float syncBuffer = 0.05f;
+    public float synchronisationBuffer = 0.5f;
+    private float syncTimer;
+
     private bool reset;
     private bool gameFinished;
     private bool moveDown;
+    private bool checkpoint1Left;
+    private bool checkpoint1Right;
+    private bool checkpoint2Left;
+    private bool checkpoint2Right;
 
     private Vector2 rightMove;
     private Vector2 leftMove;
@@ -94,23 +105,76 @@ public class Workout : MonoBehaviour
 
     void SitUp()
     {
-        if(Mathf.Abs(rightMove.y) > (tiltAngle / 100) && Mathf.Abs(leftMove.y) > (tiltAngle / 100) && !reset)
-        {
-            currentHoldTime += Time.deltaTime;
+        //if(Mathf.Abs(rightMove.y) > (tiltAngle / 100) && Mathf.Abs(leftMove.y) > (tiltAngle / 100) && !reset)
+        //{
+        //    currentHoldTime += Time.deltaTime;
 
-            if(!moveDown)
-                baby.transform.position = new Vector3(baby.transform.position.x, baby.transform.position.y + Time.deltaTime * movementMultiplier, baby.transform.position.z);
-        }
-        else if (currentHoldTime > 0)
+        //    if(!moveDown)
+        //        baby.transform.position = new Vector3(baby.transform.position.x, baby.transform.position.y + Time.deltaTime * movementMultiplier, baby.transform.position.z);
+        //}
+        //else if (currentHoldTime > 0)
+        //{
+        //    if (reset)
+        //    {
+        //        currentHoldTime = 0;
+        //    }
+        //    else
+        //    {
+        //        FailedSitUp();
+        //    }
+        //}
+
+        if (!reset)
         {
-            if (reset)
+            // Left Thumb Stick Input
+            if (leftMove.y < -1 + inputYBuffer && !checkpoint1Left)
             {
-                currentHoldTime = 0;
+                syncTimer = synchronisationBuffer;
+
+                Debug.Log("Checkpoint 1 Left");
+                checkpoint1Left = true;
             }
-            else
+
+            if (leftMove.y > 1 - inputYBuffer && checkpoint1Left)
             {
+                syncTimer = synchronisationBuffer;
+
+                Debug.Log("Checkpoint 2 Left");
+                checkpoint2Left = true;
+            }
+            //
+
+            // Right Thumb Stick Input
+            if (rightMove.y < -1 + inputYBuffer && !checkpoint1Right)
+            {
+                syncTimer = synchronisationBuffer;
+
+                Debug.Log("Checkpoint 1 Right");
+                checkpoint1Right = true;
+            }
+
+            if (rightMove.y > 1 - inputYBuffer && checkpoint1Right)
+            {
+                syncTimer = synchronisationBuffer;
+
+                Debug.Log("Checkpoint 2 Right");
+                checkpoint2Right = true;
+            }
+            //
+
+            if (checkpoint2Left && checkpoint2Right)
+            {
+                SucessfulSitUp();
+            }
+
+            // Check if the player has moved along the x axis
+            if ((leftMove.x > inputXBuffer || leftMove.x < -inputXBuffer) || (rightMove.x > inputXBuffer || rightMove.x < -inputXBuffer))
+            {
+                Debug.Log("Fail");
                 FailedSitUp();
             }
+
+            SyncTimer();
         }
 
         if(reset && rightMove == Vector2.zero && leftMove == Vector2.zero && resetCoolDown <= 0)
@@ -123,11 +187,50 @@ public class Workout : MonoBehaviour
         }
     }
 
+    void SyncTimer()
+    {
+        //if(syncTimer > 0 && (((checkpoint1Left && !checkpoint1Right) || (checkpoint1Right && !checkpoint1Left)) || ((checkpoint2Left && !checkpoint2Right) || (checkpoint2Right && !checkpoint2Left))))
+        //{
+        //    syncTimer -= 1 * Time.deltaTime;
+        //}
+
+        //if(syncTimer <= 0 && (((checkpoint1Left && !checkpoint1Right) || (checkpoint1Right && !checkpoint1Left)) || ((checkpoint2Left && !checkpoint2Right) || (checkpoint2Right && !checkpoint2Left))))
+        //{
+        //    Debug.Log("Sycn Fail, sync timer: " + syncTimer);
+        //    FailedSitUp();
+        //}
+
+        if(!reset && CalculateBuffer())
+        {
+            Debug.Log("out of sync");
+            //FailedSitUp();
+        }
+
+        if (syncTimer > 0 && CalculateBuffer())
+        {
+            syncTimer -= 1 * Time.deltaTime;
+        }
+
+        if (syncTimer <= 0 && CalculateBuffer())
+        {
+            Debug.Log("Sycn Fail, sync timer: " + syncTimer);
+            FailedSitUp();
+        }
+    }
+
+    bool CalculateBuffer()
+    {
+        if (Mathf.Abs(leftMove.y - rightMove.y) > syncBuffer)
+            return true;
+        else
+            return false;
+    }
+
     void FailedSitUp()
     {
         animator.SetBool("GetUp", false);
 
-        moveDown = true;
+        //moveDown = true;
 
         if (Mathf.Abs(rightMove.y) < (tiltAngle / 100))
         {
@@ -139,10 +242,21 @@ public class Workout : MonoBehaviour
             animator.SetBool("FallOverLeft", true);
             Debug.Log("Tilt Left");
         }
+        else
+        {
+            int rand = Random.Range(0, 2);
+
+            if(rand == 0)
+                animator.SetBool("FallOverRight", true);
+            else
+                animator.SetBool("FallOverLeft", true);
+        }
 
         resetCoolDown = resetCoolDownTime;
 
         reset = true;
+
+        ResetCheckPoints();
 
         currentHoldTime = 0;
 
@@ -168,16 +282,26 @@ public class Workout : MonoBehaviour
     {
         reset = true;
 
-        moveDown = true;
+        //moveDown = true;
 
         sitUpCount++;
 
         UpdateSliders();
 
+        ResetCheckPoints();
+
         if (sitUpCount >= sitUpGoal)
         {
             Win();
         }
+    }
+
+    void ResetCheckPoints()
+    {
+        checkpoint1Left = false;
+        checkpoint1Right = false;
+        checkpoint2Left = false;
+        checkpoint2Right = false;
     }
 
     void Win()
