@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DiscoveryModeController : MonoBehaviour
@@ -22,17 +24,38 @@ public class DiscoveryModeController : MonoBehaviour
     public Image stage6In;
     public Image stage6Out;
 
+    private bool onCardIn;
     #endregion
 
     private void Start()
     {
         //LoadPlayer();
-        UpdateMilestones();
+        onCardIn = true;
+        UpdateCardIn();
+
+        btnBack.onClick.AddListener(delegate { LoadScene("Main"); });
+        btnNext.onClick.AddListener(ContinueDiscovery);
     }
 
-    private void UpdateMilestones()
+    private void ContinueDiscovery()
     {
-        Debug.Log("um run");
+        if (onCardIn)
+        {
+            UpdateCardOut();
+        } else
+        {
+            exerciseIndex = +1;
+            LoadScene("Exercise " + exerciseIndex);
+        }
+    }
+
+    private void LoadScene(string v)
+    {
+        SceneManager.LoadScene(v);
+    }
+
+    private void UpdateCardIn()
+    {
         switch (exerciseIndex)
         {
             case 1.1f:
@@ -51,8 +74,38 @@ public class DiscoveryModeController : MonoBehaviour
                 stage6In.enabled = true;
                 break;
             default:
-                Debug.Log("default run");
                 stage1In.enabled = true;
+                break;
+        }
+    }
+
+    private void UpdateCardOut()
+    {
+        switch (exerciseIndex)
+        {
+            case 1.1f:
+                stage2Out.enabled = true;
+                onCardIn = false;
+                break;
+            case 2.1f:
+                stage3Out.enabled = true;
+                onCardIn = false;
+                break;
+            case 3.1f:
+                stage4Out.enabled = true;
+                onCardIn = false;
+                break;
+            case 4.1f:
+                stage5Out.enabled = true;
+                onCardIn = false;
+                break;
+            case 5.1f:
+                stage6Out.enabled = true;
+                onCardIn = false;
+                break;
+            default:
+                stage1Out.enabled = true;
+                onCardIn = false;
                 break;
         }
     }
