@@ -5,14 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    public string babyName;
-    public string babyModel;
+    //public string babyName;
+    //public string babyModel;
     public int exerciseIndex;
 
     public PlayerData(DiscoveryPlayer player)
     {
-        babyName = player.babyName;
-        babyModel = player.babyModel;
+        //babyName = player.babyName;
+        //babyModel = player.babyModel;
         exerciseIndex = player.exerciseIndex;
     }
 }
