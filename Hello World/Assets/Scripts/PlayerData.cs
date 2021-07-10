@@ -7,7 +7,7 @@ public class PlayerData
 {
     //public string babyName;
     //public string babyModel;
-    public int exerciseIndex;
+    public float exerciseIndex;
 
     public PlayerData(DiscoveryPlayer player)
     {

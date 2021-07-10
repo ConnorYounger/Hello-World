@@ -5,7 +5,7 @@ public class DiscoveryPlayer : MonoBehaviour
 {
     //public string babyName;
     //public string babyModel;
-    public int exerciseIndex;
+    public float exerciseIndex;
 
     public void SavePlayer()
     {
