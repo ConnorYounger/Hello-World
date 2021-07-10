@@ -31,7 +31,7 @@ public class DiscoveryModeController : MonoBehaviour
     {
         //LoadPlayer();
         onCardIn = true;
-        UpdateCardIn();
+        ShowCardIn();
 
         btnBack.onClick.AddListener(delegate { LoadScene("Main"); });
         btnNext.onClick.AddListener(ContinueDiscovery);
@@ -41,10 +41,10 @@ public class DiscoveryModeController : MonoBehaviour
     {
         if (onCardIn)
         {
-            UpdateCardOut();
+            ShowCardOut();
         } else
         {
-            exerciseIndex = +1;
+            exerciseIndex += 1;
             LoadScene("Exercise " + exerciseIndex);
         }
     }
@@ -54,7 +54,7 @@ public class DiscoveryModeController : MonoBehaviour
         SceneManager.LoadScene(v);
     }
 
-    private void UpdateCardIn()
+    private void ShowCardIn()
     {
         switch (exerciseIndex)
         {
@@ -79,7 +79,7 @@ public class DiscoveryModeController : MonoBehaviour
         }
     }
 
-    private void UpdateCardOut()
+    private void ShowCardOut()
     {
         switch (exerciseIndex)
         {
