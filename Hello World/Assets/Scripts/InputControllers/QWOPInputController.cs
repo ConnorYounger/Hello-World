@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class HoldObjectsInputController : MonoBehaviour
+public class QWOPInputController : MonoBehaviour
 {
     public PauseMenuController pauseMenu;
     private MiniGameInputs controls;
@@ -12,16 +12,16 @@ public class HoldObjectsInputController : MonoBehaviour
     {
         controls = new MiniGameInputs();
 
-        controls.HoldingObjects.Pause.performed += ctx => pauseMenu.PauseInput();
+        controls.QWOP.Pause.performed += ctx => pauseMenu.PauseInput();
     }
 
     private void OnEnable()
     {
-        controls.HoldingObjects.Enable();
+        controls.QWOP.Enable();
     }
 
     private void OnDisable()
     {
-        controls.HoldingObjects.Disable();
+        controls.QWOP.Disable();
     }
 }
