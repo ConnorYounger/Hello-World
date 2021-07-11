@@ -52,7 +52,7 @@ public class PauseMenuController : MonoBehaviour
         pauseCanvas.enabled = true;
         Time.timeScale = 0;
 
-        EventSystem.current.SetSelectedGameObject(exitButton.gameObject);
+        EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
 
         isPaused = true;
     }
