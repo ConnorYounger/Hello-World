@@ -121,6 +121,14 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""27287345-454c-4124-a8f7-3c99d7dc4d26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -528,6 +536,28 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DPadLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be48fb4a-04eb-44b3-9581-6a9a01dc107c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2386f64c-fd71-4a6a-990c-f95596754517"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -964,6 +994,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_SimonSays_DPadLeft = m_SimonSays.FindAction("DPadLeft", throwIfNotFound: true);
         m_SimonSays_DPadUp = m_SimonSays.FindAction("DPadUp", throwIfNotFound: true);
         m_SimonSays_DPadDown = m_SimonSays.FindAction("DPadDown", throwIfNotFound: true);
+        m_SimonSays_Pause = m_SimonSays.FindAction("Pause", throwIfNotFound: true);
         // HoldingObjects
         m_HoldingObjects = asset.FindActionMap("HoldingObjects", throwIfNotFound: true);
         m_HoldingObjects_LeftHandMovement = m_HoldingObjects.FindAction("LeftHandMovement", throwIfNotFound: true);
@@ -1051,6 +1082,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_SimonSays_DPadLeft;
     private readonly InputAction m_SimonSays_DPadUp;
     private readonly InputAction m_SimonSays_DPadDown;
+    private readonly InputAction m_SimonSays_Pause;
     public struct SimonSaysActions
     {
         private @MiniGameInputs m_Wrapper;
@@ -1068,6 +1100,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         public InputAction @DPadLeft => m_Wrapper.m_SimonSays_DPadLeft;
         public InputAction @DPadUp => m_Wrapper.m_SimonSays_DPadUp;
         public InputAction @DPadDown => m_Wrapper.m_SimonSays_DPadDown;
+        public InputAction @Pause => m_Wrapper.m_SimonSays_Pause;
         public InputActionMap Get() { return m_Wrapper.m_SimonSays; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1116,6 +1149,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @DPadDown.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadDown;
                 @DPadDown.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadDown;
                 @DPadDown.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadDown;
+                @Pause.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_SimonSaysActionsCallbackInterface = instance;
             if (instance != null)
@@ -1159,6 +1195,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @DPadDown.started += instance.OnDPadDown;
                 @DPadDown.performed += instance.OnDPadDown;
                 @DPadDown.canceled += instance.OnDPadDown;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1423,6 +1462,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnDPadLeft(InputAction.CallbackContext context);
         void OnDPadUp(InputAction.CallbackContext context);
         void OnDPadDown(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IHoldingObjectsActions
     {
