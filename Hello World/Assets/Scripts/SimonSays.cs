@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
@@ -35,6 +36,10 @@ public class SimonSays : MonoBehaviour
     public bool playerCanInput = true;
 
     private MiniGameInputs controls;
+
+    [Header("Discovery Player")]
+    public bool discoveryMode;
+    public DiscoveryPlayer discoveryPlayer;
 
     private void Awake()
     {
@@ -188,6 +193,15 @@ public class SimonSays : MonoBehaviour
 
         winUI.SetActive(true);
         EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
+
+        if (discoveryMode)
+        {
+            discoveryPlayer.exerciseIndex = 2.1f;
+            discoveryPlayer.cardIndex = "2Out";
+            discoveryPlayer.SavePlayer();
+
+            //SceneManager.LoadScene("DiscoveryMilestones");
+        }
     }
 
     void CalculateInput()
@@ -321,5 +335,10 @@ public class SimonSays : MonoBehaviour
     void UpdateMemoryMetre()
     {
         memoryMetreSlider.value = currentMemory;
+    }
+
+    public void SwitchScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

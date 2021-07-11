@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -51,6 +52,10 @@ public class Workout : MonoBehaviour
     private Vector3 startingLocation;
 
     private MiniGameInputs controls;
+
+    [Header("Discovery Player")]
+    public bool discoveryMode;
+    public DiscoveryPlayer discoveryPlayer;
 
     private void Awake()
     {
@@ -330,6 +335,15 @@ public class Workout : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(GameObject.Find("WinButton"));
 
         gameFinished = true;
+
+        if (discoveryMode)
+        {
+            discoveryPlayer.exerciseIndex = 1.1f;
+            discoveryPlayer.cardIndex = "1Out";
+            discoveryPlayer.SavePlayer();
+
+            //SceneManager.LoadScene("DiscoveryMilestones");
+        }
     }
 
     void Lose()
@@ -365,5 +379,10 @@ public class Workout : MonoBehaviour
                 moveDown = false;
             }
         }
+    }
+
+    public void SwitchScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }
