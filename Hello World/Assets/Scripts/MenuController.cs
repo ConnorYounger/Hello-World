@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour
 {
     #region Variables
     private EventSystem eventSystem;
+    public DiscoveryPlayer player;
         
     [Header("Menu Canvas")]
     public GameObject shelfCanvas;
@@ -88,6 +89,9 @@ public class MenuController : MonoBehaviour
 
     private void StartNewDiscovery()
     {
+        player.exerciseIndex = 0.1f;
+        player.cardIndex = "1In";
+        player.SavePlayer();
         SceneManager.LoadScene("DiscoveryMilestones");
     }
 

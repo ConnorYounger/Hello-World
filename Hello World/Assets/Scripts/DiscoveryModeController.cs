@@ -48,12 +48,14 @@ public class DiscoveryModeController : MonoBehaviour
                 break;
             case "1Out":
                 cardIndex = "2In";
+                ShowMilestoneCard();
                 break;
             case "2In":
                 LoadScene("Exercise 2.1 Discovery");
                 break;
             case "2Out":
                 cardIndex = "3In";
+                ShowMilestoneCard();
                 break;
             //Add more exercises
             default:
