@@ -737,7 +737,7 @@
             "id": "2527bfc7-f1ef-4ecf-b852-2d56ab0157ea",
             "actions": [
                 {
-                    "name": "Key1",
+                    "name": "SwingLeft",
                     "type": "Button",
                     "id": "95fd99bb-d8f9-473c-b9b7-9b05ebeffce2",
                     "expectedControlType": "Button",
@@ -745,7 +745,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Key2",
+                    "name": "SwingRight",
                     "type": "Button",
                     "id": "51f8c0ca-5c91-4691-ac94-fbd1ee1018f4",
                     "expectedControlType": "Button",
@@ -753,25 +753,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Key3",
+                    "name": "LegMovement",
                     "type": "Button",
                     "id": "f198de43-fc8e-41ab-9447-62da1ceaa43a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Key4",
-                    "type": "Button",
-                    "id": "499a45c6-d6a5-4bf9-b66a-0d88aa7c6291",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Key5",
-                    "type": "Button",
-                    "id": "35c94b72-242c-4587-9ade-d5d911084c8f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -785,18 +769,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Key1",
+                    "action": "SwingLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "d08193f6-647a-442e-9ec5-4596ff1cc3ee",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Key1",
+                    "action": "SwingLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -807,84 +791,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Key2",
+                    "action": "SwingRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "2ef7e7b2-b34e-44d5-85be-9780eb2dd526",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Key2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d33dce07-8c49-4acb-b325-7dc6da2cff10",
-                    "path": "<Keyboard>/c",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Key3",
+                    "action": "SwingRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "e564a46d-7000-479f-b346-38d4b9d5874a",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Key3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c787bdfd-2cef-4858-baab-39292ee23ae5",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Key4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "95a10b4f-2d46-4ace-b0fd-e86abaefedf5",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Key4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9e5700e0-c987-4c21-9b1d-a1fbcf28e546",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Key5",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "927407d0-0523-4a90-a011-b12a2630e42c",
-                    "path": "<Gamepad>/leftStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Key5",
+                    "action": "LegMovement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

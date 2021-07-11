@@ -329,7 +329,16 @@ ModelImporter:
     second: Fourth Swing
   - first:
       74: 1827226128182048838
-    second: Take 001
+    second: Leg Up
+  - first:
+      74: 4439080038909458897
+    second: Fifth Swing
+  - first:
+      74: -8160639807716825750
+    second: Sixth Swing
+  - first:
+      74: -8021569284851391221
+    second: Final Swing
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -520,7 +529,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: First Swing
+      name: Leg Up
       takeName: Take 001
       internalID: 0
       firstFrame: 0
@@ -671,11 +680,162 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: First Swing
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 10
+      lastFrame: 13
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ROOT
+        weight: 1
+      - path: ROOT/TB
+        weight: 1
+      - path: ROOT/TB/TB Pelvis
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh/TB L Calf
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh/TB L Calf/TB L Foot
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh/TB L Calf/TB L Foot/TB L Toe0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh/TB R Calf
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh/TB R Calf/TB R Foot
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh/TB R Calf/TB R Foot/TB R Toe0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger0/TB L Finger01
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger1
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger1/TB L Finger11
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger2
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger2/TB L Finger21
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger3
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger3/TB L Finger31
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger4
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger4/TB L Finger41
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB Eyebrows
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB EyeL
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB EyeR
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB Jaw
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger0/TB R Finger01
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger1
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger1/TB R Finger11
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger2
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger2/TB R Finger21
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger3
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger3/TB R Finger31
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger4
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger4/TB R Finger41
+        weight: 1
+      - path: TB Face
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: Second Swing
       takeName: Take 001
       internalID: 0
-      firstFrame: 5
-      lastFrame: 15
+      firstFrame: 10
+      lastFrame: 14
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -826,7 +986,7 @@ ModelImporter:
       takeName: Take 001
       internalID: 0
       firstFrame: 10
-      lastFrame: 17
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -977,7 +1137,7 @@ ModelImporter:
       takeName: Take 001
       internalID: 0
       firstFrame: 10
-      lastFrame: 18
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1124,7 +1284,309 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Full Roll
+      name: Fifth Swing
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 12
+      lastFrame: 16.5
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ROOT
+        weight: 1
+      - path: ROOT/TB
+        weight: 1
+      - path: ROOT/TB/TB Pelvis
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh/TB L Calf
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh/TB L Calf/TB L Foot
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh/TB L Calf/TB L Foot/TB L Toe0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh/TB R Calf
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh/TB R Calf/TB R Foot
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh/TB R Calf/TB R Foot/TB R Toe0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger0/TB L Finger01
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger1
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger1/TB L Finger11
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger2
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger2/TB L Finger21
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger3
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger3/TB L Finger31
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger4
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger4/TB L Finger41
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB Eyebrows
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB EyeL
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB EyeR
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB Jaw
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger0/TB R Finger01
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger1
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger1/TB R Finger11
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger2
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger2/TB R Finger21
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger3
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger3/TB R Finger31
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger4
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger4/TB R Finger41
+        weight: 1
+      - path: TB Face
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Sixth Swing
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 13
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ROOT
+        weight: 1
+      - path: ROOT/TB
+        weight: 1
+      - path: ROOT/TB/TB Pelvis
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh/TB L Calf
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh/TB L Calf/TB L Foot
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB L Thigh/TB L Calf/TB L Foot/TB L Toe0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh/TB R Calf
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh/TB R Calf/TB R Foot
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB R Thigh/TB R Calf/TB R Foot/TB R Toe0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger0/TB L Finger01
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger1
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger1/TB L Finger11
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger2
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger2/TB L Finger21
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger3
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger3/TB L Finger31
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger4
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB L Clavicle/TB L UpperArm/TB
+          L Forearm/TB L Hand/TB L Finger4/TB L Finger41
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB Eyebrows
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB EyeL
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB EyeR
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB Neck/TB Head/TB Jaw
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger0
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger0/TB R Finger01
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger1
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger1/TB R Finger11
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger2
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger2/TB R Finger21
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger3
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger3/TB R Finger31
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger4
+        weight: 1
+      - path: ROOT/TB/TB Pelvis/TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB
+          R Forearm/TB R Hand/TB R Finger4/TB R Finger41
+        weight: 1
+      - path: TB Face
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Final Swing
       takeName: Take 001
       internalID: 0
       firstFrame: 15
