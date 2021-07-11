@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 
 public class OptionsMenu : MonoBehaviour
 {
+    #region Variables
     [Header("Audio UI")]
     public Button btnMusicUp;
     public Button btnMusicDown;
@@ -60,6 +61,7 @@ public class OptionsMenu : MonoBehaviour
     private List<string> resolutionsText = new List<string>();
     private int resolutionIndex;
     private bool isFullscreen;
+    #endregion
 
     private void Start()
     {
@@ -86,6 +88,21 @@ public class OptionsMenu : MonoBehaviour
         btnSFXDown.onClick.AddListener(SFXVolumeDown);
     }
 
+    private void Update()
+    {
+        if (isFullscreen)
+        {
+            btnFullscreenOn.interactable = false;
+            btnFullscreenOff.interactable = true;
+        }
+        else if (!isFullscreen)
+        {
+            btnFullscreenOn.interactable = true;
+            btnFullscreenOff.interactable = false;
+        }
+    }
+
+    #region Audio
     public float GetMusicVolume()
     {
         float value;
@@ -114,82 +131,6 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
-    private void ToggleFullscreen()
-    {
-        isFullscreen = !isFullscreen;
-        EventSystem.current.SetSelectedGameObject(btnApplyDisplay.gameObject, new AxisEventData(EventSystem.current));
-    }
-
-    private void SaveDisplayOptions()
-    {
-        SetResolution();
-        RefreshFullscreen();
-    }
-
-    private void RefreshFullscreen()
-    {
-        Screen.fullScreen = isFullscreen;
-    }
-
-    private void SetResolution()
-    {
-        Resolution res = resolutions[resolutionIndex];
-        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
-    }
-
-    private void ResolutionUp()
-    {
-        if (resolutionIndex != resolutions.Length - 1)
-        {
-            resolutionIndex = resolutionIndex + 1;
-            UpdateTextElements();
-        }
-    }
-    
-    private void ResolutionDown()
-    {
-        if (resolutionIndex != 0)
-        {
-            resolutionIndex = resolutionIndex - 1;
-            UpdateTextElements();
-        }
-    }
-
-    private void UpdateTextElements()
-    {
-        textResValue.text = resolutionsText[resolutionIndex];
-    }
-
-    private void Update()
-    {
-        if (isFullscreen)
-        {
-            btnFullscreenOn.interactable = false;
-            btnFullscreenOff.interactable = true;
-        }
-        else if (!isFullscreen)
-        {
-            btnFullscreenOn.interactable = true;
-            btnFullscreenOff.interactable = false;
-        }
-    }
-
-    private void PopulateResolutions()
-    {
-        for (int i  = 0; i < resolutions.Length; i++)
-        {
-            var res = resolutions[i].width + "x" + resolutions[i].height;
-            resolutionsText.Add(res);
-
-            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
-            {
-                resolutionIndex = i;
-            }
-        }
-    }
-
-
-    #region Audio
     //TODO: Test when audio is implemented!!!
     public void MusicVolumeUp()
     {
@@ -493,6 +434,68 @@ public class OptionsMenu : MonoBehaviour
                     break;
             default:
                 break;
+        }
+    }
+    #endregion
+
+    #region Display
+    private void ToggleFullscreen()
+    {
+        isFullscreen = !isFullscreen;
+        EventSystem.current.SetSelectedGameObject(btnApplyDisplay.gameObject, new AxisEventData(EventSystem.current));
+    }
+
+    private void SaveDisplayOptions()
+    {
+        SetResolution();
+        RefreshFullscreen();
+    }
+
+    private void RefreshFullscreen()
+    {
+        Screen.fullScreen = isFullscreen;
+    }
+
+    private void SetResolution()
+    {
+        Resolution res = resolutions[resolutionIndex];
+        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+    }
+
+    private void ResolutionUp()
+    {
+        if (resolutionIndex != resolutions.Length - 1)
+        {
+            resolutionIndex = resolutionIndex + 1;
+            UpdateTextElements();
+        }
+    }
+    
+    private void ResolutionDown()
+    {
+        if (resolutionIndex != 0)
+        {
+            resolutionIndex = resolutionIndex - 1;
+            UpdateTextElements();
+        }
+    }
+
+    private void UpdateTextElements()
+    {
+        textResValue.text = resolutionsText[resolutionIndex];
+    }
+
+    private void PopulateResolutions()
+    {
+        for (int i  = 0; i < resolutions.Length; i++)
+        {
+            var res = resolutions[i].width + "x" + resolutions[i].height;
+            resolutionsText.Add(res);
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                resolutionIndex = i;
+            }
         }
     }
     #endregion

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+    #region Variables
     private EventSystem eventSystem;
         
     [Header("Menu Canvas")]
@@ -45,6 +47,8 @@ public class MenuController : MonoBehaviour
     public Button btnAudioBack;
 
     private Animator animator;
+    #endregion
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -71,19 +75,22 @@ public class MenuController : MonoBehaviour
         btnDisplayBack.onClick.AddListener(GoToOptionsTop);
         btnAudioBack.onClick.AddListener(GoToOptionsTop);
 
-        //btnNewGame.onClick.AddListener(delegate { NavigateMenus("xxx"); });
+        btnNewGame.onClick.AddListener(StartNewDiscovery);
         //btnContinue.onClick.AddListener(delegate { NavigateMenus("xxx"); });
         btnCribBack.onClick.AddListener(delegate { NavigateMenus("Toy Box"); });
 
-        //btnCycleLeft.onClick.AddListener(delegate { NavigateMenus("xxx"); });
-        //btnCycleRight.onClick.AddListener(delegate { NavigateMenus("xxx"); });
-        //btnExercise.onClick.AddListener(delegate { NavigateMenus("xxx"); });
         btnPlaymatBack.onClick.AddListener(delegate { NavigateMenus("Toy Box"); });
 
         btnExitYes.onClick.AddListener(Application.Quit);
         btnExitNo.onClick.AddListener(delegate { NavigateMenus("Shelf"); });
         }
 
+    private void StartNewDiscovery()
+    {
+        
+    }
+
+    #region Options Menu
     private void DisplayOptions()
     {
         panelOptions.SetActive(false);
@@ -105,6 +112,7 @@ public class MenuController : MonoBehaviour
         panelOptions.SetActive(true);
         eventSystem.SetSelectedGameObject(btnDisplay.gameObject, new BaseEventData(eventSystem));
     }
+    #endregion
 
     private void NavigateMenus(string menuToSwitch)
     {
