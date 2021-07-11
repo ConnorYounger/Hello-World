@@ -750,7 +750,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
             ""id"": ""2527bfc7-f1ef-4ecf-b852-2d56ab0157ea"",
             ""actions"": [
                 {
-                    ""name"": ""Key1"",
+                    ""name"": ""SwingLeft"",
                     ""type"": ""Button"",
                     ""id"": ""95fd99bb-d8f9-473c-b9b7-9b05ebeffce2"",
                     ""expectedControlType"": ""Button"",
@@ -758,7 +758,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Key2"",
+                    ""name"": ""SwingRight"",
                     ""type"": ""Button"",
                     ""id"": ""51f8c0ca-5c91-4691-ac94-fbd1ee1018f4"",
                     ""expectedControlType"": ""Button"",
@@ -766,25 +766,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Key3"",
+                    ""name"": ""LegMovement"",
                     ""type"": ""Button"",
                     ""id"": ""f198de43-fc8e-41ab-9447-62da1ceaa43a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Key4"",
-                    ""type"": ""Button"",
-                    ""id"": ""499a45c6-d6a5-4bf9-b66a-0d88aa7c6291"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Key5"",
-                    ""type"": ""Button"",
-                    ""id"": ""35c94b72-242c-4587-9ade-d5d911084c8f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -798,18 +782,18 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Key1"",
+                    ""action"": ""SwingLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""d08193f6-647a-442e-9ec5-4596ff1cc3ee"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Key1"",
+                    ""action"": ""SwingLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -820,84 +804,29 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Key2"",
+                    ""action"": ""SwingRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""2ef7e7b2-b34e-44d5-85be-9780eb2dd526"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Key2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d33dce07-8c49-4acb-b325-7dc6da2cff10"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Key3"",
+                    ""action"": ""SwingRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""e564a46d-7000-479f-b346-38d4b9d5874a"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Key3"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c787bdfd-2cef-4858-baab-39292ee23ae5"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Key4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""95a10b4f-2d46-4ace-b0fd-e86abaefedf5"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Key4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9e5700e0-c987-4c21-9b1d-a1fbcf28e546"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Key5"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""927407d0-0523-4a90-a011-b12a2630e42c"",
-                    ""path"": ""<Gamepad>/leftStickPress"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Key5"",
+                    ""action"": ""LegMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1049,11 +978,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_QWOP_RightMovement2 = m_QWOP.FindAction("RightMovement2", throwIfNotFound: true);
         // RollOver
         m_RollOver = asset.FindActionMap("RollOver", throwIfNotFound: true);
-        m_RollOver_Key1 = m_RollOver.FindAction("Key1", throwIfNotFound: true);
-        m_RollOver_Key2 = m_RollOver.FindAction("Key2", throwIfNotFound: true);
-        m_RollOver_Key3 = m_RollOver.FindAction("Key3", throwIfNotFound: true);
-        m_RollOver_Key4 = m_RollOver.FindAction("Key4", throwIfNotFound: true);
-        m_RollOver_Key5 = m_RollOver.FindAction("Key5", throwIfNotFound: true);
+        m_RollOver_SwingLeft = m_RollOver.FindAction("SwingLeft", throwIfNotFound: true);
+        m_RollOver_SwingRight = m_RollOver.FindAction("SwingRight", throwIfNotFound: true);
+        m_RollOver_LegMovement = m_RollOver.FindAction("LegMovement", throwIfNotFound: true);
         // Blinking
         m_Blinking = asset.FindActionMap("Blinking", throwIfNotFound: true);
         m_Blinking_Key1 = m_Blinking.FindAction("Key1", throwIfNotFound: true);
@@ -1354,20 +1281,16 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     // RollOver
     private readonly InputActionMap m_RollOver;
     private IRollOverActions m_RollOverActionsCallbackInterface;
-    private readonly InputAction m_RollOver_Key1;
-    private readonly InputAction m_RollOver_Key2;
-    private readonly InputAction m_RollOver_Key3;
-    private readonly InputAction m_RollOver_Key4;
-    private readonly InputAction m_RollOver_Key5;
+    private readonly InputAction m_RollOver_SwingLeft;
+    private readonly InputAction m_RollOver_SwingRight;
+    private readonly InputAction m_RollOver_LegMovement;
     public struct RollOverActions
     {
         private @MiniGameInputs m_Wrapper;
         public RollOverActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Key1 => m_Wrapper.m_RollOver_Key1;
-        public InputAction @Key2 => m_Wrapper.m_RollOver_Key2;
-        public InputAction @Key3 => m_Wrapper.m_RollOver_Key3;
-        public InputAction @Key4 => m_Wrapper.m_RollOver_Key4;
-        public InputAction @Key5 => m_Wrapper.m_RollOver_Key5;
+        public InputAction @SwingLeft => m_Wrapper.m_RollOver_SwingLeft;
+        public InputAction @SwingRight => m_Wrapper.m_RollOver_SwingRight;
+        public InputAction @LegMovement => m_Wrapper.m_RollOver_LegMovement;
         public InputActionMap Get() { return m_Wrapper.m_RollOver; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1377,40 +1300,28 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_RollOverActionsCallbackInterface != null)
             {
-                @Key1.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey1;
-                @Key1.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey1;
-                @Key1.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey1;
-                @Key2.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey2;
-                @Key2.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey2;
-                @Key2.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey2;
-                @Key3.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey3;
-                @Key3.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey3;
-                @Key3.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey3;
-                @Key4.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey4;
-                @Key4.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey4;
-                @Key4.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey4;
-                @Key5.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey5;
-                @Key5.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey5;
-                @Key5.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnKey5;
+                @SwingLeft.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnSwingLeft;
+                @SwingLeft.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnSwingLeft;
+                @SwingLeft.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnSwingLeft;
+                @SwingRight.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnSwingRight;
+                @SwingRight.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnSwingRight;
+                @SwingRight.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnSwingRight;
+                @LegMovement.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnLegMovement;
+                @LegMovement.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnLegMovement;
+                @LegMovement.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnLegMovement;
             }
             m_Wrapper.m_RollOverActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Key1.started += instance.OnKey1;
-                @Key1.performed += instance.OnKey1;
-                @Key1.canceled += instance.OnKey1;
-                @Key2.started += instance.OnKey2;
-                @Key2.performed += instance.OnKey2;
-                @Key2.canceled += instance.OnKey2;
-                @Key3.started += instance.OnKey3;
-                @Key3.performed += instance.OnKey3;
-                @Key3.canceled += instance.OnKey3;
-                @Key4.started += instance.OnKey4;
-                @Key4.performed += instance.OnKey4;
-                @Key4.canceled += instance.OnKey4;
-                @Key5.started += instance.OnKey5;
-                @Key5.performed += instance.OnKey5;
-                @Key5.canceled += instance.OnKey5;
+                @SwingLeft.started += instance.OnSwingLeft;
+                @SwingLeft.performed += instance.OnSwingLeft;
+                @SwingLeft.canceled += instance.OnSwingLeft;
+                @SwingRight.started += instance.OnSwingRight;
+                @SwingRight.performed += instance.OnSwingRight;
+                @SwingRight.canceled += instance.OnSwingRight;
+                @LegMovement.started += instance.OnLegMovement;
+                @LegMovement.performed += instance.OnLegMovement;
+                @LegMovement.canceled += instance.OnLegMovement;
             }
         }
     }
@@ -1529,11 +1440,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     }
     public interface IRollOverActions
     {
-        void OnKey1(InputAction.CallbackContext context);
-        void OnKey2(InputAction.CallbackContext context);
-        void OnKey3(InputAction.CallbackContext context);
-        void OnKey4(InputAction.CallbackContext context);
-        void OnKey5(InputAction.CallbackContext context);
+        void OnSwingLeft(InputAction.CallbackContext context);
+        void OnSwingRight(InputAction.CallbackContext context);
+        void OnLegMovement(InputAction.CallbackContext context);
     }
     public interface IBlinkingActions
     {

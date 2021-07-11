@@ -11,7 +11,7 @@ public class StaminaSlider : MonoBehaviour
 
     public Slider countdownBar;
     //public GameObject loseText;
-    public RollOver finalPress;
+    public RollOver timerCheck;
     private Animator anim;
     public GameObject baby;
 
@@ -28,10 +28,12 @@ public class StaminaSlider : MonoBehaviour
 
     private void Update()
     {
-        if (finalPress.finalPress == false)
+        if (timerCheck.isLegUp == true)
         {
-            if (countDown) //Scale the countdown time to go faster than the refill time
+            if (countDown == true)
+            {
                 countdownBar.value -= Time.deltaTime;
+            }
 
             //If we are at 0, start to refill
             if (countdownBar.value <= 0)

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class BabyBalancing : MonoBehaviour
 {
@@ -12,13 +14,14 @@ public class BabyBalancing : MonoBehaviour
     private float balanceValue = 0;
     private bool canTilt = true;
 
-    public bool balanceWin = true;
+    public bool sitting = true;
     public float winAngle = 20;
     public float winAngleHoldTime = 5;
     private float currentHoldTime;
 
     [Header("UI")]
     public GameObject babyFellEGO;
+    public GameObject winEGO;
 
     private MiniGameInputs controls;
     private Vector2 move;
@@ -27,6 +30,8 @@ public class BabyBalancing : MonoBehaviour
     public GameObject spine;
     public GameObject bottom;
     public float bottomRotateDifference = 3;
+
+    public Animator animator;
 
     private void Awake()
     {
@@ -57,7 +62,7 @@ public class BabyBalancing : MonoBehaviour
 
     void BalanceWinCheck()
     {
-        if (balanceWin)
+        if (sitting)
         {
             if(withinWinAngle())
             {
@@ -81,6 +86,8 @@ public class BabyBalancing : MonoBehaviour
     {
         canTilt = false;
 
+        winEGO.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
         Debug.Log("Player Win");
     }
 
@@ -94,8 +101,14 @@ public class BabyBalancing : MonoBehaviour
 
     void PlayerMovement()
     {
+        int dir = 1;
+        if (sitting)
+            dir = -1;
+        else
+            dir = 1;
+
         //Vector3 rotation = new Vector3(transform.localRotation.x, transform.localRotation.y, move.x);
-        Vector3 rotation = new Vector3(spine.transform.localRotation.x, -move.x, spine.transform.localRotation.z);
+        Vector3 rotation = new Vector3(spine.transform.localRotation.x, move.x * dir, spine.transform.localRotation.z);
         //transform.Rotate(rotation * Time.deltaTime * playerRotateSpeed);
         spine.transform.Rotate(rotation * Time.deltaTime * playerRotateSpeed);
     }
@@ -131,7 +144,10 @@ public class BabyBalancing : MonoBehaviour
     {
         float value = 0;
         //value = 1 + Mathf.Abs(transform.localRotation.z) / CalculateMaxBalanceValue();
-        value = 1 + Mathf.Abs(spine.transform.localRotation.y) / CalculateMaxBalanceValue();
+        if(sitting)
+            value = 1 + Mathf.Abs(spine.transform.localRotation.y) / CalculateMaxBalanceValue();
+        else
+            value = 1 + Mathf.Abs(spine.transform.localRotation.x) / CalculateMaxBalanceValue();
 
         float tiltSmoothValue = Mathf.Pow(value, 3);
         return tiltSmoothValue;
@@ -157,6 +173,7 @@ public class BabyBalancing : MonoBehaviour
         canTilt = false;
 
         babyFellEGO.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
 
     public void Restart()
@@ -167,5 +184,10 @@ public class BabyBalancing : MonoBehaviour
         canTilt = true;
 
         babyFellEGO.SetActive(false);
+    }
+
+    public void SwitchScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

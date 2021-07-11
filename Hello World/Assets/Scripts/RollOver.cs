@@ -7,12 +7,15 @@ public class RollOver : MonoBehaviour
     private Animator anim;
     private MiniGameInputs controls;
 
-    private bool start = true;
-    private bool firstPress = false;
-    private bool secondPress = false;
-    private bool thirdPress = false;
-    private bool fourthPress = false;
-    public bool finalPress = false;
+    private int leftSwingAmount = 0;
+    private int rightSwingAmount = 0;
+
+    private bool leftMovement = true;
+    private bool rightMovement = false;
+    public bool isLegUp = false;
+
+    public float failTimer = 0;
+    public float timeLimit = 0;
 
     private void Awake()
     {
@@ -34,52 +37,64 @@ public class RollOver : MonoBehaviour
 
     void SetInputActions()
     {
-        controls.RollOver.Key1.performed += ctx => SwingLeft();
-        controls.RollOver.Key2.performed += ctx => SwingRight();
+        controls.RollOver.SwingLeft.performed += ctx => SwingLeft();
+        controls.RollOver.SwingRight.performed += ctx => SwingRight();
+        controls.RollOver.LegMovement.performed += ctx => LegUp();
+        controls.RollOver.LegMovement.canceled += ctx => LegDown();
+    }
+
+    public void Update()
+    {
+        if (isLegUp == true)
+        {
+            failTimer += Time.deltaTime;
+        }
+
+        if (failTimer >= timeLimit)
+        {
+            anim.SetBool("legUp", false);
+            anim.SetInteger("leftSwing", 0);
+            anim.SetInteger("rightSwing", 0);
+            failTimer = 0;
+            isLegUp = false;
+        }
+    }
+
+    void LegDown()
+    {
+        anim.SetBool("legUp", false);
+        anim.SetInteger("leftSwing", 0);
+        anim.SetInteger("rightSwing", 0);
+        isLegUp = false;
+    }
+
+    void LegUp()
+    {
+        anim.SetBool("legUp", true);
+        isLegUp = true;
     }
 
     void SwingLeft()
     {
-        if (start == true)
+        if (leftMovement == true)
         {
-            anim.SetBool("firstPress", true);
-            start = false;
-            firstPress = true;
-        }
-
-        if (secondPress == true)
-        {
-            anim.SetBool("secondPress", false);
-            anim.SetBool("thirdPress", true);
-            secondPress = false;
-            thirdPress = true;
-        }
-
-        if (fourthPress == true)
-        {
-            anim.SetBool("fourthPress", false);
-            anim.SetBool("finalPress", true);
-            fourthPress = false;
-            finalPress = true;
+            leftSwingAmount++;
+            anim.SetInteger("leftSwing", leftSwingAmount);
+            leftMovement = false;
+            rightMovement = true;
+            failTimer = 0;
         }
     }
 
     void SwingRight()
     {
-        if(firstPress == true)
+        if (rightMovement == true)
         {
-            anim.SetBool("firstPress", false);
-            anim.SetBool("secondPress", true);
-            firstPress = false;
-            secondPress = true;
-        }
-
-        if (thirdPress == true)
-        {
-            anim.SetBool("thirdPress", false);
-            anim.SetBool("fourthPress", true);
-            thirdPress = false;
-            fourthPress = true;
+            rightSwingAmount++;
+            anim.SetInteger("rightSwing", rightSwingAmount);
+            rightMovement = false;
+            leftMovement = true;
+            failTimer = 0;
         }
     }
 }
