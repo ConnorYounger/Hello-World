@@ -11,7 +11,7 @@ public class StaminaSlider : MonoBehaviour
 
     public Slider countdownBar;
     //public GameObject loseText;
-    public WinWithToy winWithToy;
+    public RollOver finalPress;
     private Animator anim;
     public GameObject baby;
 
@@ -28,7 +28,7 @@ public class StaminaSlider : MonoBehaviour
 
     private void Update()
     {
-        if (winWithToy.gameWon == false)
+        if (finalPress.finalPress == false)
         {
             if (countDown) //Scale the countdown time to go faster than the refill time
                 countdownBar.value -= Time.deltaTime;

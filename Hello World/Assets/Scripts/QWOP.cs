@@ -18,13 +18,11 @@ public class QWOP : MonoBehaviour
 
     private Animator anim;
 
-    //add bools for each limb to stop from moving backwards too much. 
-
-    private char lastPressed;
     private bool isLeftMovement = true;
     private bool isRightMovement = false;
     private bool isFirstRight = false;
     private bool isFirstLeft = false;
+    private bool canInput = true;
 
     private void Awake()
     {
@@ -36,9 +34,12 @@ public class QWOP : MonoBehaviour
     void SetInputActions()
     {
         controls.QWOP.LeftMovement1.performed += ctx => LeftMovement();
-        controls.QWOP.LeftMovement2.performed += ctx => LeftMovement1();
         controls.QWOP.RightMovement1.performed += ctx => RightMovement();
-        controls.QWOP.RightMovement2.performed += ctx => RightMovement1();
+
+        controls.QWOP.LeftMovement2.performed += ctx => LeftMovement1(ctx.ReadValue<float>());
+        controls.QWOP.LeftMovement2.canceled += ctx => canInput = true;
+        controls.QWOP.RightMovement2.performed += ctx => RightMovement1(ctx.ReadValue<float>());
+        controls.QWOP.RightMovement2.canceled += ctx => canInput = true;
     }
 
     private void OnEnable()
@@ -61,32 +62,37 @@ public class QWOP : MonoBehaviour
             isLeftMovement = false;
             isFirstLeft = true;
         }
-        //else
-        //{
-        //    anim.SetBool("wrongPressed", true);
-        //    anim.SetInteger("leftMovement", 0);
-        //    anim.SetInteger("rightMovement", 0);
-        //}
+        else
+        {
+            anim.SetBool("wrongPressed", true);
+            anim.SetInteger("leftMovement", 0);
+            anim.SetInteger("rightMovement", 0);
+        }
     }
 
-    void LeftMovement1()
+    void LeftMovement1(float value)
     {
-        if(isFirstLeft == true)
+        if(canInput == true)
         {
-            anim.SetBool("wrongPressed", false);
-            anim.SetInteger("leftMovement", 2);
-            anim.SetInteger("rightMovement", 0);
-            isFirstLeft = false;
-            isRightMovement = true;
-        }
-        //else
-        //{
-        //    anim.SetBool("wrongPressed", true);
-        //    anim.SetInteger("leftMovement", 0);
-        //    anim.SetInteger("rightMovement", 0);
-        //    isFirstLeft = false;
-        //    isLeftMovement = true;
-        //}
+            if (isFirstLeft == true)
+            {
+                anim.SetBool("wrongPressed", false);
+                anim.SetInteger("leftMovement", 2);
+                anim.SetInteger("rightMovement", 0);
+                isFirstLeft = false;
+                isRightMovement = true;
+            }
+            else if (value > 0.95f)
+            {
+                anim.SetBool("wrongPressed", true);
+                anim.SetInteger("leftMovement", 0);
+                anim.SetInteger("rightMovement", 0);
+                isFirstLeft = false;
+                isLeftMovement = true;
+            }
+
+            canInput = false;
+        }  
     }
 
     void RightMovement()
@@ -99,31 +105,36 @@ public class QWOP : MonoBehaviour
             isRightMovement = false;
             isFirstRight = true;
         }
-        //else
-        //{
-        //    anim.SetBool("wrongPressed", true);
-        //    anim.SetInteger("rightMovement", 0);
-        //    anim.SetInteger("leftMovement", 0);
-        //}
+        else
+        {
+            anim.SetBool("wrongPressed", true);
+            anim.SetInteger("rightMovement", 0);
+            anim.SetInteger("leftMovement", 0);
+        }
     }
 
-    void RightMovement1()
+    void RightMovement1(float value)
     {
-        if(isFirstRight == true)
+        if(canInput == true)
         {
-            anim.SetInteger("rightMovement", 2);
-            anim.SetInteger("leftMovement", 0);
-            anim.SetBool("wrongPressed", false);
-            isFirstRight = false;
-            isLeftMovement = true;
+            if (isFirstRight == true && value > 0.95f)
+            {
+                anim.SetInteger("rightMovement", 2);
+                anim.SetInteger("leftMovement", 0);
+                anim.SetBool("wrongPressed", false);
+                isFirstRight = false;
+                isLeftMovement = true;
+            }
+            else if (value > 0.95f)
+            {
+                anim.SetBool("wrongPressed", true);
+                anim.SetInteger("rightMovement", 0);
+                anim.SetInteger("leftMovement", 0);
+                isFirstRight = false;
+                isRightMovement = true;
+            }
+
+            canInput = false;
         }
-        //else
-        //{
-        //    anim.SetBool("wrongPressed", true);
-        //    anim.SetInteger("rightMovement", 0);
-        //    anim.SetInteger("leftMovement", 0);
-        //    isFirstRight = false;
-        //    isRightMovement = true;
-        //}
     }
 }

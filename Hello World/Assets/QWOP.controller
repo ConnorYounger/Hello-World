@@ -241,9 +241,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: leftPressed
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: leftMovement
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9090278805185025111}
   m_Solo: 0
@@ -392,9 +392,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: leftPressed
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: leftMovement
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9090278805185025111}
   m_Solo: 0
@@ -417,9 +417,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: leftPressed
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: leftMovement
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9090278805185025111}
   m_Solo: 0
@@ -472,9 +472,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: rightPressed
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: rightMovement
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7441665701742466540}
   m_Solo: 0
@@ -498,14 +498,14 @@ AnimatorController:
   m_Name: QWOP
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: leftPressed
-    m_Type: 4
+  - m_Name: leftMovement
+    m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: rightPressed
-    m_Type: 4
+  - m_Name: rightMovement
+    m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -549,9 +549,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: rightPressed
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: rightMovement
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7441665701742466540}
   m_Solo: 0
@@ -667,10 +667,10 @@ AnimatorStateMachine:
     m_Position: {x: 450, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7573905576395264593}
-    m_Position: {x: 460, y: 90, z: 0}
+    m_Position: {x: 460, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6919762353295619759}
-    m_Position: {x: 460, y: 160, z: 0}
+    m_Position: {x: 460, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6209118189709853165}
     m_Position: {x: 750, y: 160, z: 0}
@@ -964,9 +964,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: rightPressed
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: rightMovement
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7441665701742466540}
   m_Solo: 0
