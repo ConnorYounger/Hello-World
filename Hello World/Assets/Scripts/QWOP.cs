@@ -23,6 +23,8 @@ public class QWOP : MonoBehaviour
     private char lastPressed;
     private bool isLeftMovement = true;
     private bool isRightMovement = false;
+    private bool isFirstRight = false;
+    private bool isFirstLeft = false;
 
     private void Awake()
     {
@@ -33,8 +35,10 @@ public class QWOP : MonoBehaviour
 
     void SetInputActions()
     {
-        controls.QWOP.Click1.performed += ctx => LeftMovement();
-        controls.QWOP.Click2.performed += ctx => RightMovement();
+        controls.QWOP.LeftMovement1.performed += ctx => LeftMovement();
+        controls.QWOP.LeftMovement2.performed += ctx => LeftMovement1();
+        controls.QWOP.RightMovement1.performed += ctx => RightMovement();
+        controls.QWOP.RightMovement2.performed += ctx => RightMovement1();
     }
 
     private void OnEnable()
@@ -51,34 +55,75 @@ public class QWOP : MonoBehaviour
     {
         if (isLeftMovement == true)
         {
-            anim.SetBool("leftPressed", true);
-            anim.SetBool("rightPressed", false);
             anim.SetBool("wrongPressed", false);
+            anim.SetInteger("leftMovement", 1);
+            anim.SetInteger("rightMovement", 0);
             isLeftMovement = false;
+            isFirstLeft = true;
+        }
+        //else
+        //{
+        //    anim.SetBool("wrongPressed", true);
+        //    anim.SetInteger("leftMovement", 0);
+        //    anim.SetInteger("rightMovement", 0);
+        //}
+    }
+
+    void LeftMovement1()
+    {
+        if(isFirstLeft == true)
+        {
+            anim.SetBool("wrongPressed", false);
+            anim.SetInteger("leftMovement", 2);
+            anim.SetInteger("rightMovement", 0);
+            isFirstLeft = false;
             isRightMovement = true;
         }
-        else
-        {
-            anim.SetBool("wrongPressed", true);
-            anim.SetBool("rightPressed", false);
-            anim.SetBool("leftPressed", false);
-        }
+        //else
+        //{
+        //    anim.SetBool("wrongPressed", true);
+        //    anim.SetInteger("leftMovement", 0);
+        //    anim.SetInteger("rightMovement", 0);
+        //    isFirstLeft = false;
+        //    isLeftMovement = true;
+        //}
     }
+
     void RightMovement()
     {
         if (isRightMovement == true)
         {
-            anim.SetBool("rightPressed", true);
-            anim.SetBool("leftPressed", false);
+            anim.SetInteger("rightMovement", 1);
+            anim.SetInteger("leftMovement", 0);
             anim.SetBool("wrongPressed", false);
             isRightMovement = false;
+            isFirstRight = true;
+        }
+        //else
+        //{
+        //    anim.SetBool("wrongPressed", true);
+        //    anim.SetInteger("rightMovement", 0);
+        //    anim.SetInteger("leftMovement", 0);
+        //}
+    }
+
+    void RightMovement1()
+    {
+        if(isFirstRight == true)
+        {
+            anim.SetInteger("rightMovement", 2);
+            anim.SetInteger("leftMovement", 0);
+            anim.SetBool("wrongPressed", false);
+            isFirstRight = false;
             isLeftMovement = true;
         }
-        else
-        {
-            anim.SetBool("wrongPressed", true);
-            anim.SetBool("rightPressed", false);
-            anim.SetBool("leftPressed", false);
-        }
+        //else
+        //{
+        //    anim.SetBool("wrongPressed", true);
+        //    anim.SetInteger("rightMovement", 0);
+        //    anim.SetInteger("leftMovement", 0);
+        //    isFirstRight = false;
+        //    isRightMovement = true;
+        //}
     }
 }

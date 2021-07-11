@@ -622,7 +622,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
             ""id"": ""4e1789d8-3995-4a30-86d4-0b500e215cb1"",
             ""actions"": [
                 {
-                    ""name"": ""Click1"",
+                    ""name"": ""LeftMovement1"",
                     ""type"": ""Button"",
                     ""id"": ""5a110672-c471-422f-9fbb-a591cbde0e5f"",
                     ""expectedControlType"": ""Button"",
@@ -630,9 +630,25 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Click2"",
+                    ""name"": ""LeftMovement2"",
+                    ""type"": ""Button"",
+                    ""id"": ""d57c018c-75af-48e7-8845-442f9c904926"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RightMovement1"",
                     ""type"": ""Button"",
                     ""id"": ""590c0d6e-4bca-461e-b427-68f5041c56c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RightMovement2"",
+                    ""type"": ""Button"",
+                    ""id"": ""f5b9c6e1-9fd0-405d-85d3-d495585aba41"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -641,23 +657,12 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""ca75b5b2-d7e4-4de4-8924-445fb0f1cd26"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Click1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ec401a9a-fc28-48f6-8a85-3c3996008c0d"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Click1"",
+                    ""action"": ""LeftMovement1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -668,18 +673,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Click1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""62454087-b52c-4c68-bbf0-d5c8504c520e"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Click2"",
+                    ""action"": ""LeftMovement1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -690,7 +684,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Click2"",
+                    ""action"": ""RightMovement1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -701,7 +695,51 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Click2"",
+                    ""action"": ""RightMovement1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""432791c7-1bcc-47e6-8fb6-0f8f02bc2ffa"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftMovement2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5c925c7-8116-42b1-96e5-7602ce95f7fb"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftMovement2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec5bded2-6917-49c0-b515-4c4f58267928"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightMovement2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c452a18-bff0-4d39-bf1a-7871ced1c8ff"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightMovement2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1005,8 +1043,10 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_HoldingObjects_RightHandGrab = m_HoldingObjects.FindAction("RightHandGrab", throwIfNotFound: true);
         // QWOP
         m_QWOP = asset.FindActionMap("QWOP", throwIfNotFound: true);
-        m_QWOP_Click1 = m_QWOP.FindAction("Click1", throwIfNotFound: true);
-        m_QWOP_Click2 = m_QWOP.FindAction("Click2", throwIfNotFound: true);
+        m_QWOP_LeftMovement1 = m_QWOP.FindAction("LeftMovement1", throwIfNotFound: true);
+        m_QWOP_LeftMovement2 = m_QWOP.FindAction("LeftMovement2", throwIfNotFound: true);
+        m_QWOP_RightMovement1 = m_QWOP.FindAction("RightMovement1", throwIfNotFound: true);
+        m_QWOP_RightMovement2 = m_QWOP.FindAction("RightMovement2", throwIfNotFound: true);
         // RollOver
         m_RollOver = asset.FindActionMap("RollOver", throwIfNotFound: true);
         m_RollOver_Key1 = m_RollOver.FindAction("Key1", throwIfNotFound: true);
@@ -1257,14 +1297,18 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     // QWOP
     private readonly InputActionMap m_QWOP;
     private IQWOPActions m_QWOPActionsCallbackInterface;
-    private readonly InputAction m_QWOP_Click1;
-    private readonly InputAction m_QWOP_Click2;
+    private readonly InputAction m_QWOP_LeftMovement1;
+    private readonly InputAction m_QWOP_LeftMovement2;
+    private readonly InputAction m_QWOP_RightMovement1;
+    private readonly InputAction m_QWOP_RightMovement2;
     public struct QWOPActions
     {
         private @MiniGameInputs m_Wrapper;
         public QWOPActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Click1 => m_Wrapper.m_QWOP_Click1;
-        public InputAction @Click2 => m_Wrapper.m_QWOP_Click2;
+        public InputAction @LeftMovement1 => m_Wrapper.m_QWOP_LeftMovement1;
+        public InputAction @LeftMovement2 => m_Wrapper.m_QWOP_LeftMovement2;
+        public InputAction @RightMovement1 => m_Wrapper.m_QWOP_RightMovement1;
+        public InputAction @RightMovement2 => m_Wrapper.m_QWOP_RightMovement2;
         public InputActionMap Get() { return m_Wrapper.m_QWOP; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1274,22 +1318,34 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_QWOPActionsCallbackInterface != null)
             {
-                @Click1.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
-                @Click1.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
-                @Click1.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick1;
-                @Click2.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick2;
-                @Click2.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick2;
-                @Click2.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnClick2;
+                @LeftMovement1.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnLeftMovement1;
+                @LeftMovement1.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnLeftMovement1;
+                @LeftMovement1.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnLeftMovement1;
+                @LeftMovement2.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnLeftMovement2;
+                @LeftMovement2.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnLeftMovement2;
+                @LeftMovement2.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnLeftMovement2;
+                @RightMovement1.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnRightMovement1;
+                @RightMovement1.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnRightMovement1;
+                @RightMovement1.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnRightMovement1;
+                @RightMovement2.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnRightMovement2;
+                @RightMovement2.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnRightMovement2;
+                @RightMovement2.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnRightMovement2;
             }
             m_Wrapper.m_QWOPActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Click1.started += instance.OnClick1;
-                @Click1.performed += instance.OnClick1;
-                @Click1.canceled += instance.OnClick1;
-                @Click2.started += instance.OnClick2;
-                @Click2.performed += instance.OnClick2;
-                @Click2.canceled += instance.OnClick2;
+                @LeftMovement1.started += instance.OnLeftMovement1;
+                @LeftMovement1.performed += instance.OnLeftMovement1;
+                @LeftMovement1.canceled += instance.OnLeftMovement1;
+                @LeftMovement2.started += instance.OnLeftMovement2;
+                @LeftMovement2.performed += instance.OnLeftMovement2;
+                @LeftMovement2.canceled += instance.OnLeftMovement2;
+                @RightMovement1.started += instance.OnRightMovement1;
+                @RightMovement1.performed += instance.OnRightMovement1;
+                @RightMovement1.canceled += instance.OnRightMovement1;
+                @RightMovement2.started += instance.OnRightMovement2;
+                @RightMovement2.performed += instance.OnRightMovement2;
+                @RightMovement2.canceled += instance.OnRightMovement2;
             }
         }
     }
@@ -1466,8 +1522,10 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     }
     public interface IQWOPActions
     {
-        void OnClick1(InputAction.CallbackContext context);
-        void OnClick2(InputAction.CallbackContext context);
+        void OnLeftMovement1(InputAction.CallbackContext context);
+        void OnLeftMovement2(InputAction.CallbackContext context);
+        void OnRightMovement1(InputAction.CallbackContext context);
+        void OnRightMovement2(InputAction.CallbackContext context);
     }
     public interface IRollOverActions
     {
