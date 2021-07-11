@@ -26,27 +26,10 @@ public class ExercisePicker : MonoBehaviour
         exerciseIndex = 0;
         textExercise.text = exerciseNames[exerciseIndex];
 
-        btnCycleLeft.onClick.AddListener(delegate { UpdateExercise(-1); });
-        btnCycleRight.onClick.AddListener(delegate { UpdateExercise(1); });
+        btnCycleLeft.onClick.AddListener(ExerciseDown);
+        btnCycleRight.onClick.AddListener(ExerciseUp);
 
         btnExercise.onClick.AddListener(LoadExercise);
-    }
-
-    private void Update()
-    {
-        if (exerciseIndex == 0)
-        {
-            btnCycleLeft.interactable = false;
-        }
-        else if (exerciseIndex == exercises.Length)
-        {
-            btnCycleRight.interactable = false;
-        }
-        else
-        {
-            btnCycleLeft.interactable = true;
-            btnCycleRight.interactable = true;
-        }
     }
 
     private void LoadExercise()
@@ -54,10 +37,22 @@ public class ExercisePicker : MonoBehaviour
         SceneManager.LoadScene(exercises[exerciseIndex]);
     }
 
-    private void UpdateExercise(int i)
+    private void ExerciseUp()
     {
-        exerciseIndex = exerciseIndex + i;
-        textExercise.text = exerciseNames[exerciseIndex];
+        if (exerciseIndex != exercises.Length)
+        {
+            exerciseIndex = exerciseIndex + 1;
+            textExercise.text = exerciseNames[exerciseIndex];
+        }
+    }
+
+    private void ExerciseDown()
+    {
+        if (exerciseIndex != 0)
+        {
+            exerciseIndex = exerciseIndex - 1 ;
+            textExercise.text = exerciseNames[exerciseIndex];
+        }
     }
 
     private void PopulateExercises()
@@ -67,10 +62,10 @@ public class ExercisePicker : MonoBehaviour
         exerciseNames.Add("The little one said");
         exerciseNames.Add("Jelly on a plate");
         exerciseNames.Add("Open, shut them");
-        exerciseNames.Add("Popstar");
-        exerciseNames.Add("Off you go");
-        exerciseNames.Add("Copycat");
-        exerciseNames.Add("Monkey monkey");
-        exerciseNames.Add("One small step");
+        //exerciseNames.Add("Popstar");
+        //exerciseNames.Add("Off you go");
+        //exerciseNames.Add("Copycat");
+        //exerciseNames.Add("Monkey monkey");
+        //exerciseNames.Add("One small step");
     }
 }
