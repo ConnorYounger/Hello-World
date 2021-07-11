@@ -598,6 +598,14 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""3886d07d-5ecc-4575-bccc-28beaa3d872d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -644,6 +652,28 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""action"": ""RightHandGrab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b071dab6-5fc6-4be8-85f4-8dd439e3793d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a323aeed-b889-4d33-bdec-6c7c090d80ec"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -679,6 +709,14 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""name"": ""RightMovement2"",
                     ""type"": ""Button"",
                     ""id"": ""f5b9c6e1-9fd0-405d-85d3-d495585aba41"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc0056d8-1b03-4f84-8b29-20fbcf780a57"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -772,6 +810,28 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""action"": ""RightMovement2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88e664ea-30ab-4e4a-bf25-72724c97a94f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6114ad09-4eb2-42ef-9ab4-fdba979d8a05"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -799,6 +859,14 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""name"": ""LegMovement"",
                     ""type"": ""Button"",
                     ""id"": ""f198de43-fc8e-41ab-9447-62da1ceaa43a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""769f7ca5-0090-4845-b271-e42fb2a25406"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -857,6 +925,28 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LegMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2bc71f1-e880-4d3f-b167-5f9e6d464cc6"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3891f09a-0a71-44c0-85ff-120fe69d0604"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1001,17 +1091,20 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_HoldingObjects_RightHandMovement = m_HoldingObjects.FindAction("RightHandMovement", throwIfNotFound: true);
         m_HoldingObjects_LeftHandGrab = m_HoldingObjects.FindAction("LeftHandGrab", throwIfNotFound: true);
         m_HoldingObjects_RightHandGrab = m_HoldingObjects.FindAction("RightHandGrab", throwIfNotFound: true);
+        m_HoldingObjects_Pause = m_HoldingObjects.FindAction("Pause", throwIfNotFound: true);
         // QWOP
         m_QWOP = asset.FindActionMap("QWOP", throwIfNotFound: true);
         m_QWOP_LeftMovement1 = m_QWOP.FindAction("LeftMovement1", throwIfNotFound: true);
         m_QWOP_LeftMovement2 = m_QWOP.FindAction("LeftMovement2", throwIfNotFound: true);
         m_QWOP_RightMovement1 = m_QWOP.FindAction("RightMovement1", throwIfNotFound: true);
         m_QWOP_RightMovement2 = m_QWOP.FindAction("RightMovement2", throwIfNotFound: true);
+        m_QWOP_Pause = m_QWOP.FindAction("Pause", throwIfNotFound: true);
         // RollOver
         m_RollOver = asset.FindActionMap("RollOver", throwIfNotFound: true);
         m_RollOver_SwingLeft = m_RollOver.FindAction("SwingLeft", throwIfNotFound: true);
         m_RollOver_SwingRight = m_RollOver.FindAction("SwingRight", throwIfNotFound: true);
         m_RollOver_LegMovement = m_RollOver.FindAction("LegMovement", throwIfNotFound: true);
+        m_RollOver_Pause = m_RollOver.FindAction("Pause", throwIfNotFound: true);
         // Blinking
         m_Blinking = asset.FindActionMap("Blinking", throwIfNotFound: true);
         m_Blinking_Key1 = m_Blinking.FindAction("Key1", throwIfNotFound: true);
@@ -1210,6 +1303,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_HoldingObjects_RightHandMovement;
     private readonly InputAction m_HoldingObjects_LeftHandGrab;
     private readonly InputAction m_HoldingObjects_RightHandGrab;
+    private readonly InputAction m_HoldingObjects_Pause;
     public struct HoldingObjectsActions
     {
         private @MiniGameInputs m_Wrapper;
@@ -1218,6 +1312,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         public InputAction @RightHandMovement => m_Wrapper.m_HoldingObjects_RightHandMovement;
         public InputAction @LeftHandGrab => m_Wrapper.m_HoldingObjects_LeftHandGrab;
         public InputAction @RightHandGrab => m_Wrapper.m_HoldingObjects_RightHandGrab;
+        public InputAction @Pause => m_Wrapper.m_HoldingObjects_Pause;
         public InputActionMap Get() { return m_Wrapper.m_HoldingObjects; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1239,6 +1334,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @RightHandGrab.started -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnRightHandGrab;
                 @RightHandGrab.performed -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnRightHandGrab;
                 @RightHandGrab.canceled -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnRightHandGrab;
+                @Pause.started -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_HoldingObjectsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1255,6 +1353,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @RightHandGrab.started += instance.OnRightHandGrab;
                 @RightHandGrab.performed += instance.OnRightHandGrab;
                 @RightHandGrab.canceled += instance.OnRightHandGrab;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1267,6 +1368,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_QWOP_LeftMovement2;
     private readonly InputAction m_QWOP_RightMovement1;
     private readonly InputAction m_QWOP_RightMovement2;
+    private readonly InputAction m_QWOP_Pause;
     public struct QWOPActions
     {
         private @MiniGameInputs m_Wrapper;
@@ -1275,6 +1377,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         public InputAction @LeftMovement2 => m_Wrapper.m_QWOP_LeftMovement2;
         public InputAction @RightMovement1 => m_Wrapper.m_QWOP_RightMovement1;
         public InputAction @RightMovement2 => m_Wrapper.m_QWOP_RightMovement2;
+        public InputAction @Pause => m_Wrapper.m_QWOP_Pause;
         public InputActionMap Get() { return m_Wrapper.m_QWOP; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1296,6 +1399,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @RightMovement2.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnRightMovement2;
                 @RightMovement2.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnRightMovement2;
                 @RightMovement2.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnRightMovement2;
+                @Pause.started -= m_Wrapper.m_QWOPActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_QWOPActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_QWOPActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_QWOPActionsCallbackInterface = instance;
             if (instance != null)
@@ -1312,6 +1418,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @RightMovement2.started += instance.OnRightMovement2;
                 @RightMovement2.performed += instance.OnRightMovement2;
                 @RightMovement2.canceled += instance.OnRightMovement2;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1323,6 +1432,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_RollOver_SwingLeft;
     private readonly InputAction m_RollOver_SwingRight;
     private readonly InputAction m_RollOver_LegMovement;
+    private readonly InputAction m_RollOver_Pause;
     public struct RollOverActions
     {
         private @MiniGameInputs m_Wrapper;
@@ -1330,6 +1440,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         public InputAction @SwingLeft => m_Wrapper.m_RollOver_SwingLeft;
         public InputAction @SwingRight => m_Wrapper.m_RollOver_SwingRight;
         public InputAction @LegMovement => m_Wrapper.m_RollOver_LegMovement;
+        public InputAction @Pause => m_Wrapper.m_RollOver_Pause;
         public InputActionMap Get() { return m_Wrapper.m_RollOver; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1348,6 +1459,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @LegMovement.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnLegMovement;
                 @LegMovement.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnLegMovement;
                 @LegMovement.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnLegMovement;
+                @Pause.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_RollOverActionsCallbackInterface = instance;
             if (instance != null)
@@ -1361,6 +1475,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @LegMovement.started += instance.OnLegMovement;
                 @LegMovement.performed += instance.OnLegMovement;
                 @LegMovement.canceled += instance.OnLegMovement;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1470,6 +1587,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnRightHandMovement(InputAction.CallbackContext context);
         void OnLeftHandGrab(InputAction.CallbackContext context);
         void OnRightHandGrab(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IQWOPActions
     {
@@ -1477,12 +1595,14 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnLeftMovement2(InputAction.CallbackContext context);
         void OnRightMovement1(InputAction.CallbackContext context);
         void OnRightMovement2(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IRollOverActions
     {
         void OnSwingLeft(InputAction.CallbackContext context);
         void OnSwingRight(InputAction.CallbackContext context);
         void OnLegMovement(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IBlinkingActions
     {
