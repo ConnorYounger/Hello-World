@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -86,6 +87,7 @@ public class BabyBalancing : MonoBehaviour
         canTilt = false;
 
         winEGO.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
         Debug.Log("Player Win");
     }
 
@@ -171,6 +173,7 @@ public class BabyBalancing : MonoBehaviour
         canTilt = false;
 
         babyFellEGO.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
 
     public void Restart()
