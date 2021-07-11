@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -327,12 +328,16 @@ public class Workout : MonoBehaviour
     {
         winScreen.SetActive(true);
 
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("WinButton"));
+
         gameFinished = true;
     }
 
     void Lose()
     {
         loseScreen.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("LoseButton"));
 
         gameFinished = true;
     }

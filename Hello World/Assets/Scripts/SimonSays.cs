@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -189,6 +190,7 @@ public class SimonSays : MonoBehaviour
 
         uIElements.SetActive(false);
         winUI.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
     }
 
     void CalculateInput()
