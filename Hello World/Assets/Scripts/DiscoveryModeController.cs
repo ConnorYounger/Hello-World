@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class DiscoveryModeController : MonoBehaviour
 {
     #region Variables
+    public GameObject player;
     public float exerciseIndex;
+    public string cardIndex;
+    
     public Button btnBack;
     public Button btnNext;
 
@@ -24,15 +27,12 @@ public class DiscoveryModeController : MonoBehaviour
     public Image stage6In;
     public Image stage6Out;
 
-    private bool onCardIn;
-    public string cardIndex;
     #endregion
 
     private void Start()
     {
-        //LoadPlayer();
-        onCardIn = true;
-        ShowCardIn();
+        LoadPlayer();
+        ShowMilestoneCard();
 
         btnBack.onClick.AddListener(delegate { LoadScene("Main"); });
         btnNext.onClick.AddListener(ContinueDiscovery);
@@ -46,13 +46,13 @@ public class DiscoveryModeController : MonoBehaviour
                 LoadScene("Exercise 1.1");
                 break;
             case "1Out":
-                onCardIn = true;
+                cardIndex = "2In";
                 break;
             case "2In":
-                LoadScene("Exercise 1.1");
+                LoadScene("Exercise 2.1");
                 break;
             case "2Out":
-                onCardIn = true;
+                cardIndex = "3In";
                 break;
             //Add more exercises
             default:
@@ -60,67 +60,44 @@ public class DiscoveryModeController : MonoBehaviour
         }
     }
 
+    private void ShowMilestoneCard()
+    {
+        switch (cardIndex)
+        {
+            case "1In":
+                break;
+            case "1Out":
+                break;
+            case "2In":
+                break;
+            case "2Out":
+                break;
+            case "3In":
+                break;
+            case "3Out":
+                break;
+            case "4In":
+                break;
+            case "4Out":
+                break;
+            case "5In":
+                break;
+            case "5Out":
+                break;
+            case "6In":
+                break;
+            default:
+                break;
+        }
+    }
     private void LoadScene(string v)
     {
         SceneManager.LoadScene(v);
     }
 
-    private void ShowCardIn()
+    public void SavePlayer()
     {
-        switch (exerciseIndex)
-        {
-            case 1.1f:
-                stage2In.enabled = true;
-                break;
-            case 2.1f:
-                stage3In.enabled = true;
-                break;
-            case 3.1f:
-                stage4In.enabled = true;
-                break;
-            case 4.1f:
-                stage5In.enabled = true;
-                break;
-            case 5.1f:
-                stage6In.enabled = true;
-                break;
-            default:
-                stage1In.enabled = true;
-                //set the next 'step' for button click
-                cardIndex = "1In";
-                break;
-        }
-    }
-
-    private void ShowCardOut()
-    {
-        switch (exerciseIndex)
-        {
-            case 1.1f:
-                stage2Out.enabled = true;
-                onCardIn = false;
-                break;
-            case 2.1f:
-                stage3Out.enabled = true;
-                onCardIn = false;
-                break;
-            case 3.1f:
-                stage4Out.enabled = true;
-                onCardIn = false;
-                break;
-            case 4.1f:
-                stage5Out.enabled = true;
-                onCardIn = false;
-                break;
-            case 5.1f:
-                stage6Out.enabled = true;
-                onCardIn = false;
-                break;
-            default:
-                stage1Out.enabled = true;
-                onCardIn = false;
-                break;
-        }
+        //SaveSystem.SavePlayer(this);
     }
 
     private void LoadPlayer()
@@ -128,5 +105,6 @@ public class DiscoveryModeController : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
 
         exerciseIndex = data.exerciseIndex;
+        cardIndex = data.cardIndex;
     }
 }
