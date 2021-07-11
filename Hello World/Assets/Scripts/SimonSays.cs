@@ -188,7 +188,6 @@ public class SimonSays : MonoBehaviour
 
         winUI.SetActive(true);
         EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
-        EventSystem.current
     }
 
     void CalculateInput()
