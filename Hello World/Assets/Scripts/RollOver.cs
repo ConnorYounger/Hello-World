@@ -14,7 +14,7 @@ public class RollOver : MonoBehaviour
     private bool rightMovement = false;
     public bool isLegUp = false;
 
-    p float failTimer = 0;
+    public float failTimer = 0;
     public float timeLimit = 0;
 
     private void Awake()
@@ -50,11 +50,12 @@ public class RollOver : MonoBehaviour
             failTimer += Time.deltaTime;
         }
 
-        if (failTimer <= timeLimit)
+        if (failTimer >= timeLimit)
         {
             anim.SetBool("legUp", false);
             anim.SetInteger("leftSwing", 0);
             anim.SetInteger("rightSwing", 0);
+            failTimer = 0;
             isLegUp = false;
         }
     }

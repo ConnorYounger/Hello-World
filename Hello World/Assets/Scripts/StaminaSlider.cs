@@ -28,7 +28,7 @@ public class StaminaSlider : MonoBehaviour
 
     private void Update()
     {
-        if (timerCheck.isLegUp == false)
+        if (timerCheck.isLegUp == true)
         {
             if (countDown == true)
             {
