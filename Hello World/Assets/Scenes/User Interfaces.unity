@@ -1344,7 +1344,7 @@ PrefabInstance:
     - target: {fileID: 31485145352650638, guid: f486770756982c247a1799c6b7737051,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f486770756982c247a1799c6b7737051, type: 3}
@@ -1483,6 +1483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703625781180246411, guid: a0ce75d424408324b8140a0018567a61,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1703625781180246423, guid: a0ce75d424408324b8140a0018567a61,
         type: 3}
@@ -1832,11 +1837,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas 4.1
       objectReference: {fileID: 0}
-    - target: {fileID: 5794338026560420798, guid: 391f5f249efd04847929fe5714837713,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 391f5f249efd04847929fe5714837713, type: 3}
 --- !u!1001 &7653552055734159327
@@ -1960,6 +1960,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653552054237027709, guid: 56759cb5a557b0142b9ae1cc82033fd5,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56759cb5a557b0142b9ae1cc82033fd5, type: 3}

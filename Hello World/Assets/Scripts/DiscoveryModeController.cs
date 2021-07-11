@@ -59,7 +59,7 @@ public class DiscoveryModeController : MonoBehaviour
                 break;
             //Add more exercises
             default:
-                LoadScene("Exercise 1.1 Discovery");
+                LoadScene("Main");
                 break;
         }
     }
