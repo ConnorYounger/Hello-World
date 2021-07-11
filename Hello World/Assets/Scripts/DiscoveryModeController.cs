@@ -44,20 +44,20 @@ public class DiscoveryModeController : MonoBehaviour
         switch (cardIndex)
         {
             case "1In":
-                LoadScene("Exercise 1.1");
+                LoadScene("Exercise 1.1 Discovery");
                 break;
             case "1Out":
                 cardIndex = "2In";
                 break;
             case "2In":
-                LoadScene("Exercise 2.1");
+                LoadScene("Exercise 2.1 Discovery");
                 break;
             case "2Out":
                 cardIndex = "3In";
                 break;
             //Add more exercises
             default:
-                LoadScene("Exercise 1.1");
+                LoadScene("Exercise 1.1 Discovery");
                 break;
         }
     }
