@@ -22,12 +22,4 @@ public class DiscoveryPlayer : MonoBehaviour
         exerciseIndex = data.exerciseIndex;
         cardIndex = data.cardIndex;
     }
-
-    //testing
-    private void Update()
-    {/*
-        GameObject.Find("name").GetComponent<TMP_Text>().text = babyName;
-        GameObject.Find("model").GetComponent<TMP_Text>().text = babyModel;
-        GameObject.Find("exercise").GetComponent<TMP_Text>().text = exerciseIndex.ToString();*/
-    }
 }

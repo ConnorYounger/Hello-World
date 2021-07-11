@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
@@ -87,7 +88,7 @@ public class MenuController : MonoBehaviour
 
     private void StartNewDiscovery()
     {
-        
+        SceneManager.LoadScene("DiscoveryMilestones");
     }
 
     #region Options Menu
