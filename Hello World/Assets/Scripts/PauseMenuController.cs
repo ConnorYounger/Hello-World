@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class PauseMenuController : MonoBehaviour
     public Canvas pauseCanvas; 
     public Button resumeButton;
     public Button exitButton;
+
+    private MiniGameInputs controls;
+
+    private bool isPaused;
 
     private void Start()
     {
@@ -21,11 +27,24 @@ public class PauseMenuController : MonoBehaviour
     private void Update()
     {
         //check for pause input
-        if (Input.GetButtonDown("p")) //TO DO: update for controller pause input
+        //if (Input.GetButtonDown("p")) //TO DO: update for controller pause input
+        //{
+        //    PauseGame();
+        //}
+    }
+
+    public void PauseInput()
+    {
+        if (!isPaused)
         {
             PauseGame();
         }
+        else
+        {
+            ResumeGame();
+        }
     }
+
     public void PauseGame()
     {
         //enable pause menu, pause game
@@ -33,6 +52,9 @@ public class PauseMenuController : MonoBehaviour
         pauseCanvas.enabled = true;
         Time.timeScale = 0;
 
+        EventSystem.current.SetSelectedGameObject(exitButton.gameObject);
+
+        isPaused = true;
     }
 
     private void ResumeGame()
@@ -40,7 +62,9 @@ public class PauseMenuController : MonoBehaviour
         //disable pause menu, resume game
         exerciseCanvas.enabled = true;
         pauseCanvas.enabled = false;
-        Time.timeScale = 1; 
+        Time.timeScale = 1;
+
+        isPaused = false;
     } 
 
     private void ExitGame()
