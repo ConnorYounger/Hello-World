@@ -104,6 +104,7 @@ public class DiscoveryModeController : MonoBehaviour
                 break;
         }
     }
+
     private void LoadScene(string v)
     {
         SceneManager.LoadScene(v);
