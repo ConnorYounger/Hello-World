@@ -20,6 +20,7 @@ public class CountDownBar : MonoBehaviour
 
     private void Start()
     {
+        //Set the max value to the refill time
         countdownBar.value = countdownBar.maxValue;
     }
 
@@ -27,11 +28,10 @@ public class CountDownBar : MonoBehaviour
     {
         if (winWithToy.gameWon == false)
         {
-            if (countDown)
-            {
+            if (countDown) //Scale the countdown time to go faster than the refill time
                 countdownBar.value -= Time.deltaTime;
-            }
 
+            //If we are at 0, start to refill
             if (countdownBar.value <= 0)
             {
                 countDown = false;

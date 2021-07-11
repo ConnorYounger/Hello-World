@@ -19,7 +19,6 @@ namespace StatePattern
         private State currentState;
 
         public NavMeshAgent navAgent;
-        public Animator animator;
 
         private void Start()
         {

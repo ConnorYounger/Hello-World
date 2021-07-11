@@ -1,32 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RollOver : MonoBehaviour
 {
     private Animator anim;
     private MiniGameInputs controls;
 
-    public bool firstPress = false;
+    private bool firstPress = false;
     private bool secondPress = false;
     private bool thirdPress = false;
     private bool fourthPress = false;
-    public bool startMovement = false;
-    public bool finalPress = false;
-    public bool rollWin = false;
-
-    public GameObject winText;
-    public StaminaSlider movementCheck;
-
-    private char lastPressed;
+    private bool finalPress = false;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         controls = new MiniGameInputs();
         SetInputActions();
-        lastPressed = 'A';
     }
 
 
@@ -51,72 +42,52 @@ public class RollOver : MonoBehaviour
 
     void FirstSwing()
     {
-        if(lastPressed == 'A')
-        {
-            anim.SetBool("firstPress", true);
-            anim.SetBool("tiredStart", false);
-            firstPress = true;
-            movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
-            lastPressed = 'B';
-        }
+        anim.SetBool("firstPress", true);
+        firstPress = true;
     }
 
     void SecondSwing()
     {
-        if(firstPress == true && lastPressed == 'B')
+        if(firstPress == true)
         {
             anim.SetBool("firstPress", false);
             anim.SetBool("secondPress", true);
-            anim.SetBool("tiredStart", false);
             secondPress = true;
-            movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
-            lastPressed = 'C';
         }
     }
 
     void ThirdSwing()
     {
-        if (secondPress == true && lastPressed == 'C')
+        if (secondPress == true)
         {
             anim.SetBool("secondPress", false);
             anim.SetBool("thirdPress", true);
-            anim.SetBool("tiredStart", false);
             thirdPress = true;
-            movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
-            lastPressed = 'D';
         }
     }
 
     void FourthSwing()
     {
-        if (thirdPress == true && lastPressed == 'D')
+        if (thirdPress == true)
         {
             anim.SetBool("thirdPress", false);
             anim.SetBool("fourthPress", true);
-            anim.SetBool("tiredStart", false);
             fourthPress = true;
-            movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
-            lastPressed = 'E';
         }
     }
 
     void FullRoll()
     {
-        if (fourthPress == true && lastPressed == 'E')
+        if (fourthPress == true)
         {
             anim.SetBool("fourthPress", false);
             anim.SetBool("finalPress", true);
-            anim.SetBool("tiredStart", false);
             finalPress = true;
-            movementCheck.countdownBar.value = movementCheck.countdownBar.maxValue;
-            winText.SetActive(true);
-            rollWin = true;
-            lastPressed = 'F';
         }
     }
 
-    public void SwitchScene(string scene)
+    void Update()
     {
-        SceneManager.LoadScene(scene);
+        
     }
 }

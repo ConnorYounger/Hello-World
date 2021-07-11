@@ -911,9 +911,9 @@
             "id": "aa5f2c9c-e259-4918-ab6c-68922087488d",
             "actions": [
                 {
-                    "name": "CursorMovement",
-                    "type": "PassThrough",
-                    "id": "faf2dbd6-522e-431f-b8d2-d1045308b94e",
+                    "name": "Navigate",
+                    "type": "Value",
+                    "id": "b2661e97-0a4a-4770-beeb-cc94a57c049f",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -925,17 +925,36 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "04de4a64-53a1-4ff9-92a4-778bfa98ff46",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "3d0ec0e7-746e-44f1-95cc-2cb18ddbce71",
+                    "id": "1d6e0e77-6737-42a8-b8f2-ee6297b00678",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea1aa9ba-e82c-4511-b8a2-8a6cccfb65ba",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CursorMovement",
+                    "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -947,6 +966,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e257ee45-1c92-4e3e-92ae-f7ae05c84eed",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

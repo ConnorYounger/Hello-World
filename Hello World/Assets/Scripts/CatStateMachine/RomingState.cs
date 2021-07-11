@@ -262,7 +262,6 @@ namespace StatePattern
             debugLines = new List<Vector3>();
             lastTargetPoint = enemy.transform;
             idleCoolDownTimer = enemy.idleCoolDownTime;
-            enemy.animator.SetBool("isWalking", true);
 
             CheckForClosePoints();
         }

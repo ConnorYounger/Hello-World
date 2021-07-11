@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -44,6 +45,9 @@ public class OptionsMenu : MonoBehaviour
     public Image sfx90;
     public Image sfx100;
 
+    private List<Image> musicSprites = new List<Image>();
+    private List<Image> sfxSprites = new List<Image>();
+
     [Header("Display UI")]
     public Button btnResolutionUp;
     public Button btnResolutionDown;
@@ -63,22 +67,23 @@ public class OptionsMenu : MonoBehaviour
         resolutionIndex = 0;
         isFullscreen = Screen.fullScreen;
 
+        PopulateSprites();
         PopulateResolutions();
         UpdateTextElements();
         UpdateMusicSprites();
         UpdateSFXSprites();
 
-        btnResolutionDown.onClick.AddListener(delegate { UpdateResolution(-1); });
-        btnResolutionUp.onClick.AddListener(delegate { UpdateResolution(1); });
+        btnResolutionDown.onClick.AddListener(ResolutionDown);
+        btnResolutionUp.onClick.AddListener(ResolutionUp);
         btnFullscreenOff.onClick.AddListener(ToggleFullscreen);
         btnFullscreenOn.onClick.AddListener(ToggleFullscreen);
         btnApplyDisplay.onClick.AddListener(SaveDisplayOptions);
 
-        btnMusicUp.onClick.AddListener(delegate { SetMusicVolume(10f); });
-        btnMusicDown.onClick.AddListener(delegate { SetMusicVolume(-10f); });
+        btnMusicUp.onClick.AddListener(MusicVolumeUp);
+        btnMusicDown.onClick.AddListener(MusicVolumeDown);
 
-        btnSFXUp.onClick.AddListener(delegate { SetSFXVolume(10f); });
-        btnSFXDown.onClick.AddListener(delegate { SetSFXVolume(-10f); });
+        btnSFXUp.onClick.AddListener(SFXVolumeUp);
+        btnSFXDown.onClick.AddListener(SFXVolumeDown);
     }
 
     public float GetMusicVolume()
@@ -112,6 +117,7 @@ public class OptionsMenu : MonoBehaviour
     private void ToggleFullscreen()
     {
         isFullscreen = !isFullscreen;
+        EventSystem.current.SetSelectedGameObject(btnApplyDisplay.gameObject, new AxisEventData(EventSystem.current));
     }
 
     private void SaveDisplayOptions()
@@ -131,10 +137,22 @@ public class OptionsMenu : MonoBehaviour
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
     }
 
-    private void UpdateResolution(int v)
+    private void ResolutionUp()
     {
-        resolutionIndex = resolutionIndex + v;
-        UpdateTextElements();
+        if (resolutionIndex != resolutions.Length - 1)
+        {
+            resolutionIndex = resolutionIndex + 1;
+            UpdateTextElements();
+        }
+    }
+    
+    private void ResolutionDown()
+    {
+        if (resolutionIndex != 0)
+        {
+            resolutionIndex = resolutionIndex - 1;
+            UpdateTextElements();
+        }
     }
 
     private void UpdateTextElements()
@@ -144,19 +162,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void Update()
     {
-        if (resolutionIndex == 0)
-        {
-            btnResolutionDown.interactable = false;
-        }
-        else if (resolutionIndex == resolutions.Length -1)
-        {
-            btnResolutionUp.interactable = false;
-        } else 
-        { 
-            btnResolutionDown.interactable = true; 
-            btnResolutionUp.interactable = true; 
-        }
-
         if (isFullscreen)
         {
             btnFullscreenOn.interactable = false;
@@ -166,20 +171,6 @@ public class OptionsMenu : MonoBehaviour
         {
             btnFullscreenOn.interactable = true;
             btnFullscreenOff.interactable = false;
-        }
-
-        if (currentMusicVolume == -80)
-        {
-            btnMusicDown.interactable = false;
-        }
-        else if (currentMusicVolume == 20)
-        {
-            btnMusicUp.interactable = false;
-        }
-        else
-        {
-            btnMusicDown.interactable = true;
-            btnMusicUp.interactable = true;
         }
     }
 
@@ -197,19 +188,72 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+
+    #region Audio
     //TODO: Test when audio is implemented!!!
-    public void SetMusicVolume(float v)
+    public void MusicVolumeUp()
     {
-        currentMusicVolume = GetMusicVolume() + v;
-        musicMixer.SetFloat("Music", currentMusicVolume);
-        UpdateMusicSprites();
+        if (currentMusicVolume != 20)
+        {
+            currentMusicVolume = GetMusicVolume() + 10;
+            musicMixer.SetFloat("Music", currentMusicVolume);
+            UpdateMusicSprites();
+        }
     }
 
-    public void SetSFXVolume(float v)
+    public void MusicVolumeDown()
     {
-        currentSFXVolume = GetSFXVolume() + v;
-        SFXMixer.SetFloat("SFX", currentSFXVolume);
-        UpdateSFXSprites();
+        if (currentMusicVolume != -80)
+        {
+            currentMusicVolume = GetMusicVolume() - 10;
+            musicMixer.SetFloat("Music", currentMusicVolume);
+            UpdateMusicSprites();
+        }
+    }
+
+    public void SFXVolumeUp()
+    {
+        if (currentSFXVolume != 20)
+        {
+            currentSFXVolume = GetSFXVolume() + 10;
+            SFXMixer.SetFloat("SFX", currentSFXVolume);
+            UpdateSFXSprites();
+        }
+    }
+
+    public void SFXVolumeDown()
+    {
+        if (currentSFXVolume != -80)
+        {
+            currentSFXVolume = GetSFXVolume() - 10;
+            SFXMixer.SetFloat("SFX", currentSFXVolume);
+            UpdateSFXSprites();
+        }
+    }
+
+    private void PopulateSprites()
+    {
+        musicSprites.Add(music10);
+        musicSprites.Add(music20);
+        musicSprites.Add(music30);
+        musicSprites.Add(music40);
+        musicSprites.Add(music50);
+        musicSprites.Add(music60);
+        musicSprites.Add(music70);
+        musicSprites.Add(music80);
+        musicSprites.Add(music90);
+        musicSprites.Add(music100);
+
+        sfxSprites.Add(sfx10);
+        sfxSprites.Add(sfx20);
+        sfxSprites.Add(sfx30);
+        sfxSprites.Add(sfx40);
+        sfxSprites.Add(sfx50);
+        sfxSprites.Add(sfx60);
+        sfxSprites.Add(sfx70);
+        sfxSprites.Add(sfx80);
+        sfxSprites.Add(sfx90);
+        sfxSprites.Add(sfx100);
     }
 
     private void UpdateMusicSprites()
@@ -217,145 +261,115 @@ public class OptionsMenu : MonoBehaviour
         switch (currentMusicVolume)
         {
             case -80:
-                music10.sprite = emptySprite;
-                music20.sprite = emptySprite; 
-                music30.sprite = emptySprite; 
-                music40.sprite = emptySprite; 
-                music50.sprite = emptySprite;
-                music60.sprite = emptySprite; 
-                music70.sprite = emptySprite; 
-                music80.sprite = emptySprite;
-                music90.sprite = emptySprite; 
-                music100.sprite = emptySprite;
+                for (int i = 0; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = emptySprite;
+                }
                 break;
             case -70:
-                music10.sprite = filledSprite;
+                for (int i = 0; i < 1; i++)
+                {
+                    musicSprites[i].sprite = filledSprite;
+                }
 
-                music20.sprite = emptySprite;
-                music30.sprite = emptySprite; 
-                music40.sprite = emptySprite;
-                music50.sprite = emptySprite;
-                music60.sprite = emptySprite;
-                music70.sprite = emptySprite;
-                music80.sprite = emptySprite;
-                music90.sprite = emptySprite;
-                music100.sprite = emptySprite;
+                for (int i = 1; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = emptySprite;
+                }
                 break;
             case -60:
-                music10.sprite = filledSprite;
-                music20.sprite = filledSprite;
+                for (int i = 0; i < 2; i++)
+                {
+                    musicSprites[i].sprite = filledSprite;
+                }
 
-                music30.sprite = emptySprite; 
-                music40.sprite = emptySprite;
-                music50.sprite = emptySprite;
-                music60.sprite = emptySprite;
-                music70.sprite = emptySprite;
-                music80.sprite = emptySprite;
-                music90.sprite = emptySprite;
-                music100.sprite = emptySprite;
+                for (int i = 2; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = emptySprite;
+                }
                 break;
             case -50:
-                music10.sprite = filledSprite;
-                music20.sprite = filledSprite;
-                music30.sprite = filledSprite;
-                
-                music40.sprite = emptySprite; 
-                music50.sprite = emptySprite;
-                music60.sprite = emptySprite; 
-                music70.sprite = emptySprite; 
-                music80.sprite = emptySprite; 
-                music90.sprite = emptySprite; 
-                music100.sprite = emptySprite;
+                for (int i = 0; i < 3; i++)
+                {
+                    musicSprites[i].sprite = filledSprite;
+                }
+
+                for (int i = 3; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = emptySprite;
+                }
                 break;
             case -40:
-                music10.sprite = filledSprite; 
-                music20.sprite = filledSprite; 
-                music30.sprite = filledSprite;
-                music40.sprite = filledSprite; 
+                for (int i = 0; i < 4; i++)
+                {
+                    musicSprites[i].sprite = filledSprite;
+                }
 
-                music50.sprite = emptySprite;
-                music60.sprite = emptySprite; 
-                music70.sprite = emptySprite; 
-                music80.sprite = emptySprite; 
-                music90.sprite = emptySprite; 
-                music100.sprite = emptySprite;
+                for (int i = 4; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = emptySprite;
+                }
                 break;
             case -30:
-                music10.sprite = filledSprite; 
-                music20.sprite = filledSprite; 
-                music30.sprite = filledSprite; 
-                music40.sprite = filledSprite;
-                music50.sprite = filledSprite;
+                for (int i = 0; i < 5; i++)
+                {
+                    musicSprites[i].sprite = filledSprite;
+                }
 
-                music60.sprite = emptySprite; 
-                music70.sprite = emptySprite; 
-                music80.sprite = emptySprite; 
-                music90.sprite = emptySprite; 
-                music100.sprite = emptySprite;
+                for (int i = 5; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = emptySprite;
+                }
                 break;
             case -20:
-                music10.sprite = filledSprite; 
-                music20.sprite = filledSprite;
-                music30.sprite = filledSprite; 
-                music40.sprite = filledSprite; 
-                music50.sprite = filledSprite;
-                music60.sprite = filledSprite;
+                for (int i = 0; i < 6; i++)
+                {
+                    musicSprites[i].sprite = filledSprite;
+                }
 
-                music70.sprite = emptySprite; 
-                music80.sprite = emptySprite; 
-                music90.sprite = emptySprite; 
-                music100.sprite = emptySprite;
+                for (int i = 6; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = emptySprite;
+                }
                 break;
             case -10:
-                music10.sprite = filledSprite; 
-                music20.sprite = filledSprite; 
-                music30.sprite = filledSprite; 
-                music40.sprite = filledSprite; 
-                music50.sprite = filledSprite; 
-                music60.sprite = filledSprite; 
-                music70.sprite = filledSprite; 
-                
-                music80.sprite = emptySprite; 
-                music90.sprite = emptySprite; 
-                music100.sprite = emptySprite;
+                for (int i = 0; i < 7; i++)
+                {
+                    musicSprites[i].sprite = filledSprite;
+                }
+
+                for (int i = 7; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = emptySprite;
+                }
                 break;
             case 0:
-                music10.sprite = filledSprite; 
-                music20.sprite = filledSprite; 
-                music30.sprite = filledSprite; 
-                music40.sprite = filledSprite; 
-                music50.sprite = filledSprite; 
-                music60.sprite = filledSprite; 
-                music70.sprite = filledSprite; 
-                music80.sprite = filledSprite; 
-                
-                music90.sprite = emptySprite; 
-                music100.sprite = emptySprite;
+                for (int i = 0; i < 8; i++)
+                {
+                    musicSprites[i].sprite = filledSprite;
+                }
+
+                for (int i = 8; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = emptySprite;
+                }
                 break;
             case 10:
-                music10.sprite = filledSprite; 
-                music20.sprite = filledSprite; 
-                music30.sprite = filledSprite; 
-                music40.sprite = filledSprite; 
-                music50.sprite = filledSprite; 
-                music60.sprite = filledSprite; 
-                music70.sprite = filledSprite; 
-                music80.sprite = filledSprite; 
-                music90.sprite = filledSprite; 
-                
-                music100.sprite = emptySprite;
+                for (int i = 0; i < 9; i++)
+                {
+                    musicSprites[i].sprite = filledSprite;
+                }
+
+                for (int i = 9; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = emptySprite;
+                }
                 break;
             case 20:
-                music10.sprite = filledSprite; 
-                music20.sprite = filledSprite; 
-                music30.sprite = filledSprite; 
-                music40.sprite = filledSprite; 
-                music50.sprite = filledSprite;
-                music60.sprite = filledSprite; 
-                music70.sprite = filledSprite; 
-                music80.sprite = filledSprite;
-                music90.sprite = filledSprite; 
-                music100.sprite = filledSprite;
+                for (int i = 0; i < musicSprites.Count; i++)
+                {
+                    musicSprites[i].sprite = filledSprite;
+                }
                 break;
             default:
                 break;
@@ -367,148 +381,119 @@ public class OptionsMenu : MonoBehaviour
         switch (currentSFXVolume)
         {
             case -80:
-                sfx10.sprite = emptySprite;
-                sfx20.sprite = emptySprite;
-                sfx30.sprite = emptySprite;
-                sfx40.sprite = emptySprite;
-                sfx50.sprite = emptySprite;
-                sfx60.sprite = emptySprite;
-                sfx70.sprite = emptySprite;
-                sfx80.sprite = emptySprite;
-                sfx90.sprite = emptySprite;
-                sfx100.sprite = emptySprite;
+                for (int i = 0; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = emptySprite;
+                }
                 break;
             case -70:
-                sfx10.sprite = filledSprite;
+                for (int i = 0; i < 1; i++)
+                {
+                    sfxSprites[i].sprite = filledSprite;
+                }
 
-                sfx20.sprite = emptySprite;
-                sfx30.sprite = emptySprite;
-                sfx40.sprite = emptySprite;
-                sfx50.sprite = emptySprite;
-                sfx60.sprite = emptySprite;
-                sfx70.sprite = emptySprite;
-                sfx80.sprite = emptySprite;
-                sfx90.sprite = emptySprite;
-                sfx100.sprite = emptySprite;
+                for (int i = 1; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = emptySprite;
+                }
                 break;
             case -60:
-                sfx10.sprite = filledSprite;
-                sfx20.sprite = filledSprite;
+                for (int i = 0; i < 2; i++)
+                {
+                    sfxSprites[i].sprite = filledSprite;
+                }
 
-                sfx30.sprite = emptySprite;
-                sfx40.sprite = emptySprite;
-                sfx50.sprite = emptySprite;
-                sfx60.sprite = emptySprite;
-                sfx70.sprite = emptySprite;
-                sfx80.sprite = emptySprite;
-                sfx90.sprite = emptySprite;
-                sfx100.sprite = emptySprite;
+                for (int i = 2; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = emptySprite;
+                }
                 break;
             case -50:
-                sfx10.sprite = filledSprite;
-                sfx20.sprite = filledSprite;
-                sfx30.sprite = filledSprite;
+                for (int i = 0; i < 3; i++)
+                {
+                    sfxSprites[i].sprite = filledSprite;
+                }
 
-                sfx40.sprite = emptySprite;
-                sfx50.sprite = emptySprite;
-                sfx60.sprite = emptySprite;
-                sfx70.sprite = emptySprite;
-                sfx80.sprite = emptySprite;
-                sfx90.sprite = emptySprite;
-                sfx100.sprite = emptySprite;
+                for (int i = 3; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = emptySprite;
+                }
                 break;
             case -40:
-                sfx10.sprite = filledSprite;
-                sfx20.sprite = filledSprite;
-                sfx30.sprite = filledSprite;
-                sfx40.sprite = filledSprite;
+                for (int i = 0; i < 4; i++)
+                {
+                    sfxSprites[i].sprite = filledSprite;
+                }
 
-                sfx50.sprite = emptySprite;
-                sfx60.sprite = emptySprite;
-                sfx70.sprite = emptySprite;
-                sfx80.sprite = emptySprite;
-                sfx90.sprite = emptySprite;
-                sfx100.sprite = emptySprite;
+                for (int i = 4; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = emptySprite;
+                }
                 break;
             case -30:
-                sfx10.sprite = filledSprite;
-                sfx20.sprite = filledSprite;
-                sfx30.sprite = filledSprite;
-                sfx40.sprite = filledSprite;
-                sfx50.sprite = filledSprite;
+                for (int i = 0; i < 5; i++)
+                {
+                    sfxSprites[i].sprite = filledSprite;
+                }
 
-                sfx60.sprite = emptySprite;
-                sfx70.sprite = emptySprite;
-                sfx80.sprite = emptySprite;
-                sfx90.sprite = emptySprite;
-                sfx100.sprite = emptySprite;
+                for (int i = 5; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = emptySprite;
+                }
                 break;
             case -20:
-                sfx10.sprite = filledSprite;
-                sfx20.sprite = filledSprite;
-                sfx30.sprite = filledSprite;
-                sfx40.sprite = filledSprite;
-                sfx50.sprite = filledSprite;
-                sfx60.sprite = filledSprite;
+                for (int i = 0; i < 6; i++)
+                {
+                    sfxSprites[i].sprite = filledSprite;
+                }
 
-                sfx70.sprite = emptySprite;
-                sfx80.sprite = emptySprite;
-                sfx90.sprite = emptySprite;
-                sfx100.sprite = emptySprite;
+                for (int i = 6; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = emptySprite;
+                }
                 break;
             case -10:
-                sfx10.sprite = filledSprite;
-                sfx20.sprite = filledSprite;
-                sfx30.sprite = filledSprite;
-                sfx40.sprite = filledSprite;
-                sfx50.sprite = filledSprite;
-                sfx60.sprite = filledSprite;
-                sfx70.sprite = filledSprite;
+                for (int i = 0; i < 7; i++)
+                {
+                    sfxSprites[i].sprite = filledSprite;
+                }
 
-                sfx80.sprite = emptySprite;
-                sfx90.sprite = emptySprite;
-                sfx100.sprite = emptySprite;
+                for (int i = 7; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = emptySprite;
+                }
                 break;
             case 0:
-                sfx10.sprite = filledSprite;
-                sfx20.sprite = filledSprite;
-                sfx30.sprite = filledSprite;
-                sfx40.sprite = filledSprite;
-                sfx50.sprite = filledSprite;
-                sfx60.sprite = filledSprite;
-                sfx70.sprite = filledSprite;
-                sfx80.sprite = filledSprite;
+                for (int i = 0; i < 8; i++)
+                {
+                    sfxSprites[i].sprite = filledSprite;
+                }
 
-                sfx90.sprite = emptySprite;
-                sfx100.sprite = emptySprite;
+                for (int i = 8; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = emptySprite;
+                }
                 break;
             case 10:
-                sfx10.sprite = filledSprite;
-                sfx20.sprite = filledSprite;
-                sfx30.sprite = filledSprite;
-                sfx40.sprite = filledSprite;
-                sfx50.sprite = filledSprite;
-                sfx60.sprite = filledSprite;
-                sfx70.sprite = filledSprite;
-                sfx80.sprite = filledSprite;
-                sfx90.sprite = filledSprite;
+                for (int i = 0; i < 9; i++)
+                {
+                    sfxSprites[i].sprite = filledSprite;
+                }
 
-                sfx100.sprite = emptySprite;
+                for (int i = 9; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = emptySprite;
+                }
                 break;
             case 20:
-                sfx10.sprite = filledSprite;
-                sfx20.sprite = filledSprite;
-                sfx30.sprite = filledSprite;
-                sfx40.sprite = filledSprite;
-                sfx50.sprite = filledSprite;
-                sfx60.sprite = filledSprite;
-                sfx70.sprite = filledSprite;
-                sfx80.sprite = filledSprite;
-                sfx90.sprite = filledSprite;
-                sfx100.sprite = filledSprite;
-                break;
+                for (int i = 0; i < sfxSprites.Count; i++)
+                {
+                    sfxSprites[i].sprite = filledSprite;
+                }
+                    break;
             default:
                 break;
         }
     }
+    #endregion
 }
