@@ -338,8 +338,8 @@ public class Workout : MonoBehaviour
 
         if (discoveryMode)
         {
-            discoveryPlayer.exerciseIndex = 1.1f;
-            discoveryPlayer.cardIndex = "1Out";
+            discoveryPlayer.exerciseIndex = 2.1f;
+            discoveryPlayer.cardIndex = "2Out";
             discoveryPlayer.SavePlayer();
 
             //SceneManager.LoadScene("DiscoveryMilestones");

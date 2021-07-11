@@ -23,6 +23,7 @@ public class SimonSays : MonoBehaviour
     public Animator animator;
 
     [Header("UI Elements")]
+    public Canvas uICanvas;
     public GameObject comboPanel;
     public GameObject playerInputPanel;
     public GameObject inputButtonPrefab;
@@ -186,6 +187,11 @@ public class SimonSays : MonoBehaviour
     // When the player wins
     void PlayerWin()
     {
+        if (uICanvas)
+        {
+            uICanvas.enabled = false;
+        }
+
         currentMemory = maxMemory;
         UpdateMemoryMetre();
 
@@ -196,8 +202,8 @@ public class SimonSays : MonoBehaviour
 
         if (discoveryMode)
         {
-            discoveryPlayer.exerciseIndex = 2.1f;
-            discoveryPlayer.cardIndex = "2Out";
+            discoveryPlayer.exerciseIndex = 1.1f;
+            discoveryPlayer.cardIndex = "1Out";
             discoveryPlayer.SavePlayer();
 
             //SceneManager.LoadScene("DiscoveryMilestones");
