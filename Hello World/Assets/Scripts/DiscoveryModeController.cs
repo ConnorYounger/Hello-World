@@ -26,12 +26,13 @@ public class DiscoveryModeController : MonoBehaviour
     public Image stage5Out;
     public Image stage6In;
     public Image stage6Out;
-
     #endregion
 
     private void Start()
     {
-        LoadPlayer();
+        player.GetComponent<DiscoveryPlayer>().LoadPlayer();
+
+        LoadIndexData();
         ShowMilestoneCard();
 
         btnBack.onClick.AddListener(delegate { LoadScene("Main"); });
@@ -56,6 +57,7 @@ public class DiscoveryModeController : MonoBehaviour
                 break;
             //Add more exercises
             default:
+                LoadScene("Exercise 1.1");
                 break;
         }
     }
@@ -65,28 +67,40 @@ public class DiscoveryModeController : MonoBehaviour
         switch (cardIndex)
         {
             case "1In":
+                stage1In.enabled = true;
                 break;
             case "1Out":
+                stage1Out.enabled = true;
                 break;
             case "2In":
+                stage2In.enabled = true;
                 break;
             case "2Out":
+                stage2Out.enabled = true;
                 break;
             case "3In":
+                stage3In.enabled = true;
                 break;
             case "3Out":
+                stage3Out.enabled = true;
                 break;
             case "4In":
+                stage4In.enabled = true;
                 break;
             case "4Out":
+                stage4Out.enabled = true;
                 break;
             case "5In":
+                stage5In.enabled = true;
                 break;
             case "5Out":
+                stage5Out.enabled = true;
                 break;
             case "6In":
+                stage6In.enabled = true;
                 break;
             default:
+                stage1In.enabled = true;
                 break;
         }
     }
@@ -95,16 +109,9 @@ public class DiscoveryModeController : MonoBehaviour
         SceneManager.LoadScene(v);
     }
 
-    public void SavePlayer()
+    private void LoadIndexData()
     {
-        //SaveSystem.SavePlayer(this);
-    }
-
-    private void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-
-        exerciseIndex = data.exerciseIndex;
-        cardIndex = data.cardIndex;
+        exerciseIndex = player.GetComponent<DiscoveryPlayer>().exerciseIndex;
+        cardIndex = player.GetComponent<DiscoveryPlayer>().cardIndex;
     }
 }
