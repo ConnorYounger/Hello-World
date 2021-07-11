@@ -25,6 +25,7 @@ public class DiscoveryModeController : MonoBehaviour
     public Image stage6Out;
 
     private bool onCardIn;
+    public string cardIndex;
     #endregion
 
     private void Start()
@@ -39,13 +40,23 @@ public class DiscoveryModeController : MonoBehaviour
 
     private void ContinueDiscovery()
     {
-        if (onCardIn)
+        switch (cardIndex)
         {
-            ShowCardOut();
-        } else
-        {
-            exerciseIndex += 1;
-            LoadScene("Exercise " + exerciseIndex);
+            case "1In":
+                LoadScene("Exercise 1.1");
+                break;
+            case "1Out":
+                onCardIn = true;
+                break;
+            case "2In":
+                LoadScene("Exercise 1.1");
+                break;
+            case "2Out":
+                onCardIn = true;
+                break;
+            //Add more exercises
+            default:
+                break;
         }
     }
 
@@ -75,6 +86,8 @@ public class DiscoveryModeController : MonoBehaviour
                 break;
             default:
                 stage1In.enabled = true;
+                //set the next 'step' for button click
+                cardIndex = "1In";
                 break;
         }
     }

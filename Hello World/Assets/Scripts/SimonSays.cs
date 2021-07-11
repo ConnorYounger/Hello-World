@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -17,6 +18,8 @@ public class SimonSays : MonoBehaviour
 
     private List<SimonSaysInputs> buttonList;
     private List<SimonSaysInputs> buttonListSave;
+
+    public Animator animator;
 
     [Header("UI Elements")]
     public GameObject comboPanel;
@@ -96,8 +99,6 @@ public class SimonSays : MonoBehaviour
     {
         if(playerCanInput && !playerHasWon && action.name == buttonList[0].inputName)
         {
-            Debug.Log("Actually Works");
-
             correctInput = true;
         }
     }
@@ -156,8 +157,11 @@ public class SimonSays : MonoBehaviour
     // When the player has sucessfully finished the combo
     void CombinationFinished()
     {
+        if (animator)
+            StartCoroutine("PlayAnimation");
+
         // Check to see if the player has won
-        if(currentMemory >= maxMemory)
+        if (currentMemory >= maxMemory)
         {
             PlayerWin();
         }
@@ -183,6 +187,7 @@ public class SimonSays : MonoBehaviour
         playerHasWon = true;
 
         winUI.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
     }
 
     void CalculateInput()
@@ -198,6 +203,9 @@ public class SimonSays : MonoBehaviour
             }
             else
             {
+                if (animator)
+                    StartCoroutine("Flail");
+
                 ResetCombination();
             }
         }
@@ -257,6 +265,26 @@ public class SimonSays : MonoBehaviour
         }
 
         playerCanInput = true;
+    }
+
+    IEnumerator PlayAnimation()
+    {
+        int rand = Random.Range(1, 6);
+
+        animator.SetInteger("moveState", rand);
+
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetInteger("moveState", 0);
+    }
+
+    IEnumerator Flail()
+    {
+        animator.SetInteger("moveState", 6);
+
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetInteger("moveState", 0);
     }
 
     // When the player inputs the wrong button
