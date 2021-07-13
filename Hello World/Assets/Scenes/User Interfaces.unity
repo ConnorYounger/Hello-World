@@ -1107,6 +1107,7 @@ GameObject:
   - component: {fileID: 351159346}
   - component: {fileID: 351159348}
   - component: {fileID: 351159347}
+  - component: {fileID: 351159349}
   m_Layer: 5
   m_Name: Context Narrative
   m_TagString: Untagged
@@ -1231,6 +1232,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351159345}
   m_CullTransparentMesh: 1
+--- !u!114 &351159349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351159345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 0
+  displayTime: 4
 --- !u!1 &360079653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,6 +1439,7 @@ GameObject:
   - component: {fileID: 397302935}
   - component: {fileID: 397302937}
   - component: {fileID: 397302936}
+  - component: {fileID: 397302938}
   m_Layer: 5
   m_Name: Context Narrative
   m_TagString: Untagged
@@ -1549,6 +1566,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397302934}
   m_CullTransparentMesh: 1
+--- !u!114 &397302938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397302934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 0
+  displayTime: 4
 --- !u!1 &401634247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,6 +2664,7 @@ GameObject:
   - component: {fileID: 742643047}
   - component: {fileID: 742643049}
   - component: {fileID: 742643048}
+  - component: {fileID: 742643050}
   m_Layer: 5
   m_Name: Context Mechanic
   m_TagString: Untagged
@@ -2758,6 +2791,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742643046}
   m_CullTransparentMesh: 1
+--- !u!114 &742643050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742643046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 6
+  displayTime: 4
 --- !u!1 &750699509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2956,6 +3004,7 @@ GameObject:
   - component: {fileID: 837591490}
   - component: {fileID: 837591492}
   - component: {fileID: 837591491}
+  - component: {fileID: 837591493}
   m_Layer: 5
   m_Name: Context Narrative
   m_TagString: Untagged
@@ -3082,6 +3131,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837591489}
   m_CullTransparentMesh: 1
+--- !u!114 &837591493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837591489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 0
+  displayTime: 4
 --- !u!1 &862784044
 GameObject:
   m_ObjectHideFlags: 0
@@ -4398,6 +4462,7 @@ GameObject:
   - component: {fileID: 1162921521}
   - component: {fileID: 1162921523}
   - component: {fileID: 1162921522}
+  - component: {fileID: 1162921524}
   m_Layer: 5
   m_Name: Context Mechanic
   m_TagString: Untagged
@@ -4524,6 +4589,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162921520}
   m_CullTransparentMesh: 1
+--- !u!114 &1162921524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162921520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 6
+  displayTime: 4
 --- !u!1 &1186389974
 GameObject:
   m_ObjectHideFlags: 0
@@ -4610,6 +4690,7 @@ GameObject:
   - component: {fileID: 1242539768}
   - component: {fileID: 1242539770}
   - component: {fileID: 1242539769}
+  - component: {fileID: 1242539771}
   m_Layer: 5
   m_Name: Context Mechanic
   m_TagString: Untagged
@@ -4736,6 +4817,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242539767}
   m_CullTransparentMesh: 1
+--- !u!114 &1242539771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242539767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 6
+  displayTime: 4
 --- !u!1 &1268136351
 GameObject:
   m_ObjectHideFlags: 0
@@ -4822,13 +4918,14 @@ GameObject:
   - component: {fileID: 1279817854}
   - component: {fileID: 1279817856}
   - component: {fileID: 1279817855}
+  - component: {fileID: 1279817857}
   m_Layer: 5
   m_Name: Context Narrative
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1279817854
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4948,6 +5045,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279817853}
   m_CullTransparentMesh: 1
+--- !u!114 &1279817857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279817853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 0
+  displayTime: 4
 --- !u!1 &1291554587
 GameObject:
   m_ObjectHideFlags: 0
@@ -4959,6 +5071,7 @@ GameObject:
   - component: {fileID: 1291554588}
   - component: {fileID: 1291554590}
   - component: {fileID: 1291554589}
+  - component: {fileID: 1291554591}
   m_Layer: 5
   m_Name: Context Mechanic
   m_TagString: Untagged
@@ -5085,6 +5198,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291554587}
   m_CullTransparentMesh: 1
+--- !u!114 &1291554591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291554587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 6
+  displayTime: 4
 --- !u!1 &1294615890
 GameObject:
   m_ObjectHideFlags: 0
@@ -5246,6 +5374,7 @@ GameObject:
   - component: {fileID: 1371245572}
   - component: {fileID: 1371245574}
   - component: {fileID: 1371245573}
+  - component: {fileID: 1371245575}
   m_Layer: 5
   m_Name: Context Narrative
   m_TagString: Untagged
@@ -5372,6 +5501,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371245571}
   m_CullTransparentMesh: 1
+--- !u!114 &1371245575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371245571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 0
+  displayTime: 4
 --- !u!1 &1381338047
 GameObject:
   m_ObjectHideFlags: 0
@@ -5764,6 +5908,7 @@ GameObject:
   - component: {fileID: 1492585530}
   - component: {fileID: 1492585532}
   - component: {fileID: 1492585531}
+  - component: {fileID: 1492585533}
   m_Layer: 5
   m_Name: Context Narrative
   m_TagString: Untagged
@@ -5890,6 +6035,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492585529}
   m_CullTransparentMesh: 1
+--- !u!114 &1492585533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492585529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 0
+  displayTime: 4
 --- !u!1 &1511850442
 GameObject:
   m_ObjectHideFlags: 0
@@ -6236,6 +6396,7 @@ GameObject:
   - component: {fileID: 1584493366}
   - component: {fileID: 1584493368}
   - component: {fileID: 1584493367}
+  - component: {fileID: 1584493369}
   m_Layer: 5
   m_Name: Context Mechanic
   m_TagString: Untagged
@@ -6282,7 +6443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'alternate ? to take steps
+  m_text: 'alternate triggers to take steps
 
     tilt the stick to keep upright'
   m_isRightToLeft: 0
@@ -6362,6 +6523,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584493365}
   m_CullTransparentMesh: 1
+--- !u!114 &1584493369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584493365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 6
+  displayTime: 4
 --- !u!1 &1591042384
 GameObject:
   m_ObjectHideFlags: 0
@@ -6601,6 +6777,7 @@ GameObject:
   - component: {fileID: 1664260663}
   - component: {fileID: 1664260665}
   - component: {fileID: 1664260664}
+  - component: {fileID: 1664260666}
   m_Layer: 5
   m_Name: Context Mechanic
   m_TagString: Untagged
@@ -6727,6 +6904,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664260662}
   m_CullTransparentMesh: 1
+--- !u!114 &1664260666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664260662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 6
+  displayTime: 4
 --- !u!1 &1668732906
 GameObject:
   m_ObjectHideFlags: 0
@@ -6966,6 +7158,7 @@ GameObject:
   - component: {fileID: 1756730474}
   - component: {fileID: 1756730476}
   - component: {fileID: 1756730475}
+  - component: {fileID: 1756730477}
   m_Layer: 5
   m_Name: Context Narrative
   m_TagString: Untagged
@@ -7092,6 +7285,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756730473}
   m_CullTransparentMesh: 1
+--- !u!114 &1756730477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756730473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 0
+  displayTime: 4
 --- !u!1 &1836293894
 GameObject:
   m_ObjectHideFlags: 0
@@ -7616,6 +7824,7 @@ GameObject:
   - component: {fileID: 1998025053}
   - component: {fileID: 1998025055}
   - component: {fileID: 1998025054}
+  - component: {fileID: 1998025056}
   m_Layer: 5
   m_Name: Context Mechanic
   m_TagString: Untagged
@@ -7740,6 +7949,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998025052}
   m_CullTransparentMesh: 1
+--- !u!114 &1998025056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998025052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f89412818d8793419a7f17946096779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTime: 1
+  startTime: 6
+  displayTime: 4
 --- !u!1 &1998089290
 GameObject:
   m_ObjectHideFlags: 0
