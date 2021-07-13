@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StickHorizontalTweener : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float tiltDistance;
+    public float moveTime;
+    public float scaleSize;
+
+    private void Start()
     {
-        
+        TweenRight();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+    }
+
+    public void TweenLeft()
+    {
+        transform.LeanMoveLocalX(-tiltDistance, moveTime).setEaseInOutQuint().setLoopPingPong();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine().setLoopPingPong();
+    }
+
+    public void TweenRight()
+    {
+        transform.LeanMoveLocalX(tiltDistance, moveTime).setEaseInOutQuint().setLoopPingPong();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine().setLoopPingPong();
     }
 }

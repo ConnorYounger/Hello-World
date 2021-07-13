@@ -15,6 +15,6 @@ public class ButtonInputTweener : MonoBehaviour
     private void PulseButton()
     {
         transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine().setLoopPingPong();
-        transform.LeanMoveLocal(new Vector2(0, axisMovement), moveTime).setEaseInOutSine().setLoopPingPong();
+        transform.LeanMoveLocalY(axisMovement, moveTime).setEaseInOutSine().setLoopPingPong();
     }
 }
