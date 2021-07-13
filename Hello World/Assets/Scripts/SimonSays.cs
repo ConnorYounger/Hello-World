@@ -11,11 +11,16 @@ public class SimonSays : MonoBehaviour
 {
     public List<SimonSaysInputs> possibleButtonInputs;
 
-    public int maxMemory = 100;
+    public int maxMemory = 5;
+    public int maxPacience = 5;
+    private int currentPacience;
     private int currentMemory = 0;
     public int startingNumb = 2;
     public int maxNumb = 7;
     private int difficulty;
+
+    public float failInputTime = 1;
+    private float failInputTimer;
 
     private List<SimonSaysInputs> buttonList;
     private List<SimonSaysInputs> buttonListSave;
@@ -28,6 +33,7 @@ public class SimonSays : MonoBehaviour
     public GameObject playerInputPanel;
     public GameObject inputButtonPrefab;
     public GameObject winUI;
+    public GameObject loseUI;
 
     public Slider memoryMetreSlider;
 
@@ -77,8 +83,22 @@ public class SimonSays : MonoBehaviour
         buttonListSave = new List<SimonSaysInputs>();
 
         memoryMetreSlider.maxValue = maxMemory;
+        currentPacience = maxPacience;
 
         GenerateNewCombination();
+    }
+
+    private void Update()
+    {
+        FailCoolDownTimer();
+    }
+
+    void FailCoolDownTimer()
+    {
+        if(failInputTimer > 0)
+        {
+            failInputTimer -= 1 * Time.deltaTime;
+        }
     }
 
     private void OnEnable()
@@ -103,7 +123,7 @@ public class SimonSays : MonoBehaviour
 
     public void PlayerInput(InputAction action)
     {
-        if(playerCanInput && !playerHasWon && action.name == buttonList[0].inputName)
+        if(playerCanInput && !playerHasWon && action.name == buttonList[0].inputName && failInputTimer <= 0)
         {
             correctInput = true;
         }
@@ -111,7 +131,7 @@ public class SimonSays : MonoBehaviour
 
     void PlayerAnyInput()
     {
-        if (playerCanInput && !playerHasWon)
+        if (playerCanInput && !playerHasWon && failInputTimer <= 0)
         {
             Invoke("CalculateInput", 0.1f);
         }
@@ -212,7 +232,7 @@ public class SimonSays : MonoBehaviour
 
     void CalculateInput()
     {
-        if (playerCanInput)
+        if (playerCanInput && failInputTimer <= 0)
         {
             playerCanInput = false;
 
@@ -226,9 +246,38 @@ public class SimonSays : MonoBehaviour
                 if (animator)
                     StartCoroutine("Flail");
 
-                ResetCombination();
+                CheckForLose();
             }
         }
+    }
+
+    void CheckForLose()
+    {
+        currentPacience -= 1;
+
+        // Stop the player's memory from going below 0
+        if (currentPacience < 0)
+        {
+            currentPacience = 0;
+        }
+
+        if (currentPacience <= 0)
+        {
+            Lose();
+        }
+        else
+        {
+            ResetCombination();
+        }
+    }
+
+    void Lose()
+    {
+        Debug.Log("Player has lost");
+
+        uICanvas.enabled = false;
+        loseUI.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
 
     void RemoveComboUI()
@@ -272,7 +321,7 @@ public class SimonSays : MonoBehaviour
         // Check to see if the combo is finished
         if(buttonList.Count == 0)
         {
-            currentMemory += 10;
+            currentMemory += 1;
 
             UpdateMemoryMetre();
 
@@ -310,16 +359,10 @@ public class SimonSays : MonoBehaviour
     // When the player inputs the wrong button
     void ResetCombination()
     {
+        failInputTimer = failInputTime;
+
         buttonList.Clear();
         buttonList.AddRange(buttonListSave);
-
-        currentMemory -= 5;
-
-        // Stop the player's memory from going below 0
-        if (currentMemory < 0)
-        {
-            currentMemory = 0;
-        }
 
         UpdateMemoryMetre();
 
