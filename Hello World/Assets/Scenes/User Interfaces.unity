@@ -1959,7 +1959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6e43d2b25c90f48b9c4f3165317df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiltDistance: 10
+  xPos: -100
+  yPos: 150
+  tiltDistance: 5
   moveTime: 0.7
   scaleSize: 0.8
 --- !u!1 &457718609
@@ -2157,6 +2159,7 @@ MonoBehaviour:
   scaleSize: 0.8
   scaleTime: 0.5
   moveTime: 0.5
+  canvasItem: {fileID: 0}
 --- !u!1 &498476434
 GameObject:
   m_ObjectHideFlags: 0
@@ -5333,6 +5336,7 @@ GameObject:
   - component: {fileID: 1308310524}
   - component: {fileID: 1308310523}
   - component: {fileID: 1308310525}
+  - component: {fileID: 1308310526}
   m_Layer: 5
   m_Name: L Trigger
   m_TagString: Untagged
@@ -5413,6 +5417,19 @@ MonoBehaviour:
   scaleSize: 0.8
   scaleTime: 0.5
   moveTime: 0.5
+  canvasItem: {fileID: 0}
+--- !u!225 &1308310526
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308310521}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1371245571
 GameObject:
   m_ObjectHideFlags: 0

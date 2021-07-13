@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class StickHorizontalTweener : MonoBehaviour
+public class AnalogStickTweener : MonoBehaviour
 {
+    public float xPos;
+    public float yPos;
     public float tiltDistance;
     public float moveTime;
     public float scaleSize;
@@ -9,10 +11,6 @@ public class StickHorizontalTweener : MonoBehaviour
     private void Start()
     {
         TweenRight();
-    }
-
-    private void OnEnable()
-    {
     }
 
     public void TweenLeft()
@@ -23,7 +21,8 @@ public class StickHorizontalTweener : MonoBehaviour
 
     public void TweenRight()
     {
-        transform.LeanMoveLocalX(tiltDistance, moveTime).setEaseInOutQuint().setLoopPingPong();
+        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint().setLoopPingPong();
+        //transform.LeanMoveLocalX(tiltDistance, moveTime).setEaseInOutQuint().setLoopPingPong();
         transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine().setLoopPingPong();
     }
 }
