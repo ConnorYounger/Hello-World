@@ -2060,6 +2060,7 @@ GameObject:
   - component: {fileID: 496610767}
   - component: {fileID: 496610769}
   - component: {fileID: 496610768}
+  - component: {fileID: 496610770}
   m_Layer: 5
   m_Name: R Trigger
   m_TagString: Untagged
@@ -2124,6 +2125,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496610766}
   m_CullTransparentMesh: 1
+--- !u!114 &496610770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496610766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e3cab310f58f4a93d8c30f733fd98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisMovement: 125
+  scaleSize: 0.8
+  scaleTime: 0.5
+  moveTime: 0.5
 --- !u!1 &498476434
 GameObject:
   m_ObjectHideFlags: 0
@@ -5299,6 +5316,7 @@ GameObject:
   - component: {fileID: 1308310522}
   - component: {fileID: 1308310524}
   - component: {fileID: 1308310523}
+  - component: {fileID: 1308310525}
   m_Layer: 5
   m_Name: L Trigger
   m_TagString: Untagged
@@ -5363,6 +5381,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308310521}
   m_CullTransparentMesh: 1
+--- !u!114 &1308310525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308310521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e3cab310f58f4a93d8c30f733fd98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisMovement: 125
+  scaleSize: 0.8
+  scaleTime: 0.5
+  moveTime: 0.5
 --- !u!1 &1371245571
 GameObject:
   m_ObjectHideFlags: 0
