@@ -57,4 +57,10 @@ public class ParentNarrative : MonoBehaviour
                 speachText.enabled = false;
         }
     }
+
+    public void NarrativeElement(textElement t)
+    {
+        StopCoroutine("ExecuteNarrativeElement");
+        StartCoroutine("ExecuteNarrativeElement", t);
+    }
 }

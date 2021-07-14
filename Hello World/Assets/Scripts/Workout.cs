@@ -53,6 +53,8 @@ public class Workout : MonoBehaviour
 
     private MiniGameInputs controls;
 
+    public ParentNarrative parent;
+
     [Header("Discovery Player")]
     public bool discoveryMode;
     public DiscoveryPlayer discoveryPlayer;
@@ -308,6 +310,9 @@ public class Workout : MonoBehaviour
 
         sitUpCount++;
 
+        if (parent && sitUpCount < sitUpGoal)
+            parent.NarrativeElement(parent.dialougeTexts[sitUpCount - 1]);
+
         UpdateSliders();
 
         ResetCheckPoints();
@@ -336,13 +341,14 @@ public class Workout : MonoBehaviour
 
         gameFinished = true;
 
+        if (parent)
+            parent.NarrativeElement(parent.winText);
+
         if (discoveryMode)
         {
             discoveryPlayer.exerciseIndex = 2.1f;
             discoveryPlayer.cardIndex = "2Out";
             discoveryPlayer.SavePlayer();
-
-            //SceneManager.LoadScene("DiscoveryMilestones");
         }
     }
 
@@ -353,6 +359,9 @@ public class Workout : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(GameObject.Find("LoseButton"));
 
         gameFinished = true;
+
+        if (parent)
+            parent.NarrativeElement(parent.loseText);
     }
 
     void UpdateSliders()

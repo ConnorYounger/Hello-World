@@ -228,8 +228,7 @@ public class SimonSays : MonoBehaviour
 
         if (parent)
         {
-            parent.StopCoroutine("ExecuteNarrativeElement");
-            parent.StartCoroutine("ExecuteNarrativeElement", parent.winText);
+            parent.NarrativeElement(parent.winText);
         }
 
         if (discoveryMode)
@@ -291,8 +290,7 @@ public class SimonSays : MonoBehaviour
 
         if (parent)
         {
-            parent.StopCoroutine("ExecuteNarrativeElement");
-            parent.StartCoroutine("ExecuteNarrativeElement", parent.loseText);
+            parent.NarrativeElement(parent.loseText);
         }
     }
 
@@ -341,8 +339,7 @@ public class SimonSays : MonoBehaviour
 
             if (parent && currentMemory < maxMemory)
             {
-                parent.StopCoroutine("ExecuteNarrativeElement");
-                parent.StartCoroutine("ExecuteNarrativeElement", parent.dialougeTexts[currentMemory - 1]);
+                parent.NarrativeElement(parent.dialougeTexts[currentMemory - 1]);
             }
 
             UpdateMemoryMetre();
