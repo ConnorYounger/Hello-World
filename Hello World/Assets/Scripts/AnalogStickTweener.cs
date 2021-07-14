@@ -1,28 +1,52 @@
+using System.Collections;
 using UnityEngine;
 
 public class AnalogStickTweener : MonoBehaviour
 {
+    public float xDestination;
+    public float yDestination;
+    public float x2Destination;
+    public float y2Destination;
     public float xPos;
     public float yPos;
-    public float tiltDistance;
     public float moveTime;
     public float scaleSize;
 
     private void Start()
     {
-        TweenStickSingle();
+        //StartCoroutine("TweenStickAxis");
     }
 
-    public void TweenStickSingle()
+    public IEnumerator TweenStickSingle()
     {
-        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint().setLoopPingPong();
-        //transform.LeanMoveLocalX(tiltDistance, moveTime).setEaseInOutQuint().setLoopPingPong();
-        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine().setLoopPingPong();
+        transform.LeanMoveLocal(new Vector2(xDestination, yDestination), moveTime).setEaseInOutQuint();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
+        
+        yield return new WaitForSeconds(moveTime);
+        
+        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
     }
 
-    public void TweenStickAxis()
+    public IEnumerator TweenStickAxis()
     {
-        //move across side to side
-        //transform.LeanMoveLocal()
+        transform.LeanMoveLocal(new Vector2(xDestination, yDestination), moveTime).setEaseInOutQuint();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
+        
+        yield return new WaitForSeconds(moveTime);
+        
+        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
+        
+        yield return new WaitForSeconds(moveTime);
+
+        transform.LeanMoveLocal(new Vector2(x2Destination, y2Destination), moveTime).setEaseInOutQuint();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
+        
+        yield return new WaitForSeconds(moveTime);
+        
+        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
+
     }
 }

@@ -1959,9 +1959,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6e43d2b25c90f48b9c4f3165317df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xPos: -100
+  xDestination: -50
+  yDestination: 150
+  x2Destination: -250
+  y2Destination: 150
+  xPos: -150
   yPos: 150
-  tiltDistance: 5
   moveTime: 0.7
   scaleSize: 0.8
 --- !u!1 &457718609
@@ -2159,7 +2162,6 @@ MonoBehaviour:
   scaleSize: 0.8
   scaleTime: 0.5
   moveTime: 0.5
-  canvasItem: {fileID: 0}
 --- !u!1 &498476434
 GameObject:
   m_ObjectHideFlags: 0
@@ -5417,7 +5419,6 @@ MonoBehaviour:
   scaleSize: 0.8
   scaleTime: 0.5
   moveTime: 0.5
-  canvasItem: {fileID: 0}
 --- !u!225 &1308310526
 CanvasGroup:
   m_ObjectHideFlags: 0

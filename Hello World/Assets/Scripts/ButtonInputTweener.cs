@@ -6,7 +6,6 @@ public class ButtonInputTweener : MonoBehaviour
     public float scaleSize;
     public float scaleTime;
     public float moveTime;
-    public CanvasGroup canvasItem;
 
     private void Start()
     {
