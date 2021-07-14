@@ -227,7 +227,10 @@ public class SimonSays : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
 
         if (parent)
+        {
+            parent.StopCoroutine("ExecuteNarrativeElement");
             parent.StartCoroutine("ExecuteNarrativeElement", parent.winText);
+        }
 
         if (discoveryMode)
         {
@@ -287,7 +290,10 @@ public class SimonSays : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
 
         if (parent)
+        {
+            parent.StopCoroutine("ExecuteNarrativeElement");
             parent.StartCoroutine("ExecuteNarrativeElement", parent.loseText);
+        }
     }
 
     void RemoveComboUI()
@@ -332,6 +338,12 @@ public class SimonSays : MonoBehaviour
         if(buttonList.Count == 0)
         {
             currentMemory += 1;
+
+            if (parent && currentMemory < maxMemory)
+            {
+                parent.StopCoroutine("ExecuteNarrativeElement");
+                parent.StartCoroutine("ExecuteNarrativeElement", parent.dialougeTexts[currentMemory - 1]);
+            }
 
             UpdateMemoryMetre();
 

@@ -23,6 +23,9 @@ public class ParentNarrative : MonoBehaviour
     public textElement introText;
     public textElement winText;
     public textElement loseText;
+
+    [Space()]
+    public textElement[] dialougeTexts;
     #endregion
 
     private void Start()
