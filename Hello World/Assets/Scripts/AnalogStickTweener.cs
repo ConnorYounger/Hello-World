@@ -10,19 +10,19 @@ public class AnalogStickTweener : MonoBehaviour
 
     private void Start()
     {
-        TweenRight();
+        TweenStickSingle();
     }
 
-    public void TweenLeft()
-    {
-        transform.LeanMoveLocalX(-tiltDistance, moveTime).setEaseInOutQuint().setLoopPingPong();
-        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine().setLoopPingPong();
-    }
-
-    public void TweenRight()
+    public void TweenStickSingle()
     {
         transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint().setLoopPingPong();
         //transform.LeanMoveLocalX(tiltDistance, moveTime).setEaseInOutQuint().setLoopPingPong();
         transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine().setLoopPingPong();
+    }
+
+    public void TweenStickAxis()
+    {
+        //move across side to side
+        //transform.LeanMoveLocal()
     }
 }
