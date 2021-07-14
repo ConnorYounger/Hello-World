@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class BasicParentAI : MonoBehaviour
+public class ParentNarrative : MonoBehaviour
 {
-
+    #region variables
     [System.Serializable]
     public struct textElement
     {
@@ -23,10 +23,11 @@ public class BasicParentAI : MonoBehaviour
     public textElement introText;
     public textElement winText;
     public textElement loseText;
+    #endregion
 
     private void Start()
     {
-        StartCoroutine("ExecuteNarrativeElement");
+        StartCoroutine("ExecuteNarrativeElement", introText);
     }
 
     public IEnumerator ExecuteNarrativeElement(textElement t)

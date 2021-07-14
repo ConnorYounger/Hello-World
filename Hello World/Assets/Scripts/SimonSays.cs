@@ -44,6 +44,8 @@ public class SimonSays : MonoBehaviour
 
     private MiniGameInputs controls;
 
+    public ParentNarrative parent;
+
     [Header("Discovery Player")]
     public bool discoveryMode;
     public DiscoveryPlayer discoveryPlayer;
@@ -111,6 +113,7 @@ public class SimonSays : MonoBehaviour
         controls.SimonSays.Disable();
     }
 
+    #region playerInputs
     void TriggerInput(InputAction action, float i)
     {
         if (i >= 1 && playerCanInput)
@@ -136,7 +139,9 @@ public class SimonSays : MonoBehaviour
             Invoke("CalculateInput", 0.1f);
         }
     }
+    #endregion
 
+    #region combiniationMethods
     // Generate a new combo list
     void GenerateNewCombination()
     {
@@ -203,6 +208,7 @@ public class SimonSays : MonoBehaviour
             RemovePlayerInputUI();
         }
     }
+    #endregion
 
     // When the player wins
     void PlayerWin()
@@ -220,13 +226,14 @@ public class SimonSays : MonoBehaviour
         winUI.SetActive(true);
         EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
 
+        if (parent)
+            parent.StartCoroutine("ExecuteNarrativeElement", parent.winText);
+
         if (discoveryMode)
         {
             discoveryPlayer.exerciseIndex = 1.1f;
             discoveryPlayer.cardIndex = "1Out";
             discoveryPlayer.SavePlayer();
-
-            //SceneManager.LoadScene("DiscoveryMilestones");
         }
     }
 
@@ -278,6 +285,9 @@ public class SimonSays : MonoBehaviour
         uICanvas.enabled = false;
         loseUI.SetActive(true);
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
+
+        if (parent)
+            parent.StartCoroutine("ExecuteNarrativeElement", parent.loseText);
     }
 
     void RemoveComboUI()
