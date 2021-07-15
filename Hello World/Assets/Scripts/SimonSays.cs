@@ -35,6 +35,8 @@ public class SimonSays : MonoBehaviour
     public GameObject winUI;
     public GameObject loseUI;
 
+    public bool controllerSprites = true;
+
     public Slider memoryMetreSlider;
 
     private bool playerHasWon;
@@ -179,9 +181,12 @@ public class SimonSays : MonoBehaviour
         button.transform.SetParent(comboPanel.transform);
 
         // Set the spirte
-        if (scriptableObject && scriptableObject.inputSprite)
+        if (scriptableObject && scriptableObject.controllerInputSprite)
         {
-            button.GetComponent<Image>().sprite = scriptableObject.inputSprite;
+            if(controllerSprites)
+                button.GetComponent<Image>().sprite = scriptableObject.controllerInputSprite;
+            else
+                button.GetComponent<Image>().sprite = scriptableObject.keyboardInputSprite;
         }
     }
 

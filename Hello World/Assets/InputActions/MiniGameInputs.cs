@@ -134,6 +134,17 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
+                    ""id"": ""f883f96c-486d-4581-96fb-d04b7fa6d0ad"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""1e765069-5877-4760-91f3-2bffa87b2b78"",
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
@@ -145,8 +156,8 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f883f96c-486d-4581-96fb-d04b7fa6d0ad"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""id"": ""7e2d2b26-22e8-4028-8f2a-660337857712"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -169,6 +180,17 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""98a1a51d-b7b5-4e9e-99c7-8c2dc5b14989"",
                     ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5b9c01d-6e58-4299-a11d-6917f123b3a8"",
+                    ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
