@@ -17,7 +17,8 @@ public class Workout : MonoBehaviour
 
     public float tiltAngle = 45;
     public float holdTime = 3;
-    public float resetCoolDownTime = 2;
+    public float failCoolDownTime = 1;
+    public float sucessCoolDownTime = 2;
     public float movementMultiplier = 2;
     private float resetCoolDown;
     private float currentHoldTime;
@@ -96,10 +97,10 @@ public class Workout : MonoBehaviour
             CheckForSucessfulSitUp();
         }
 
-        if(resetCoolDown > 0)
-        {
-            resetCoolDown -= Time.deltaTime;
-        }
+        //if(resetCoolDown > 0)
+        //{
+        //    resetCoolDown -= Time.deltaTime;
+        //}
 
         MoveToStartingPos();
     }
@@ -117,25 +118,6 @@ public class Workout : MonoBehaviour
 
     void SitUp()
     {
-        //if(Mathf.Abs(rightMove.y) > (tiltAngle / 100) && Mathf.Abs(leftMove.y) > (tiltAngle / 100) && !reset)
-        //{
-        //    currentHoldTime += Time.deltaTime;
-
-        //    if(!moveDown)
-        //        baby.transform.position = new Vector3(baby.transform.position.x, baby.transform.position.y + Time.deltaTime * movementMultiplier, baby.transform.position.z);
-        //}
-        //else if (currentHoldTime > 0)
-        //{
-        //    if (reset)
-        //    {
-        //        currentHoldTime = 0;
-        //    }
-        //    else
-        //    {
-        //        FailedSitUp();
-        //    }
-        //}
-
         if (!reset)
         {
             // Left Thumb Stick Input
@@ -174,14 +156,16 @@ public class Workout : MonoBehaviour
             }
             //
 
-            if(checkpoint1Left && checkpoint1Right)
+            if(checkpoint1Left && checkpoint1Right && animator.GetInteger("Stage") == 0)
             {
                 animator.SetInteger("Stage", 1);
+                UIControlsSwitch();
             }
 
             if (checkpoint2Left && checkpoint2Right)
             {
                 animator.SetInteger("Stage", 2);
+                UIControlsSwitch();
 
                 SucessfulSitUp();
             }
@@ -189,7 +173,6 @@ public class Workout : MonoBehaviour
             // Check if the player has moved along the x axis
             if ((leftMove.x > inputXBuffer || leftMove.x < -inputXBuffer) || (rightMove.x > inputXBuffer || rightMove.x < -inputXBuffer))
             {
-                Debug.Log("Fail");
                 FailedSitUp();
             }
 
@@ -251,8 +234,6 @@ public class Workout : MonoBehaviour
         animator.SetBool("Fail", true);
         StartCoroutine("ResetAnimator");
 
-        //moveDown = true;
-
         if (Mathf.Abs(rightMove.y) < (tiltAngle / 100))
         {
             animator.SetBool("FallOverRight", true);
@@ -273,7 +254,8 @@ public class Workout : MonoBehaviour
                 animator.SetBool("FallOverLeft", true);
         }
 
-        resetCoolDown = resetCoolDownTime;
+        StartCoroutine("ResetCoolDown", failCoolDownTime);
+        //resetCoolDown = resetCoolDownTime;
 
         reset = true;
 
@@ -299,6 +281,7 @@ public class Workout : MonoBehaviour
 
         animator.SetInteger("Stage", 0);
         animator.SetBool("Fail", false);
+        UIControlsSwitch();
     }
 
     void CheckForSucessfulSitUp()
@@ -311,9 +294,11 @@ public class Workout : MonoBehaviour
 
     void SucessfulSitUp()
     {
+        StartCoroutine("ResetCoolDown", sucessCoolDownTime);
+
         reset = true;
 
-        //moveDown = true;
+        //resetCoolDown = resetCoolDownTime;
 
         sitUpCount++;
 
@@ -401,9 +386,26 @@ public class Workout : MonoBehaviour
 
     void UIControlsSwitch()
     {
-        foreach(GameObject ob in upControls)
+        //for(int i = 0; i< upControls.Length; i++)
+        //{
+        //    upControls[i].SetActive(!upControls[i].activeSelf);
+        //}
+
+        if(animator.GetInteger("Stage") == 1)
         {
-            ob.SetActive(!ob.activeSelf);
+            for (int i = 0; i < upControls.Length; i++)
+            {
+                upControls[i].SetActive(true);
+                downControls[i].SetActive(false);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < upControls.Length; i++)
+            {
+                upControls[i].SetActive(false);
+                downControls[i].SetActive(true);
+            }
         }
     }
 
@@ -412,8 +414,12 @@ public class Workout : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    private void OnGUI()
+    IEnumerator ResetCoolDown(float time)
     {
-        
+        resetCoolDown = time;
+
+        yield return new WaitForSeconds(time);
+
+        resetCoolDown = 0;
     }
 }
