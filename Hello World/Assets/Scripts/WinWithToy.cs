@@ -9,6 +9,8 @@ public class WinWithToy : MonoBehaviour
     public GameObject baby;
     private Animator anim;
 
+    public QWOP disableText;
+
     public bool gameWon = false;
 
     void Start()
@@ -24,6 +26,11 @@ public class WinWithToy : MonoBehaviour
             winText.SetActive(true);
             anim.SetBool("gotBall", true);
             gameWon = true;
+            disableText.instructionText.SetActive(false);
+            Destroy(disableText.lBText);
+            Destroy(disableText.rTText);
+            Destroy(disableText.rBText);
+            Destroy(disableText.lTText);
         }
     }
 }

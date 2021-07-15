@@ -737,7 +737,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""23b19fdf-5909-4292-9291-a3f093a4a44c"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -759,22 +759,11 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""856d30bc-bb1f-4324-9b13-deff94382b74"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RightMovement1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""432791c7-1bcc-47e6-8fb6-0f8f02bc2ffa"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftMovement2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -791,12 +780,12 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ec5bded2-6917-49c0-b515-4c4f58267928"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""id"": ""7c184869-3efe-4a86-9eba-1217b95b3c06"",
+                    ""path"": ""<Keyboard>/o"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RightMovement2"",
+                    ""action"": ""LeftMovement2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -830,6 +819,17 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec5bded2-6917-49c0-b515-4c4f58267928"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightMovement2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
