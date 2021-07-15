@@ -490,7 +490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -191}
+  m_AnchoredPosition: {x: 0, y: -83}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &121777834
@@ -517,7 +517,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.119199276, g: 1, b: 0, a: 1}
+    m_SelectedColor: {r: 0.9339623, g: 0.87561864, b: 0.3127893, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1314,9 +1314,9 @@ RectTransform:
   m_Father: {fileID: 395523718}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 99}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &559827322
@@ -1663,6 +1663,9 @@ MonoBehaviour:
   patienceSlider: {fileID: 144539903}
   winScreen: {fileID: 1505713744}
   loseScreen: {fileID: 542406294}
+  uIControlls: {fileID: 751407682}
+  upControls: []
+  downControls: []
   animator: {fileID: 8900293754302473928}
   parent: {fileID: 1078515035}
   discoveryMode: 0
@@ -1787,6 +1790,12 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!223 &751407682 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 5296081857724062514, guid: c87174575268dc745b4493c9a757e961,
+    type: 3}
+  m_PrefabInstance: {fileID: 1790485469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &754291408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,43 +2601,61 @@ MonoBehaviour:
     displayTime: 0
     voiceClip: {fileID: 0}
     text: Oh No! Are you too tired to continue? That's ok, let's take a break.
-  dialougeTexts:
+  sucessDialougeTexts:
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Well done! can you do nine more?
+    text: Good job! Let's try to do 9  more!
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Great job! I bet you can do eight more!
+    text: Great! I bet you can do 8 more!
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Amazing work! seven more to go!
+    text: Amazing work! Only seven more to go!
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Great! You're getting close! only six more!
+    text: Wow you're so good at this! Six more left!
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Great job! I bet you can do five more!
+    text: Great! Can you do five more for me?
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Amazing work! Four more to go!
+    text: Good job! Only four more to go!
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Great! You're getting close! only three more!
+    text: Amazing! Three left!
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Good Job! Just two more to go!
+    text: You're so close! Only two more to go!
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Last one! You can do it!!
+    text: Great! last one! I know you can do it!
+  failDialougeTexts:
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Oh no! Don't worry, you can do this!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: That's ok, try again!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Don't let that get to you! I know you can do this!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Hey that's alright! Let's try again!
+  playRandom: 0
 --- !u!4 &1078515036
 Transform:
   m_ObjectHideFlags: 0
@@ -2831,7 +2858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -43}
+  m_AnchoredPosition: {x: 0, y: 87}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133704738
@@ -2847,7 +2874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9254902, g: 0.8029611, b: 0.2470588, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2939,7 +2966,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.119199276, g: 1, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 0.977039, b: 0.4575472, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3143,8 +3170,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3200,11 +3227,11 @@ RectTransform:
   m_Father: {fileID: 733461544}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 194.98145, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -10}
   m_SizeDelta: {x: 821.848, y: 454.656}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1348337301
 GameObject:
   m_ObjectHideFlags: 0
@@ -3273,9 +3300,9 @@ RectTransform:
   m_Father: {fileID: 395523718}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1549275401
@@ -4228,7 +4255,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.119199276, g: 1, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 0.977039, b: 0.4575472, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4309,6 +4336,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296081857724062513, guid: c87174575268dc745b4493c9a757e961,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5296081857724062517, guid: c87174575268dc745b4493c9a757e961,
         type: 3}

@@ -46,6 +46,11 @@ public class Workout : MonoBehaviour
 
     public GameObject winScreen;
     public GameObject loseScreen;
+    public Canvas uIControlls;
+
+    public GameObject[] upControls;
+    public GameObject[] downControls;
+    private bool down;
 
     public Animator animator;
 
@@ -284,6 +289,8 @@ public class Workout : MonoBehaviour
         {
             Lose();
         }
+        else
+            parent.PlayFailNarrativeElement();
     }
 
     IEnumerator ResetAnimator()
@@ -311,7 +318,7 @@ public class Workout : MonoBehaviour
         sitUpCount++;
 
         if (parent && sitUpCount < sitUpGoal)
-            parent.NarrativeElement(parent.dialougeTexts[sitUpCount - 1]);
+            parent.NarrativeElement(parent.sucessDialougeTexts[sitUpCount - 1]);
 
         UpdateSliders();
 
@@ -336,6 +343,7 @@ public class Workout : MonoBehaviour
     void Win()
     {
         winScreen.SetActive(true);
+        uIControlls.enabled = false;
 
         EventSystem.current.SetSelectedGameObject(GameObject.Find("WinButton"));
 
@@ -355,6 +363,7 @@ public class Workout : MonoBehaviour
     void Lose()
     {
         loseScreen.SetActive(true);
+        uIControlls.enabled = false;
 
         EventSystem.current.SetSelectedGameObject(GameObject.Find("LoseButton"));
 
@@ -390,8 +399,21 @@ public class Workout : MonoBehaviour
         }
     }
 
+    void UIControlsSwitch()
+    {
+        foreach(GameObject ob in upControls)
+        {
+            ob.SetActive(!ob.activeSelf);
+        }
+    }
+
     public void SwitchScene(string scene)
     {
         SceneManager.LoadScene(scene);
+    }
+
+    private void OnGUI()
+    {
+        
     }
 }

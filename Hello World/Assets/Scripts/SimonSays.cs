@@ -276,6 +276,7 @@ public class SimonSays : MonoBehaviour
         }
         else
         {
+            parent.PlayFailNarrativeElement();
             ResetCombination();
         }
     }
@@ -339,7 +340,7 @@ public class SimonSays : MonoBehaviour
 
             if (parent && currentMemory < maxMemory)
             {
-                parent.NarrativeElement(parent.dialougeTexts[currentMemory - 1]);
+                parent.NarrativeElement(parent.sucessDialougeTexts[currentMemory - 1]);
             }
 
             UpdateMemoryMetre();

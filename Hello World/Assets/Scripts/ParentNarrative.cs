@@ -25,7 +25,12 @@ public class ParentNarrative : MonoBehaviour
     public textElement loseText;
 
     [Space()]
-    public textElement[] dialougeTexts;
+    public textElement[] sucessDialougeTexts;
+
+    [Space()]
+    public textElement[] failDialougeTexts;
+    public bool playRandom;
+    private int playCounter;
     #endregion
 
     private void Start()
@@ -62,5 +67,23 @@ public class ParentNarrative : MonoBehaviour
     {
         StopCoroutine("ExecuteNarrativeElement");
         StartCoroutine("ExecuteNarrativeElement", t);
+    }
+
+    public void PlayFailNarrativeElement()
+    {
+        if (playRandom)
+        {
+            int rand = Random.Range(0, failDialougeTexts.Length);
+            NarrativeElement(failDialougeTexts[rand]);
+        }
+        else
+        {
+            NarrativeElement(failDialougeTexts[playCounter]);
+
+            playCounter++;
+
+            if (playCounter >= failDialougeTexts.Length)
+                playCounter = 0;
+        }
     }
 }

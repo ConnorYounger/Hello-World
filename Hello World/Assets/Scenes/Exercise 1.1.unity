@@ -1542,23 +1542,41 @@ MonoBehaviour:
     displayTime: 0
     voiceClip: {fileID: 0}
     text: Oh No! Are you too tired to continue? That's ok, let's take a break.
-  dialougeTexts:
+  sucessDialougeTexts:
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Well done! can you do four more?
+    text: Good job! Can you do 4 more?
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Great job! I bet you can do three more!
+    text: Great! I bet you can do 3 more!
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Amazing work! Two more to go!
+    text: Amazing! You're so good at this! Only 2 more left!
   - startTime: 0
     displayTime: 3
     voiceClip: {fileID: 0}
-    text: Great! Last one! You're so close!
+    text: Last one! I know you can do it!
+  failDialougeTexts:
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Oh no! Don't worry, you can do this!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: That's ok, try again!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Don't let that get to you! I know you can do this!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Hey that's alright! Let's try again!
+  playRandom: 0
 --- !u!4 &785944869
 Transform:
   m_ObjectHideFlags: 0
