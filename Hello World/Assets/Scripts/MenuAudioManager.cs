@@ -41,7 +41,7 @@ public class MenuAudioManager : MonoBehaviour
         camToybox.onClick.AddListener(delegate { PlayAudioClip(clipShelf); });
     }
 
-    private void PlayAudioClip(AudioClip clip)
+    public void PlayAudioClip(AudioClip clip)
     {
         audioSource.clip = clip;
         audioSource.Play();
