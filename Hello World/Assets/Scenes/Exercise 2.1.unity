@@ -1665,6 +1665,7 @@ MonoBehaviour:
   winScreen: {fileID: 1505713744}
   loseScreen: {fileID: 542406294}
   uIControlls: {fileID: 751407682}
+  uIText: {fileID: 1155374038}
   upControls:
   - {fileID: 1126670166}
   - {fileID: 1667899161}
@@ -1675,6 +1676,7 @@ MonoBehaviour:
   - {fileID: 1787287497}
   - {fileID: 1604037061}
   - {fileID: 1019287243}
+  uIControllsDisplayCounter: 3
   animator: {fileID: 8900293754302473928}
   parent: {fileID: 1078515035}
   discoveryMode: 0
@@ -2924,6 +2926,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133704736}
   m_CullTransparentMesh: 1
+--- !u!1 &1155374038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6780212765949775611, guid: c87174575268dc745b4493c9a757e961,
+    type: 3}
+  m_PrefabInstance: {fileID: 1790485469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1255259861
 GameObject:
   m_ObjectHideFlags: 0
@@ -3819,6 +3827,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8468825594658066099, guid: 03f44e4dca1dde640811294318548a60,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8468825595720734504, guid: 03f44e4dca1dde640811294318548a60,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4586,6 +4599,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780212765949775611, guid: c87174575268dc745b4493c9a757e961,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8002730182075632460, guid: c87174575268dc745b4493c9a757e961,
         type: 3}

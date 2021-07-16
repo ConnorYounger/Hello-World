@@ -78,6 +78,11 @@ public class SimonSays : MonoBehaviour
 
         controls.SimonSays.Click2.performed += ctx => TriggerInput(controls.SimonSays.Click2, ctx.ReadValue<float>());
         controls.SimonSays.Click2.canceled += ctx => TriggerInput(controls.SimonSays.Click2, 0);
+
+        //
+        controls.SimonSays.KClick1.performed += ctx => PlayerInput(controls.SimonSays.Click1);
+        controls.SimonSays.KClick2.performed += ctx => PlayerInput(controls.SimonSays.Click2);
+
     }
 
     void Start()

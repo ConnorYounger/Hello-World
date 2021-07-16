@@ -48,10 +48,14 @@ public class Workout : MonoBehaviour
     public GameObject winScreen;
     public GameObject loseScreen;
     public Canvas uIControlls;
+    public GameObject uIText;
 
     public GameObject[] upControls;
     public GameObject[] downControls;
     private bool down;
+
+    public int uIControllsDisplayCounter = 3;
+    private int uIDisplayCounter;
 
     public Animator animator;
 
@@ -80,6 +84,7 @@ public class Workout : MonoBehaviour
         patienceSlider.maxValue = startingPatience;
 
         startingLocation = baby.transform.position;
+        uIDisplayCounter = uIControllsDisplayCounter;
     }
 
     void SetInputActions()
@@ -265,6 +270,9 @@ public class Workout : MonoBehaviour
 
         currentPatience--;
 
+        uIDisplayCounter = uIControllsDisplayCounter;
+
+        UpdateUIControlls();
         UpdateSliders();
 
         if (currentPatience <= 0)
@@ -292,6 +300,40 @@ public class Workout : MonoBehaviour
         }
     }
 
+    void UpdateUIControlls()
+    {
+        if(uIDisplayCounter <= 0)
+        {
+            uIDisplayCounter = 0;
+
+            for(int i = 0; i < upControls.Length; i++)
+            {
+                upControls[i].SetActive(false);
+                downControls[i].SetActive(false);
+            }
+
+            if (uIText)
+            {
+                //uIText.SetActive(false);
+            }
+        }
+        else
+        {
+            if (uIText)
+            {
+                //uIText.SetActive(true);
+            }
+        }
+    }
+
+    void ModifyUIDisplay(int i)
+    {
+        if (uIDisplayCounter > 0)
+            uIDisplayCounter += i;
+
+        UpdateUIControlls();
+    }
+
     void SucessfulSitUp()
     {
         StartCoroutine("ResetCoolDown", sucessCoolDownTime);
@@ -307,6 +349,7 @@ public class Workout : MonoBehaviour
 
         UpdateSliders();
 
+        ModifyUIDisplay(-1);
         ResetCheckPoints();
 
         if (sitUpCount >= sitUpGoal)
@@ -386,25 +429,23 @@ public class Workout : MonoBehaviour
 
     void UIControlsSwitch()
     {
-        //for(int i = 0; i< upControls.Length; i++)
-        //{
-        //    upControls[i].SetActive(!upControls[i].activeSelf);
-        //}
-
-        if(animator.GetInteger("Stage") == 1)
+        if(uIDisplayCounter > 0)
         {
-            for (int i = 0; i < upControls.Length; i++)
+            if (animator.GetInteger("Stage") == 1)
             {
-                upControls[i].SetActive(true);
-                downControls[i].SetActive(false);
+                for (int i = 0; i < upControls.Length; i++)
+                {
+                    upControls[i].SetActive(true);
+                    downControls[i].SetActive(false);
+                }
             }
-        }
-        else
-        {
-            for (int i = 0; i < upControls.Length; i++)
+            else
             {
-                upControls[i].SetActive(false);
-                downControls[i].SetActive(true);
+                for (int i = 0; i < upControls.Length; i++)
+                {
+                    upControls[i].SetActive(false);
+                    downControls[i].SetActive(true);
+                }
             }
         }
     }

@@ -129,6 +129,22 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""KClick1"",
+                    ""type"": ""Button"",
+                    ""id"": ""f282c999-26f6-44fc-a1d5-b87cd1459cab"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""KClick2"",
+                    ""type"": ""Button"",
+                    ""id"": ""bfe94eab-3e25-4f66-9e85-38e2c13ff88d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -580,6 +596,28 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90029ba2-2a62-4cdf-a975-3e0c8d954a5c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KClick1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d529daef-eb99-4c36-89c6-5fe0fe3e946b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KClick2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1217,6 +1255,8 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_SimonSays_DPadUp = m_SimonSays.FindAction("DPadUp", throwIfNotFound: true);
         m_SimonSays_DPadDown = m_SimonSays.FindAction("DPadDown", throwIfNotFound: true);
         m_SimonSays_Pause = m_SimonSays.FindAction("Pause", throwIfNotFound: true);
+        m_SimonSays_KClick1 = m_SimonSays.FindAction("KClick1", throwIfNotFound: true);
+        m_SimonSays_KClick2 = m_SimonSays.FindAction("KClick2", throwIfNotFound: true);
         // HoldingObjects
         m_HoldingObjects = asset.FindActionMap("HoldingObjects", throwIfNotFound: true);
         m_HoldingObjects_LeftHandMovement = m_HoldingObjects.FindAction("LeftHandMovement", throwIfNotFound: true);
@@ -1308,6 +1348,8 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_SimonSays_DPadUp;
     private readonly InputAction m_SimonSays_DPadDown;
     private readonly InputAction m_SimonSays_Pause;
+    private readonly InputAction m_SimonSays_KClick1;
+    private readonly InputAction m_SimonSays_KClick2;
     public struct SimonSaysActions
     {
         private @MiniGameInputs m_Wrapper;
@@ -1326,6 +1368,8 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         public InputAction @DPadUp => m_Wrapper.m_SimonSays_DPadUp;
         public InputAction @DPadDown => m_Wrapper.m_SimonSays_DPadDown;
         public InputAction @Pause => m_Wrapper.m_SimonSays_Pause;
+        public InputAction @KClick1 => m_Wrapper.m_SimonSays_KClick1;
+        public InputAction @KClick2 => m_Wrapper.m_SimonSays_KClick2;
         public InputActionMap Get() { return m_Wrapper.m_SimonSays; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1377,6 +1421,12 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnPause;
+                @KClick1.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnKClick1;
+                @KClick1.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnKClick1;
+                @KClick1.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnKClick1;
+                @KClick2.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnKClick2;
+                @KClick2.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnKClick2;
+                @KClick2.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnKClick2;
             }
             m_Wrapper.m_SimonSaysActionsCallbackInterface = instance;
             if (instance != null)
@@ -1423,6 +1473,12 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @KClick1.started += instance.OnKClick1;
+                @KClick1.performed += instance.OnKClick1;
+                @KClick1.canceled += instance.OnKClick1;
+                @KClick2.started += instance.OnKClick2;
+                @KClick2.performed += instance.OnKClick2;
+                @KClick2.canceled += instance.OnKClick2;
             }
         }
     }
@@ -1712,6 +1768,8 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnDPadUp(InputAction.CallbackContext context);
         void OnDPadDown(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnKClick1(InputAction.CallbackContext context);
+        void OnKClick2(InputAction.CallbackContext context);
     }
     public interface IHoldingObjectsActions
     {

@@ -116,6 +116,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "KClick1",
+                    "type": "Button",
+                    "id": "f282c999-26f6-44fc-a1d5-b87cd1459cab",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "KClick2",
+                    "type": "Button",
+                    "id": "bfe94eab-3e25-4f66-9e85-38e2c13ff88d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -567,6 +583,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90029ba2-2a62-4cdf-a975-3e0c8d954a5c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KClick1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d529daef-eb99-4c36-89c6-5fe0fe3e946b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KClick2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
