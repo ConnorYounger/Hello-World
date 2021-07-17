@@ -70,9 +70,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "AnyInput",
+                    "name": "AnyInputCon",
                     "type": "Button",
                     "id": "b3ed2f57-c513-46c7-8c58-8b2a3472d5ba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AnyInputKey",
+                    "type": "Button",
+                    "id": "9b5d7ba9-5efd-4340-a1bb-90ed3469020b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -335,23 +343,12 @@
                 },
                 {
                     "name": "",
-                    "id": "00bc6e13-95da-4ae8-9a46-4397491415fb",
-                    "path": "<Keyboard>/anyKey",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AnyInput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4487fa6e-5302-4106-a3fd-2c00b11ac6fe",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -362,7 +359,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -373,7 +370,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -384,7 +381,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -395,7 +392,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -406,7 +403,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -417,7 +414,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -428,7 +425,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -439,7 +436,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -450,7 +447,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -461,7 +458,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -472,7 +469,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AnyInput",
+                    "action": "AnyInputCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -607,6 +604,17 @@
                     "action": "KClick2",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13ec2b77-16bf-4ede-843c-1b13f2a56eb4",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -651,6 +659,30 @@
                     "type": "Button",
                     "id": "3886d07d-5ecc-4575-bccc-28beaa3d872d",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AnyInputCon",
+                    "type": "Button",
+                    "id": "bec30a96-e4cd-48cc-909b-41396e891621",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AnyInputKey",
+                    "type": "Button",
+                    "id": "bba759a3-bb00-47e5-b6a9-602a83547d38",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AxisCon",
+                    "type": "PassThrough",
+                    "id": "5240892c-11a8-4791-9315-207777a85902",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -829,6 +861,149 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3e1d1a1-7b80-4c1c-825b-5efab9639711",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20494f90-991a-4237-bf16-9d00a2f5a009",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0dcebf88-8fdc-4da8-92ce-fad0d6fa9fe7",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4cf9c1d5-4b49-4dd9-abad-ece7e23960fb",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd0c2f9a-3a45-445c-b4d5-d0d6c4a4f2ca",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca7b6acf-bf7b-49e3-8990-639ac2c13699",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52e0c42c-fe09-4cea-a422-b5e1a779c4f5",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a2bb7cc-d944-482e-ba05-ae243594c2bf",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b7c12aa-51a4-4d1b-898e-6eba969f9aec",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca463ac5-e495-45d6-b47f-10d6bc1e961f",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57ef63ef-321c-446b-835a-14783f9af002",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AnyInputKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b48823d-1dd4-4335-9c04-b8f60c93f6cc",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AxisCon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a79e96de-fe4e-45a9-a6a3-ebd4d2c4bde5",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AxisCon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

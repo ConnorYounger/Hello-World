@@ -61,7 +61,8 @@ public class SimonSays : MonoBehaviour
     
     void SetInputActions()
     {
-        controls.SimonSays.AnyInput.performed += ctx => PlayerAnyInput();
+        controls.SimonSays.AnyInputCon.performed += ctx => PlayerAnyInput(true);
+        controls.SimonSays.AnyInputKey.performed += ctx => PlayerAnyInput(false);
         controls.SimonSays.AltClick1.performed += ctx => PlayerInput(controls.SimonSays.AltClick1);
         controls.SimonSays.AltClick2.performed += ctx => PlayerInput(controls.SimonSays.AltClick2);
         controls.SimonSays.ButtonA.performed += ctx => PlayerInput(controls.SimonSays.ButtonA);
@@ -139,12 +140,23 @@ public class SimonSays : MonoBehaviour
         }
     }
 
-    void PlayerAnyInput()
+    void PlayerAnyInput(bool con)
     {
         if (playerCanInput && !playerHasWon && failInputTimer <= 0)
         {
             Invoke("CalculateInput", 0.1f);
         }
+
+        if (con)
+        {
+            controllerSprites = true;
+        }
+        else
+        {
+            controllerSprites = false;
+        }
+
+        // Update
     }
     #endregion
 

@@ -83,9 +83,17 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""AnyInput"",
+                    ""name"": ""AnyInputCon"",
                     ""type"": ""Button"",
                     ""id"": ""b3ed2f57-c513-46c7-8c58-8b2a3472d5ba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""AnyInputKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b5d7ba9-5efd-4340-a1bb-90ed3469020b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -348,23 +356,12 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""00bc6e13-95da-4ae8-9a46-4397491415fb"",
-                    ""path"": ""<Keyboard>/anyKey"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AnyInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4487fa6e-5302-4106-a3fd-2c00b11ac6fe"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -375,7 +372,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -386,7 +383,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -397,7 +394,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -408,7 +405,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -419,7 +416,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -430,7 +427,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -441,7 +438,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -452,7 +449,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -463,7 +460,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -474,7 +471,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -485,7 +482,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AnyInput"",
+                    ""action"": ""AnyInputCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -620,6 +617,17 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""action"": ""KClick2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13ec2b77-16bf-4ede-843c-1b13f2a56eb4"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -664,6 +672,30 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""3886d07d-5ecc-4575-bccc-28beaa3d872d"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""AnyInputCon"",
+                    ""type"": ""Button"",
+                    ""id"": ""bec30a96-e4cd-48cc-909b-41396e891621"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""AnyInputKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""bba759a3-bb00-47e5-b6a9-602a83547d38"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""AxisCon"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""5240892c-11a8-4791-9315-207777a85902"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -842,6 +874,149 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3e1d1a1-7b80-4c1c-825b-5efab9639711"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20494f90-991a-4237-bf16-9d00a2f5a009"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0dcebf88-8fdc-4da8-92ce-fad0d6fa9fe7"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4cf9c1d5-4b49-4dd9-abad-ece7e23960fb"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd0c2f9a-3a45-445c-b4d5-d0d6c4a4f2ca"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca7b6acf-bf7b-49e3-8990-639ac2c13699"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52e0c42c-fe09-4cea-a422-b5e1a779c4f5"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a2bb7cc-d944-482e-ba05-ae243594c2bf"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b7c12aa-51a4-4d1b-898e-6eba969f9aec"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca463ac5-e495-45d6-b47f-10d6bc1e961f"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57ef63ef-321c-446b-835a-14783f9af002"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyInputKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b48823d-1dd4-4335-9c04-b8f60c93f6cc"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AxisCon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a79e96de-fe4e-45a9-a6a3-ebd4d2c4bde5"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AxisCon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1249,7 +1424,8 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_SimonSays_ButtonB = m_SimonSays.FindAction("ButtonB", throwIfNotFound: true);
         m_SimonSays_ButtonX = m_SimonSays.FindAction("ButtonX", throwIfNotFound: true);
         m_SimonSays_ButtonY = m_SimonSays.FindAction("ButtonY", throwIfNotFound: true);
-        m_SimonSays_AnyInput = m_SimonSays.FindAction("AnyInput", throwIfNotFound: true);
+        m_SimonSays_AnyInputCon = m_SimonSays.FindAction("AnyInputCon", throwIfNotFound: true);
+        m_SimonSays_AnyInputKey = m_SimonSays.FindAction("AnyInputKey", throwIfNotFound: true);
         m_SimonSays_DPadRight = m_SimonSays.FindAction("DPadRight", throwIfNotFound: true);
         m_SimonSays_DPadLeft = m_SimonSays.FindAction("DPadLeft", throwIfNotFound: true);
         m_SimonSays_DPadUp = m_SimonSays.FindAction("DPadUp", throwIfNotFound: true);
@@ -1264,6 +1440,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_HoldingObjects_LeftHandGrab = m_HoldingObjects.FindAction("LeftHandGrab", throwIfNotFound: true);
         m_HoldingObjects_RightHandGrab = m_HoldingObjects.FindAction("RightHandGrab", throwIfNotFound: true);
         m_HoldingObjects_Pause = m_HoldingObjects.FindAction("Pause", throwIfNotFound: true);
+        m_HoldingObjects_AnyInputCon = m_HoldingObjects.FindAction("AnyInputCon", throwIfNotFound: true);
+        m_HoldingObjects_AnyInputKey = m_HoldingObjects.FindAction("AnyInputKey", throwIfNotFound: true);
+        m_HoldingObjects_AxisCon = m_HoldingObjects.FindAction("AxisCon", throwIfNotFound: true);
         // QWOP
         m_QWOP = asset.FindActionMap("QWOP", throwIfNotFound: true);
         m_QWOP_LeftMovement1 = m_QWOP.FindAction("LeftMovement1", throwIfNotFound: true);
@@ -1342,7 +1521,8 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_SimonSays_ButtonB;
     private readonly InputAction m_SimonSays_ButtonX;
     private readonly InputAction m_SimonSays_ButtonY;
-    private readonly InputAction m_SimonSays_AnyInput;
+    private readonly InputAction m_SimonSays_AnyInputCon;
+    private readonly InputAction m_SimonSays_AnyInputKey;
     private readonly InputAction m_SimonSays_DPadRight;
     private readonly InputAction m_SimonSays_DPadLeft;
     private readonly InputAction m_SimonSays_DPadUp;
@@ -1362,7 +1542,8 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         public InputAction @ButtonB => m_Wrapper.m_SimonSays_ButtonB;
         public InputAction @ButtonX => m_Wrapper.m_SimonSays_ButtonX;
         public InputAction @ButtonY => m_Wrapper.m_SimonSays_ButtonY;
-        public InputAction @AnyInput => m_Wrapper.m_SimonSays_AnyInput;
+        public InputAction @AnyInputCon => m_Wrapper.m_SimonSays_AnyInputCon;
+        public InputAction @AnyInputKey => m_Wrapper.m_SimonSays_AnyInputKey;
         public InputAction @DPadRight => m_Wrapper.m_SimonSays_DPadRight;
         public InputAction @DPadLeft => m_Wrapper.m_SimonSays_DPadLeft;
         public InputAction @DPadUp => m_Wrapper.m_SimonSays_DPadUp;
@@ -1403,9 +1584,12 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @ButtonY.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnButtonY;
                 @ButtonY.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnButtonY;
                 @ButtonY.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnButtonY;
-                @AnyInput.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInput;
-                @AnyInput.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInput;
-                @AnyInput.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInput;
+                @AnyInputCon.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInputCon;
+                @AnyInputCon.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInputCon;
+                @AnyInputCon.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInputCon;
+                @AnyInputKey.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInputKey;
+                @AnyInputKey.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInputKey;
+                @AnyInputKey.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnAnyInputKey;
                 @DPadRight.started -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadRight;
                 @DPadRight.performed -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadRight;
                 @DPadRight.canceled -= m_Wrapper.m_SimonSaysActionsCallbackInterface.OnDPadRight;
@@ -1455,9 +1639,12 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @ButtonY.started += instance.OnButtonY;
                 @ButtonY.performed += instance.OnButtonY;
                 @ButtonY.canceled += instance.OnButtonY;
-                @AnyInput.started += instance.OnAnyInput;
-                @AnyInput.performed += instance.OnAnyInput;
-                @AnyInput.canceled += instance.OnAnyInput;
+                @AnyInputCon.started += instance.OnAnyInputCon;
+                @AnyInputCon.performed += instance.OnAnyInputCon;
+                @AnyInputCon.canceled += instance.OnAnyInputCon;
+                @AnyInputKey.started += instance.OnAnyInputKey;
+                @AnyInputKey.performed += instance.OnAnyInputKey;
+                @AnyInputKey.canceled += instance.OnAnyInputKey;
                 @DPadRight.started += instance.OnDPadRight;
                 @DPadRight.performed += instance.OnDPadRight;
                 @DPadRight.canceled += instance.OnDPadRight;
@@ -1492,6 +1679,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_HoldingObjects_LeftHandGrab;
     private readonly InputAction m_HoldingObjects_RightHandGrab;
     private readonly InputAction m_HoldingObjects_Pause;
+    private readonly InputAction m_HoldingObjects_AnyInputCon;
+    private readonly InputAction m_HoldingObjects_AnyInputKey;
+    private readonly InputAction m_HoldingObjects_AxisCon;
     public struct HoldingObjectsActions
     {
         private @MiniGameInputs m_Wrapper;
@@ -1501,6 +1691,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         public InputAction @LeftHandGrab => m_Wrapper.m_HoldingObjects_LeftHandGrab;
         public InputAction @RightHandGrab => m_Wrapper.m_HoldingObjects_RightHandGrab;
         public InputAction @Pause => m_Wrapper.m_HoldingObjects_Pause;
+        public InputAction @AnyInputCon => m_Wrapper.m_HoldingObjects_AnyInputCon;
+        public InputAction @AnyInputKey => m_Wrapper.m_HoldingObjects_AnyInputKey;
+        public InputAction @AxisCon => m_Wrapper.m_HoldingObjects_AxisCon;
         public InputActionMap Get() { return m_Wrapper.m_HoldingObjects; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1525,6 +1718,15 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnPause;
+                @AnyInputCon.started -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnAnyInputCon;
+                @AnyInputCon.performed -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnAnyInputCon;
+                @AnyInputCon.canceled -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnAnyInputCon;
+                @AnyInputKey.started -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnAnyInputKey;
+                @AnyInputKey.performed -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnAnyInputKey;
+                @AnyInputKey.canceled -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnAnyInputKey;
+                @AxisCon.started -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnAxisCon;
+                @AxisCon.performed -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnAxisCon;
+                @AxisCon.canceled -= m_Wrapper.m_HoldingObjectsActionsCallbackInterface.OnAxisCon;
             }
             m_Wrapper.m_HoldingObjectsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1544,6 +1746,15 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @AnyInputCon.started += instance.OnAnyInputCon;
+                @AnyInputCon.performed += instance.OnAnyInputCon;
+                @AnyInputCon.canceled += instance.OnAnyInputCon;
+                @AnyInputKey.started += instance.OnAnyInputKey;
+                @AnyInputKey.performed += instance.OnAnyInputKey;
+                @AnyInputKey.canceled += instance.OnAnyInputKey;
+                @AxisCon.started += instance.OnAxisCon;
+                @AxisCon.performed += instance.OnAxisCon;
+                @AxisCon.canceled += instance.OnAxisCon;
             }
         }
     }
@@ -1762,7 +1973,8 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnButtonB(InputAction.CallbackContext context);
         void OnButtonX(InputAction.CallbackContext context);
         void OnButtonY(InputAction.CallbackContext context);
-        void OnAnyInput(InputAction.CallbackContext context);
+        void OnAnyInputCon(InputAction.CallbackContext context);
+        void OnAnyInputKey(InputAction.CallbackContext context);
         void OnDPadRight(InputAction.CallbackContext context);
         void OnDPadLeft(InputAction.CallbackContext context);
         void OnDPadUp(InputAction.CallbackContext context);
@@ -1778,6 +1990,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnLeftHandGrab(InputAction.CallbackContext context);
         void OnRightHandGrab(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnAnyInputCon(InputAction.CallbackContext context);
+        void OnAnyInputKey(InputAction.CallbackContext context);
+        void OnAxisCon(InputAction.CallbackContext context);
     }
     public interface IQWOPActions
     {

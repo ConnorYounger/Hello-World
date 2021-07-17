@@ -50,8 +50,8 @@ public class Workout : MonoBehaviour
     public Canvas uIControlls;
     public GameObject uIText;
 
-    public GameObject[] upControls;
-    public GameObject[] downControls;
+    public Image[] upControls;
+    public Image[] downControls;
     private bool down;
 
     public int uIControllsDisplayCounter = 3;
@@ -64,6 +64,11 @@ public class Workout : MonoBehaviour
     private MiniGameInputs controls;
 
     public ParentNarrative parent;
+
+    [Header("ControllsUI")]
+    public GameObject[] controllerUI;
+    public GameObject[] keyboardUI;
+    private bool controller;
 
     [Header("Discovery Player")]
     public bool discoveryMode;
@@ -92,6 +97,11 @@ public class Workout : MonoBehaviour
         controls.HoldingObjects.RightHandMovement.performed += ctx => rightMove = ctx.ReadValue<Vector2>();
 
         controls.HoldingObjects.LeftHandMovement.performed += ctx => leftMove = ctx.ReadValue<Vector2>();
+
+        //
+        controls.HoldingObjects.AnyInputCon.performed += ctx => UpdateControllsUI(true);
+        controls.HoldingObjects.AxisCon.performed += ctx => UpdateControllsUI(true);
+        controls.HoldingObjects.AnyInputKey.performed += ctx => UpdateControllsUI(false);
     }
 
     void Update()
@@ -308,8 +318,8 @@ public class Workout : MonoBehaviour
 
             for(int i = 0; i < upControls.Length; i++)
             {
-                upControls[i].SetActive(false);
-                downControls[i].SetActive(false);
+                upControls[i].enabled = false;
+                downControls[i].enabled = false;
             }
 
             if (uIText)
@@ -435,17 +445,47 @@ public class Workout : MonoBehaviour
             {
                 for (int i = 0; i < upControls.Length; i++)
                 {
-                    upControls[i].SetActive(true);
-                    downControls[i].SetActive(false);
+                    upControls[i].enabled = true;
+                    downControls[i].enabled = false;
                 }
             }
             else
             {
                 for (int i = 0; i < upControls.Length; i++)
                 {
-                    upControls[i].SetActive(false);
-                    downControls[i].SetActive(true);
+                    upControls[i].enabled = false;
+                    downControls[i].enabled = true;
                 }
+            }
+        }
+    }
+
+    void UpdateControllsUI(bool c)
+    {
+        Debug.Log("Update Controlls " + c);
+
+        if (c)
+        {
+            foreach(GameObject con in controllerUI)
+            {
+                con.SetActive(true);
+            }
+
+            foreach (GameObject key in keyboardUI)
+            {
+                key.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (GameObject con in controllerUI)
+            {
+                con.SetActive(false);
+            }
+
+            foreach (GameObject key in keyboardUI)
+            {
+                key.SetActive(true);
             }
         }
     }
