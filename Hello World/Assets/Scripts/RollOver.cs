@@ -20,6 +20,7 @@ public class RollOver : MonoBehaviour
 
     public float failTimer = 0;
     public float timeLimit = 0;
+    public float coolDown = 0;
 
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class RollOver : MonoBehaviour
         if (isLegUp == true)
         {
             failTimer += Time.deltaTime;
+            coolDown += Time.deltaTime;
         }
 
         if (failTimer >= timeLimit)
@@ -88,25 +90,27 @@ public class RollOver : MonoBehaviour
 
     void SwingLeft()
     {
-        if (leftMovement == true)
+        if (leftMovement == true && coolDown == 2)
         {
             leftSwingAmount++;
             anim.SetInteger("leftSwing", leftSwingAmount);
             leftMovement = false;
             rightMovement = true;
             failTimer = 0;
+            coolDown = 0;
         }
     }
 
     void SwingRight()
     {
-        if (rightMovement == true)
+        if (rightMovement == true && coolDown == 2)
         {
             rightSwingAmount++;
             anim.SetInteger("rightSwing", rightSwingAmount);
             rightMovement = false;
             leftMovement = true;
             failTimer = 0;
+            coolDown = 0;
         }
     }
 }
