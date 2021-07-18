@@ -1082,7 +1082,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""23b19fdf-5909-4292-9291-a3f093a4a44c"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1104,7 +1104,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""856d30bc-bb1f-4324-9b13-deff94382b74"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1115,7 +1115,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""432791c7-1bcc-47e6-8fb6-0f8f02bc2ffa"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Keyboard>/o"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1137,7 +1137,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ec5bded2-6917-49c0-b515-4c4f58267928"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1243,7 +1243,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f1e89670-22cb-4c7a-a067-b797b65e16fd"",
-                    ""path"": ""<Keyboard>/b"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1266,6 +1266,17 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""e564a46d-7000-479f-b346-38d4b9d5874a"",
                     ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LegMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc7ad2cf-a511-42df-8762-7ab11f3bc4bc"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
