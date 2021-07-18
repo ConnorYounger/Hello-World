@@ -3,42 +3,88 @@ using UnityEngine;
 
 public class AnalogStickTweener : MonoBehaviour
 {
+    #region Variables
+    [Header("Global")]
     public float moveTime;
     public float scaleSize;
-
     public float xPos;
     public float yPos;
 
-    public float xDestination;
-    public float yDestination;
+    [Header("Tilt Destinations")]
+    public float leftTiltDestination;
+    public float rightTiltDestination;
+    public float upTiltDestination;
+    public float downtiltDestination;
 
-    public float x2Destination;
-    public float y2Destination;
-
+    [Header("Wobble Bounds")]
     public float xMax;
     public float yMax;
     public float xMin;
     public float yMin;
 
-    public bool wobble = true;
+    private bool wobble = true;
+    #endregion
 
-    public void PlaySingleTween()
+    #region Single tilt tweens
+    public IEnumerator TiltLeft()
     {
-        StartCoroutine("TweenStickSingle");
+        transform.LeanMoveLocal(new Vector2(leftTiltDestination, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
+
+        yield return new WaitForSeconds(moveTime);
+
+        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
     }
 
-    public void PlayAxisTween()
+    public IEnumerator TiltRight()
     {
-        StartCoroutine("TweenStickAxis");
-    }
-    public void PlayWobbleTween()
-    {
-        StartCoroutine("TweenStickWobble");
+        transform.LeanMoveLocal(new Vector2(rightTiltDestination, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
+
+        yield return new WaitForSeconds(moveTime);
+
+        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
     }
 
-    private IEnumerator TweenStickSingle()
+    public IEnumerator TiltUp()
     {
-        transform.LeanMoveLocal(new Vector2(xDestination, yDestination), moveTime).setEaseInOutQuint();
+        transform.LeanMoveLocal(new Vector2(xPos, upTiltDestination), moveTime).setEaseInOutQuint();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
+
+        yield return new WaitForSeconds(moveTime);
+
+        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
+    }
+
+    public IEnumerator TiltDown()
+    {
+        transform.LeanMoveLocal(new Vector2(xPos, downtiltDestination), moveTime).setEaseInOutQuint();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
+
+        yield return new WaitForSeconds(moveTime);
+
+        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
+    }
+    #endregion
+
+    #region Axis and wobble tweens
+    private IEnumerator TiltHorizontal()
+    {
+        transform.LeanMoveLocal(new Vector2(leftTiltDestination, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
+        
+        yield return new WaitForSeconds(moveTime);
+        
+        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
+        
+        yield return new WaitForSeconds(moveTime);
+
+        transform.LeanMoveLocal(new Vector2(rightTiltDestination, yPos), moveTime).setEaseInOutQuint();
         transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
         
         yield return new WaitForSeconds(moveTime);
@@ -47,28 +93,28 @@ public class AnalogStickTweener : MonoBehaviour
         transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
     }
 
-    private IEnumerator TweenStickAxis()
+    private IEnumerator TiltVertical()
     {
-        transform.LeanMoveLocal(new Vector2(xDestination, yDestination), moveTime).setEaseInOutQuint();
+        transform.LeanMoveLocal(new Vector2(xPos, upTiltDestination), moveTime).setEaseInOutQuint();
         transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
-        
-        yield return new WaitForSeconds(moveTime);
-        
-        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
-        transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
-        
+
         yield return new WaitForSeconds(moveTime);
 
-        transform.LeanMoveLocal(new Vector2(x2Destination, y2Destination), moveTime).setEaseInOutQuint();
-        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
-        
+        transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
+        transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
+
         yield return new WaitForSeconds(moveTime);
-        
+
+        transform.LeanMoveLocal(new Vector2(xPos, downtiltDestination), moveTime).setEaseInOutQuint();
+        transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
+
+        yield return new WaitForSeconds(moveTime);
+
         transform.LeanMoveLocal(new Vector2(xPos, yPos), moveTime).setEaseInOutQuint();
         transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
     }
 
-    private IEnumerator TweenStickWobble()
+    private IEnumerator TiltWobbler()
     {
         while (wobble)
         {
@@ -81,4 +127,5 @@ public class AnalogStickTweener : MonoBehaviour
             transform.LeanScale(Vector2.one, moveTime).setEaseInOutSine();
         }
     }
+    #endregion
 }
