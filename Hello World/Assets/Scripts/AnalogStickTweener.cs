@@ -16,14 +16,13 @@ public class AnalogStickTweener : MonoBehaviour
     public float upTiltDestination;
     public float downtiltDestination;
 
-    [Header("Wobble Bounds")]
-    public float xMax;
-    public float yMax;
-    public float xMin;
-    public float yMin;
-
     private bool wobble = true;
     #endregion
+
+    public void TestTween()
+    {
+        StartCoroutine(TiltUp());
+    }
 
     #region Single tilt tweens
     public IEnumerator TiltLeft()
@@ -118,7 +117,7 @@ public class AnalogStickTweener : MonoBehaviour
     {
         while (wobble)
         {
-            transform.LeanMoveLocal(new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax)), moveTime).setEaseInOutQuint();
+            transform.LeanMoveLocal(new Vector2(Random.Range(leftTiltDestination, rightTiltDestination), Random.Range(downtiltDestination, upTiltDestination)), moveTime).setEaseInOutQuint();
             transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();
 
             yield return new WaitForSeconds(moveTime);
