@@ -9,7 +9,8 @@ public class BabyBalancing : MonoBehaviour
 {
     [Header("Balancing Variables")]
     public float maxBalanceValue = 90;
-    public float tiltMultiplier = 1;
+    public float maxTiltMultiplier = 1;
+    private float tiltMultiplier;
     public float playerRotateSpeed = 1;
     private float balanceValue = 0;
     private bool canTilt = true;
@@ -117,6 +118,15 @@ public class BabyBalancing : MonoBehaviour
     {
         //Debug.Log(move);
 
+        if(tiltMultiplier < maxTiltMultiplier)
+        {
+            tiltMultiplier += tiltMultiplier/10 + 0.01f * Time.deltaTime;
+        }
+        else if (tiltMultiplier > maxTiltMultiplier)
+        {
+            tiltMultiplier = maxTiltMultiplier;
+        }
+
         if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y < CalculateMaxBalanceValue())
         {
             //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), transform.localRotation.w);
@@ -182,6 +192,7 @@ public class BabyBalancing : MonoBehaviour
         spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, 0, spine.transform.localRotation.z, spine.transform.localRotation.w);
         //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, 0, bottom.transform.localRotation.z, bottom.transform.localRotation.w);
         canTilt = true;
+        tiltMultiplier = 0;
 
         babyFellEGO.SetActive(false);
     }

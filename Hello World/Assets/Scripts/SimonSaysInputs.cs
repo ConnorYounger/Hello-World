@@ -8,5 +8,6 @@ public class SimonSaysInputs : ScriptableObject
 {
     public string inputName;
 
-    public Sprite inputSprite;
+    public Sprite controllerInputSprite;
+    public Sprite keyboardInputSprite;
 }

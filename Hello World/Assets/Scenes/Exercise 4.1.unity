@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBalanceValue: 90
-  tiltMultiplier: 0.2
+  maxTiltMultiplier: 0.3
   playerRotateSpeed: 100
   sitting: 1
   winAngle: 20
@@ -3011,10 +3011,10 @@ SkinnedMeshRenderer:
   - {fileID: 1454274406}
   m_BlendShapeWeights:
   - 0
-  - 75.99994
-  - 100
-  - 89.99986
-  - 0
+  - 66.66667
+  - 23.333334
+  - 84.666664
+  - 54.666664
   m_RootBone: {fileID: 1454244208}
   m_AABB:
     m_Center: {x: -0.19405136, y: 0.036108803, z: -0.00000011920929}

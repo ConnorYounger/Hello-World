@@ -17,7 +17,8 @@ public class Workout : MonoBehaviour
 
     public float tiltAngle = 45;
     public float holdTime = 3;
-    public float resetCoolDownTime = 2;
+    public float failCoolDownTime = 1;
+    public float sucessCoolDownTime = 2;
     public float movementMultiplier = 2;
     private float resetCoolDown;
     private float currentHoldTime;
@@ -46,12 +47,28 @@ public class Workout : MonoBehaviour
 
     public GameObject winScreen;
     public GameObject loseScreen;
+    public Canvas uIControlls;
+    public GameObject uIText;
+
+    public Image[] upControls;
+    public Image[] downControls;
+    private bool down;
+
+    public int uIControllsDisplayCounter = 3;
+    private int uIDisplayCounter;
 
     public Animator animator;
 
     private Vector3 startingLocation;
 
     private MiniGameInputs controls;
+
+    public ParentNarrative parent;
+
+    [Header("ControllsUI")]
+    public GameObject[] controllerUI;
+    public GameObject[] keyboardUI;
+    private bool controller;
 
     [Header("Discovery Player")]
     public bool discoveryMode;
@@ -72,6 +89,7 @@ public class Workout : MonoBehaviour
         patienceSlider.maxValue = startingPatience;
 
         startingLocation = baby.transform.position;
+        uIDisplayCounter = uIControllsDisplayCounter;
     }
 
     void SetInputActions()
@@ -79,6 +97,11 @@ public class Workout : MonoBehaviour
         controls.HoldingObjects.RightHandMovement.performed += ctx => rightMove = ctx.ReadValue<Vector2>();
 
         controls.HoldingObjects.LeftHandMovement.performed += ctx => leftMove = ctx.ReadValue<Vector2>();
+
+        //
+        controls.HoldingObjects.AnyInputCon.performed += ctx => UpdateControllsUI(true);
+        controls.HoldingObjects.AxisCon.performed += ctx => UpdateControllsUI(true);
+        controls.HoldingObjects.AnyInputKey.performed += ctx => UpdateControllsUI(false);
     }
 
     void Update()
@@ -89,10 +112,10 @@ public class Workout : MonoBehaviour
             CheckForSucessfulSitUp();
         }
 
-        if(resetCoolDown > 0)
-        {
-            resetCoolDown -= Time.deltaTime;
-        }
+        //if(resetCoolDown > 0)
+        //{
+        //    resetCoolDown -= Time.deltaTime;
+        //}
 
         MoveToStartingPos();
     }
@@ -110,25 +133,6 @@ public class Workout : MonoBehaviour
 
     void SitUp()
     {
-        //if(Mathf.Abs(rightMove.y) > (tiltAngle / 100) && Mathf.Abs(leftMove.y) > (tiltAngle / 100) && !reset)
-        //{
-        //    currentHoldTime += Time.deltaTime;
-
-        //    if(!moveDown)
-        //        baby.transform.position = new Vector3(baby.transform.position.x, baby.transform.position.y + Time.deltaTime * movementMultiplier, baby.transform.position.z);
-        //}
-        //else if (currentHoldTime > 0)
-        //{
-        //    if (reset)
-        //    {
-        //        currentHoldTime = 0;
-        //    }
-        //    else
-        //    {
-        //        FailedSitUp();
-        //    }
-        //}
-
         if (!reset)
         {
             // Left Thumb Stick Input
@@ -167,14 +171,16 @@ public class Workout : MonoBehaviour
             }
             //
 
-            if(checkpoint1Left && checkpoint1Right)
+            if(checkpoint1Left && checkpoint1Right && animator.GetInteger("Stage") == 0)
             {
                 animator.SetInteger("Stage", 1);
+                UIControlsSwitch();
             }
 
             if (checkpoint2Left && checkpoint2Right)
             {
                 animator.SetInteger("Stage", 2);
+                UIControlsSwitch();
 
                 SucessfulSitUp();
             }
@@ -182,7 +188,6 @@ public class Workout : MonoBehaviour
             // Check if the player has moved along the x axis
             if ((leftMove.x > inputXBuffer || leftMove.x < -inputXBuffer) || (rightMove.x > inputXBuffer || rightMove.x < -inputXBuffer))
             {
-                Debug.Log("Fail");
                 FailedSitUp();
             }
 
@@ -244,8 +249,6 @@ public class Workout : MonoBehaviour
         animator.SetBool("Fail", true);
         StartCoroutine("ResetAnimator");
 
-        //moveDown = true;
-
         if (Mathf.Abs(rightMove.y) < (tiltAngle / 100))
         {
             animator.SetBool("FallOverRight", true);
@@ -266,7 +269,8 @@ public class Workout : MonoBehaviour
                 animator.SetBool("FallOverLeft", true);
         }
 
-        resetCoolDown = resetCoolDownTime;
+        StartCoroutine("ResetCoolDown", failCoolDownTime);
+        //resetCoolDown = resetCoolDownTime;
 
         reset = true;
 
@@ -276,12 +280,17 @@ public class Workout : MonoBehaviour
 
         currentPatience--;
 
+        uIDisplayCounter = uIControllsDisplayCounter;
+
+        UpdateUIControlls();
         UpdateSliders();
 
         if (currentPatience <= 0)
         {
             Lose();
         }
+        else
+            parent.PlayFailNarrativeElement();
     }
 
     IEnumerator ResetAnimator()
@@ -290,6 +299,7 @@ public class Workout : MonoBehaviour
 
         animator.SetInteger("Stage", 0);
         animator.SetBool("Fail", false);
+        UIControlsSwitch();
     }
 
     void CheckForSucessfulSitUp()
@@ -300,16 +310,56 @@ public class Workout : MonoBehaviour
         }
     }
 
+    void UpdateUIControlls()
+    {
+        if(uIDisplayCounter <= 0)
+        {
+            uIDisplayCounter = 0;
+
+            for(int i = 0; i < upControls.Length; i++)
+            {
+                upControls[i].enabled = false;
+                downControls[i].enabled = false;
+            }
+
+            if (uIText)
+            {
+                //uIText.SetActive(false);
+            }
+        }
+        else
+        {
+            if (uIText)
+            {
+                //uIText.SetActive(true);
+            }
+        }
+    }
+
+    void ModifyUIDisplay(int i)
+    {
+        if (uIDisplayCounter > 0)
+            uIDisplayCounter += i;
+
+        UpdateUIControlls();
+    }
+
     void SucessfulSitUp()
     {
+        StartCoroutine("ResetCoolDown", sucessCoolDownTime);
+
         reset = true;
 
-        //moveDown = true;
+        //resetCoolDown = resetCoolDownTime;
 
         sitUpCount++;
 
+        if (parent && sitUpCount < sitUpGoal)
+            parent.NarrativeElement(parent.sucessDialougeTexts[sitUpCount - 1]);
+
         UpdateSliders();
 
+        ModifyUIDisplay(-1);
         ResetCheckPoints();
 
         if (sitUpCount >= sitUpGoal)
@@ -331,28 +381,34 @@ public class Workout : MonoBehaviour
     void Win()
     {
         winScreen.SetActive(true);
+        uIControlls.enabled = false;
 
         EventSystem.current.SetSelectedGameObject(GameObject.Find("WinButton"));
 
         gameFinished = true;
+
+        if (parent)
+            parent.NarrativeElement(parent.winText);
 
         if (discoveryMode)
         {
             discoveryPlayer.exerciseIndex = 2.1f;
             discoveryPlayer.cardIndex = "2Out";
             discoveryPlayer.SavePlayer();
-
-            //SceneManager.LoadScene("DiscoveryMilestones");
         }
     }
 
     void Lose()
     {
         loseScreen.SetActive(true);
+        uIControlls.enabled = false;
 
         EventSystem.current.SetSelectedGameObject(GameObject.Find("LoseButton"));
 
         gameFinished = true;
+
+        if (parent)
+            parent.NarrativeElement(parent.loseText);
     }
 
     void UpdateSliders()
@@ -381,8 +437,70 @@ public class Workout : MonoBehaviour
         }
     }
 
+    void UIControlsSwitch()
+    {
+        if(uIDisplayCounter > 0)
+        {
+            if (animator.GetInteger("Stage") == 1)
+            {
+                for (int i = 0; i < upControls.Length; i++)
+                {
+                    upControls[i].enabled = true;
+                    downControls[i].enabled = false;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < upControls.Length; i++)
+                {
+                    upControls[i].enabled = false;
+                    downControls[i].enabled = true;
+                }
+            }
+        }
+    }
+
+    void UpdateControllsUI(bool c)
+    {
+        Debug.Log("Update Controlls " + c);
+
+        if (c)
+        {
+            foreach(GameObject con in controllerUI)
+            {
+                con.SetActive(true);
+            }
+
+            foreach (GameObject key in keyboardUI)
+            {
+                key.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (GameObject con in controllerUI)
+            {
+                con.SetActive(false);
+            }
+
+            foreach (GameObject key in keyboardUI)
+            {
+                key.SetActive(true);
+            }
+        }
+    }
+
     public void SwitchScene(string scene)
     {
         SceneManager.LoadScene(scene);
+    }
+
+    IEnumerator ResetCoolDown(float time)
+    {
+        resetCoolDown = time;
+
+        yield return new WaitForSeconds(time);
+
+        resetCoolDown = 0;
     }
 }

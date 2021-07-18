@@ -250,7 +250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &29075201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,15 +330,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBalanceValue: 90
-  tiltMultiplier: 0.2
+  maxTiltMultiplier: 1
   playerRotateSpeed: 100
-  balanceWin: 1
+  sitting: 1
   winAngle: 20
   winAngleHoldTime: 5
   babyFellEGO: {fileID: 0}
+  winEGO: {fileID: 0}
   spine: {fileID: 0}
   bottom: {fileID: 0}
   bottomRotateDifference: 3
+  animator: {fileID: 0}
 --- !u!4 &34332342
 Transform:
   m_ObjectHideFlags: 0
@@ -489,6 +491,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 610070165}
+  wanderPointCollection: {fileID: 0}
+  idlePointCollection: {fileID: 0}
+  otherBabies: []
+  stateWaitTime: 10
+  idleCoolDownTime: 10
+  navAgent: {fileID: 0}
 --- !u!54 &353869354
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -600,15 +608,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBalanceValue: 90
-  tiltMultiplier: 0.2
+  maxTiltMultiplier: 1
   playerRotateSpeed: -100
-  balanceWin: 1
+  sitting: 1
   winAngle: 20
   winAngleHoldTime: 5
   babyFellEGO: {fileID: 1375807232}
+  winEGO: {fileID: 0}
   spine: {fileID: 670507799}
   bottom: {fileID: 0}
   bottomRotateDifference: 3
+  animator: {fileID: 0}
 --- !u!1 &447745359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1088,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610070165}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 987513251fe2f78409eff30b03b5499e, type: 3}
   m_Controller: {fileID: 9100000, guid: 9a27d38c51fccc44aa98e8c68ac18799, type: 2}
   m_CullingMode: 0
