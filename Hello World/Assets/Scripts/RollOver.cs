@@ -11,8 +11,11 @@ public class RollOver : MonoBehaviour
     public GameObject instructionText;
     public GameObject swingText;
 
+    public ParentNarrative parent;
+
     private int leftSwingAmount = 0;
     private int rightSwingAmount = 0;
+    private int successCount = 0;
 
     private bool leftMovement = true;
     private bool rightMovement = false;
@@ -63,6 +66,7 @@ public class RollOver : MonoBehaviour
             anim.SetInteger("rightSwing", 0);
             failTimer = 0;
             isLegUp = false;
+            parent.PlayFailNarrativeElement();
         }
     }
 
@@ -76,6 +80,7 @@ public class RollOver : MonoBehaviour
         legUpButton.SetActive(true);
         holdText.SetActive(false);
         swingText.SetActive(false);
+        parent.PlayFailNarrativeElement();
     }
 
     void LegUp()
@@ -93,11 +98,13 @@ public class RollOver : MonoBehaviour
         if (leftMovement == true && coolDown == 2)
         {
             leftSwingAmount++;
+            successCount++;
             anim.SetInteger("leftSwing", leftSwingAmount);
             leftMovement = false;
             rightMovement = true;
             failTimer = 0;
             coolDown = 0;
+            parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
         }
     }
 

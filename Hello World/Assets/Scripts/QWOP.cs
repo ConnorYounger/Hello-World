@@ -11,11 +11,13 @@ public class QWOP : MonoBehaviour
     public GameObject rBText;
     public GameObject lTText;
 
+    public ParentNarrative parent;
     public CountDownBar countdown;
 
     private MiniGameInputs controls;
-
     private Animator anim;
+
+    private int successCount = 0;
 
     private bool isLeftMovement = true;
     private bool isRightMovement = false;
@@ -68,6 +70,7 @@ public class QWOP : MonoBehaviour
             anim.SetBool("wrongPressed", true);
             anim.SetInteger("leftMovement", 0);
             anim.SetInteger("rightMovement", 0);
+            parent.PlayFailNarrativeElement();
         }
     }
 
@@ -92,6 +95,7 @@ public class QWOP : MonoBehaviour
                 anim.SetInteger("rightMovement", 0);
                 isFirstLeft = false;
                 isLeftMovement = true;
+                parent.PlayFailNarrativeElement();
             }
 
             canInput = false;
@@ -115,6 +119,7 @@ public class QWOP : MonoBehaviour
             anim.SetBool("wrongPressed", true);
             anim.SetInteger("rightMovement", 0);
             anim.SetInteger("leftMovement", 0);
+            parent.PlayFailNarrativeElement();
         }
     }
 
@@ -131,6 +136,8 @@ public class QWOP : MonoBehaviour
                 isLeftMovement = true;
                 lTText.SetActive(false);
                 lBText.SetActive(true);
+                successCount++;
+                parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
             }
             else if (value > 0.95f)
             {
@@ -139,6 +146,7 @@ public class QWOP : MonoBehaviour
                 anim.SetInteger("leftMovement", 0);
                 isFirstRight = false;
                 isRightMovement = true;
+                parent.PlayFailNarrativeElement();
             }
 
             canInput = false;
