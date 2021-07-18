@@ -11,11 +11,16 @@ public class SimonSays : MonoBehaviour
 {
     public List<SimonSaysInputs> possibleButtonInputs;
 
-    public int maxMemory = 100;
+    public int maxMemory = 5;
+    public int maxPacience = 5;
+    private int currentPacience;
     private int currentMemory = 0;
     public int startingNumb = 2;
     public int maxNumb = 7;
     private int difficulty;
+
+    public float failInputTime = 1;
+    private float failInputTimer;
 
     private List<SimonSaysInputs> buttonList;
     private List<SimonSaysInputs> buttonListSave;
@@ -28,6 +33,9 @@ public class SimonSays : MonoBehaviour
     public GameObject playerInputPanel;
     public GameObject inputButtonPrefab;
     public GameObject winUI;
+    public GameObject loseUI;
+
+    public bool controllerSprites = true;
 
     public Slider memoryMetreSlider;
 
@@ -37,6 +45,8 @@ public class SimonSays : MonoBehaviour
     public bool playerCanInput = true;
 
     private MiniGameInputs controls;
+
+    public ParentNarrative parent;
 
     [Header("Discovery Player")]
     public bool discoveryMode;
@@ -51,7 +61,8 @@ public class SimonSays : MonoBehaviour
     
     void SetInputActions()
     {
-        controls.SimonSays.AnyInput.performed += ctx => PlayerAnyInput();
+        controls.SimonSays.AnyInputCon.performed += ctx => PlayerAnyInput(true);
+        controls.SimonSays.AnyInputKey.performed += ctx => PlayerAnyInput(false);
         controls.SimonSays.AltClick1.performed += ctx => PlayerInput(controls.SimonSays.AltClick1);
         controls.SimonSays.AltClick2.performed += ctx => PlayerInput(controls.SimonSays.AltClick2);
         controls.SimonSays.ButtonA.performed += ctx => PlayerInput(controls.SimonSays.ButtonA);
@@ -68,6 +79,11 @@ public class SimonSays : MonoBehaviour
 
         controls.SimonSays.Click2.performed += ctx => TriggerInput(controls.SimonSays.Click2, ctx.ReadValue<float>());
         controls.SimonSays.Click2.canceled += ctx => TriggerInput(controls.SimonSays.Click2, 0);
+
+        //
+        controls.SimonSays.KClick1.performed += ctx => PlayerInput(controls.SimonSays.Click1);
+        controls.SimonSays.KClick2.performed += ctx => PlayerInput(controls.SimonSays.Click2);
+
     }
 
     void Start()
@@ -77,8 +93,22 @@ public class SimonSays : MonoBehaviour
         buttonListSave = new List<SimonSaysInputs>();
 
         memoryMetreSlider.maxValue = maxMemory;
+        currentPacience = maxPacience;
 
         GenerateNewCombination();
+    }
+
+    private void Update()
+    {
+        FailCoolDownTimer();
+    }
+
+    void FailCoolDownTimer()
+    {
+        if(failInputTimer > 0)
+        {
+            failInputTimer -= 1 * Time.deltaTime;
+        }
     }
 
     private void OnEnable()
@@ -91,6 +121,7 @@ public class SimonSays : MonoBehaviour
         controls.SimonSays.Disable();
     }
 
+    #region playerInputs
     void TriggerInput(InputAction action, float i)
     {
         if (i >= 1 && playerCanInput)
@@ -103,20 +134,33 @@ public class SimonSays : MonoBehaviour
 
     public void PlayerInput(InputAction action)
     {
-        if(playerCanInput && !playerHasWon && action.name == buttonList[0].inputName)
+        if(playerCanInput && !playerHasWon && action.name == buttonList[0].inputName && failInputTimer <= 0)
         {
             correctInput = true;
         }
     }
 
-    void PlayerAnyInput()
+    void PlayerAnyInput(bool con)
     {
-        if (playerCanInput && !playerHasWon)
+        if (playerCanInput && !playerHasWon && failInputTimer <= 0)
         {
             Invoke("CalculateInput", 0.1f);
         }
-    }
 
+        if (con)
+        {
+            controllerSprites = true;
+        }
+        else
+        {
+            controllerSprites = false;
+        }
+
+        // Update
+    }
+    #endregion
+
+    #region combiniationMethods
     // Generate a new combo list
     void GenerateNewCombination()
     {
@@ -154,9 +198,12 @@ public class SimonSays : MonoBehaviour
         button.transform.SetParent(comboPanel.transform);
 
         // Set the spirte
-        if (scriptableObject && scriptableObject.inputSprite)
+        if (scriptableObject && scriptableObject.controllerInputSprite)
         {
-            button.GetComponent<Image>().sprite = scriptableObject.inputSprite;
+            if(controllerSprites)
+                button.GetComponent<Image>().sprite = scriptableObject.controllerInputSprite;
+            else
+                button.GetComponent<Image>().sprite = scriptableObject.keyboardInputSprite;
         }
     }
 
@@ -183,6 +230,7 @@ public class SimonSays : MonoBehaviour
             RemovePlayerInputUI();
         }
     }
+    #endregion
 
     // When the player wins
     void PlayerWin()
@@ -200,19 +248,22 @@ public class SimonSays : MonoBehaviour
         winUI.SetActive(true);
         EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
 
+        if (parent)
+        {
+            parent.NarrativeElement(parent.winText);
+        }
+
         if (discoveryMode)
         {
             discoveryPlayer.exerciseIndex = 1.1f;
             discoveryPlayer.cardIndex = "1Out";
             discoveryPlayer.SavePlayer();
-
-            //SceneManager.LoadScene("DiscoveryMilestones");
         }
     }
 
     void CalculateInput()
     {
-        if (playerCanInput)
+        if (playerCanInput && failInputTimer <= 0)
         {
             playerCanInput = false;
 
@@ -226,8 +277,43 @@ public class SimonSays : MonoBehaviour
                 if (animator)
                     StartCoroutine("Flail");
 
-                ResetCombination();
+                CheckForLose();
             }
+        }
+    }
+
+    void CheckForLose()
+    {
+        currentPacience -= 1;
+
+        // Stop the player's memory from going below 0
+        if (currentPacience < 0)
+        {
+            currentPacience = 0;
+        }
+
+        if (currentPacience <= 0)
+        {
+            Lose();
+        }
+        else
+        {
+            parent.PlayFailNarrativeElement();
+            ResetCombination();
+        }
+    }
+
+    void Lose()
+    {
+        Debug.Log("Player has lost");
+
+        uICanvas.enabled = false;
+        loseUI.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
+
+        if (parent)
+        {
+            parent.NarrativeElement(parent.loseText);
         }
     }
 
@@ -272,7 +358,12 @@ public class SimonSays : MonoBehaviour
         // Check to see if the combo is finished
         if(buttonList.Count == 0)
         {
-            currentMemory += 10;
+            currentMemory += 1;
+
+            if (parent && currentMemory < maxMemory)
+            {
+                parent.NarrativeElement(parent.sucessDialougeTexts[currentMemory - 1]);
+            }
 
             UpdateMemoryMetre();
 
@@ -310,16 +401,10 @@ public class SimonSays : MonoBehaviour
     // When the player inputs the wrong button
     void ResetCombination()
     {
+        failInputTimer = failInputTime;
+
         buttonList.Clear();
         buttonList.AddRange(buttonListSave);
-
-        currentMemory -= 5;
-
-        // Stop the player's memory from going below 0
-        if (currentMemory < 0)
-        {
-            currentMemory = 0;
-        }
 
         UpdateMemoryMetre();
 
