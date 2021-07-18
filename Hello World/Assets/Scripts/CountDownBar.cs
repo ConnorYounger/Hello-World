@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class CountDownBar : MonoBehaviour
@@ -7,11 +7,14 @@ public class CountDownBar : MonoBehaviour
     private bool countDown = true;
     public float countDownTime = 60;
 
-    public Slider countdownBar;
     public GameObject loseText;
-    public WinWithToy winWithToy;
-    private Animator anim;
     public GameObject baby;
+
+    public WinWithToy winWithToy;
+    public QWOP disableText;
+
+    public Slider countdownBar;
+    private Animator anim;
 
     private void Awake()
     {
@@ -38,6 +41,11 @@ public class CountDownBar : MonoBehaviour
                 allowInputs = false;
                 anim.SetBool("timeOut", true);
                 loseText.SetActive(true);
+                disableText.instructionText.SetActive(false);
+                Destroy(disableText.lBText);
+                Destroy(disableText.rTText);
+                Destroy(disableText.rBText);
+                Destroy(disableText.lTText);
             }
             else
             {

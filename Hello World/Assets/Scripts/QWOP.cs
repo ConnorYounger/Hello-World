@@ -6,12 +6,11 @@ using UnityEngine.InputSystem;
 public class QWOP : MonoBehaviour
 {
     public GameObject instructionText;
-    public GameObject qText;
-    public GameObject wText;
-    public GameObject oText;
-    public GameObject pText;
+    public GameObject lBText;
+    public GameObject rTText;
+    public GameObject rBText;
+    public GameObject lTText;
 
-    public WinWithToy winWithToy;
     public CountDownBar countdown;
 
     private MiniGameInputs controls;
@@ -61,6 +60,8 @@ public class QWOP : MonoBehaviour
             anim.SetInteger("rightMovement", 0);
             isLeftMovement = false;
             isFirstLeft = true;
+            lBText.SetActive(false);
+            rTText.SetActive(true);
         }
         else
         {
@@ -81,6 +82,8 @@ public class QWOP : MonoBehaviour
                 anim.SetInteger("rightMovement", 0);
                 isFirstLeft = false;
                 isRightMovement = true;
+                rTText.SetActive(false);
+                rBText.SetActive(true);
             }
             else if (value > 0.95f)
             {
@@ -104,6 +107,8 @@ public class QWOP : MonoBehaviour
             anim.SetBool("wrongPressed", false);
             isRightMovement = false;
             isFirstRight = true;
+            rBText.SetActive(false);
+            lTText.SetActive(true);
         }
         else
         {
@@ -124,6 +129,8 @@ public class QWOP : MonoBehaviour
                 anim.SetBool("wrongPressed", false);
                 isFirstRight = false;
                 isLeftMovement = true;
+                lTText.SetActive(false);
+                lBText.SetActive(true);
             }
             else if (value > 0.95f)
             {
