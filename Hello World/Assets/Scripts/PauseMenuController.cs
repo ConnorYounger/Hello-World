@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PauseMenuController : MonoBehaviour
 {
-    public GameObject exerciseHUD;
-    public GameObject pauseOverlay; 
+    public Canvas exerciseHUD;
+    public Canvas pauseOverlay; 
     public Button resumeButton;
     public Button exitButton;
 
@@ -36,8 +36,8 @@ public class PauseMenuController : MonoBehaviour
     public void PauseGame()
     {
         //enable pause menu, pause game
-        exerciseHUD.SetActive(false);
-        pauseOverlay.SetActive(true);
+        exerciseHUD.enabled = false;
+        pauseOverlay.enabled = true;
         Time.timeScale = 0;
 
         EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
@@ -48,8 +48,8 @@ public class PauseMenuController : MonoBehaviour
     private void ResumeGame()
     {
         //disable pause menu, resume game
-        exerciseHUD.SetActive(true);
-        pauseOverlay.SetActive(false);
+        exerciseHUD.enabled = true;
+        pauseOverlay.enabled = false;
         Time.timeScale = 1;
 
         isPaused = false;
