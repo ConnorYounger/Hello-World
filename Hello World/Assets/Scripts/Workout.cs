@@ -52,7 +52,7 @@ public class Workout : MonoBehaviour
 
     public Image[] upControls;
     public Image[] downControls;
-    private bool down;
+    private bool down = true;
 
     public int uIControllsDisplayCounter = 3;
     private int uIDisplayCounter;
@@ -69,6 +69,8 @@ public class Workout : MonoBehaviour
     public GameObject[] controllerUI;
     public GameObject[] keyboardUI;
     private bool controller;
+    public AnalogStickTweener leftAnalogStick;
+    public AnalogStickTweener rightAnalogStick;
 
     [Header("Discovery Player")]
     public bool discoveryMode;
@@ -90,6 +92,28 @@ public class Workout : MonoBehaviour
 
         startingLocation = baby.transform.position;
         uIDisplayCounter = uIControllsDisplayCounter;
+
+        StartCoroutine("UIMovement");
+    }
+
+    IEnumerator UIMovement()
+    {
+        yield return new WaitForSeconds(1);
+
+        if (down)
+        {
+            leftAnalogStick.StartCoroutine("TiltDown");
+            rightAnalogStick.StartCoroutine("TiltDown");
+        }
+        else
+        {
+            leftAnalogStick.StartCoroutine("TiltUp");
+            rightAnalogStick.StartCoroutine("TiltUp");
+        }
+
+        yield return new WaitForSeconds(1);
+
+        StartCoroutine("UIMovement");
     }
 
     void SetInputActions()
@@ -174,6 +198,7 @@ public class Workout : MonoBehaviour
             if(checkpoint1Left && checkpoint1Right && animator.GetInteger("Stage") == 0)
             {
                 animator.SetInteger("Stage", 1);
+                down = false;
                 UIControlsSwitch();
             }
 
@@ -322,6 +347,9 @@ public class Workout : MonoBehaviour
                 downControls[i].enabled = false;
             }
 
+            leftAnalogStick.gameObject.SetActive(false);
+            rightAnalogStick.gameObject.SetActive(false);
+
             if (uIText)
             {
                 //uIText.SetActive(false);
@@ -329,6 +357,9 @@ public class Workout : MonoBehaviour
         }
         else
         {
+            leftAnalogStick.gameObject.SetActive(true);
+            rightAnalogStick.gameObject.SetActive(true);
+
             if (uIText)
             {
                 //uIText.SetActive(true);
@@ -376,6 +407,7 @@ public class Workout : MonoBehaviour
         checkpoint1Right = false;
         checkpoint2Left = false;
         checkpoint2Right = false;
+        down = true;
     }
 
     void Win()
@@ -462,7 +494,7 @@ public class Workout : MonoBehaviour
 
     void UpdateControllsUI(bool c)
     {
-        Debug.Log("Update Controlls " + c);
+        //Debug.Log("Update Controlls " + c);
 
         if (c)
         {
