@@ -71,7 +71,7 @@ public class AnalogStickTweener : MonoBehaviour
     #endregion
 
     #region Axis and wobble tweens
-    private IEnumerator TiltHorizontal()
+    public IEnumerator TiltHorizontal()
     {
         transform.LeanMoveLocal(new Vector2(leftTiltDestination, yPos), moveTime).setEaseInOutQuint();
         transform.LeanScale(new Vector2(scaleSize, scaleSize), moveTime).setEaseInOutSine();

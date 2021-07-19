@@ -2166,6 +2166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 1456845011}
+  animation: {fileID: 1251731303}
+  liftButton: {fileID: 1147136459}
+  swingButton: {fileID: 1251731301}
   isLegUp: 0
   failTimer: 0
   timeLimit: 4
@@ -3387,6 +3390,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1120001761}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1147136459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4524750085219627052, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1539751980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1152349329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,6 +3819,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1209658756}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1251731301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4524750084415714773, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1539751980}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1251731303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4524750084415714777, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1539751980}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251731301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6e43d2b25c90f48b9c4f3165317df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1277636862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4469,6 +4496,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1534547842}
     m_Modifications:
+    - target: {fileID: 4524750084415714773, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4524750084693713841, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
         type: 3}
       propertyPath: m_Name
@@ -5335,8 +5367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000036955, y: -152}
-  m_SizeDelta: {x: 447.4174, y: 50}
+  m_AnchoredPosition: {x: 0, y: -152}
+  m_SizeDelta: {x: 318.2603, y: 53.9741}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1795349210
 PrefabInstance:

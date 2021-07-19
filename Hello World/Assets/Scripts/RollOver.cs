@@ -7,6 +7,10 @@ public class RollOver : MonoBehaviour
     private Animator anim;
     private MiniGameInputs controls;
     public ParentNarrative parent;
+    public AnalogStickTweener animation;
+
+    public GameObject liftButton;
+    public GameObject swingButton;
     
     private int leftSwingAmount = 0;
     private int rightSwingAmount = 0;
@@ -64,8 +68,6 @@ public class RollOver : MonoBehaviour
             isLegUp = false;
             parent.PlayFailNarrativeElement();
         }
-
-
     }
 
     void LegDown()
@@ -73,14 +75,28 @@ public class RollOver : MonoBehaviour
         anim.SetBool("legUp", false);
         anim.SetInteger("leftSwing", 0);
         anim.SetInteger("rightSwing", 0);
+        liftButton.SetActive(true);
         isLegUp = false;
         parent.PlayFailNarrativeElement();
+        swingButton.SetActive(false);
     }
 
     void LegUp()
     {
         anim.SetBool("legUp", true);
         isLegUp = true;
+        liftButton.SetActive(false);
+        swingButton.SetActive(true);
+        StartCoroutine(SwingAnimation());
+    }
+
+    private IEnumerator SwingAnimation()
+    {
+        while (isLegUp == true)
+        {
+            animation.StartCoroutine("TiltHorizontal");
+            yield return new WaitForSeconds(4);
+        }
     }
 
     void SwingLeft()
