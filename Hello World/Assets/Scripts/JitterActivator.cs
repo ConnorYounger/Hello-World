@@ -17,6 +17,7 @@ public class JitterActivator : MonoBehaviour
         }
         if (EventSystem.current.currentSelectedGameObject != gameObject && jitter.enabled == true)
         {
+            jitter.StopCoroutine("AnimateVertexColors");
             jitter.enabled = false;
         }
     }
