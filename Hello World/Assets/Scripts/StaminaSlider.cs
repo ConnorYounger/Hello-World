@@ -10,11 +10,14 @@ public class StaminaSlider : MonoBehaviour
     public float countDownTime = 60;
 
     public Slider countdownBar;
-    //public GameObject loseText;
-    public RollOver timerCheck;
     private Animator anim;
     public GameObject baby;
+    public GameObject loseText;
+    public float pauseTimer = 0;
 
+    public RollOver timerCheck;
+    public PauseMenuController activate;
+    
     private void Awake()
     {
         anim = baby.GetComponent<Animator>();
@@ -41,7 +44,18 @@ public class StaminaSlider : MonoBehaviour
                 countDown = false;
                 allowInputs = false;
                 anim.SetBool("timeOut", true);
-                //loseText.SetActive(true);
+                Destroy(timerCheck.liftButton);
+                Destroy(timerCheck.swingButton);
+                Destroy(timerCheck.parentText);
+                Destroy(timerCheck.winText);
+                loseText.SetActive(true);
+
+                pauseTimer += Time.deltaTime;
+
+                if (pauseTimer >= 5)
+                {
+                    activate.PauseGame();
+                }
             }
             else
             {
