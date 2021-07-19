@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class QWOP : MonoBehaviour
 {
-    public GameObject instructionText;
     public GameObject lBText;
     public GameObject rTText;
     public GameObject rBText;

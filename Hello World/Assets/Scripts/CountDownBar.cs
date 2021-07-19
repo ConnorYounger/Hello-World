@@ -41,7 +41,6 @@ public class CountDownBar : MonoBehaviour
                 allowInputs = false;
                 anim.SetBool("timeOut", true);
                 loseText.SetActive(true);
-                disableText.instructionText.SetActive(false);
                 Destroy(disableText.lBText);
                 Destroy(disableText.rTText);
                 Destroy(disableText.rBText);

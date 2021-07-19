@@ -6,13 +6,8 @@ public class RollOver : MonoBehaviour
 {
     private Animator anim;
     private MiniGameInputs controls;
-    public GameObject legUpButton;
-    public GameObject holdText;
-    public GameObject instructionText;
-    public GameObject swingText;
-
     public ParentNarrative parent;
-
+    
     private int leftSwingAmount = 0;
     private int rightSwingAmount = 0;
     private int successCount = 0;
@@ -65,9 +60,12 @@ public class RollOver : MonoBehaviour
             anim.SetInteger("leftSwing", 0);
             anim.SetInteger("rightSwing", 0);
             failTimer = 0;
+            coolDown = 0;
             isLegUp = false;
             parent.PlayFailNarrativeElement();
         }
+
+
     }
 
     void LegDown()
@@ -76,10 +74,6 @@ public class RollOver : MonoBehaviour
         anim.SetInteger("leftSwing", 0);
         anim.SetInteger("rightSwing", 0);
         isLegUp = false;
-        instructionText.SetActive(true);
-        legUpButton.SetActive(true);
-        holdText.SetActive(false);
-        swingText.SetActive(false);
         parent.PlayFailNarrativeElement();
     }
 
@@ -87,15 +81,11 @@ public class RollOver : MonoBehaviour
     {
         anim.SetBool("legUp", true);
         isLegUp = true;
-        instructionText.SetActive(false);
-        legUpButton.SetActive(false);
-        holdText.SetActive(true);
-        swingText.SetActive(true);
     }
 
     void SwingLeft()
     {
-        if (leftMovement == true && coolDown == 2)
+        if (leftMovement == true && coolDown >= 1)
         {
             leftSwingAmount++;
             successCount++;
@@ -110,7 +100,7 @@ public class RollOver : MonoBehaviour
 
     void SwingRight()
     {
-        if (rightMovement == true && coolDown == 2)
+        if (rightMovement == true && coolDown >= 1)
         {
             rightSwingAmount++;
             anim.SetInteger("rightSwing", rightSwingAmount);

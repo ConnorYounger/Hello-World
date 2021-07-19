@@ -26,7 +26,6 @@ public class WinWithToy : MonoBehaviour
             winText.SetActive(true);
             anim.SetBool("gotBall", true);
             gameWon = true;
-            disableText.instructionText.SetActive(false);
             Destroy(disableText.lBText);
             Destroy(disableText.rTText);
             Destroy(disableText.rBText);
