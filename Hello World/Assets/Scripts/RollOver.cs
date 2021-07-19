@@ -8,9 +8,13 @@ public class RollOver : MonoBehaviour
     private MiniGameInputs controls;
     public ParentNarrative parent;
     public AnalogStickTweener animation;
+    public PauseMenuController activate;
 
     public GameObject liftButton;
     public GameObject swingButton;
+    public GameObject parentText;
+    public GameObject winText;
+    public float pauseTimer = 0;
     
     private int leftSwingAmount = 0;
     private int rightSwingAmount = 0;
@@ -111,6 +115,21 @@ public class RollOver : MonoBehaviour
             failTimer = 0;
             coolDown = 0;
             parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
+        }
+
+        if(leftSwingAmount == 7)
+        {
+            liftButton.SetActive(false);
+            swingButton.SetActive(false);
+            parentText.SetActive(false);
+            winText.SetActive(true);
+
+            pauseTimer += Time.deltaTime;
+
+            if (pauseTimer >= 5)
+            {
+                activate.PauseGame();
+            }
         }
     }
 

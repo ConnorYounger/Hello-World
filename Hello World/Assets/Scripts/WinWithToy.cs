@@ -7,9 +7,11 @@ public class WinWithToy : MonoBehaviour
     public GameObject toyBall;
     public GameObject winText;
     public GameObject baby;
+    public float pauseTimer = 0;
     private Animator anim;
 
     public QWOP disableText;
+    public PauseMenuController activate;
 
     public bool gameWon = false;
 
@@ -30,6 +32,13 @@ public class WinWithToy : MonoBehaviour
             Destroy(disableText.rTText);
             Destroy(disableText.rBText);
             Destroy(disableText.lTText);
+
+            pauseTimer += Time.deltaTime;
+
+            if(pauseTimer >= 5)
+            {
+                activate.PauseGame();
+            }
         }
     }
 }

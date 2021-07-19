@@ -9,9 +9,12 @@ public class CountDownBar : MonoBehaviour
 
     public GameObject loseText;
     public GameObject baby;
+    public GameObject pauseMenu;
+    public float pauseTimer = 0;
 
     public WinWithToy winWithToy;
     public QWOP disableText;
+    public PauseMenuController activate;
 
     public Slider countdownBar;
     private Animator anim;
@@ -45,6 +48,13 @@ public class CountDownBar : MonoBehaviour
                 Destroy(disableText.rTText);
                 Destroy(disableText.rBText);
                 Destroy(disableText.lTText);
+
+                pauseTimer += Time.deltaTime;
+
+                if (pauseTimer >= 5)
+                {
+                    activate.PauseGame();
+                }
             }
             else
             {
