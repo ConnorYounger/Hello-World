@@ -566,7 +566,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""814359cf-114f-4482-83ec-07e8107aaef4"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
