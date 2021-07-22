@@ -85,6 +85,16 @@ namespace StatePattern
                         break;
                     case "FoundNPCBaby":
                         enemy.SetState(new NPCEngageState(enemy));
+                        if (targetPoint.GetComponent<NPCBaby>())
+                        {
+                            targetPoint.GetComponent<NPCBaby>().SetState(new NPCBabyPlay(targetPoint.GetComponent<NPCBaby>()));
+                            //Debug.Log("Set currentBaby");
+                            //enemy.currentBaby = targetPoint.GetComponent<NPCBaby>();
+                            //Debug.Log("currentBaby: " + enemy.currentBaby);
+                            state = "";
+                        }
+                        break;
+                    default:
                         break;
                 }
             }
@@ -198,7 +208,8 @@ namespace StatePattern
                         // If the cat can see the baby, add it to the list of possible points
                         if (hit.collider != null && hit.collider.gameObject == baby.gameObject)
                         {
-                            possiblePoints.Add(baby);
+                            if(baby.GetComponent<NPCBaby>() && baby.GetComponent<NPCBaby>().isIdle && !baby.GetComponent<NPCBaby>().coolDown)
+                                possiblePoints.Add(baby);
                         }
                     }
                 }

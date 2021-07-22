@@ -20,6 +20,8 @@ namespace StatePattern
 
         public NavMeshAgent navAgent;
 
+        public NPCBaby currentBaby;
+
         private void Start()
         {
             currentState = new IdleState(this);

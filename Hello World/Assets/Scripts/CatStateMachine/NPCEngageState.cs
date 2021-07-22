@@ -12,15 +12,15 @@ namespace StatePattern
 
         public override void Tick()
         {
-            if (timer < enemy.stateWaitTime)
-            {
-                timer += Time.deltaTime;
-                //Debug.Log(timer);
-            }
-            else
-            {
-                enemy.SetState(new RomingState(enemy));
-            }
+            //if (timer < enemy.stateWaitTime)
+            //{
+            //    timer += Time.deltaTime;
+            //    //Debug.Log(timer);
+            //}
+            //else
+            //{
+            //    enemy.SetState(new RomingState(enemy));
+            //}
         }
 
         public override void OnStateEnter()
@@ -29,6 +29,15 @@ namespace StatePattern
 
             enemy.navAgent.SetDestination(enemy.transform.position);
             timer = 0;
+
+            if (enemy.currentBaby != null)
+            {
+                //Debug.Log("Set Baby State");
+                //enemy.currentBaby.SetState(new NPCBabyPlay(enemy.currentBaby));
+            }
+
+            Debug.Log("Set Baby State");
+            //enemy.currentBaby.SetState(new NPCBabyPlay(enemy.currentBaby));
         }
 
         public override void OnStateExit()
