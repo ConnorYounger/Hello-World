@@ -8,8 +8,8 @@ namespace StatePattern
     {
         public RomingState(Enemy enemy) : base(enemy) { }
 
-        private float pointFindDistance = 8;
-        private float destinationPointDistance = 1f;
+        private float pointFindDistance = 3;
+        private float destinationPointDistance = 0.3f;
         private float idleCoolDownTimer;
 
         private bool hasReachedDestination;

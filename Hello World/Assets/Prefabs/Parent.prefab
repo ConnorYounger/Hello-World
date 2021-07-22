@@ -196,6 +196,7 @@ MonoBehaviour:
     displayTime: 0
     voiceClip: {fileID: 0}
     text: Oh No! Are you too tired to continue? That's ok, let's take a break.
+  playCustomDialouge: 0
   sucessDialougeTexts:
   - startTime: 0
     displayTime: 3
@@ -233,6 +234,56 @@ MonoBehaviour:
     displayTime: 3
     voiceClip: {fileID: 0}
     text: Great! last one! I know you can do it!
+  encouragingDialougeTexts:
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Great work!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Well done!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: You're so clever
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: I'm so proud of you!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: You're learning so fast!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Go baby go!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Wow!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: That's amazing!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: You're a little star!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: That's it!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Look at you go
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: You're getting stronger!
+  randomizeEncouragingDialouges: 1
   failDialougeTexts:
   - startTime: 0
     displayTime: 3
@@ -250,7 +301,51 @@ MonoBehaviour:
     displayTime: 3
     voiceClip: {fileID: 0}
     text: Hey that's alright! Let's try again!
-  playRandom: 0
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Keep trying!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: So close!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Keep it up!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Almost there!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: A little more!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: You can do it!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: It's ok baby!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Don't give up!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: You're getting better!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: Don't stop yet!
+  - startTime: 0
+    displayTime: 3
+    voiceClip: {fileID: 0}
+    text: You'll get there
+  playRandomFail: 1
 --- !u!82 &7529612604373930215
 AudioSource:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ namespace StatePattern
         {
             Debug.Log("Entering NPCEngage State");
 
-            enemy.navAgent.SetDestination(enemy.transform.position);
+            enemy.navAgent.enabled = false;
             timer = 0;
 
             if (enemy.currentBaby != null)
@@ -43,6 +43,8 @@ namespace StatePattern
         public override void OnStateExit()
         {
             Debug.Log("Exiting NPCEngage State");
+
+            enemy.navAgent.enabled = true;
         }
     }
 }

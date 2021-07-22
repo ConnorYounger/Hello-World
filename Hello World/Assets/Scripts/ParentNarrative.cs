@@ -25,11 +25,15 @@ public class ParentNarrative : MonoBehaviour
     public textElement loseText;
 
     [Space()]
+    public bool playCustomDialouge;
     public textElement[] sucessDialougeTexts;
+    public textElement[] encouragingDialougeTexts;
+    public bool randomizeEncouragingDialouges;
+    private int enPlayCounter;
 
     [Space()]
     public textElement[] failDialougeTexts;
-    public bool playRandom;
+    public bool playRandomFail;
     private int playCounter;
     #endregion
 
@@ -65,20 +69,51 @@ public class ParentNarrative : MonoBehaviour
 
     public void NarrativeElement(textElement t)
     {
+        if (playCustomDialouge)
+        {
+            StopCoroutine("ExecuteNarrativeElement");
+            StartCoroutine("ExecuteNarrativeElement", t);
+        }
+        else
+        {
+            PlayEncouragingDialouge();
+        }
+    }
+
+    void PlayEncouragingDialouge()
+    {
+        if(randomizeEncouragingDialouges)
+        {
+            int rand = Random.Range(0, encouragingDialougeTexts.Length);
+            PlayNarativeElement(encouragingDialougeTexts[rand]);
+        }
+        else
+        {
+            PlayNarativeElement(encouragingDialougeTexts[enPlayCounter]);
+
+            enPlayCounter++;
+
+            if (enPlayCounter >= encouragingDialougeTexts.Length)
+                enPlayCounter = 0;
+        }
+    }
+
+    void PlayNarativeElement(textElement t)
+    {
         StopCoroutine("ExecuteNarrativeElement");
         StartCoroutine("ExecuteNarrativeElement", t);
     }
 
     public void PlayFailNarrativeElement()
     {
-        if (playRandom)
+        if (playRandomFail)
         {
             int rand = Random.Range(0, failDialougeTexts.Length);
-            NarrativeElement(failDialougeTexts[rand]);
+            PlayNarativeElement(failDialougeTexts[rand]);
         }
         else
         {
-            NarrativeElement(failDialougeTexts[playCounter]);
+            PlayNarativeElement(failDialougeTexts[playCounter]);
 
             playCounter++;
 

@@ -32,10 +32,10 @@ namespace StatePattern
                 Debug.Log("Baby: " + this.gameObject.name + " can't find the player");
 
             // Find the cat
-            if (GameObject.Find("Cat"))
-                cat = GameObject.Find("Cat").GetComponent<Enemy>();
-            else
-                Debug.Log("Baby: " + this.gameObject.name + " can't find the cat");
+            //if (GameObject.Find("Cat"))
+            //    cat = GameObject.Find("Cat").GetComponent<Enemy>();
+            //else
+            //    Debug.Log("Baby: " + this.gameObject.name + " can't find the cat");
         }
 
         void Update()
