@@ -274,12 +274,16 @@ namespace StatePattern
             lastTargetPoint = enemy.transform;
             idleCoolDownTimer = enemy.idleCoolDownTime;
 
+            enemy.animator.SetBool("isSitting", false);
+
             CheckForClosePoints();
         }
 
         public override void OnStateExit()
         {
             Debug.Log("Exiting Roming State");
+
+            enemy.animator.SetBool("isSitting", true);
         }
     }
 }

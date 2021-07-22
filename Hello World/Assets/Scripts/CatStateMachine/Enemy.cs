@@ -8,6 +8,7 @@ namespace StatePattern
     public class Enemy : MonoBehaviour
     {
         public GameObject player;
+        public Animator animator;
 
         public GameObject wanderPointCollection;
         public GameObject idlePointCollection;
