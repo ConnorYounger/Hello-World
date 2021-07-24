@@ -13,7 +13,7 @@ public class BabyBalancing : MonoBehaviour
     private float tiltMultiplier;
     public float playerRotateSpeed = 1;
     private float balanceValue = 0;
-    private bool canTilt = true;
+    public bool canTilt = true;
 
     public bool sitting = true;
     public float winAngle = 20;
@@ -200,10 +200,13 @@ public class BabyBalancing : MonoBehaviour
     {
         canTilt = false;
         // play get up animation
+        exercise6Baby.StopCoroutine("ReseMovementCoolDown");
+        exercise6Baby.canMove = false;
 
         yield return new WaitForSeconds(1);
 
         Restart();
+        exercise6Baby.canMove = true;
     }
 
     float CalculateTiltSmoothValue()

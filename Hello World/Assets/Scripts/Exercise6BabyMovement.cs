@@ -12,6 +12,7 @@ public class Exercise6BabyMovement : MonoBehaviour
 
     public Animator animator;
 
+    public BabyBalancing babyBalancing;
     public ParentNarrative parent;
     public Transform winZone;
     public float winDistamce = 2;
@@ -20,7 +21,7 @@ public class Exercise6BabyMovement : MonoBehaviour
     private Vector2 move;
     private Vector2 tilt;
 
-    private bool canMove = true;
+    public bool canMove = true;
     private bool gameEnd;
     private int dir;
 
@@ -102,7 +103,7 @@ public class Exercise6BabyMovement : MonoBehaviour
 
             canMove = false;
 
-            Invoke("ReseMovementCoolDown", stepCoolDownTime);
+            StartCoroutine("ReseMovementCoolDown");
         }
     }
 
@@ -116,8 +117,10 @@ public class Exercise6BabyMovement : MonoBehaviour
         }
     }
 
-    void ReseMovementCoolDown()
+    IEnumerator ReseMovementCoolDown()
     {
+        yield return new WaitForSeconds(stepCoolDownTime);
+
         canMove = true;
     }
 
@@ -146,7 +149,12 @@ public class Exercise6BabyMovement : MonoBehaviour
 
     void Win()
     {
+        Debug.Log("Player Win");
+
         gameEnd = true;
+
+        if (babyBalancing)
+            babyBalancing.canTilt = false;
 
         if(parent)
             parent.PlayWinNarrative();

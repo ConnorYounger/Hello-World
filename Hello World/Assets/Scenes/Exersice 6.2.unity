@@ -338,6 +338,7 @@ MonoBehaviour:
   maxBalanceValue: 90
   maxTiltMultiplier: 1
   playerRotateSpeed: 100
+  canTilt: 1
   sitting: 1
   winAngle: 20
   winAngleHoldTime: 5
@@ -677,6 +678,7 @@ MonoBehaviour:
   maxBalanceValue: 60
   maxTiltMultiplier: 0.1
   playerRotateSpeed: -100
+  canTilt: 1
   sitting: 0
   winAngle: 20
   winAngleHoldTime: 5
@@ -687,7 +689,7 @@ MonoBehaviour:
   bottomRotateDifference: 3
   animator: {fileID: 0}
   analogStick: {fileID: 0}
-  exercise6Baby: {fileID: 0}
+  exercise6Baby: {fileID: 610070168}
 --- !u!1 &447745359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,9 +1216,11 @@ MonoBehaviour:
   stepTime: 0.16
   stepCoolDownTime: 0.3
   animator: {fileID: 610070166}
+  babyBalancing: {fileID: 429696207}
   parent: {fileID: 0}
   winZone: {fileID: 1332869976}
-  winDistamce: 0.1
+  winDistamce: 0.7
+  canMove: 1
 --- !u!136 &610070169
 CapsuleCollider:
   m_ObjectHideFlags: 0
