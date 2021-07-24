@@ -20,10 +20,23 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
     private int currentSucessSound;
     private int currentFailSound;
 
+    [Header("Background Music")]
+    public AudioClip musicTrack;
+    private AudioSource musicAudioSource;
+    public float musicVolume = 0.7f;
+    public float fadeOutMultipier = 1;
+    private bool fadeOutMusic;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (musicTrack)
+            CreateSound(musicTrack, musicVolume, true);
+
+        if (musicAudioSource && fadeOutMusic)
+            MusicFadeOut();
     }
 
     // Update is called once per frame
@@ -84,7 +97,7 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
     {
         int rand = Random.Range(0, babyCrySounds.Length);
 
-        CreateSound(babyCrySounds[rand], true);
+        CreateSound(babyCrySounds[rand], 0.7f, true);
     }
 
     void PlaySound(AudioClip audioClip)
@@ -100,14 +113,33 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
         audioSource.loop = loop;
     }
 
-    void CreateSound(AudioClip audioClip, bool loop)
+    void CreateSound(AudioClip audioClip, float volume,bool loop)
     {
         GameObject oj = Instantiate(new GameObject(), transform.position, transform.rotation);
         AudioSource a = oj.AddComponent<AudioSource>();
         createdSounds.Add(a);
         a.clip = audioClip;
         a.loop = loop;
-        a.volume = 0.7f;
+        a.volume = volume;
         a.Play();
+
+        if (audioClip == musicTrack)
+        {
+            musicAudioSource = a;
+            oj.name = "Music Audio Source EGO";
+        }
+    }
+
+    public void FadeOutMusic()
+    {
+        fadeOutMusic = true;
+    }
+
+    void MusicFadeOut()
+    {
+        if(musicAudioSource.volume > 0)
+        {
+            musicAudioSource.volume -= fadeOutMultipier * Time.deltaTime;
+        }
     }
 }

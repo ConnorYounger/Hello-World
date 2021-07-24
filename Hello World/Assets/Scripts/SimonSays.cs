@@ -325,7 +325,10 @@ public class SimonSays : MonoBehaviour
         Debug.Log("Player has lost");
 
         if (soundManager)
+        {
             soundManager.PlayLoseSound();
+            soundManager.FadeOutMusic();
+        }
 
         if (soundManager)
             soundManager.PlayBabyCrySound();
