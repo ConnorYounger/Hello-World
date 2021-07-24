@@ -9,6 +9,7 @@ public class RollOver : MonoBehaviour
     public ParentNarrative parent;
     public AnalogStickTweener animation;
     public PauseMenuController activate;
+    public ExerciseSoundEffectsManager soundEffectsManager;
 
     public GameObject liftButton;
     public GameObject swingButton;
@@ -71,6 +72,7 @@ public class RollOver : MonoBehaviour
             coolDown = 0;
             isLegUp = false;
             parent.PlayFailNarrativeElement();
+            soundEffectsManager.PlayFailSound();
         }
     }
 
@@ -82,6 +84,7 @@ public class RollOver : MonoBehaviour
         liftButton.SetActive(true);
         isLegUp = false;
         parent.PlayFailNarrativeElement();
+        soundEffectsManager.PlayFailSound();
         swingButton.SetActive(false);
     }
 
@@ -115,6 +118,7 @@ public class RollOver : MonoBehaviour
             failTimer = 0;
             coolDown = 0;
             parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
+            soundEffectsManager.PlaySucessSound();
         }
 
         if(leftSwingAmount == 7)
@@ -124,6 +128,7 @@ public class RollOver : MonoBehaviour
             parentText.SetActive(false);
             winText.SetActive(true);
             parent.PlayWinNarrative();
+            soundEffectsManager.PlayWinSound();
 
             pauseTimer += Time.deltaTime;
 
@@ -144,6 +149,7 @@ public class RollOver : MonoBehaviour
             leftMovement = true;
             failTimer = 0;
             coolDown = 0;
+            soundEffectsManager.PlaySucessSound();
         }
     }
 }

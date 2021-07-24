@@ -49,6 +49,7 @@ public class CountDownBar : MonoBehaviour
                 Destroy(disableText.rBText);
                 Destroy(disableText.lTText);
                 disableText.parent.PlayLoseNarrative();
+                disableText.soundEffectManager.PlayLoseSound();
 
                 pauseTimer += Time.deltaTime;
 
