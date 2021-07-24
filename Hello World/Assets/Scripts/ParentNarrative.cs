@@ -121,4 +121,14 @@ public class ParentNarrative : MonoBehaviour
                 playCounter = 0;
         }
     }
+
+    public void PlayWinNarrative()
+    {
+        StartCoroutine("ExecuteNarrativeElement", winText);
+    }
+
+    public void PlayLoseNarrative()
+    {
+        StartCoroutine("ExecuteNarrativeElement", loseText);
+    }
 }

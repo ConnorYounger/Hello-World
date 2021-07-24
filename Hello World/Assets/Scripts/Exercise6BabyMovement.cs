@@ -12,11 +12,16 @@ public class Exercise6BabyMovement : MonoBehaviour
 
     public Animator animator;
 
+    public ParentNarrative parent;
+    public Transform winZone;
+    public float winDistamce = 2;
+
     private MiniGameInputs controls;
     private Vector2 move;
     private Vector2 tilt;
 
     private bool canMove = true;
+    private bool gameEnd;
     private int dir;
 
     private void Awake()
@@ -48,11 +53,20 @@ public class Exercise6BabyMovement : MonoBehaviour
             ComplexPlayerMovement();
 
         MoveForward();
+        CheckForWinZone();
+    }
+
+    void CheckForWinZone()
+    {
+        if(Vector3.Distance(transform.position, winZone.position) < winDistamce)
+        {
+            Win();
+        }
     }
 
     void PlayerMovement(float value, bool leftFoot)
     {
-        if(canMove && value >= 1 && !simpleMovement)
+        if(canMove && value >= 1 && !simpleMovement && !gameEnd)
         {
             if (leftFoot)
             {
@@ -128,5 +142,21 @@ public class Exercise6BabyMovement : MonoBehaviour
     public void Exersise6Win()
     {
         Debug.Log("You did it!");
+    }
+
+    void Win()
+    {
+        gameEnd = true;
+
+        if(parent)
+            parent.PlayWinNarrative();
+    }
+
+    public void Lose()
+    {
+        gameEnd = true;
+
+        if (parent)
+            parent.PlayLoseNarrative();
     }
 }

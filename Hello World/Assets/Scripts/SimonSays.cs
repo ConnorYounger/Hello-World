@@ -250,7 +250,7 @@ public class SimonSays : MonoBehaviour
 
         if (parent)
         {
-            parent.NarrativeElement(parent.winText);
+            parent.PlayWinNarrative();
         }
 
         if (discoveryMode)
@@ -313,7 +313,7 @@ public class SimonSays : MonoBehaviour
 
         if (parent)
         {
-            parent.NarrativeElement(parent.loseText);
+            parent.PlayLoseNarrative();
         }
     }
 

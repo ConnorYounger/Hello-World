@@ -36,6 +36,9 @@ public class BabyBalancing : MonoBehaviour
     public AnalogStickTweener analogStick;
     private bool left;
 
+    [Space()]
+    public Exercise6BabyMovement exercise6Baby;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
@@ -85,7 +88,7 @@ public class BabyBalancing : MonoBehaviour
 
     void BalanceWinCheck()
     {
-        if (sitting)
+        if (sitting && exercise6Baby)
         {
             if(withinWinAngle())
             {
@@ -172,6 +175,35 @@ public class BabyBalancing : MonoBehaviour
             spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, CalculateRotationValue(balanceValue), spine.transform.localRotation.z, spine.transform.localRotation.w);
             //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, CalculateBottomDifference(CalculateRotationValue(balanceValue)), bottom.transform.localRotation.z, bottom.transform.localRotation.w);
         }
+
+        if (!sitting)
+        {
+            if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y >= CalculateMaxBalanceValue())
+            {
+                BabyFallOver();
+            }
+            else if (spine.transform.localRotation.y < 0 && spine.transform.localRotation.y <= -CalculateMaxBalanceValue())
+            {
+                BabyFallOver();
+            }
+        }
+    }
+
+    void BabyFallOver()
+    {
+        Debug.Log("BabyFell");
+
+        StartCoroutine("BabyFallReset");
+    }
+
+    IEnumerator BabyFallReset()
+    {
+        canTilt = false;
+        // play get up animation
+
+        yield return new WaitForSeconds(1);
+
+        Restart();
     }
 
     float CalculateTiltSmoothValue()
