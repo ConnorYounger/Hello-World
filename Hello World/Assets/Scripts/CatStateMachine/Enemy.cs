@@ -8,6 +8,7 @@ namespace StatePattern
     public class Enemy : MonoBehaviour
     {
         public GameObject player;
+        public Animator animator;
 
         public GameObject wanderPointCollection;
         public GameObject idlePointCollection;
@@ -19,6 +20,8 @@ namespace StatePattern
         private State currentState;
 
         public NavMeshAgent navAgent;
+
+        public NPCBaby currentBaby;
 
         private void Start()
         {

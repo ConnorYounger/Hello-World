@@ -29,6 +29,8 @@ public class MovingObjectBabyHand : MonoBehaviour
 
     private MiniGameInputs controls;
 
+    public bool canMove = true;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
@@ -71,10 +73,13 @@ public class MovingObjectBabyHand : MonoBehaviour
 
     void Update()
     {
-        HandMovement();
-        OtherHandCollision();
-        SpawnNewObject();
-        RandomHandMovements();
+        if (canMove)
+        {
+            HandMovement();
+            OtherHandCollision();
+            SpawnNewObject();
+            RandomHandMovements();
+        }
     }
 
     void SpawnNewObject()

@@ -27,13 +27,15 @@ namespace StatePattern
         {
             Debug.Log("Entering Idle State");
 
-            enemy.navAgent.SetDestination(enemy.transform.position);
+            enemy.navAgent.enabled = false;
             timer = 0;
         }
 
         public override void OnStateExit()
         {
             Debug.Log("Exiting Idle State");
+
+            enemy.navAgent.enabled = true;
         }
     }
 }

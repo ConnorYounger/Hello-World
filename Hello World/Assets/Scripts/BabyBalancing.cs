@@ -13,7 +13,7 @@ public class BabyBalancing : MonoBehaviour
     private float tiltMultiplier;
     public float playerRotateSpeed = 1;
     private float balanceValue = 0;
-    private bool canTilt = true;
+    public bool canTilt = true;
 
     public bool sitting = true;
     public float winAngle = 20;
@@ -35,6 +35,9 @@ public class BabyBalancing : MonoBehaviour
     public Animator animator;
     public AnalogStickTweener analogStick;
     private bool left;
+
+    [Space()]
+    public Exercise6BabyMovement exercise6Baby;
 
     private void Awake()
     {
@@ -85,7 +88,7 @@ public class BabyBalancing : MonoBehaviour
 
     void BalanceWinCheck()
     {
-        if (sitting)
+        if (sitting && exercise6Baby)
         {
             if(withinWinAngle())
             {
@@ -172,6 +175,38 @@ public class BabyBalancing : MonoBehaviour
             spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, CalculateRotationValue(balanceValue), spine.transform.localRotation.z, spine.transform.localRotation.w);
             //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, CalculateBottomDifference(CalculateRotationValue(balanceValue)), bottom.transform.localRotation.z, bottom.transform.localRotation.w);
         }
+
+        if (!sitting)
+        {
+            if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y >= CalculateMaxBalanceValue())
+            {
+                BabyFallOver();
+            }
+            else if (spine.transform.localRotation.y < 0 && spine.transform.localRotation.y <= -CalculateMaxBalanceValue())
+            {
+                BabyFallOver();
+            }
+        }
+    }
+
+    void BabyFallOver()
+    {
+        Debug.Log("BabyFell");
+
+        StartCoroutine("BabyFallReset");
+    }
+
+    IEnumerator BabyFallReset()
+    {
+        canTilt = false;
+        // play get up animation
+        exercise6Baby.StopCoroutine("ReseMovementCoolDown");
+        exercise6Baby.canMove = false;
+
+        yield return new WaitForSeconds(1);
+
+        Restart();
+        exercise6Baby.canMove = true;
     }
 
     float CalculateTiltSmoothValue()

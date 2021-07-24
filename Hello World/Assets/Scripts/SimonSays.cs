@@ -52,6 +52,10 @@ public class SimonSays : MonoBehaviour
     public bool discoveryMode;
     public DiscoveryPlayer discoveryPlayer;
 
+    [Header("Sounds")]
+    public AudioClip[] sucessSounds;
+    public AudioClip[] failSounds;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
@@ -250,7 +254,7 @@ public class SimonSays : MonoBehaviour
 
         if (parent)
         {
-            parent.NarrativeElement(parent.winText);
+            parent.PlayWinNarrative();
         }
 
         if (discoveryMode)
@@ -313,7 +317,7 @@ public class SimonSays : MonoBehaviour
 
         if (parent)
         {
-            parent.NarrativeElement(parent.loseText);
+            parent.PlayLoseNarrative();
         }
     }
 
