@@ -123,6 +123,7 @@ public class RollOver : MonoBehaviour
             swingButton.SetActive(false);
             parentText.SetActive(false);
             winText.SetActive(true);
+            parent.PlayWinNarrative();
 
             pauseTimer += Time.deltaTime;
 

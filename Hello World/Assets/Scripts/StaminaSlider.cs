@@ -49,6 +49,7 @@ public class StaminaSlider : MonoBehaviour
                 Destroy(timerCheck.parentText);
                 Destroy(timerCheck.winText);
                 loseText.SetActive(true);
+                timerCheck.parent.PlayLoseNarrative();
 
                 pauseTimer += Time.deltaTime;
 
