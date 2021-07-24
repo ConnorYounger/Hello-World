@@ -14,6 +14,8 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
 
     public AudioClip[] babyCrySounds;
 
+    public List<AudioSource> createdSounds;
+
     public bool randomisSoundCollections;
     private int currentSucessSound;
     private int currentFailSound;
@@ -82,7 +84,7 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
     {
         int rand = Random.Range(0, babyCrySounds.Length);
 
-
+        CreateSound(babyCrySounds[rand], true);
     }
 
     void PlaySound(AudioClip audioClip)
@@ -98,4 +100,14 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
         audioSource.loop = loop;
     }
 
+    void CreateSound(AudioClip audioClip, bool loop)
+    {
+        GameObject oj = Instantiate(new GameObject(), transform.position, transform.rotation);
+        AudioSource a = oj.AddComponent<AudioSource>();
+        createdSounds.Add(a);
+        a.clip = audioClip;
+        a.loop = loop;
+        a.volume = 0.7f;
+        a.Play();
+    }
 }
