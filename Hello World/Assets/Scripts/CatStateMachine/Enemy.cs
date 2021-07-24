@@ -23,6 +23,10 @@ namespace StatePattern
 
         public NPCBaby currentBaby;
 
+        [Header("Audio")]
+        public AudioSource audioSource;
+        public AudioClip[] audioClips;
+
         private void Start()
         {
             currentState = new IdleState(this);
