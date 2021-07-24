@@ -56,6 +56,8 @@ public class SimonSays : MonoBehaviour
     public AudioClip[] sucessSounds;
     public AudioClip[] failSounds;
 
+    private ExerciseSoundEffectsManager soundManager;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
@@ -98,6 +100,8 @@ public class SimonSays : MonoBehaviour
 
         memoryMetreSlider.maxValue = maxMemory;
         currentPacience = maxPacience;
+
+        soundManager = GameObject.Find("SoundManager").GetComponent<ExerciseSoundEffectsManager>();
 
         GenerateNewCombination();
     }
@@ -217,6 +221,9 @@ public class SimonSays : MonoBehaviour
         if (animator)
             StartCoroutine("PlayAnimation");
 
+        if (soundManager)
+            soundManager.PlaySucessSound();
+
         // Check to see if the player has won
         if (currentMemory >= maxMemory)
         {
@@ -243,6 +250,9 @@ public class SimonSays : MonoBehaviour
         {
             uICanvas.enabled = false;
         }
+
+        if(soundManager)
+            soundManager.PlayWinSound();
 
         currentMemory = maxMemory;
         UpdateMemoryMetre();
@@ -290,6 +300,9 @@ public class SimonSays : MonoBehaviour
     {
         currentPacience -= 1;
 
+        if (soundManager)
+            soundManager.PlayFailSound();
+
         // Stop the player's memory from going below 0
         if (currentPacience < 0)
         {
@@ -310,6 +323,15 @@ public class SimonSays : MonoBehaviour
     void Lose()
     {
         Debug.Log("Player has lost");
+
+        if (soundManager)
+        {
+            soundManager.PlayLoseSound();
+            soundManager.FadeOutMusic();
+        }
+
+        if (soundManager)
+            soundManager.PlayBabyCrySound();
 
         uICanvas.enabled = false;
         loseUI.SetActive(true);
