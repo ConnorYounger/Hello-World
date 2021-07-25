@@ -88,6 +88,7 @@ public class QWOP : MonoBehaviour
                 isRightMovement = true;
                 rTText.SetActive(false);
                 rBText.SetActive(true);
+                soundEffectManager.PlaySucessSound();
             }
             else if (value > 0.95f)
             {
@@ -141,6 +142,7 @@ public class QWOP : MonoBehaviour
                 lBText.SetActive(true);
                 successCount++;
                 parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
+                soundEffectManager.PlaySucessSound();
             }
             else if (value > 0.95f)
             {
