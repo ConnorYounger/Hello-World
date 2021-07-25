@@ -37,6 +37,7 @@ public class BabyBalancing : MonoBehaviour
     private bool left;
 
     [Space()]
+    public ParentNarrative parent;
     public Exercise6BabyMovement exercise6Baby;
 
     private void Awake()
@@ -111,6 +112,9 @@ public class BabyBalancing : MonoBehaviour
     void AngelWin()
     {
         canTilt = false;
+
+        if (parent)
+            parent.PlayWinNarrative();
 
         winEGO.SetActive(true);
         EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
@@ -203,6 +207,9 @@ public class BabyBalancing : MonoBehaviour
         exercise6Baby.StopCoroutine("ReseMovementCoolDown");
         exercise6Baby.canMove = false;
 
+        if (parent)
+            parent.PlayFailNarrativeElement();
+
         yield return new WaitForSeconds(1);
 
         Restart();
@@ -240,6 +247,9 @@ public class BabyBalancing : MonoBehaviour
     public void BabyFell()
     {
         canTilt = false;
+
+        if (parent)
+            parent.PlayLoseNarrative();
 
         babyFellEGO.SetActive(true);
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
