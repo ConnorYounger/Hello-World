@@ -8,15 +8,32 @@ using UnityEngine.UI;
 public class JitterActivator : MonoBehaviour
 {
     public VertexJitter jitter;
+    public bool canJitter;
 
-    public void FixedUpdate()
+    public void Update()
     {
         if (EventSystem.current.currentSelectedGameObject == gameObject)
         {
-            jitter.enabled = true;
-        }
+            canJitter = true;
+            //jitter.enabled = true;
+        } else { canJitter = false; }
+        /*
         if (EventSystem.current.currentSelectedGameObject != gameObject && jitter.enabled == true)
         {
+            jitter.StopCoroutine("AnimateVertexColors");
+            jitter.enabled = false;
+        }*/
+
+        ToggleJitter();
+    }
+
+    public void ToggleJitter()
+    {
+        if (canJitter)
+        {
+            jitter.enabled = true;
+        } else 
+        { 
             jitter.StopCoroutine("AnimateVertexColors");
             jitter.enabled = false;
         }
