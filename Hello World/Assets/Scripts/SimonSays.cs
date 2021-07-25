@@ -208,8 +208,10 @@ public class SimonSays : MonoBehaviour
         // Set the spirte
         if (scriptableObject && scriptableObject.controllerInputSprite)
         {
-            if(controllerSprites)
+            if(PlayerPrefs.GetString("ControlType") == "Xbox")
                 button.GetComponent<Image>().sprite = scriptableObject.controllerInputSprite;
+            else if(PlayerPrefs.GetString("ControlType") == "PS")
+                button.GetComponent<Image>().sprite = scriptableObject.PSControllerInputSprite;
             else
                 button.GetComponent<Image>().sprite = scriptableObject.keyboardInputSprite;
         }
