@@ -33,12 +33,21 @@ namespace StatePattern
             }
         }
 
+        void PlayAudioClip()
+        {
+            int rand = Random.Range(0, baby.audioClips.Length);
+            baby.audioSource.clip = baby.audioClips[rand];
+            baby.audioSource.Play();
+        }
+
         public override void OnStateEnter()
         {
             Debug.Log("Baby Entering Play State");
             playTimer = playTime;
             playing = true;
             baby.isIdle = false;
+
+            PlayAudioClip();
 
             if (baby.animator)
                 baby.animator.SetBool("isPlaying", true);

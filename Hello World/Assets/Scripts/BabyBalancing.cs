@@ -88,7 +88,7 @@ public class BabyBalancing : MonoBehaviour
 
     void BalanceWinCheck()
     {
-        if (sitting && exercise6Baby)
+        if (sitting && !exercise6Baby)
         {
             if(withinWinAngle())
             {
@@ -145,7 +145,7 @@ public class BabyBalancing : MonoBehaviour
 
         if(tiltMultiplier < maxTiltMultiplier)
         {
-            tiltMultiplier += tiltMultiplier/10 + 0.01f * Time.deltaTime;
+            tiltMultiplier += tiltMultiplier/100 + 0.01f * Time.deltaTime;
         }
         else if (tiltMultiplier > maxTiltMultiplier)
         {

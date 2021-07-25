@@ -21,6 +21,10 @@ namespace StatePattern
         public Enemy cat;
         public float catPlayTime = 4;
 
+        [Header("Sounds")]
+        public AudioSource audioSource;
+        public AudioClip[] audioClips;
+
         void Start()
         {
             currentState = new NPCBabyIdle(this);
@@ -36,6 +40,9 @@ namespace StatePattern
             //    cat = GameObject.Find("Cat").GetComponent<Enemy>();
             //else
             //    Debug.Log("Baby: " + this.gameObject.name + " can't find the cat");
+
+            if (!audioSource)
+                gameObject.GetComponent<AudioSource>();
         }
 
         void Update()

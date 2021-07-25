@@ -12,6 +12,7 @@ public class QWOP : MonoBehaviour
 
     public ParentNarrative parent;
     public CountDownBar countdown;
+    public ExerciseSoundEffectsManager soundEffectManager;
 
     private MiniGameInputs controls;
     private Animator anim;
@@ -70,6 +71,7 @@ public class QWOP : MonoBehaviour
             anim.SetInteger("leftMovement", 0);
             anim.SetInteger("rightMovement", 0);
             parent.PlayFailNarrativeElement();
+            soundEffectManager.PlayFailSound();
         }
     }
 
@@ -86,6 +88,7 @@ public class QWOP : MonoBehaviour
                 isRightMovement = true;
                 rTText.SetActive(false);
                 rBText.SetActive(true);
+                soundEffectManager.PlaySucessSound();
             }
             else if (value > 0.95f)
             {
@@ -95,6 +98,7 @@ public class QWOP : MonoBehaviour
                 isFirstLeft = false;
                 isLeftMovement = true;
                 parent.PlayFailNarrativeElement();
+                soundEffectManager.PlayFailSound();
             }
 
             canInput = false;
@@ -119,6 +123,7 @@ public class QWOP : MonoBehaviour
             anim.SetInteger("rightMovement", 0);
             anim.SetInteger("leftMovement", 0);
             parent.PlayFailNarrativeElement();
+            soundEffectManager.PlayFailSound();
         }
     }
 
@@ -137,6 +142,7 @@ public class QWOP : MonoBehaviour
                 lBText.SetActive(true);
                 successCount++;
                 parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
+                soundEffectManager.PlaySucessSound();
             }
             else if (value > 0.95f)
             {
@@ -146,6 +152,7 @@ public class QWOP : MonoBehaviour
                 isFirstRight = false;
                 isRightMovement = true;
                 parent.PlayFailNarrativeElement();
+                soundEffectManager.PlayFailSound();
             }
 
             canInput = false;
