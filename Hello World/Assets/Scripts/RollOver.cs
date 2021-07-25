@@ -24,6 +24,7 @@ public class RollOver : MonoBehaviour
     private bool leftMovement = true;
     private bool rightMovement = false;
     public bool isLegUp = false;
+    public bool win = false;
 
     public float failTimer = 0;
     public float timeLimit = 0;
@@ -75,6 +76,16 @@ public class RollOver : MonoBehaviour
             isLegUp = false;
             parent.PlayFailNarrativeElement();
             soundEffectsManager.PlayFailSound();
+        }
+
+        if(win == true)
+        {
+            pauseTimer += Time.deltaTime;
+
+            if (pauseTimer >= 5)
+            {
+                activate.PauseGame();
+            }
         }
     }
 
@@ -133,13 +144,7 @@ public class RollOver : MonoBehaviour
             winText.SetActive(true);
             parent.PlayWinNarrative();
             soundEffectsManager.PlayWinSound();
-
-            pauseTimer += Time.deltaTime;
-
-            if (pauseTimer >= 5)
-            {
-                activate.PauseGame();
-            }
+            win = true;
         }
     }
 

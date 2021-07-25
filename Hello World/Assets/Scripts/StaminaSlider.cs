@@ -15,9 +15,13 @@ public class StaminaSlider : MonoBehaviour
     public GameObject loseText;
     public float pauseTimer = 0;
 
+    public GameObject liftButton;
+    public GameObject swingButton;
+    public GameObject parentText;
+
     public RollOver timerCheck;
     public PauseMenuController activate;
-    
+
     private void Awake()
     {
         anim = baby.GetComponent<Animator>();
@@ -31,43 +35,38 @@ public class StaminaSlider : MonoBehaviour
 
     private void Update()
     {
-        if (timerCheck.isLegUp == true)
+        if (countDown == true)
+        {
+            countdownBar.value -= Time.deltaTime;
+        }
+
+        //If we are at 0, start to refill
+        if (countdownBar.value <= 0)
         {
             if (countDown == true)
             {
-                countdownBar.value -= Time.deltaTime;
+                timerCheck.soundEffectsManager.PlayLoseSound();
+                timerCheck.soundEffectsManager.PlayBabyCrySound();
             }
 
-            //If we are at 0, start to refill
-            if (countdownBar.value <= 0)
+            countDown = false;
+            allowInputs = false;
+            anim.SetBool("timeOut", true);
+            liftButton.SetActive(false);
+            swingButton.SetActive(false);
+            loseText.SetActive(true);
+            timerCheck.parent.PlayLoseNarrative();
+            pauseTimer += Time.deltaTime;
+
+            if (pauseTimer >= 5)
             {
-                if(countDown == true)
-                {
-                    timerCheck.soundEffectsManager.PlayLoseSound();
-                    timerCheck.soundEffectsManager.PlayBabyCrySound();
-                }
-
-                countDown = false;
-                allowInputs = false;
-                anim.SetBool("timeOut", true);
-                Destroy(timerCheck.liftButton);
-                Destroy(timerCheck.swingButton);
-                Destroy(timerCheck.parentText);
-                Destroy(timerCheck.winText);
-                loseText.SetActive(true);
-                timerCheck.parent.PlayLoseNarrative();
-                pauseTimer += Time.deltaTime;
-
-                if (pauseTimer >= 5)
-                {
-                    activate.PauseGame();
-                }
+                activate.PauseGame();
             }
-            else
-            {
-                countDown = true;
-                allowInputs = true;
-            }
+        }
+        else
+        {
+            countDown = true;
+            allowInputs = true;
         }
     }
 }
