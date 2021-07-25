@@ -10,6 +10,11 @@ public class WinWithToy : MonoBehaviour
     public float pauseTimer = 0;
     private Animator anim;
 
+    public GameObject lBText;
+    public GameObject rTText;
+    public GameObject rBText;
+    public GameObject lTText;
+
     public QWOP disableText;
     public PauseMenuController activate;
 
@@ -20,27 +25,32 @@ public class WinWithToy : MonoBehaviour
         anim = baby.GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        if(gameWon == true)
+        {
+            pauseTimer += Time.deltaTime;
+        }
+
+        if (pauseTimer >= 5)
+        {
+            activate.PauseGame();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))
         {
-            toyBall.SetActive(false);
             winText.SetActive(true);
             anim.SetBool("gotBall", true);
             gameWon = true;
-            Destroy(disableText.lBText);
-            Destroy(disableText.rTText);
-            Destroy(disableText.rBText);
-            Destroy(disableText.lTText);
+            lBText.SetActive(false);
+            lTText.SetActive(false);
+            rBText.SetActive(false);
+            rTText.SetActive(false);
             disableText.parent.PlayWinNarrative();
             disableText.soundEffectManager.PlayWinSound();
-
-            pauseTimer += Time.deltaTime;
-
-            if(pauseTimer >= 5)
-            {
-                activate.PauseGame();
-            }
         }
     }
 }

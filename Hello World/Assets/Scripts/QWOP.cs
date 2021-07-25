@@ -13,6 +13,7 @@ public class QWOP : MonoBehaviour
     public ParentNarrative parent;
     public CountDownBar countdown;
     public ExerciseSoundEffectsManager soundEffectManager;
+    public WinWithToy check;
 
     private MiniGameInputs controls;
     private Animator anim;
@@ -55,7 +56,7 @@ public class QWOP : MonoBehaviour
 
     void LeftMovement()
     {
-        if (isLeftMovement == true)
+        if (isLeftMovement == true && check.gameWon == false)
         {
             anim.SetBool("wrongPressed", false);
             anim.SetInteger("leftMovement", 1);
@@ -79,7 +80,7 @@ public class QWOP : MonoBehaviour
     {
         if(canInput == true)
         {
-            if (isFirstLeft == true)
+            if (isFirstLeft == true && check.gameWon == false)
             {
                 anim.SetBool("wrongPressed", false);
                 anim.SetInteger("leftMovement", 2);
@@ -107,7 +108,7 @@ public class QWOP : MonoBehaviour
 
     void RightMovement()
     {
-        if (isRightMovement == true)
+        if (isRightMovement == true && check.gameWon == false)
         {
             anim.SetInteger("rightMovement", 1);
             anim.SetInteger("leftMovement", 0);
@@ -131,7 +132,7 @@ public class QWOP : MonoBehaviour
     {
         if(canInput == true)
         {
-            if (isFirstRight == true && value > 0.95f)
+            if (isFirstRight == true && value > 0.95f && check.gameWon == false)
             {
                 anim.SetInteger("rightMovement", 2);
                 anim.SetInteger("leftMovement", 0);
