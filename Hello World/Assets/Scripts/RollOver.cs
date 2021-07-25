@@ -68,6 +68,8 @@ public class RollOver : MonoBehaviour
             anim.SetBool("legUp", false);
             anim.SetInteger("leftSwing", 0);
             anim.SetInteger("rightSwing", 0);
+            leftSwingAmount = 0;
+            rightSwingAmount = 0;
             failTimer = 0;
             coolDown = 0;
             isLegUp = false;
@@ -81,6 +83,8 @@ public class RollOver : MonoBehaviour
         anim.SetBool("legUp", false);
         anim.SetInteger("leftSwing", 0);
         anim.SetInteger("rightSwing", 0);
+        leftSwingAmount = 0;
+        rightSwingAmount = 0;
         liftButton.SetActive(true);
         isLegUp = false;
         parent.PlayFailNarrativeElement();
