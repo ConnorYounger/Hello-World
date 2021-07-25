@@ -32,6 +32,7 @@ public class WinWithToy : MonoBehaviour
             Destroy(disableText.rTText);
             Destroy(disableText.rBText);
             Destroy(disableText.lTText);
+            disableText.parent.PlayWinNarrative();
 
             pauseTimer += Time.deltaTime;
 

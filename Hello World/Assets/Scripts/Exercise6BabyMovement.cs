@@ -12,11 +12,17 @@ public class Exercise6BabyMovement : MonoBehaviour
 
     public Animator animator;
 
+    public BabyBalancing babyBalancing;
+    public ParentNarrative parent;
+    public Transform winZone;
+    public float winDistamce = 2;
+
     private MiniGameInputs controls;
     private Vector2 move;
     private Vector2 tilt;
 
-    private bool canMove = true;
+    public bool canMove = true;
+    private bool gameEnd;
     private int dir;
 
     private void Awake()
@@ -48,11 +54,20 @@ public class Exercise6BabyMovement : MonoBehaviour
             ComplexPlayerMovement();
 
         MoveForward();
+        CheckForWinZone();
+    }
+
+    void CheckForWinZone()
+    {
+        if(Vector3.Distance(transform.position, winZone.position) < winDistamce)
+        {
+            Win();
+        }
     }
 
     void PlayerMovement(float value, bool leftFoot)
     {
-        if(canMove && value >= 1 && !simpleMovement)
+        if(canMove && value >= 1 && !simpleMovement && !gameEnd)
         {
             if (leftFoot)
             {
@@ -88,7 +103,7 @@ public class Exercise6BabyMovement : MonoBehaviour
 
             canMove = false;
 
-            Invoke("ReseMovementCoolDown", stepCoolDownTime);
+            StartCoroutine("ReseMovementCoolDown");
         }
     }
 
@@ -102,8 +117,10 @@ public class Exercise6BabyMovement : MonoBehaviour
         }
     }
 
-    void ReseMovementCoolDown()
+    IEnumerator ReseMovementCoolDown()
     {
+        yield return new WaitForSeconds(stepCoolDownTime);
+
         canMove = true;
     }
 
@@ -128,5 +145,26 @@ public class Exercise6BabyMovement : MonoBehaviour
     public void Exersise6Win()
     {
         Debug.Log("You did it!");
+    }
+
+    void Win()
+    {
+        Debug.Log("Player Win");
+
+        gameEnd = true;
+
+        if (babyBalancing)
+            babyBalancing.canTilt = false;
+
+        if(parent)
+            parent.PlayWinNarrative();
+    }
+
+    public void Lose()
+    {
+        gameEnd = true;
+
+        if (parent)
+            parent.PlayLoseNarrative();
     }
 }
