@@ -1421,6 +1421,52 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ControllerDetector"",
+            ""id"": ""bd5ae8a5-3f5c-4263-8f88-409f947c4e46"",
+            ""actions"": [
+                {
+                    ""name"": ""Xbox"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9e19c1a-d32a-468b-b162-deb2d61a3417"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PS"",
+                    ""type"": ""Button"",
+                    ""id"": ""e7b01c19-214d-49b7-91a5-d71f08fcd5d8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6e9f72f8-dd5a-44af-b027-815e9b9ef569"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Xbox"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ceea81b1-865a-45da-a057-64ae7357a31b"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -1475,6 +1521,10 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_MainMenu_Navigate = m_MainMenu.FindAction("Navigate", throwIfNotFound: true);
         m_MainMenu_Select = m_MainMenu.FindAction("Select", throwIfNotFound: true);
         m_MainMenu_Cancel = m_MainMenu.FindAction("Cancel", throwIfNotFound: true);
+        // ControllerDetector
+        m_ControllerDetector = asset.FindActionMap("ControllerDetector", throwIfNotFound: true);
+        m_ControllerDetector_Xbox = m_ControllerDetector.FindAction("Xbox", throwIfNotFound: true);
+        m_ControllerDetector_PS = m_ControllerDetector.FindAction("PS", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1974,6 +2024,47 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         }
     }
     public MainMenuActions @MainMenu => new MainMenuActions(this);
+
+    // ControllerDetector
+    private readonly InputActionMap m_ControllerDetector;
+    private IControllerDetectorActions m_ControllerDetectorActionsCallbackInterface;
+    private readonly InputAction m_ControllerDetector_Xbox;
+    private readonly InputAction m_ControllerDetector_PS;
+    public struct ControllerDetectorActions
+    {
+        private @MiniGameInputs m_Wrapper;
+        public ControllerDetectorActions(@MiniGameInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Xbox => m_Wrapper.m_ControllerDetector_Xbox;
+        public InputAction @PS => m_Wrapper.m_ControllerDetector_PS;
+        public InputActionMap Get() { return m_Wrapper.m_ControllerDetector; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ControllerDetectorActions set) { return set.Get(); }
+        public void SetCallbacks(IControllerDetectorActions instance)
+        {
+            if (m_Wrapper.m_ControllerDetectorActionsCallbackInterface != null)
+            {
+                @Xbox.started -= m_Wrapper.m_ControllerDetectorActionsCallbackInterface.OnXbox;
+                @Xbox.performed -= m_Wrapper.m_ControllerDetectorActionsCallbackInterface.OnXbox;
+                @Xbox.canceled -= m_Wrapper.m_ControllerDetectorActionsCallbackInterface.OnXbox;
+                @PS.started -= m_Wrapper.m_ControllerDetectorActionsCallbackInterface.OnPS;
+                @PS.performed -= m_Wrapper.m_ControllerDetectorActionsCallbackInterface.OnPS;
+                @PS.canceled -= m_Wrapper.m_ControllerDetectorActionsCallbackInterface.OnPS;
+            }
+            m_Wrapper.m_ControllerDetectorActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Xbox.started += instance.OnXbox;
+                @Xbox.performed += instance.OnXbox;
+                @Xbox.canceled += instance.OnXbox;
+                @PS.started += instance.OnPS;
+                @PS.performed += instance.OnPS;
+                @PS.canceled += instance.OnPS;
+            }
+        }
+    }
+    public ControllerDetectorActions @ControllerDetector => new ControllerDetectorActions(this);
     public interface ISimonSaysActions
     {
         void OnClick1(InputAction.CallbackContext context);
@@ -2029,5 +2120,10 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnNavigate(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+    }
+    public interface IControllerDetectorActions
+    {
+        void OnXbox(InputAction.CallbackContext context);
+        void OnPS(InputAction.CallbackContext context);
     }
 }
