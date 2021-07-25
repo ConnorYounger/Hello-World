@@ -1408,6 +1408,52 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ControllerDetector",
+            "id": "bd5ae8a5-3f5c-4263-8f88-409f947c4e46",
+            "actions": [
+                {
+                    "name": "Xbox",
+                    "type": "Button",
+                    "id": "f9e19c1a-d32a-468b-b162-deb2d61a3417",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PS",
+                    "type": "Button",
+                    "id": "e7b01c19-214d-49b7-91a5-d71f08fcd5d8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6e9f72f8-dd5a-44af-b027-815e9b9ef569",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Xbox",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ceea81b1-865a-45da-a057-64ae7357a31b",
+                    "path": "<DualShockGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

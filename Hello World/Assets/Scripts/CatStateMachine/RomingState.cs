@@ -283,6 +283,10 @@ namespace StatePattern
         {
             Debug.Log("Exiting Roming State");
 
+            int rand = Random.Range(0, enemy.audioClips.Length);
+            enemy.audioSource.clip = enemy.audioClips[rand];
+            enemy.audioSource.Play();
+
             enemy.animator.SetBool("isSitting", true);
         }
     }

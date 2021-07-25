@@ -41,6 +41,12 @@ public class StaminaSlider : MonoBehaviour
             //If we are at 0, start to refill
             if (countdownBar.value <= 0)
             {
+                if(countDown == true)
+                {
+                    timerCheck.soundEffectsManager.PlayLoseSound();
+                    timerCheck.soundEffectsManager.PlayBabyCrySound();
+                }
+
                 countDown = false;
                 allowInputs = false;
                 anim.SetBool("timeOut", true);
@@ -50,7 +56,6 @@ public class StaminaSlider : MonoBehaviour
                 Destroy(timerCheck.winText);
                 loseText.SetActive(true);
                 timerCheck.parent.PlayLoseNarrative();
-
                 pauseTimer += Time.deltaTime;
 
                 if (pauseTimer >= 5)
