@@ -40,6 +40,12 @@ public class CountDownBar : MonoBehaviour
             //If we are at 0, start to refill
             if (countdownBar.value <= 0)
             {
+                if(countDown == true)
+                {
+                    disableText.soundEffectManager.PlayLoseSound();
+                    disableText.soundEffectManager.PlayBabyCrySound();
+                }
+
                 countDown = false;
                 allowInputs = false;
                 anim.SetBool("timeOut", true);
@@ -49,9 +55,6 @@ public class CountDownBar : MonoBehaviour
                 Destroy(disableText.rBText);
                 Destroy(disableText.lTText);
                 disableText.parent.PlayLoseNarrative();
-                disableText.soundEffectManager.PlayLoseSound();
-                disableText.soundEffectManager.PlayBabyCrySound();
-
                 pauseTimer += Time.deltaTime;
 
                 if (pauseTimer >= 5)
