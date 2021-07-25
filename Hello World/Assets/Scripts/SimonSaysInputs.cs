@@ -9,5 +9,6 @@ public class SimonSaysInputs : ScriptableObject
     public string inputName;
 
     public Sprite controllerInputSprite;
+    public Sprite PSControllerInputSprite;
     public Sprite keyboardInputSprite;
 }
