@@ -27,7 +27,7 @@ public class ExerciseStart : MonoBehaviour
         SetCanvases(false);
     }
 
-    public void SetNormalProfile()
+    public void StartExercise()
     {
         pPVolume.profile = normalPP;
 

@@ -9,6 +9,12 @@ using UnityEngine.InputSystem;
 
 public class SimonSays : MonoBehaviour
 {
+    [Header("Exercise Start")]
+    public float startWaitTime;
+    public GameObject startButtonUI;
+    public ExerciseStart exerciseStart;
+    [Space()]
+
     public List<SimonSaysInputs> possibleButtonInputs;
 
     public int maxMemory = 5;
@@ -104,6 +110,28 @@ public class SimonSays : MonoBehaviour
         soundManager = GameObject.Find("SoundManager").GetComponent<ExerciseSoundEffectsManager>();
 
         GenerateNewCombination();
+
+        StartCoroutine("StartExerciseWaitTime");
+    }
+
+    IEnumerator StartExerciseWaitTime()
+    {
+        playerHasWon = true;
+
+        yield return new WaitForSeconds(startWaitTime);
+
+        startButtonUI.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(startButtonUI);
+    }
+
+    public void StartExercise()
+    {
+        startButtonUI.SetActive(false);
+
+        playerHasWon = false;
+
+        exerciseStart.StartExercise();
     }
 
     private void Update()
@@ -279,7 +307,7 @@ public class SimonSays : MonoBehaviour
 
     void CalculateInput()
     {
-        if (playerCanInput && failInputTimer <= 0)
+        if (playerCanInput && failInputTimer <= 0 && !playerHasWon)
         {
             playerCanInput = false;
 
