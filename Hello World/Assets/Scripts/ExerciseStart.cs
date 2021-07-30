@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -33,7 +34,8 @@ public class ExerciseStart : MonoBehaviour
 
         startButtonUI.SetActive(true);
 
-        EventSystem.current.SetSelectedGameObject(startButtonUI);
+        if(startButtonUI.GetComponent<Button>())
+            EventSystem.current.SetSelectedGameObject(startButtonUI);
     }
 
     public void SetStartProfile()

@@ -21,7 +21,7 @@ public class Exercise6BabyMovement : MonoBehaviour
     private Vector2 move;
     private Vector2 tilt;
 
-    public bool canMove = true;
+    public bool canMove;
     private bool gameEnd;
     private int dir;
 
@@ -34,6 +34,16 @@ public class Exercise6BabyMovement : MonoBehaviour
         controls.HoldingObjects.LeftHandGrab.performed += ctx => PlayerMovement(ctx.ReadValue<float>(), true);
 
         controls.HoldingObjects.RightHandGrab.performed += ctx => PlayerMovement(ctx.ReadValue<float>(), false);
+    }
+
+    private void Start()
+    {
+        canMove = false;
+    }
+
+    public void StartExercise()
+    {
+        canMove = true;
     }
 
     private void OnEnable()
