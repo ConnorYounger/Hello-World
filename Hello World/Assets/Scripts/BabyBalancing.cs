@@ -13,7 +13,7 @@ public class BabyBalancing : MonoBehaviour
     private float tiltMultiplier;
     public float playerRotateSpeed = 1;
     private float balanceValue = 0;
-    public bool canTilt = true;
+    public bool canTilt;
 
     public bool sitting = true;
     public float winAngle = 20;
@@ -51,6 +51,13 @@ public class BabyBalancing : MonoBehaviour
     {
         if(analogStick)
             StartCoroutine("UpDateAnimatedUI");
+
+        canTilt = false;
+    }
+
+    public void ExerciseStart()
+    {
+        canTilt = true;
     }
 
     IEnumerator UpDateAnimatedUI()
