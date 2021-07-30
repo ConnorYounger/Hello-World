@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering.PostProcessing;
 
 public class ExerciseStart : MonoBehaviour
 {
+    [Header("Exercise Start")]
+    public float startWaitTime;
+    public GameObject startButtonUI;
+
     public bool setStartPP = true;
     public PostProcessProfile startPP;
     public PostProcessProfile normalPP;
@@ -12,12 +17,23 @@ public class ExerciseStart : MonoBehaviour
     public PostProcessVolume pPVolume;
 
     [Header("UI Elements")]
-    public Canvas[] gamePlayCanvases;
+    public GameObject[] gamePlayCanvases;
 
     private void Start()
     {
         if (startPP)
             SetStartProfile();
+
+        StartCoroutine("StartExerciseWaitTime");
+    }
+
+    IEnumerator StartExerciseWaitTime()
+    {
+        yield return new WaitForSeconds(startWaitTime);
+
+        startButtonUI.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(startButtonUI);
     }
 
     public void SetStartProfile()
@@ -31,14 +47,19 @@ public class ExerciseStart : MonoBehaviour
     {
         pPVolume.profile = normalPP;
 
+        startButtonUI.SetActive(false);
+
         SetCanvases(true);
     }
 
     void SetCanvases(bool value)
     {
-        foreach(Canvas canvas in gamePlayCanvases)
+        foreach(GameObject canvas in gamePlayCanvases)
         {
-            canvas.enabled = value;
+            if (canvas.GetComponent<Canvas>())
+                canvas.GetComponent<Canvas>().enabled = value;
+            else
+                canvas.SetActive(value);
         }
     }
 }

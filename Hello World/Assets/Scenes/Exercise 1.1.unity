@@ -1192,6 +1192,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &562718240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1703625781180246411, guid: a0ce75d424408324b8140a0018567a61,
+    type: 3}
+  m_PrefabInstance: {fileID: 2100953952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &629618582
 GameObject:
   m_ObjectHideFlags: 0
@@ -3159,6 +3165,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1615638003}
         m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: StartExercise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2043474198}
+        m_TargetAssemblyTypeName: ExerciseStart, Assembly-CSharp
         m_MethodName: StartExercise
         m_Mode: 1
         m_Arguments:
@@ -6187,9 +6205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77487638a20fef54ca7e397290db7591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaitTime: 20
-  startButtonUI: {fileID: 1468873875}
-  exerciseStart: {fileID: 2043474198}
   possibleButtonInputs:
   - {fileID: 11400000, guid: a6ee9385118917e47acd6b1a84a2b989, type: 2}
   - {fileID: 11400000, guid: 8a96e47191f314349a8362647e791845, type: 2}
@@ -8454,12 +8469,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f77f5f5918496f4da18d1ce92081b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startWaitTime: 20
+  startButtonUI: {fileID: 1468873875}
   setStartPP: 1
   startPP: {fileID: 11400000, guid: 72039ae2faf04b84f94636b785b7da59, type: 2}
   normalPP: {fileID: 11400000, guid: 5a0d45d8b6953e74fa44d4b9839e8de1, type: 2}
   pPVolume: {fileID: 1612690268}
   gamePlayCanvases:
-  - {fileID: 2100953953}
+  - {fileID: 562718240}
 --- !u!4 &2043474199
 Transform:
   m_ObjectHideFlags: 0
