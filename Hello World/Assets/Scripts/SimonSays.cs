@@ -269,7 +269,6 @@ public class SimonSays : MonoBehaviour
         playerHasWon = true;
 
         winUI.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
 
         if (parent)
         {
@@ -282,6 +281,8 @@ public class SimonSays : MonoBehaviour
             discoveryPlayer.cardIndex = "1Out";
             discoveryPlayer.SavePlayer();
         }
+
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
     }
 
     void CalculateInput()
@@ -344,12 +345,13 @@ public class SimonSays : MonoBehaviour
 
         uICanvas.enabled = false;
         loseUI.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
 
         if (parent)
         {
             parent.PlayLoseNarrative();
         }
+
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
 
     void RemoveComboUI()
