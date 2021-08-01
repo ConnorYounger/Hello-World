@@ -39,6 +39,7 @@ public class BabyBalancing : MonoBehaviour
     [Space()]
     public ParentNarrative parent;
     public Exercise6BabyMovement exercise6Baby;
+    public float resetWaitTime = 3;
 
     private void Awake()
     {
@@ -191,33 +192,48 @@ public class BabyBalancing : MonoBehaviour
         {
             if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y >= CalculateMaxBalanceValue())
             {
-                BabyFallOver();
+                BabyFallOver(true);
             }
             else if (spine.transform.localRotation.y < 0 && spine.transform.localRotation.y <= -CalculateMaxBalanceValue())
             {
-                BabyFallOver();
+                BabyFallOver(false);
             }
         }
     }
 
-    void BabyFallOver()
+    void BabyFallOver(bool value)
     {
         Debug.Log("BabyFell");
 
-        StartCoroutine("BabyFallReset");
+        StartCoroutine("BabyFallReset", value);
     }
 
-    IEnumerator BabyFallReset()
+    IEnumerator BabyFallReset(bool value)
     {
         canTilt = false;
-        // play get up animation
+
+        if (value)
+            animator.SetBool("fallLeft", true);
+
+        else
+            animator.SetBool("fallRight", true);
+
         exercise6Baby.StopCoroutine("ReseMovementCoolDown");
         exercise6Baby.canMove = false;
 
         if (parent)
             parent.PlayFailNarrativeElement();
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
+
+        int rand = Random.Range(0, 2);
+        balanceValue = rand > 0 ? -0.001f : 0.001f;
+        spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, CalculateRotationValue(balanceValue), spine.transform.localRotation.z, spine.transform.localRotation.w);
+
+        animator.SetBool("fallLeft", false);
+        animator.SetBool("fallRight", false);
+
+        yield return new WaitForSeconds(resetWaitTime);
 
         Restart();
         exercise6Baby.canMove = true;
