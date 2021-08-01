@@ -20,7 +20,7 @@ public class StaminaSlider : MonoBehaviour
     public GameObject parentText;
 
     public RollOver timerCheck;
-    public PauseMenuController activate;
+    public GameObject activate;
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class StaminaSlider : MonoBehaviour
 
             if (pauseTimer >= 5)
             {
-                activate.PauseGame();
+                activate.SetActive(true);
             }
         }
         else

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RollOver : MonoBehaviour
 {
@@ -8,14 +9,13 @@ public class RollOver : MonoBehaviour
     private MiniGameInputs controls;
     public ParentNarrative parent;
     public AnalogStickTweener animation;
-    public PauseMenuController activate;
     public ExerciseSoundEffectsManager soundEffectsManager;
 
     public GameObject liftButton;
     public GameObject swingButton;
     public GameObject parentText;
     public GameObject winText;
-    public float pauseTimer = 0;
+    public GameObject activate;
     
     private int leftSwingAmount = 0;
     private int rightSwingAmount = 0;
@@ -29,6 +29,7 @@ public class RollOver : MonoBehaviour
     public float failTimer = 0;
     public float timeLimit = 0;
     public float coolDown = 0;
+    public float pauseTimer = 0;
 
     private void Awake()
     {
@@ -56,6 +57,11 @@ public class RollOver : MonoBehaviour
         controls.RollOver.LegMovement.canceled += ctx => LegDown();
     }
 
+    public void ReturnToMain(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
     public void Update()
     {
         if (isLegUp == true)
@@ -64,7 +70,7 @@ public class RollOver : MonoBehaviour
             coolDown += Time.deltaTime;
         }
 
-        if (failTimer >= timeLimit)
+        if (failTimer >= timeLimit && leftSwingAmount < 7)
         {
             anim.SetBool("legUp", false);
             anim.SetInteger("leftSwing", 0);
@@ -84,23 +90,26 @@ public class RollOver : MonoBehaviour
 
             if (pauseTimer >= 5)
             {
-                activate.PauseGame();
+                activate.SetActive(true);
             }
         }
     }
 
     void LegDown()
     {
-        anim.SetBool("legUp", false);
-        anim.SetInteger("leftSwing", 0);
-        anim.SetInteger("rightSwing", 0);
-        leftSwingAmount = 0;
-        rightSwingAmount = 0;
-        liftButton.SetActive(true);
-        isLegUp = false;
-        parent.PlayFailNarrativeElement();
-        soundEffectsManager.PlayFailSound();
-        swingButton.SetActive(false);
+        if (leftSwingAmount < 7)
+        {
+            anim.SetBool("legUp", false);
+            anim.SetInteger("leftSwing", 0);
+            anim.SetInteger("rightSwing", 0);
+            leftSwingAmount = 0;
+            rightSwingAmount = 0;
+            liftButton.SetActive(true);
+            isLegUp = false;
+            parent.PlayFailNarrativeElement();
+            soundEffectsManager.PlayFailSound();
+            swingButton.SetActive(false);
+        }
     }
 
     void LegUp()
