@@ -7,8 +7,9 @@ public class WinWithToy : MonoBehaviour
     public GameObject toyBall;
     public GameObject winText;
     public GameObject baby;
+    public GameObject activate;
+
     public float pauseTimer = 0;
-    private Animator anim;
 
     public GameObject lBText;
     public GameObject rTText;
@@ -16,7 +17,7 @@ public class WinWithToy : MonoBehaviour
     public GameObject lTText;
 
     public QWOP disableText;
-    public PauseMenuController activate;
+    private Animator anim;
 
     public bool gameWon = false;
 
@@ -34,7 +35,7 @@ public class WinWithToy : MonoBehaviour
 
         if (pauseTimer >= 5)
         {
-            activate.PauseGame();
+            activate.SetActive(true);
         }
     }
 

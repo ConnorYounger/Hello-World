@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class QWOP : MonoBehaviour
 {
@@ -19,12 +20,14 @@ public class QWOP : MonoBehaviour
     private Animator anim;
 
     private int successCount = 0;
+    public int instructionCount = 0;
 
     private bool isLeftMovement = true;
     private bool isRightMovement = false;
     private bool isFirstRight = false;
     private bool isFirstLeft = false;
     private bool canInput = true;
+    public bool instructionText = false;
 
     private void Awake()
     {
@@ -56,6 +59,19 @@ public class QWOP : MonoBehaviour
 
     void LeftMovement()
     {
+        if(instructionCount == 3)
+        {
+            instructionText = true;
+        }
+
+        if(instructionText == true)
+        {
+            lBText.SetActive(false);
+            rTText.SetActive(false);
+            rBText.SetActive(false);
+            lTText.SetActive(false);
+        }
+
         if (isLeftMovement == true && check.gameWon == false)
         {
             anim.SetBool("wrongPressed", false);
@@ -63,8 +79,13 @@ public class QWOP : MonoBehaviour
             anim.SetInteger("rightMovement", 0);
             isLeftMovement = false;
             isFirstLeft = true;
-            lBText.SetActive(false);
-            rTText.SetActive(true);
+
+            if (instructionText == false)
+            {
+                lBText.SetActive(false);
+                rTText.SetActive(true);
+                instructionCount++;
+            }
         }
         else
         {
@@ -73,6 +94,10 @@ public class QWOP : MonoBehaviour
             anim.SetInteger("rightMovement", 0);
             parent.PlayFailNarrativeElement();
             soundEffectManager.PlayFailSound();
+            instructionText = false;
+            instructionCount = 0;
+            lTText.SetActive(false);
+            lBText.SetActive(true);
         }
     }
 
@@ -87,9 +112,13 @@ public class QWOP : MonoBehaviour
                 anim.SetInteger("rightMovement", 0);
                 isFirstLeft = false;
                 isRightMovement = true;
-                rTText.SetActive(false);
-                rBText.SetActive(true);
                 soundEffectManager.PlaySucessSound();
+
+                if (instructionText == false)
+                {
+                    rTText.SetActive(false);
+                    rBText.SetActive(true);
+                }
             }
             else if (value > 0.95f)
             {
@@ -100,6 +129,10 @@ public class QWOP : MonoBehaviour
                 isLeftMovement = true;
                 parent.PlayFailNarrativeElement();
                 soundEffectManager.PlayFailSound();
+                instructionText = false;
+                instructionCount = 0;
+                lBText.SetActive(false);
+                rTText.SetActive(true);
             }
 
             canInput = false;
@@ -115,8 +148,12 @@ public class QWOP : MonoBehaviour
             anim.SetBool("wrongPressed", false);
             isRightMovement = false;
             isFirstRight = true;
-            rBText.SetActive(false);
-            lTText.SetActive(true);
+
+            if (instructionText == false)
+            {
+                rBText.SetActive(false);
+                lTText.SetActive(true);
+            }
         }
         else
         {
@@ -125,6 +162,10 @@ public class QWOP : MonoBehaviour
             anim.SetInteger("leftMovement", 0);
             parent.PlayFailNarrativeElement();
             soundEffectManager.PlayFailSound();
+            instructionText = false;
+            instructionCount = 0;
+            rTText.SetActive(false);
+            rBText.SetActive(true);
         }
     }
 
@@ -139,11 +180,15 @@ public class QWOP : MonoBehaviour
                 anim.SetBool("wrongPressed", false);
                 isFirstRight = false;
                 isLeftMovement = true;
-                lTText.SetActive(false);
-                lBText.SetActive(true);
                 successCount++;
                 parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
                 soundEffectManager.PlaySucessSound();
+
+                if (instructionText == false)
+                {
+                    lTText.SetActive(false);
+                    lBText.SetActive(true);
+                }
             }
             else if (value > 0.95f)
             {
@@ -154,9 +199,18 @@ public class QWOP : MonoBehaviour
                 isRightMovement = true;
                 parent.PlayFailNarrativeElement();
                 soundEffectManager.PlayFailSound();
+                instructionText = false;
+                instructionCount = 0;
+                rBText.SetActive(false);
+                lTText.SetActive(true);
             }
 
             canInput = false;
         }
+    }
+
+    public void ReturnToMain(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

@@ -6,16 +6,16 @@ public class CountDownBar : MonoBehaviour
     public static bool allowInputs;
     private bool countDown = true;
     public float countDownTime = 60;
+    public float pauseTimer = 0;
 
     public GameObject loseText;
     public GameObject baby;
     public GameObject pauseMenu;
-    public float pauseTimer = 0;
-
+    public GameObject activate;
+    
     public WinWithToy winWithToy;
     public QWOP disableText;
-    public PauseMenuController activate;
-
+    
     public Slider countdownBar;
     private Animator anim;
 
@@ -59,7 +59,7 @@ public class CountDownBar : MonoBehaviour
 
                 if (pauseTimer >= 5)
                 {
-                    activate.PauseGame();
+                    activate.SetActive(true);
                 }
             }
             else
