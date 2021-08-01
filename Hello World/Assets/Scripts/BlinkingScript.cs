@@ -13,6 +13,7 @@ public class BlinkingScript : MonoBehaviour
     public float speed = 0.70f;
     public int blinkTimes = 3;
     public bool endClosing = false;
+    public bool canBlink = true;
 
 
     private Vector3 originalUpperPosition;
@@ -50,11 +51,6 @@ public class BlinkingScript : MonoBehaviour
         controls.Blinking.Disable();
     }
 
-    private void Update()
-    {
-  
-    }
-
     void StartBlink()
     {
         StartCoroutine(blink());
@@ -63,8 +59,10 @@ public class BlinkingScript : MonoBehaviour
 
     private IEnumerator blink()
     {
-        while (currentBlink <= blinkTimes)
+        if(currentBlink <= blinkTimes && canBlink == true)
         {
+            canBlink = false;
+
             endUpper = originalUpperPosition;
             endLower = originalLowerPosition;
 
@@ -85,6 +83,12 @@ public class BlinkingScript : MonoBehaviour
             yield return moveEyelids(originalUpperPosition, originalLowerPosition, Action.Close);
 
             currentBlink++;
+
+            if(currentBlink <= blinkTimes)
+            {
+                pressText.SetActive(true);
+                canBlink = true;
+            }
         }
 
         //Destroy(upperBox.gameObject, 5);
