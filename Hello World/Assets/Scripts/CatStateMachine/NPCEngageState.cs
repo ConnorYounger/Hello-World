@@ -25,7 +25,7 @@ namespace StatePattern
 
         public override void OnStateEnter()
         {
-            Debug.Log("Entering NPCEngage State");
+            //Debug.Log("Entering NPCEngage State");
 
             enemy.navAgent.enabled = false;
             timer = 0;
@@ -36,13 +36,13 @@ namespace StatePattern
                 //enemy.currentBaby.SetState(new NPCBabyPlay(enemy.currentBaby));
             }
 
-            Debug.Log("Set Baby State");
+            //Debug.Log("Set Baby State");
             //enemy.currentBaby.SetState(new NPCBabyPlay(enemy.currentBaby));
         }
 
         public override void OnStateExit()
         {
-            Debug.Log("Exiting NPCEngage State");
+            //Debug.Log("Exiting NPCEngage State");
 
             enemy.navAgent.enabled = true;
         }

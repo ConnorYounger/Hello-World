@@ -145,7 +145,7 @@ namespace StatePattern
                 targetPoint = enemy.wanderPointCollection.transform.GetChild(index);
             }
 
-            Debug.Log("Target Point: " + targetPoint);
+            //Debug.Log("Target Point: " + targetPoint);
             enemy.navAgent.SetDestination(targetPoint.position);
 
             hasReachedDestination = false;
@@ -250,7 +250,7 @@ namespace StatePattern
                 targetPoint = possiblePoints[index];
                 enemy.navAgent.SetDestination(targetPoint.position);
 
-                Debug.Log("FOUND IDLE SPOT: " + targetPoint);
+                //Debug.Log("FOUND IDLE SPOT: " + targetPoint);
             }
         }
 
@@ -265,7 +265,7 @@ namespace StatePattern
 
         public override void OnStateEnter()
         {
-            Debug.Log("Entering Roming State");
+            //Debug.Log("Entering Roming State");
 
             foundIdlePoint = false;
             state = "CheckForClosePoints";
@@ -281,7 +281,7 @@ namespace StatePattern
 
         public override void OnStateExit()
         {
-            Debug.Log("Exiting Roming State");
+            //Debug.Log("Exiting Roming State");
 
             int rand = Random.Range(0, enemy.audioClips.Length);
             enemy.audioSource.clip = enemy.audioClips[rand];
