@@ -25,7 +25,7 @@ namespace StatePattern
 
         public override void OnStateEnter()
         {
-            Debug.Log("Entering Idle State");
+            //Debug.Log("Entering Idle State");
 
             enemy.navAgent.enabled = false;
             timer = 0;
@@ -33,7 +33,7 @@ namespace StatePattern
 
         public override void OnStateExit()
         {
-            Debug.Log("Exiting Idle State");
+            //Debug.Log("Exiting Idle State");
 
             enemy.navAgent.enabled = true;
         }

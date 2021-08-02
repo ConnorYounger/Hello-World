@@ -103,6 +103,13 @@ public class SimonSays : MonoBehaviour
 
         soundManager = GameObject.Find("SoundManager").GetComponent<ExerciseSoundEffectsManager>();
 
+        playerHasWon = true;
+    }
+
+    public void StartExercise()
+    {
+        playerHasWon = false;
+
         GenerateNewCombination();
     }
 
@@ -262,7 +269,6 @@ public class SimonSays : MonoBehaviour
         playerHasWon = true;
 
         winUI.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
 
         if (parent)
         {
@@ -275,11 +281,13 @@ public class SimonSays : MonoBehaviour
             discoveryPlayer.cardIndex = "1Out";
             discoveryPlayer.SavePlayer();
         }
+
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
     }
 
     void CalculateInput()
     {
-        if (playerCanInput && failInputTimer <= 0)
+        if (playerCanInput && failInputTimer <= 0 && !playerHasWon)
         {
             playerCanInput = false;
 
@@ -337,12 +345,13 @@ public class SimonSays : MonoBehaviour
 
         uICanvas.enabled = false;
         loseUI.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
 
         if (parent)
         {
             parent.PlayLoseNarrative();
         }
+
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
 
     void RemoveComboUI()

@@ -47,14 +47,14 @@ namespace StatePattern
 
         public override void OnStateEnter()
         {
-            Debug.Log("Entering Attack State");
+            //Debug.Log("Entering Attack State");
 
             enemy.navAgent.SetDestination(enemy.player.transform.position);
         }
 
         public override void OnStateExit()
         {
-            Debug.Log("Entering Attack State");
+            //Debug.Log("Entering Attack State");
             hasReachedPlayer = false;
         }
     }
