@@ -543,6 +543,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 62927934}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &62927936 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1993059653315352895, guid: e83abc5445249304b92ab096fd6bee6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 62927934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &62927937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 448809222623940275, guid: e83abc5445249304b92ab096fd6bee6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 62927934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &62927938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 58591829666882254, guid: e83abc5445249304b92ab096fd6bee6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 62927934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &62927939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 448809222952052558, guid: e83abc5445249304b92ab096fd6bee6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 62927934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &123764607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1495,6 +1519,13 @@ MonoBehaviour:
   winDistamce: 0.7
   canMove: 1
   winUI: {fileID: 471380674}
+  leftTriggers:
+  - {fileID: 62927939}
+  - {fileID: 62927938}
+  rightTriggers:
+  - {fileID: 62927937}
+  - {fileID: 62927936}
+  analogStick: {fileID: 0}
 --- !u!136 &610070169
 CapsuleCollider:
   m_ObjectHideFlags: 0

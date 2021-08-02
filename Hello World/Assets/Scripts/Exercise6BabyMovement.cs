@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Exercise6BabyMovement : MonoBehaviour
 {
-    public bool simpleMovement = true;
+    public bool simpleMovement = false;
     public float movementSpeed = 1;
     public float stepTime = 0.16f;
     private float currentStepTime;
@@ -26,7 +26,12 @@ public class Exercise6BabyMovement : MonoBehaviour
     private bool gameEnd;
     private int dir;
 
+    [Header("UI Elements")]
     public GameObject winUI;
+
+    public GameObject[] leftTriggers;
+    public GameObject[] rightTriggers;
+    public AnalogStickTweener analogStick;
 
     private void Awake()
     {
@@ -94,6 +99,8 @@ public class Exercise6BabyMovement : MonoBehaviour
                     animator.SetInteger("babyFoot", 0);
                     dir = 1;
                 }
+
+                UpdateControllsUI(true);
             }
             else
             {
@@ -107,6 +114,8 @@ public class Exercise6BabyMovement : MonoBehaviour
                     animator.SetInteger("babyFoot", 1);
                     dir = 1;
                 }
+
+                UpdateControllsUI(false);
             }
 
             //animator.SetBool("babyLeftFoot", leftFoot);
@@ -117,6 +126,19 @@ public class Exercise6BabyMovement : MonoBehaviour
             canMove = false;
 
             StartCoroutine("ReseMovementCoolDown");
+        }
+    }
+
+    void UpdateControllsUI(bool left)
+    {
+        foreach (GameObject trigger in leftTriggers)
+        {
+            trigger.SetActive(left);
+        }
+
+        foreach (GameObject trigger in rightTriggers)
+        {
+            trigger.SetActive(!left);
         }
     }
 
