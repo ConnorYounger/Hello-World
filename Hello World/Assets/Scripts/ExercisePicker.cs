@@ -66,6 +66,6 @@ public class ExercisePicker : MonoBehaviour
         exerciseNames.Add("Off you go");
         //exerciseNames.Add("Copycat");
         //exerciseNames.Add("Monkey monkey");
-        //exerciseNames.Add("One small step");
+        exerciseNames.Add("One small step");
     }
 }
