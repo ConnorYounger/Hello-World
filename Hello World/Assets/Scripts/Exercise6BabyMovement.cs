@@ -131,14 +131,14 @@ public class Exercise6BabyMovement : MonoBehaviour
 
     void UpdateControllsUI(bool left)
     {
-        foreach (GameObject trigger in leftTriggers)
-        {
-            trigger.SetActive(left);
-        }
+        bool right = !left;
 
-        foreach (GameObject trigger in rightTriggers)
+        Debug.Log("Left: " + left + " , Right: " + right);
+
+        for(int i = 0; i < leftTriggers.Length; i++)
         {
-            trigger.SetActive(!left);
+            leftTriggers[i].SetActive(left);
+            rightTriggers[i].SetActive(right);
         }
     }
 
