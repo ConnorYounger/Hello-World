@@ -13,6 +13,9 @@ public class RollOver : MonoBehaviour
 
     public GameObject liftButton;
     public GameObject swingButton;
+    public GameObject pliftButton;
+    public GameObject pswingButton;
+
     public GameObject parentText;
     public GameObject winText;
     public GameObject activate;
@@ -105,10 +108,12 @@ public class RollOver : MonoBehaviour
             leftSwingAmount = 0;
             rightSwingAmount = 0;
             liftButton.SetActive(true);
+            pliftButton.SetActive(true);
             isLegUp = false;
             parent.PlayFailNarrativeElement();
             soundEffectsManager.PlayFailSound();
             swingButton.SetActive(false);
+            pswingButton.SetActive(false);
         }
     }
 
@@ -118,6 +123,9 @@ public class RollOver : MonoBehaviour
         isLegUp = true;
         liftButton.SetActive(false);
         swingButton.SetActive(true);
+
+        pliftButton.SetActive(false);
+        pswingButton.SetActive(true);
         StartCoroutine(SwingAnimation());
     }
 
@@ -149,6 +157,10 @@ public class RollOver : MonoBehaviour
         {
             liftButton.SetActive(false);
             swingButton.SetActive(false);
+
+            pliftButton.SetActive(false);
+            pswingButton.SetActive(false);
+
             parentText.SetActive(false);
             winText.SetActive(true);
             parent.PlayWinNarrative();
