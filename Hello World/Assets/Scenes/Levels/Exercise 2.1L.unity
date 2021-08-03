@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3433,12 +3433,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &534509415 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2212808228286555586, guid: d2476e98d02d46341b6189fc2474d41f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1606539121}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &539103998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2212808228882066944, guid: d2476e98d02d46341b6189fc2474d41f,
@@ -4912,7 +4906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWaitTime: 5
-  dialoguePanel: {fileID: 534509415}
+  dialoguePanel: {fileID: 1606539126}
   startButtonUI: {fileID: 290696310}
   setStartPP: 1
   startPP: {fileID: 11400000, guid: 72039ae2faf04b84f94636b785b7da59, type: 2}
@@ -10053,7 +10047,7 @@ PrefabInstance:
     - target: {fileID: 2212808228286555586, guid: d2476e98d02d46341b6189fc2474d41f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2212808228688910185, guid: d2476e98d02d46341b6189fc2474d41f,
         type: 3}
@@ -10175,6 +10169,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8072844673813774540, guid: d2476e98d02d46341b6189fc2474d41f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2476e98d02d46341b6189fc2474d41f, type: 3}
 --- !u!114 &1606539122 stripped
@@ -10216,6 +10215,12 @@ MonoBehaviour:
 --- !u!224 &1606539125 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2212808228688910185, guid: d2476e98d02d46341b6189fc2474d41f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1606539121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1606539126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9121514329609590855, guid: d2476e98d02d46341b6189fc2474d41f,
     type: 3}
   m_PrefabInstance: {fileID: 1606539121}
   m_PrefabAsset: {fileID: 0}

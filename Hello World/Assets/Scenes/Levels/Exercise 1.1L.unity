@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2439,7 +2439,7 @@ PrefabInstance:
     - target: {fileID: 6731057919374716613, guid: cdb70fc341c454f459a98de0a1730aa1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6731057919439090499, guid: cdb70fc341c454f459a98de0a1730aa1,
         type: 3}
@@ -2585,6 +2585,12 @@ GameObject:
 --- !u!223 &472133576 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 6731057919439090502, guid: cdb70fc341c454f459a98de0a1730aa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 472133572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &472133577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4001525129489470094, guid: cdb70fc341c454f459a98de0a1730aa1,
     type: 3}
   m_PrefabInstance: {fileID: 472133572}
   m_PrefabAsset: {fileID: 0}
@@ -3906,7 +3912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWaitTime: 5
-  dialoguePanel: {fileID: 1922194622}
+  dialoguePanel: {fileID: 472133577}
   startButtonUI: {fileID: 475998284}
   setStartPP: 1
   startPP: {fileID: 11400000, guid: 72039ae2faf04b84f94636b785b7da59, type: 2}
@@ -9854,12 +9860,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
---- !u!1 &1922194622 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6731057919374716613, guid: cdb70fc341c454f459a98de0a1730aa1,
-    type: 3}
-  m_PrefabInstance: {fileID: 472133572}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1932211560
 GameObject:
   m_ObjectHideFlags: 0

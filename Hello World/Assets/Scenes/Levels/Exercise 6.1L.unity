@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9887,12 +9887,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2088969402}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1458761432 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 448809223098519977, guid: e83abc5445249304b92ab096fd6bee6a,
-    type: 3}
-  m_PrefabInstance: {fileID: 2088969402}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1482230776
 GameObject:
   m_ObjectHideFlags: 0
@@ -15084,7 +15078,7 @@ PrefabInstance:
     - target: {fileID: 448809223098519977, guid: e83abc5445249304b92ab096fd6bee6a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 448809223828745125, guid: e83abc5445249304b92ab096fd6bee6a,
         type: 3}
@@ -15196,7 +15190,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI 6.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1089424534929684552, guid: e83abc5445249304b92ab096fd6bee6a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4388971700192063577, guid: e83abc5445249304b92ab096fd6bee6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663862824425331135, guid: e83abc5445249304b92ab096fd6bee6a,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -15208,6 +15212,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e83abc5445249304b92ab096fd6bee6a, type: 3}
+--- !u!1 &2088969403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7663862824425331135, guid: e83abc5445249304b92ab096fd6bee6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2088969402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2096709177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15522,7 +15532,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialoguePanel
       value: 
-      objectReference: {fileID: 1458761432}
+      objectReference: {fileID: 2088969403}
     - target: {fileID: 992203713022603046, guid: 69609504f15768f4fa678c511aeace16,
         type: 3}
       propertyPath: startButtonUI

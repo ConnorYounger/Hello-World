@@ -1637,7 +1637,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialoguePanel
       value: 
-      objectReference: {fileID: 692533467}
+      objectReference: {fileID: 1203085153}
     - target: {fileID: 992203713022603046, guid: 69609504f15768f4fa678c511aeace16,
         type: 3}
       propertyPath: startButtonUI
@@ -1832,12 +1832,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4516753683747122, guid: 237278d4519951c48888576c213b513f,
     type: 3}
   m_PrefabInstance: {fileID: 679047538}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &692533467 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1417295128875599894, guid: 7bc29a2c0ccb5224da89d28d466925d4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1203085147}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &698525458
 GameObject:
@@ -3926,6 +3920,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3245567598610170117, guid: 7bc29a2c0ccb5224da89d28d466925d4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9182440678673284666, guid: 7bc29a2c0ccb5224da89d28d466925d4,
         type: 3}
       propertyPath: m_RootOrder
@@ -3969,7 +3968,7 @@ PrefabInstance:
     - target: {fileID: 1417295128875599894, guid: 7bc29a2c0ccb5224da89d28d466925d4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1417295128952930186, guid: 7bc29a2c0ccb5224da89d28d466925d4,
         type: 3}
@@ -4101,7 +4100,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3245567598610170117, guid: 7bc29a2c0ccb5224da89d28d466925d4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4024587654674700482, guid: 7bc29a2c0ccb5224da89d28d466925d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5332417594236970900, guid: 7bc29a2c0ccb5224da89d28d466925d4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4150,6 +4159,12 @@ GameObject:
 --- !u!1 &1203085152 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1417295129987881503, guid: 7bc29a2c0ccb5224da89d28d466925d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1203085147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1203085153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5332417594236970900, guid: 7bc29a2c0ccb5224da89d28d466925d4,
     type: 3}
   m_PrefabInstance: {fileID: 1203085147}
   m_PrefabAsset: {fileID: 0}
