@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50af5a962b1c1624fa4b84eaeb6b22a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playSucessSound: 1
   sucessSounds:
   - {fileID: 8300000, guid: 843838ac7c3d7ba4c8aa4fa654632bb3, type: 3}
   - {fileID: 8300000, guid: df3d90ca9ba16214e96a0fc0a0f15cb0, type: 3}
@@ -61,6 +62,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 45512d66dd76688498c5b5f3fb08f591, type: 3}
   createdSounds: []
   randomisSoundCollections: 0
+  musicTrack: {fileID: 8300000, guid: e792df3510ba2b14b807724e1df61617, type: 3}
+  musicVolume: 0.4
+  fadeOutMultipier: 1
+  musicMixer: {fileID: 24300002, guid: f7e3ef88fb80519418bddc0b72da6ba4, type: 2}
+  sfxMixer: {fileID: 0}
 --- !u!82 &4611732844443119080
 AudioSource:
   m_ObjectHideFlags: 0
@@ -70,7 +76,8 @@ AudioSource:
   m_GameObject: {fileID: 4611732844443119083}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f7e3ef88fb80519418bddc0b72da6ba4,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
