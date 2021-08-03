@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2386,7 +2386,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182732947}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35f95186b05b84f4ca12cf713e3d3c77, type: 3}
   m_Name: 
@@ -2398,6 +2398,7 @@ MonoBehaviour:
   btnApplyAudio: {fileID: 931906307}
   filledSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   emptySprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  btnAudioBack: {fileID: 0}
   musicMixer: {fileID: 24100000, guid: f7e3ef88fb80519418bddc0b72da6ba4, type: 2}
   SFXMixer: {fileID: 24100000, guid: a7603f72c4e1f8f49924cf3bc4dc427d, type: 2}
   music10: {fileID: 1239133513}
@@ -10987,6 +10988,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1096785743}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1098209320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1098209322}
+  - component: {fileID: 1098209321}
+  m_Layer: 0
+  m_Name: OptionsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1098209321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098209320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f95186b05b84f4ca12cf713e3d3c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnMusicUp: {fileID: 722348259}
+  btnMusicDown: {fileID: 61944985}
+  btnSFXUp: {fileID: 442832906}
+  btnSFXDown: {fileID: 1851327918}
+  btnApplyAudio: {fileID: 931906307}
+  filledSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  emptySprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  btnAudioBack: {fileID: 32684342}
+  musicMixer: {fileID: 24100000, guid: f7e3ef88fb80519418bddc0b72da6ba4, type: 2}
+  SFXMixer: {fileID: 24100000, guid: a7603f72c4e1f8f49924cf3bc4dc427d, type: 2}
+  music10: {fileID: 1239133513}
+  music20: {fileID: 169065677}
+  music30: {fileID: 1576130007}
+  music40: {fileID: 737444741}
+  music50: {fileID: 1263466430}
+  music60: {fileID: 1759273863}
+  music70: {fileID: 1337005062}
+  music80: {fileID: 1534483420}
+  music90: {fileID: 1838462015}
+  music100: {fileID: 782767592}
+  sfx10: {fileID: 2093428885}
+  sfx20: {fileID: 1035354206}
+  sfx30: {fileID: 1264450716}
+  sfx40: {fileID: 101254636}
+  sfx50: {fileID: 1511182848}
+  sfx60: {fileID: 951546721}
+  sfx70: {fileID: 112562283}
+  sfx80: {fileID: 185482756}
+  sfx90: {fileID: 2037569433}
+  sfx100: {fileID: 1567307031}
+  btnResolutionUp: {fileID: 1061927606}
+  btnResolutionDown: {fileID: 719104441}
+  textResValue: {fileID: 2113830852}
+  btnFullscreenOff: {fileID: 1954616671}
+  btnFullscreenOn: {fileID: 1304010318}
+  btnApplyDisplay: {fileID: 1437719027}
+--- !u!4 &1098209322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098209320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1114426322
 GameObject:
   m_ObjectHideFlags: 0
