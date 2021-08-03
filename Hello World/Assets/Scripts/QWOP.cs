@@ -33,6 +33,7 @@ public class QWOP : MonoBehaviour
     private bool isFirstLeft = false;
     private bool canInput = true;
     public bool instructionText = false;
+    public bool gameStarted = false;
 
     private void Awake()
     {
@@ -62,185 +63,202 @@ public class QWOP : MonoBehaviour
         controls.QWOP.Disable();
     }
 
+    public void StartExercise()
+    {
+        gameStarted = true;
+    }
+
     void LeftMovement()
     {
-        if(instructionCount == 3)
+        if (gameStarted == true)
         {
-            instructionText = true;
-        }
-
-        if(instructionText == true)
-        {
-            lBText.SetActive(false);
-            rTText.SetActive(false);
-            rBText.SetActive(false);
-            lTText.SetActive(false);
-
-           plBText.SetActive(false);
-           prTText.SetActive(false);
-           prBText.SetActive(false);
-           plTText.SetActive(false);
-        }
-
-        if (isLeftMovement == true && check.gameWon == false)
-        {
-            anim.SetBool("wrongPressed", false);
-            anim.SetInteger("leftMovement", 1);
-            anim.SetInteger("rightMovement", 0);
-            isLeftMovement = false;
-            isFirstLeft = true;
-
-            if (instructionText == false)
+            if (instructionCount == 3)
             {
-                plBText.SetActive(false);
-                prTText.SetActive(true);
-
-                lBText.SetActive(false);
-                rTText.SetActive(true);
-                instructionCount++;
+                instructionText = true;
             }
-        }
-        else
-        {
-            anim.SetBool("wrongPressed", true);
-            anim.SetInteger("leftMovement", 0);
-            anim.SetInteger("rightMovement", 0);
-            parent.PlayFailNarrativeElement();
-            soundEffectManager.PlayFailSound();
-            instructionText = false;
-            instructionCount = 0;
-            lTText.SetActive(false);
-            lBText.SetActive(true);
 
-            plTText.SetActive(false);
-            plBText.SetActive(true);
+            if (instructionText == true)
+            {
+                lBText.SetActive(false);
+                rTText.SetActive(false);
+                rBText.SetActive(false);
+                lTText.SetActive(false);
+
+                plBText.SetActive(false);
+                prTText.SetActive(false);
+                prBText.SetActive(false);
+                plTText.SetActive(false);
+            }
+
+            if (isLeftMovement == true && check.gameWon == false)
+            {
+                anim.SetBool("wrongPressed", false);
+                anim.SetInteger("leftMovement", 1);
+                anim.SetInteger("rightMovement", 0);
+                isLeftMovement = false;
+                isFirstLeft = true;
+
+                if (instructionText == false)
+                {
+                    plBText.SetActive(false);
+                    prTText.SetActive(true);
+
+                    lBText.SetActive(false);
+                    rTText.SetActive(true);
+                    instructionCount++;
+                }
+            }
+            else
+            {
+                anim.SetBool("wrongPressed", true);
+                anim.SetInteger("leftMovement", 0);
+                anim.SetInteger("rightMovement", 0);
+                parent.PlayFailNarrativeElement();
+                soundEffectManager.PlayFailSound();
+                instructionText = false;
+                instructionCount = 0;
+                lTText.SetActive(false);
+                lBText.SetActive(true);
+
+                plTText.SetActive(false);
+                plBText.SetActive(true);
+            }
         }
     }
 
     void LeftMovement1(float value)
     {
-        if(canInput == true)
+        if (gameStarted == true)
         {
-            if (isFirstLeft == true && check.gameWon == false)
+            if (canInput == true)
             {
-                anim.SetBool("wrongPressed", false);
-                anim.SetInteger("leftMovement", 2);
-                anim.SetInteger("rightMovement", 0);
-                isFirstLeft = false;
-                isRightMovement = true;
-                soundEffectManager.PlaySucessSound();
-
-                if (instructionText == false)
+                if (isFirstLeft == true && check.gameWon == false)
                 {
-                    prTText.SetActive(false);
-                    prBText.SetActive(true);
+                    anim.SetBool("wrongPressed", false);
+                    anim.SetInteger("leftMovement", 2);
+                    anim.SetInteger("rightMovement", 0);
+                    isFirstLeft = false;
+                    isRightMovement = true;
+                    soundEffectManager.PlaySucessSound();
 
-                    rTText.SetActive(false);
-                    rBText.SetActive(true);
+                    if (instructionText == false)
+                    {
+                        prTText.SetActive(false);
+                        prBText.SetActive(true);
+
+                        rTText.SetActive(false);
+                        rBText.SetActive(true);
+                    }
                 }
-            }
-            else if (value > 0.95f)
-            {
-                anim.SetBool("wrongPressed", true);
-                anim.SetInteger("leftMovement", 0);
-                anim.SetInteger("rightMovement", 0);
-                isFirstLeft = false;
-                isLeftMovement = true;
-                parent.PlayFailNarrativeElement();
-                soundEffectManager.PlayFailSound();
-                instructionText = false;
-                instructionCount = 0;
-                plBText.SetActive(false);
-                prTText.SetActive(true);
+                else if (value > 0.95f)
+                {
+                    anim.SetBool("wrongPressed", true);
+                    anim.SetInteger("leftMovement", 0);
+                    anim.SetInteger("rightMovement", 0);
+                    isFirstLeft = false;
+                    isLeftMovement = true;
+                    parent.PlayFailNarrativeElement();
+                    soundEffectManager.PlayFailSound();
+                    instructionText = false;
+                    instructionCount = 0;
+                    plBText.SetActive(false);
+                    prTText.SetActive(true);
 
-                lBText.SetActive(false);
-                rTText.SetActive(true);
-            }
+                    lBText.SetActive(false);
+                    rTText.SetActive(true);
+                }
 
-            canInput = false;
-        }  
+                canInput = false;
+            }
+        }
     }
 
     void RightMovement()
     {
-        if (isRightMovement == true && check.gameWon == false)
+        if (gameStarted == true)
         {
-            anim.SetInteger("rightMovement", 1);
-            anim.SetInteger("leftMovement", 0);
-            anim.SetBool("wrongPressed", false);
-            isRightMovement = false;
-            isFirstRight = true;
-
-            if (instructionText == false)
+            if (isRightMovement == true && check.gameWon == false)
             {
-                prBText.SetActive(false);
-                plTText.SetActive(true);
-
-                rBText.SetActive(false);
-                lTText.SetActive(true);
-            }
-        }
-        else
-        {
-            anim.SetBool("wrongPressed", true);
-            anim.SetInteger("rightMovement", 0);
-            anim.SetInteger("leftMovement", 0);
-            parent.PlayFailNarrativeElement();
-            soundEffectManager.PlayFailSound();
-            instructionText = false;
-            instructionCount = 0;
-            prTText.SetActive(false);
-            prBText.SetActive(true);
-
-            rTText.SetActive(false);
-            rBText.SetActive(true);
-        }
-    }
-
-    void RightMovement1(float value)
-    {
-        if(canInput == true)
-        {
-            if (isFirstRight == true && check.gameWon == false)
-            {
-                anim.SetInteger("rightMovement", 2);
+                anim.SetInteger("rightMovement", 1);
                 anim.SetInteger("leftMovement", 0);
                 anim.SetBool("wrongPressed", false);
-                isFirstRight = false;
-                isLeftMovement = true;
-                successCount++;
-                parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
-                soundEffectManager.PlaySucessSound();
+                isRightMovement = false;
+                isFirstRight = true;
 
                 if (instructionText == false)
                 {
-                    plTText.SetActive(false);
-                    plBText.SetActive(true);
+                    prBText.SetActive(false);
+                    plTText.SetActive(true);
 
-                    lTText.SetActive(false);
-                    lBText.SetActive(true);
+                    rBText.SetActive(false);
+                    lTText.SetActive(true);
                 }
             }
-            else if (value > 0.95f)
+            else
             {
                 anim.SetBool("wrongPressed", true);
                 anim.SetInteger("rightMovement", 0);
                 anim.SetInteger("leftMovement", 0);
-                isFirstRight = false;
-                isRightMovement = true;
                 parent.PlayFailNarrativeElement();
                 soundEffectManager.PlayFailSound();
                 instructionText = false;
                 instructionCount = 0;
-                prBText.SetActive(false);
-                plTText.SetActive(true);
+                prTText.SetActive(false);
+                prBText.SetActive(true);
 
-                rBText.SetActive(false);
-                lTText.SetActive(true);
+                rTText.SetActive(false);
+                rBText.SetActive(true);
             }
+        } 
+    }
 
-            canInput = false;
-        }
+    void RightMovement1(float value)
+    {
+        if (gameStarted == true)
+        {
+            if (canInput == true)
+            {
+                if (isFirstRight == true && check.gameWon == false)
+                {
+                    anim.SetInteger("rightMovement", 2);
+                    anim.SetInteger("leftMovement", 0);
+                    anim.SetBool("wrongPressed", false);
+                    isFirstRight = false;
+                    isLeftMovement = true;
+                    successCount++;
+                    parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
+                    soundEffectManager.PlaySucessSound();
+
+                    if (instructionText == false)
+                    {
+                        plTText.SetActive(false);
+                        plBText.SetActive(true);
+
+                        lTText.SetActive(false);
+                        lBText.SetActive(true);
+                    }
+                }
+                else if (value > 0.95f)
+                {
+                    anim.SetBool("wrongPressed", true);
+                    anim.SetInteger("rightMovement", 0);
+                    anim.SetInteger("leftMovement", 0);
+                    isFirstRight = false;
+                    isRightMovement = true;
+                    parent.PlayFailNarrativeElement();
+                    soundEffectManager.PlayFailSound();
+                    instructionText = false;
+                    instructionCount = 0;
+                    prBText.SetActive(false);
+                    plTText.SetActive(true);
+
+                    rBText.SetActive(false);
+                    lTText.SetActive(true);
+                }
+
+                canInput = false;
+            }
+        }  
     }
 
     public void ReturnToMain(string scene)
