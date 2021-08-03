@@ -274,7 +274,9 @@ public class BabyBalancing : MonoBehaviour
         if (parent)
             parent.PlayLoseNarrative();
 
-        babyFellEGO.SetActive(true);
+        if(babyFellEGO)
+            babyFellEGO.SetActive(true);
+
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
 
@@ -288,7 +290,8 @@ public class BabyBalancing : MonoBehaviour
         canTilt = true;
         tiltMultiplier = 0;
 
-        babyFellEGO.SetActive(false);
+        if(babyFellEGO)
+            babyFellEGO.SetActive(false);
     }
 
     public void SwitchScene(string scene)
