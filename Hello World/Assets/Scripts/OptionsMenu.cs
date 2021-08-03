@@ -18,6 +18,7 @@ public class OptionsMenu : MonoBehaviour
     public Button btnApplyAudio;
     public Sprite filledSprite;
     public Sprite emptySprite;
+    public Button btnAudioBack;
 
     public AudioMixer musicMixer;
     public AudioMixer SFXMixer;
@@ -63,6 +64,16 @@ public class OptionsMenu : MonoBehaviour
     private bool isFullscreen;
     #endregion
 
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume");
+            currentSFXVolume = PlayerPrefs.GetFloat("SFXVolume");
+        }
+        
+    }
+
     private void Start()
     {
         resolutions = Screen.resolutions;
@@ -86,6 +97,8 @@ public class OptionsMenu : MonoBehaviour
 
         btnSFXUp.onClick.AddListener(SFXVolumeUp);
         btnSFXDown.onClick.AddListener(SFXVolumeDown);
+        btnSFXDown.onClick.AddListener(SaveAudioSettings);
+
     }
 
     private void Update()
@@ -103,6 +116,14 @@ public class OptionsMenu : MonoBehaviour
     }
 
     #region Audio
+    private void SaveAudioSettings()
+    {
+        //gets float value for audio level, saves value to player prefs//
+        PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
+        PlayerPrefs.SetFloat("SFXVolume", currentSFXVolume);
+        PlayerPrefs.Save();
+    }
+
     public float GetMusicVolume()
     {
         float value;
