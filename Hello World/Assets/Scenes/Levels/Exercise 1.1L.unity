@@ -2426,6 +2426,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 846673418}
+    - target: {fileID: 6731057918499983908, guid: cdb70fc341c454f459a98de0a1730aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731057919374716613, guid: cdb70fc341c454f459a98de0a1730aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6731057919439090499, guid: cdb70fc341c454f459a98de0a1730aa1,
         type: 3}
       propertyPath: m_Name
@@ -2535,6 +2545,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7025796217311255961, guid: cdb70fc341c454f459a98de0a1730aa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb70fc341c454f459a98de0a1730aa1, type: 3}
@@ -3886,6 +3901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWaitTime: 5
+  dialoguePanel: {fileID: 1922194622}
   startButtonUI: {fileID: 475998284}
   setStartPP: 1
   startPP: {fileID: 11400000, guid: 72039ae2faf04b84f94636b785b7da59, type: 2}
@@ -9718,6 +9734,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+--- !u!1 &1922194622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6731057919374716613, guid: cdb70fc341c454f459a98de0a1730aa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 472133572}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1932211560
 GameObject:
   m_ObjectHideFlags: 0
