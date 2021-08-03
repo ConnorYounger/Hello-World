@@ -9,6 +9,7 @@ public class ExerciseStart : MonoBehaviour
 {
     [Header("Exercise Start")]
     public float startWaitTime;
+    public GameObject dialoguePanel;
     public GameObject startButtonUI;
 
     public bool setStartPP = true;
@@ -34,6 +35,9 @@ public class ExerciseStart : MonoBehaviour
 
         startButtonUI.SetActive(true);
 
+        if (dialoguePanel)
+            dialoguePanel.SetActive(true);
+
         if(startButtonUI.GetComponent<Button>())
             EventSystem.current.SetSelectedGameObject(startButtonUI);
     }
@@ -50,6 +54,9 @@ public class ExerciseStart : MonoBehaviour
         pPVolume.profile = normalPP;
 
         startButtonUI.SetActive(false);
+
+        if (dialoguePanel)
+            dialoguePanel.SetActive(false);
 
         SetCanvases(true);
     }

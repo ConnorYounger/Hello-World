@@ -3500,6 +3500,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 475998288, guid: cdb70fc341c454f459a98de0a1730aa1, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6731057919439090499, guid: cdb70fc341c454f459a98de0a1730aa1,
         type: 3}
       propertyPath: m_Name
@@ -8578,6 +8582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWaitTime: 20
+  dialoguePanel: {fileID: 0}
   startButtonUI: {fileID: 1468873875}
   setStartPP: 1
   startPP: {fileID: 11400000, guid: 72039ae2faf04b84f94636b785b7da59, type: 2}
@@ -8823,6 +8828,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611732844443119083, guid: a50f1de718ded8e499e95e1fda30b5a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a50f1de718ded8e499e95e1fda30b5a5, type: 3}

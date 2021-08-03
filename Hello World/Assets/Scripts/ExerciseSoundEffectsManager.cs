@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ExerciseSoundEffectsManager : MonoBehaviour
 {
     private AudioSource audioSource;
+    
 
     [Header("Sounds")]
+    public bool playSucessSound = true;
     public AudioClip[] sucessSounds;
     public AudioClip[] failSounds;
     public AudioClip winSound;
@@ -27,13 +30,16 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
     public float fadeOutMultipier = 1;
     private bool fadeOutMusic;
 
+    public AudioMixerGroup musicMixer;
+    public AudioMixerGroup sfxMixer;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
 
         if (musicTrack)
-            CreateSound(musicTrack, musicVolume, true);
+            CreateSound(musicTrack, musicVolume, true, musicMixer);
 
         if (musicAudioSource && fadeOutMusic)
             MusicFadeOut();
@@ -47,20 +53,27 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
 
     public void PlaySucessSound()
     {
-        if (randomisSoundCollections)
+        if(sucessSounds.Length > 0 && playSucessSound)
         {
-            int rand = Random.Range(0, sucessSounds.Length);
+            if (randomisSoundCollections)
+            {
+                int rand = Random.Range(0, sucessSounds.Length);
 
-            PlaySound(sucessSounds[rand]);
+                PlaySound(sucessSounds[rand]);
+            }
+            else
+            {
+                PlaySound(sucessSounds[currentSucessSound]);
+
+                currentSucessSound++;
+
+                if (currentSucessSound >= sucessSounds.Length)
+                    currentSucessSound = 0;
+            }
         }
         else
         {
-            PlaySound(sucessSounds[currentSucessSound]);
-
-            currentSucessSound++;
-
-            if (currentSucessSound >= sucessSounds.Length)
-                currentSucessSound = 0;
+            Debug.Log("No sucess sounds");
         }
     }
 
@@ -97,7 +110,7 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
     {
         int rand = Random.Range(0, babyCrySounds.Length);
 
-        CreateSound(babyCrySounds[rand], 0.7f, true);
+        CreateSound(babyCrySounds[rand], 0.7f, true, sfxMixer);
     }
 
     void PlaySound(AudioClip audioClip)
@@ -113,7 +126,7 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
         audioSource.loop = loop;
     }
 
-    void CreateSound(AudioClip audioClip, float volume,bool loop)
+    void CreateSound(AudioClip audioClip, float volume,bool loop, AudioMixerGroup audioMixer)
     {
         GameObject oj = Instantiate(new GameObject(), transform.position, transform.rotation);
         AudioSource a = oj.AddComponent<AudioSource>();
@@ -121,6 +134,7 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
         a.clip = audioClip;
         a.loop = loop;
         a.volume = volume;
+        a.outputAudioMixerGroup = audioMixer; 
         a.Play();
 
         if (audioClip == musicTrack)

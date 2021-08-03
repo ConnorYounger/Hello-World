@@ -3428,6 +3428,12 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &534509415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2212808228286555586, guid: d2476e98d02d46341b6189fc2474d41f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1606539121}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &539103998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2212808228882066944, guid: d2476e98d02d46341b6189fc2474d41f,
@@ -4901,6 +4907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWaitTime: 5
+  dialoguePanel: {fileID: 534509415}
   startButtonUI: {fileID: 290696310}
   setStartPP: 1
   startPP: {fileID: 11400000, guid: 72039ae2faf04b84f94636b785b7da59, type: 2}
@@ -10028,6 +10035,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2212808228286555586, guid: d2476e98d02d46341b6189fc2474d41f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2212808228688910185, guid: d2476e98d02d46341b6189fc2474d41f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -10142,6 +10154,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400477370098845837, guid: d2476e98d02d46341b6189fc2474d41f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2476e98d02d46341b6189fc2474d41f, type: 3}

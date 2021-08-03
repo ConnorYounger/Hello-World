@@ -18,6 +18,7 @@ public class OptionsMenu : MonoBehaviour
     public Button btnApplyAudio;
     public Sprite filledSprite;
     public Sprite emptySprite;
+    public Button btnAudioBack;
 
     public AudioMixer musicMixer;
     public AudioMixer SFXMixer;
@@ -63,8 +64,17 @@ public class OptionsMenu : MonoBehaviour
     private bool isFullscreen;
     #endregion
 
+
     private void Start()
     {
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume");
+            currentSFXVolume = PlayerPrefs.GetFloat("SFXVolume");
+        }
+        musicMixer.SetFloat("Music", currentMusicVolume);
+        SFXMixer.SetFloat("SFX", currentSFXVolume);
+
         resolutions = Screen.resolutions;
         resolutionIndex = 0;
         isFullscreen = Screen.fullScreen;
@@ -86,6 +96,7 @@ public class OptionsMenu : MonoBehaviour
 
         btnSFXUp.onClick.AddListener(SFXVolumeUp);
         btnSFXDown.onClick.AddListener(SFXVolumeDown);
+        btnAudioBack.onClick.AddListener(SaveAudioSettings);
     }
 
     private void Update()
@@ -103,6 +114,14 @@ public class OptionsMenu : MonoBehaviour
     }
 
     #region Audio
+    private void SaveAudioSettings()
+    {
+        Debug.Log("Save audio to Prefs");
+        PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
+        PlayerPrefs.SetFloat("SFXVolume", currentSFXVolume);
+        PlayerPrefs.Save();
+    }
+
     public float GetMusicVolume()
     {
         float value;
@@ -131,8 +150,7 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
-    //TODO: Test when audio is implemented!!!
-    public void MusicVolumeUp()
+        public void MusicVolumeUp()
     {
         if (currentMusicVolume != 20)
         {
