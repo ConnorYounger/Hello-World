@@ -102,6 +102,11 @@ public class RollOver : MonoBehaviour
         }
     }
 
+    public void StartExercise()
+    {
+        gameStarted = true;
+    }
+
     void LegDown()
     {
         if(gameStarted == true)

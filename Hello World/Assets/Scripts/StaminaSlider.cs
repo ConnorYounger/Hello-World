@@ -7,6 +7,7 @@ public class StaminaSlider : MonoBehaviour
 {
     public static bool allowInputs;
     private bool countDown = true;
+    public bool gameStarted = false;
     public float countDownTime = 60;
 
     public Slider countdownBar;
@@ -33,40 +34,48 @@ public class StaminaSlider : MonoBehaviour
         countdownBar.value = countdownBar.maxValue;
     }
 
+    public void StartExercise()
+    {
+        gameStarted = true;
+    }
+
     private void Update()
     {
-        if (countDown == true)
-        {
-            countdownBar.value -= Time.deltaTime;
-        }
-
-        //If we are at 0, start to refill
-        if (countdownBar.value <= 0)
+        if(gameStarted == true)
         {
             if (countDown == true)
             {
-                timerCheck.soundEffectsManager.PlayLoseSound();
-                timerCheck.soundEffectsManager.PlayBabyCrySound();
+                countdownBar.value -= Time.deltaTime;
             }
 
-            countDown = false;
-            allowInputs = false;
-            anim.SetBool("timeOut", true);
-            liftButton.SetActive(false);
-            swingButton.SetActive(false);
-            loseText.SetActive(true);
-            timerCheck.parent.PlayLoseNarrative();
-            pauseTimer += Time.deltaTime;
-
-            if (pauseTimer >= 5)
+            //If we are at 0, start to refill
+            if (countdownBar.value <= 0)
             {
-                activate.SetActive(true);
+                if (countDown == true)
+                {
+                    timerCheck.soundEffectsManager.PlayLoseSound();
+                    timerCheck.soundEffectsManager.PlayBabyCrySound();
+                }
+
+                countDown = false;
+                allowInputs = false;
+                anim.SetBool("timeOut", true);
+                liftButton.SetActive(false);
+                swingButton.SetActive(false);
+                loseText.SetActive(true);
+                timerCheck.parent.PlayLoseNarrative();
+                pauseTimer += Time.deltaTime;
+
+                if (pauseTimer >= 5)
+                {
+                    activate.SetActive(true);
+                }
             }
-        }
-        else
-        {
-            countDown = true;
-            allowInputs = true;
-        }
+            else
+            {
+                countDown = true;
+                allowInputs = true;
+            }
+        } 
     }
 }
