@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1683,6 +1683,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524750086408700518, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4637131416990412455, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
         type: 3}
@@ -3565,6 +3570,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &777042280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4524750086408700518, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 486177763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &789723915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5005,6 +5016,11 @@ PrefabInstance:
       propertyPath: pPVolume
       value: 
       objectReference: {fileID: 392391677}
+    - target: {fileID: 992203713022603046, guid: 69609504f15768f4fa678c511aeace16,
+        type: 3}
+      propertyPath: dialoguePanel
+      value: 
+      objectReference: {fileID: 777042280}
     - target: {fileID: 992203713022603046, guid: 69609504f15768f4fa678c511aeace16,
         type: 3}
       propertyPath: startButtonUI

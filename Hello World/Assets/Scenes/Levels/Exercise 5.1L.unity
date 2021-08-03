@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1635,6 +1635,11 @@ PrefabInstance:
       objectReference: {fileID: 392391677}
     - target: {fileID: 992203713022603046, guid: 69609504f15768f4fa678c511aeace16,
         type: 3}
+      propertyPath: dialoguePanel
+      value: 
+      objectReference: {fileID: 692533467}
+    - target: {fileID: 992203713022603046, guid: 69609504f15768f4fa678c511aeace16,
+        type: 3}
       propertyPath: startButtonUI
       value: 
       objectReference: {fileID: 1385521291}
@@ -1827,6 +1832,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4516753683747122, guid: 237278d4519951c48888576c213b513f,
     type: 3}
   m_PrefabInstance: {fileID: 679047538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &692533467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1417295128875599894, guid: 7bc29a2c0ccb5224da89d28d466925d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1203085147}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &698525458
 GameObject:
@@ -3951,6 +3962,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1417295128824174137, guid: 7bc29a2c0ccb5224da89d28d466925d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417295128875599894, guid: 7bc29a2c0ccb5224da89d28d466925d4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
