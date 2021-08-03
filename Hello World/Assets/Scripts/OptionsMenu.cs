@@ -64,9 +64,6 @@ public class OptionsMenu : MonoBehaviour
     private bool isFullscreen;
     #endregion
 
-    private void Awake()
-    {
-    }
 
     private void Start()
     {
@@ -100,7 +97,6 @@ public class OptionsMenu : MonoBehaviour
         btnSFXUp.onClick.AddListener(SFXVolumeUp);
         btnSFXDown.onClick.AddListener(SFXVolumeDown);
         btnAudioBack.onClick.AddListener(SaveAudioSettings);
-
     }
 
     private void Update()
@@ -154,8 +150,7 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
-    //TODO: Test when audio is implemented!!!
-    public void MusicVolumeUp()
+        public void MusicVolumeUp()
     {
         if (currentMusicVolume != 20)
         {
