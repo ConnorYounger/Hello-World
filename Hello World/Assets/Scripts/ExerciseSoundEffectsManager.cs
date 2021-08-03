@@ -7,6 +7,7 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
     private AudioSource audioSource;
 
     [Header("Sounds")]
+    public bool playSucessSound = true;
     public AudioClip[] sucessSounds;
     public AudioClip[] failSounds;
     public AudioClip winSound;
@@ -47,7 +48,7 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
 
     public void PlaySucessSound()
     {
-        if(sucessSounds.Length > 0)
+        if(sucessSounds.Length > 0 && playSucessSound)
         {
             if (randomisSoundCollections)
             {
