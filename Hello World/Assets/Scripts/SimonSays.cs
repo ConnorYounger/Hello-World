@@ -53,8 +53,14 @@ public class SimonSays : MonoBehaviour
     public DiscoveryPlayer discoveryPlayer;
 
     [Header("Sounds")]
+    public AudioSource audioSource;
     public AudioClip[] sucessSounds;
     public AudioClip[] failSounds;
+
+    public AudioClip[] correctInputSounds;
+    public AudioClip trillSound;
+
+    private int currentInput;
 
     private ExerciseSoundEffectsManager soundManager;
 
@@ -102,6 +108,13 @@ public class SimonSays : MonoBehaviour
         currentPacience = maxPacience;
 
         soundManager = GameObject.Find("SoundManager").GetComponent<ExerciseSoundEffectsManager>();
+
+        playerHasWon = true;
+    }
+
+    public void StartExercise()
+    {
+        playerHasWon = false;
 
         GenerateNewCombination();
     }
@@ -176,6 +189,8 @@ public class SimonSays : MonoBehaviour
         buttonList.Clear();
         buttonListSave.Clear();
 
+        currentInput = 0;
+
         // Clear UI elements
         for(int i = 0; i < comboPanel.transform.childCount; i++)
         {
@@ -220,12 +235,6 @@ public class SimonSays : MonoBehaviour
     // When the player has sucessfully finished the combo
     void CombinationFinished()
     {
-        if (animator)
-            StartCoroutine("PlayAnimation");
-
-        if (soundManager)
-            soundManager.PlaySucessSound();
-
         // Check to see if the player has won
         if (currentMemory >= maxMemory)
         {
@@ -262,7 +271,6 @@ public class SimonSays : MonoBehaviour
         playerHasWon = true;
 
         winUI.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
 
         if (parent)
         {
@@ -275,11 +283,13 @@ public class SimonSays : MonoBehaviour
             discoveryPlayer.cardIndex = "1Out";
             discoveryPlayer.SavePlayer();
         }
+
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
     }
 
     void CalculateInput()
     {
-        if (playerCanInput && failInputTimer <= 0)
+        if (playerCanInput && failInputTimer <= 0 && !playerHasWon)
         {
             playerCanInput = false;
 
@@ -337,12 +347,13 @@ public class SimonSays : MonoBehaviour
 
         uICanvas.enabled = false;
         loseUI.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
 
         if (parent)
         {
             parent.PlayLoseNarrative();
         }
+
+        EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
 
     void RemoveComboUI()
@@ -395,13 +406,47 @@ public class SimonSays : MonoBehaviour
 
             UpdateMemoryMetre();
 
-            CombinationFinished();
+            StartCoroutine("CorrectCombination");
         }
+        else
+            playerCanInput = true;
 
         if (startCombo)
         {
             RemoveComboUI();
         }
+
+        currentInput++;
+
+        if (audioSource && correctInputSounds.Length > 0)
+        {
+            if(correctInputSounds[currentInput - 1] != null)
+            {
+                audioSource.clip = correctInputSounds[currentInput - 1];
+                audioSource.Play();
+            }
+        }
+    }
+
+    IEnumerator CorrectCombination()
+    {
+        if (animator)
+            StartCoroutine("PlayAnimation");
+
+        yield return new WaitForSeconds(1);
+
+        if (audioSource)
+        {
+            audioSource.clip = trillSound;
+            audioSource.Play();
+        }
+
+        yield return new WaitForSeconds(2);
+
+        if (soundManager)
+            soundManager.PlaySucessSound();
+
+        CombinationFinished();
 
         playerCanInput = true;
     }
@@ -429,6 +474,8 @@ public class SimonSays : MonoBehaviour
     // When the player inputs the wrong button
     void ResetCombination()
     {
+        currentInput = 0;
+
         failInputTimer = failInputTime;
 
         buttonList.Clear();

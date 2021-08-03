@@ -22,8 +22,8 @@ namespace StatePattern
                 }
                 else
                 {
-                    Debug.Log("Return to baby idle");
-                    Debug.Log("cat: " + baby.cat);
+                    //Debug.Log("Return to baby idle");
+                    //Debug.Log("cat: " + baby.cat);
 
                     if (baby.cat)
                         baby.cat.SetState(new RomingState(baby.cat));
@@ -42,7 +42,7 @@ namespace StatePattern
 
         public override void OnStateEnter()
         {
-            Debug.Log("Baby Entering Play State");
+            //Debug.Log("Baby Entering Play State");
             playTimer = playTime;
             playing = true;
             baby.isIdle = false;
@@ -59,7 +59,7 @@ namespace StatePattern
                 baby.animator.SetBool("isPlaying", true);
 
             playing = false;
-            Debug.Log("Baby Exiting Play State");
+            //Debug.Log("Baby Exiting Play State");
         }
     }
 }

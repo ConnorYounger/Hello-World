@@ -39,7 +39,7 @@ namespace StatePattern
 
         public override void OnStateEnter()
         {
-            Debug.Log("Entering Idle State");
+            //Debug.Log("Entering Idle State");
 
             coolDownTimer = coolDownTime;
             coolDown = true;
@@ -49,7 +49,7 @@ namespace StatePattern
 
         public override void OnStateExit()
         {
-            Debug.Log("Exiting Idle State");
+            //Debug.Log("Exiting Idle State");
         }
     }
 }

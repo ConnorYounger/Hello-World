@@ -94,6 +94,14 @@ public class Workout : MonoBehaviour
         uIDisplayCounter = uIControllsDisplayCounter;
 
         StartCoroutine("UIMovement");
+        StartCoroutine("StartExerciseWaitTime");
+
+        gameFinished = true;
+    }
+
+    public void StartExercise()
+    {
+        gameFinished = false;
     }
 
     IEnumerator UIMovement()

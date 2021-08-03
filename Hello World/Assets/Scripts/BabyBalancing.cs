@@ -13,7 +13,7 @@ public class BabyBalancing : MonoBehaviour
     private float tiltMultiplier;
     public float playerRotateSpeed = 1;
     private float balanceValue = 0;
-    public bool canTilt = true;
+    public bool canTilt;
 
     public bool sitting = true;
     public float winAngle = 20;
@@ -39,6 +39,7 @@ public class BabyBalancing : MonoBehaviour
     [Space()]
     public ParentNarrative parent;
     public Exercise6BabyMovement exercise6Baby;
+    public float resetWaitTime = 3;
 
     private void Awake()
     {
@@ -51,6 +52,13 @@ public class BabyBalancing : MonoBehaviour
     {
         if(analogStick)
             StartCoroutine("UpDateAnimatedUI");
+
+        canTilt = false;
+    }
+
+    public void ExerciseStart()
+    {
+        canTilt = true;
     }
 
     IEnumerator UpDateAnimatedUI()
@@ -184,33 +192,48 @@ public class BabyBalancing : MonoBehaviour
         {
             if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y >= CalculateMaxBalanceValue())
             {
-                BabyFallOver();
+                BabyFallOver(true);
             }
             else if (spine.transform.localRotation.y < 0 && spine.transform.localRotation.y <= -CalculateMaxBalanceValue())
             {
-                BabyFallOver();
+                BabyFallOver(false);
             }
         }
     }
 
-    void BabyFallOver()
+    void BabyFallOver(bool value)
     {
         Debug.Log("BabyFell");
 
-        StartCoroutine("BabyFallReset");
+        StartCoroutine("BabyFallReset", value);
     }
 
-    IEnumerator BabyFallReset()
+    IEnumerator BabyFallReset(bool value)
     {
         canTilt = false;
-        // play get up animation
+
+        if (value)
+            animator.SetBool("fallLeft", true);
+
+        else
+            animator.SetBool("fallRight", true);
+
         exercise6Baby.StopCoroutine("ReseMovementCoolDown");
         exercise6Baby.canMove = false;
 
         if (parent)
             parent.PlayFailNarrativeElement();
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
+
+        int rand = Random.Range(0, 2);
+        balanceValue = rand > 0 ? -0.001f : 0.001f;
+        spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, CalculateRotationValue(balanceValue), spine.transform.localRotation.z, spine.transform.localRotation.w);
+
+        animator.SetBool("fallLeft", false);
+        animator.SetBool("fallRight", false);
+
+        yield return new WaitForSeconds(resetWaitTime);
 
         Restart();
         exercise6Baby.canMove = true;
@@ -251,19 +274,24 @@ public class BabyBalancing : MonoBehaviour
         if (parent)
             parent.PlayLoseNarrative();
 
-        babyFellEGO.SetActive(true);
+        if(babyFellEGO)
+            babyFellEGO.SetActive(true);
+
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
 
     public void Restart()
     {
+        Debug.Log("Restart");
+
         //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, 0, transform.localRotation.w);
         spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, 0, spine.transform.localRotation.z, spine.transform.localRotation.w);
         //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, 0, bottom.transform.localRotation.z, bottom.transform.localRotation.w);
         canTilt = true;
         tiltMultiplier = 0;
 
-        babyFellEGO.SetActive(false);
+        if(babyFellEGO)
+            babyFellEGO.SetActive(false);
     }
 
     public void SwitchScene(string scene)
