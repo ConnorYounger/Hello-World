@@ -11,6 +11,11 @@ public class QWOP : MonoBehaviour
     public GameObject rBText;
     public GameObject lTText;
 
+    public GameObject plBText;
+    public GameObject prTText;
+    public GameObject prBText;
+    public GameObject plTText;
+
     public ParentNarrative parent;
     public CountDownBar countdown;
     public ExerciseSoundEffectsManager soundEffectManager;
@@ -70,6 +75,11 @@ public class QWOP : MonoBehaviour
             rTText.SetActive(false);
             rBText.SetActive(false);
             lTText.SetActive(false);
+
+           plBText.SetActive(false);
+           prTText.SetActive(false);
+           prBText.SetActive(false);
+           plTText.SetActive(false);
         }
 
         if (isLeftMovement == true && check.gameWon == false)
@@ -82,6 +92,9 @@ public class QWOP : MonoBehaviour
 
             if (instructionText == false)
             {
+                plBText.SetActive(false);
+                prTText.SetActive(true);
+
                 lBText.SetActive(false);
                 rTText.SetActive(true);
                 instructionCount++;
@@ -98,6 +111,9 @@ public class QWOP : MonoBehaviour
             instructionCount = 0;
             lTText.SetActive(false);
             lBText.SetActive(true);
+
+            plTText.SetActive(false);
+            plBText.SetActive(true);
         }
     }
 
@@ -116,6 +132,9 @@ public class QWOP : MonoBehaviour
 
                 if (instructionText == false)
                 {
+                    prTText.SetActive(false);
+                    prBText.SetActive(true);
+
                     rTText.SetActive(false);
                     rBText.SetActive(true);
                 }
@@ -131,6 +150,9 @@ public class QWOP : MonoBehaviour
                 soundEffectManager.PlayFailSound();
                 instructionText = false;
                 instructionCount = 0;
+                plBText.SetActive(false);
+                prTText.SetActive(true);
+
                 lBText.SetActive(false);
                 rTText.SetActive(true);
             }
@@ -151,6 +173,9 @@ public class QWOP : MonoBehaviour
 
             if (instructionText == false)
             {
+                prBText.SetActive(false);
+                plTText.SetActive(true);
+
                 rBText.SetActive(false);
                 lTText.SetActive(true);
             }
@@ -164,6 +189,9 @@ public class QWOP : MonoBehaviour
             soundEffectManager.PlayFailSound();
             instructionText = false;
             instructionCount = 0;
+            prTText.SetActive(false);
+            prBText.SetActive(true);
+
             rTText.SetActive(false);
             rBText.SetActive(true);
         }
@@ -173,7 +201,7 @@ public class QWOP : MonoBehaviour
     {
         if(canInput == true)
         {
-            if (isFirstRight == true && value > 0.95f && check.gameWon == false)
+            if (isFirstRight == true && check.gameWon == false)
             {
                 anim.SetInteger("rightMovement", 2);
                 anim.SetInteger("leftMovement", 0);
@@ -186,6 +214,9 @@ public class QWOP : MonoBehaviour
 
                 if (instructionText == false)
                 {
+                    plTText.SetActive(false);
+                    plBText.SetActive(true);
+
                     lTText.SetActive(false);
                     lBText.SetActive(true);
                 }
@@ -201,6 +232,9 @@ public class QWOP : MonoBehaviour
                 soundEffectManager.PlayFailSound();
                 instructionText = false;
                 instructionCount = 0;
+                prBText.SetActive(false);
+                plTText.SetActive(true);
+
                 rBText.SetActive(false);
                 lTText.SetActive(true);
             }
