@@ -107,7 +107,8 @@ public class SimonSays : MonoBehaviour
         memoryMetreSlider.maxValue = maxMemory;
         currentPacience = maxPacience;
 
-        soundManager = GameObject.Find("SoundManager").GetComponent<ExerciseSoundEffectsManager>();
+        if(GameObject.Find("SoundManager").GetComponent<ExerciseSoundEffectsManager>())
+            soundManager = GameObject.Find("SoundManager").GetComponent<ExerciseSoundEffectsManager>();
 
         playerHasWon = true;
     }

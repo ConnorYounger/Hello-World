@@ -47,20 +47,27 @@ public class ExerciseSoundEffectsManager : MonoBehaviour
 
     public void PlaySucessSound()
     {
-        if (randomisSoundCollections)
+        if(sucessSounds.Length > 0)
         {
-            int rand = Random.Range(0, sucessSounds.Length);
+            if (randomisSoundCollections)
+            {
+                int rand = Random.Range(0, sucessSounds.Length);
 
-            PlaySound(sucessSounds[rand]);
+                PlaySound(sucessSounds[rand]);
+            }
+            else
+            {
+                PlaySound(sucessSounds[currentSucessSound]);
+
+                currentSucessSound++;
+
+                if (currentSucessSound >= sucessSounds.Length)
+                    currentSucessSound = 0;
+            }
         }
         else
         {
-            PlaySound(sucessSounds[currentSucessSound]);
-
-            currentSucessSound++;
-
-            if (currentSucessSound >= sucessSounds.Length)
-                currentSucessSound = 0;
+            Debug.Log("No sucess sounds");
         }
     }
 
