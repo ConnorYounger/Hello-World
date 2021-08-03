@@ -66,19 +66,18 @@ public class OptionsMenu : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.HasKey("MusicVolume"))
-        {
-            currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume");
-            currentSFXVolume = PlayerPrefs.GetFloat("SFXVolume");
-
-            musicMixer.SetFloat("Music", currentMusicVolume);
-            SFXMixer.SetFloat("SFX", currentSFXVolume);
-        }
-        
     }
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume");
+            currentSFXVolume = PlayerPrefs.GetFloat("SFXVolume");
+        }
+        musicMixer.SetFloat("Music", currentMusicVolume);
+        SFXMixer.SetFloat("SFX", currentSFXVolume);
+
         resolutions = Screen.resolutions;
         resolutionIndex = 0;
         isFullscreen = Screen.fullScreen;
@@ -100,7 +99,7 @@ public class OptionsMenu : MonoBehaviour
 
         btnSFXUp.onClick.AddListener(SFXVolumeUp);
         btnSFXDown.onClick.AddListener(SFXVolumeDown);
-        btnSFXDown.onClick.AddListener(SaveAudioSettings);
+        btnAudioBack.onClick.AddListener(SaveAudioSettings);
 
     }
 
@@ -121,7 +120,7 @@ public class OptionsMenu : MonoBehaviour
     #region Audio
     private void SaveAudioSettings()
     {
-        //gets float value for audio level, saves value to player prefs//
+        Debug.Log("Save audio to Prefs");
         PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
         PlayerPrefs.SetFloat("SFXVolume", currentSFXVolume);
         PlayerPrefs.Save();
