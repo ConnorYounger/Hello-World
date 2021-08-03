@@ -8273,6 +8273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWaitTime: 5
+  dialoguePanel: {fileID: 1968673546}
   startButtonUI: {fileID: 1381396650}
   setStartPP: 1
   startPP: {fileID: 11400000, guid: 72039ae2faf04b84f94636b785b7da59, type: 2}
@@ -8509,6 +8510,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 368835422872793933, guid: 93bdbe6e9adcd3e4b8b55fea204189b6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8383425971721950881, guid: 93bdbe6e9adcd3e4b8b55fea204189b6,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8623,6 +8629,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383425972914864936, guid: 93bdbe6e9adcd3e4b8b55fea204189b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93bdbe6e9adcd3e4b8b55fea204189b6, type: 3}
@@ -10068,6 +10079,12 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 8468825594012277688, guid: 03f44e4dca1dde640811294318548a60,
     type: 3}
   m_PrefabInstance: {fileID: 1966555878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1968673546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8383425972914864936, guid: 93bdbe6e9adcd3e4b8b55fea204189b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1732453962}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1975588230
 PrefabInstance:

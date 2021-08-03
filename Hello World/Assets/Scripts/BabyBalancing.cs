@@ -33,7 +33,8 @@ public class BabyBalancing : MonoBehaviour
     public float bottomRotateDifference = 3;
 
     public Animator animator;
-    public AnalogStickTweener analogStick;
+    public AnalogStickTweener analogStickX;
+    public AnalogStickTweener analogStickP;
     private bool left;
 
     [Space()]
@@ -50,7 +51,7 @@ public class BabyBalancing : MonoBehaviour
 
     private void Start()
     {
-        if(analogStick)
+        if(analogStickX || analogStickP)
             StartCoroutine("UpDateAnimatedUI");
 
         canTilt = false;
@@ -65,10 +66,25 @@ public class BabyBalancing : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
 
-        if (left)
-            analogStick.StartCoroutine("TiltLeft");
-        else
-            analogStick.StartCoroutine("TiltRight");
+        if (canTilt)
+        {
+            if (left)
+            {
+                if (PlayerPrefs.GetString("ControlType") == "Xbox" && analogStickX)
+                    analogStickX.StartCoroutine("TiltLeft");
+
+                if (PlayerPrefs.GetString("ControlType") == "PS" && analogStickP)
+                    analogStickP.StartCoroutine("TiltLeft");
+            }
+            else
+            {
+                if (PlayerPrefs.GetString("ControlType") == "Xbox" && analogStickX)
+                    analogStickX.StartCoroutine("TiltRight");
+
+                if (PlayerPrefs.GetString("ControlType") == "PS" && analogStickP)
+                    analogStickP.StartCoroutine("TiltRight");
+            }
+        }
 
         yield return new WaitForSeconds(1);
 
@@ -292,6 +308,9 @@ public class BabyBalancing : MonoBehaviour
 
         if(babyFellEGO)
             babyFellEGO.SetActive(false);
+
+        if (exercise6Baby)
+            exercise6Baby.BabyFellUpdateUI();
     }
 
     public void SwitchScene(string scene)

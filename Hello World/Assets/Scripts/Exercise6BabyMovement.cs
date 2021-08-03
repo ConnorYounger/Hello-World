@@ -52,6 +52,7 @@ public class Exercise6BabyMovement : MonoBehaviour
     public void StartExercise()
     {
         canMove = true;
+        UpdateControllsUI(false);
     }
 
     private void OnEnable()
@@ -93,14 +94,16 @@ public class Exercise6BabyMovement : MonoBehaviour
                 {
                     animator.SetInteger("babyFoot", 2);
                     dir = -1;
+
+                    UpdateControllsUI(true);
                 }
                 else
                 {
                     animator.SetInteger("babyFoot", 0);
                     dir = 1;
-                }
 
-                UpdateControllsUI(true);
+                    UpdateControllsUI(false);
+                }
             }
             else
             {
@@ -108,14 +111,16 @@ public class Exercise6BabyMovement : MonoBehaviour
                 {
                     animator.SetInteger("babyFoot", 3);
                     dir = -1;
+
+                    UpdateControllsUI(false);
                 }
                 else
                 {
                     animator.SetInteger("babyFoot", 1);
                     dir = 1;
-                }
 
-                UpdateControllsUI(false);
+                    UpdateControllsUI(true);
+                }
             }
 
             //animator.SetBool("babyLeftFoot", leftFoot);
@@ -129,7 +134,19 @@ public class Exercise6BabyMovement : MonoBehaviour
         }
     }
 
-    void UpdateControllsUI(bool left)
+    public void BabyFellUpdateUI()
+    {
+        if (animator.GetInteger("babyFoot") == 0 || animator.GetInteger("babyFoot") == 3)
+        {
+            UpdateControllsUI(false);
+        }
+        else
+        {
+            UpdateControllsUI(true);
+        }
+    }
+
+    public void UpdateControllsUI(bool left)
     {
         bool right = !left;
 
