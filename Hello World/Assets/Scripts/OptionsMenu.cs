@@ -70,6 +70,9 @@ public class OptionsMenu : MonoBehaviour
         {
             currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume");
             currentSFXVolume = PlayerPrefs.GetFloat("SFXVolume");
+
+            musicMixer.SetFloat("Music", currentMusicVolume);
+            SFXMixer.SetFloat("SFX", currentSFXVolume);
         }
         
     }
