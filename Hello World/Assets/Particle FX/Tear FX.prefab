@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7349584485477159319}
   - component: {fileID: 7349584485477159318}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Tear FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ ParticleSystem:
   m_GameObject: {fileID: 7349584485477159317}
   serializedVersion: 7
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 0.25
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -803,9 +803,9 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 150
-      mode: 0
-      spread: 0
+      value: 1
+      mode: 1
+      spread: 1
       speed:
         serializedVersion: 2
         minMaxState: 0
@@ -1133,7 +1133,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -3381,7 +3381,7 @@ ParticleSystem:
     range: {x: 0, y: 1}
     separateAxes: 0
   RotationBySpeedModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
