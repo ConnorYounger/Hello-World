@@ -94,6 +94,8 @@ public class MenuController : MonoBehaviour
         player.exerciseIndex = 0.1f;
         player.cardIndex = "1In";
         player.SavePlayer();
+        PlayerPrefs.SetString("gameMode", "Discovery");
+
         SceneManager.LoadScene("DiscoveryMilestones");
     }
 

@@ -34,6 +34,8 @@ public class ExercisePicker : MonoBehaviour
 
     private void LoadExercise()
     {
+        PlayerPrefs.SetString("gameMode", "ToyBox");
+
         SceneManager.LoadScene(exercises[exerciseIndex]);
     }
 
