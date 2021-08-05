@@ -326,7 +326,12 @@ public class Workout : MonoBehaviour
             Lose();
         }
         else
+        {
             parent.PlayFailNarrativeElement();
+
+            if (soundManager)
+                soundManager.PlayFailSound();
+        }
     }
 
     IEnumerator ResetAnimator()
@@ -460,6 +465,9 @@ public class Workout : MonoBehaviour
 
         if (parent)
             parent.NarrativeElement(parent.loseText);
+
+        if (soundManager)
+            soundManager.PlayLoseSound();
     }
 
     void UpdateSliders()
