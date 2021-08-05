@@ -41,6 +41,9 @@ public class Workout : MonoBehaviour
     private Vector2 rightMove;
     private Vector2 leftMove;
 
+    [Space()]
+    public ExerciseSoundEffectsManager soundManager;
+
     [Header("Ui Elements")]
     public Slider sitUpSlider;
     public Slider patienceSlider;
@@ -405,6 +408,11 @@ public class Workout : MonoBehaviour
         {
             Win();
         }
+        else
+        {
+            if (soundManager)
+                soundManager.PlaySucessSound();
+        }
 
         StartCoroutine("ResetAnimator");
     }
@@ -429,6 +437,9 @@ public class Workout : MonoBehaviour
 
         if (parent)
             parent.NarrativeElement(parent.winText);
+
+        if (soundManager)
+            soundManager.PlayWinSound();
 
         if (discoveryMode)
         {
