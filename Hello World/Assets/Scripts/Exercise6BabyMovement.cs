@@ -33,6 +33,8 @@ public class Exercise6BabyMovement : MonoBehaviour
     public GameObject[] rightTriggers;
     public AnalogStickTweener analogStick;
 
+    public ExerciseSoundEffectsManager soundManager;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
@@ -78,7 +80,7 @@ public class Exercise6BabyMovement : MonoBehaviour
 
     void CheckForWinZone()
     {
-        if(Vector3.Distance(transform.position, winZone.position) < winDistamce)
+        if(Vector3.Distance(transform.position, winZone.position) < winDistamce && !gameEnd)
         {
             Win();
         }
@@ -211,6 +213,9 @@ public class Exercise6BabyMovement : MonoBehaviour
         if(parent)
             parent.PlayWinNarrative();
 
+        if (soundManager)
+            soundManager.PlayWinSound();
+
         if (winUI)
         {
             winUI.SetActive(true);
@@ -225,5 +230,8 @@ public class Exercise6BabyMovement : MonoBehaviour
 
         if (parent)
             parent.PlayLoseNarrative();
+
+        if (soundManager)
+            soundManager.PlayLoseSound();
     }
 }
