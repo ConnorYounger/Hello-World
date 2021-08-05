@@ -42,6 +42,8 @@ public class BabyBalancing : MonoBehaviour
     public Exercise6BabyMovement exercise6Baby;
     public float resetWaitTime = 3;
 
+    public ExerciseSoundEffectsManager soundManager;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
@@ -139,6 +141,9 @@ public class BabyBalancing : MonoBehaviour
 
         if (parent)
             parent.PlayWinNarrative();
+
+        if (soundManager)
+            soundManager.PlayWinSound();
 
         winEGO.SetActive(true);
         EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
@@ -240,6 +245,9 @@ public class BabyBalancing : MonoBehaviour
         if (parent)
             parent.PlayFailNarrativeElement();
 
+        if (soundManager)
+            soundManager.PlayFailSound();
+
         yield return new WaitForSeconds(1f);
 
         int rand = Random.Range(0, 2);
@@ -288,9 +296,12 @@ public class BabyBalancing : MonoBehaviour
         canTilt = false;
 
         if (parent)
-            parent.PlayLoseNarrative();
+            parent.PlayFailNarrativeElement();
 
-        if(babyFellEGO)
+        if (soundManager)
+            soundManager.PlayLoseSound();
+
+        if (babyFellEGO)
             babyFellEGO.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
