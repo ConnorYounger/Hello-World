@@ -26,6 +26,7 @@ public class QWOP : MonoBehaviour
 
     private int successCount = 0;
     public int instructionCount = 0;
+    public int textCount = 0;
 
     private bool isLeftMovement = true;
     private bool isRightMovement = false;
@@ -72,24 +73,6 @@ public class QWOP : MonoBehaviour
     {
         if (gameStarted == true)
         {
-            if (instructionCount == 3)
-            {
-                instructionText = true;
-            }
-
-            if (instructionText == true)
-            {
-                lBText.SetActive(false);
-                rTText.SetActive(false);
-                rBText.SetActive(false);
-                lTText.SetActive(false);
-
-                plBText.SetActive(false);
-                prTText.SetActive(false);
-                prBText.SetActive(false);
-                plTText.SetActive(false);
-            }
-
             if (isLeftMovement == true && check.gameWon == false)
             {
                 anim.SetBool("wrongPressed", false);
@@ -97,15 +80,9 @@ public class QWOP : MonoBehaviour
                 anim.SetInteger("rightMovement", 0);
                 isLeftMovement = false;
                 isFirstLeft = true;
-
-                if (instructionText == false)
-                {
-                    plBText.SetActive(false);
-                    prTText.SetActive(true);
-                    lBText.SetActive(false);
-                    rTText.SetActive(true);
-                    instructionCount++;
-                }
+                TextCheck();
+                textCount++;
+                instructionCount++;
             }
             else
             {
@@ -132,15 +109,9 @@ public class QWOP : MonoBehaviour
                     isFirstLeft = false;
                     isRightMovement = true;
                     soundEffectManager.PlaySucessSound();
-
-                    if (instructionText == false)
-                    {
-                        prTText.SetActive(false);
-                        prBText.SetActive(true);
-
-                        rTText.SetActive(false);
-                        rBText.SetActive(true);
-                    }
+                    InstructionText();
+                    TextCheck();
+                    textCount++;
                 }
                 else if (value > 0.95f)
                 {
@@ -169,15 +140,8 @@ public class QWOP : MonoBehaviour
                 anim.SetBool("wrongPressed", false);
                 isRightMovement = false;
                 isFirstRight = true;
-
-                if (instructionText == false)
-                {
-                    prBText.SetActive(false);
-                    plTText.SetActive(true);
-
-                    rBText.SetActive(false);
-                    lTText.SetActive(true);
-                }
+                TextCheck();
+                textCount++;
             }
             else
             {
@@ -187,7 +151,7 @@ public class QWOP : MonoBehaviour
                 rTText.SetActive(false);
                 rBText.SetActive(true);
             }
-        } 
+        }
     }
 
     void RightMovement1(float value)
@@ -206,15 +170,8 @@ public class QWOP : MonoBehaviour
                     successCount++;
                     parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
                     soundEffectManager.PlaySucessSound();
-
-                    if (instructionText == false)
-                    {
-                        plTText.SetActive(false);
-                        plBText.SetActive(true);
-
-                        lTText.SetActive(false);
-                        lBText.SetActive(true);
-                    }
+                    TextCheck();
+                    textCount = 0;
                 }
                 else if (value > 0.95f)
                 {
@@ -229,7 +186,7 @@ public class QWOP : MonoBehaviour
 
                 canInput = false;
             }
-        }  
+        }
     }
 
     public void WrongPressed()
@@ -241,6 +198,55 @@ public class QWOP : MonoBehaviour
         soundEffectManager.PlayFailSound();
         instructionText = false;
         instructionCount = 0;
+    }
+
+    public void TextCheck()
+    {
+        lBText.SetActive(false);
+        rTText.SetActive(false);
+        rBText.SetActive(false);
+        lTText.SetActive(false);
+
+        plBText.SetActive(false);
+        prTText.SetActive(false);
+        prBText.SetActive(false);
+        plTText.SetActive(false);
+
+        if (instructionText == false)
+        {
+            switch (textCount)
+            {
+                case 0:
+                    prTText.SetActive(true);
+                    rTText.SetActive(true);
+                    break;
+                case 1:
+                    prBText.SetActive(true);
+                    rBText.SetActive(true);
+                    break;
+                case 2:
+                    plTText.SetActive(true);
+                    lTText.SetActive(true);
+                    break;
+                case 3:
+                    plBText.SetActive(true);
+                    lBText.SetActive(true);
+                    break;
+            }
+        }
+    }
+
+    public void InstructionText()
+    {
+        if (instructionCount == 3)
+        {
+            instructionText = true;
+        }
+
+        if (instructionText == true)
+        {
+            TextCheck();
+        }
     }
 
     public void ReturnToMain(string scene)
