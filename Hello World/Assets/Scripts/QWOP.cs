@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class QWOP : MonoBehaviour
 {
+    #region Variables
     public GameObject lBText;
     public GameObject rTText;
     public GameObject rBText;
@@ -17,26 +18,25 @@ public class QWOP : MonoBehaviour
     public GameObject plTText;
 
     public ParentNarrative parent;
-    public CountDownBar countdown;
     public ExerciseSoundEffectsManager soundEffectManager;
     public WinWithToy check;
+    public CountDownBar timer;
 
     private MiniGameInputs controls;
     private Animator anim;
 
     private int successCount = 0;
     public int instructionCount = 0;
+    public int movementCount = 0;
 
-    private bool isLeftMovement = true;
-    private bool isRightMovement = false;
-    private bool isFirstRight = false;
-    private bool isFirstLeft = false;
     private bool canInput = true;
     public bool instructionText = false;
     public bool gameStarted = false;
+    #endregion
 
     private void Awake()
     {
+        //setting up animations and inputs
         anim = GetComponent<Animator>();
         controls = new MiniGameInputs();
         SetInputActions();
@@ -44,6 +44,7 @@ public class QWOP : MonoBehaviour
 
     void SetInputActions()
     {
+        //setting inputs to action functions
         controls.QWOP.LeftMovement1.performed += ctx => LeftMovement();
         controls.QWOP.RightMovement1.performed += ctx => RightMovement();
 
@@ -72,100 +73,55 @@ public class QWOP : MonoBehaviour
     {
         if (gameStarted == true)
         {
-            if (instructionCount == 3)
+            if(check.gameWon == false && timer.countdownBar > 0)
             {
-                instructionText = true;
-            }
-
-            if (instructionText == true)
-            {
-                lBText.SetActive(false);
-                rTText.SetActive(false);
-                rBText.SetActive(false);
-                lTText.SetActive(false);
-
-                plBText.SetActive(false);
-                prTText.SetActive(false);
-                prBText.SetActive(false);
-                plTText.SetActive(false);
-            }
-
-            if (isLeftMovement == true && check.gameWon == false)
-            {
-                anim.SetBool("wrongPressed", false);
-                anim.SetInteger("leftMovement", 1);
-                anim.SetInteger("rightMovement", 0);
-                isLeftMovement = false;
-                isFirstLeft = true;
-
-                if (instructionText == false)
+                if (movementCount == 0)
                 {
-                    plBText.SetActive(false);
-                    prTText.SetActive(true);
+                    //actioning movement animations with an integer
+                    anim.SetInteger("rightMovement", 0);
+                    anim.SetInteger("leftMovement", 1);
 
-                    lBText.SetActive(false);
-                    rTText.SetActive(true);
+                    //comments in functions
+                    InstructionText();
+                    TextCheck();
+
+                    //increasing integers for switch in above functions
                     instructionCount++;
+                    movementCount++;
                 }
-            }
-            else
-            {
-                anim.SetBool("wrongPressed", true);
-                anim.SetInteger("leftMovement", 0);
-                anim.SetInteger("rightMovement", 0);
-                parent.PlayFailNarrativeElement();
-                soundEffectManager.PlayFailSound();
-                instructionText = false;
-                instructionCount = 0;
-                lTText.SetActive(false);
-                lBText.SetActive(true);
-
-                plTText.SetActive(false);
-                plBText.SetActive(true);
+                else
+                {
+                    //comments in functions
+                    WrongPressed();
+                    FailTextCheck();
+                }
             }
         }
     }
 
     void LeftMovement1(float value)
     {
-        if (gameStarted == true)
+        if (gameStarted == true && canInput == true)
         {
-            if (canInput == true)
+            if(check.gameWon == false && timer.countdownBar > 0)
             {
-                if (isFirstLeft == true && check.gameWon == false)
+                if (movementCount == 1)
                 {
-                    anim.SetBool("wrongPressed", false);
+                    //actioning movement animations with an integer
                     anim.SetInteger("leftMovement", 2);
-                    anim.SetInteger("rightMovement", 0);
-                    isFirstLeft = false;
-                    isRightMovement = true;
+
+                    //comments in function, also increasing integer for below function
+                    TextCheck();
+                    movementCount++;
+
+                    //playing success sounds for correct movement
                     soundEffectManager.PlaySucessSound();
-
-                    if (instructionText == false)
-                    {
-                        prTText.SetActive(false);
-                        prBText.SetActive(true);
-
-                        rTText.SetActive(false);
-                        rBText.SetActive(true);
-                    }
                 }
                 else if (value > 0.95f)
                 {
-                    anim.SetBool("wrongPressed", true);
-                    anim.SetInteger("leftMovement", 0);
-                    anim.SetInteger("rightMovement", 0);
-                    isFirstLeft = false;
-                    isLeftMovement = true;
-                    parent.PlayFailNarrativeElement();
-                    soundEffectManager.PlayFailSound();
-                    instructionText = false;
-                    instructionCount = 0;
-                    plBText.SetActive(false);
-                    prTText.SetActive(true);
-
-                    lBText.SetActive(false);
-                    rTText.SetActive(true);
+                    //comments in functions
+                    WrongPressed();
+                    FailTextCheck();
                 }
 
                 canInput = false;
@@ -177,88 +133,164 @@ public class QWOP : MonoBehaviour
     {
         if (gameStarted == true)
         {
-            if (isRightMovement == true && check.gameWon == false)
+            if(check.gameWon == false && timer.countdownBar > 0)
             {
-                anim.SetInteger("rightMovement", 1);
-                anim.SetInteger("leftMovement", 0);
-                anim.SetBool("wrongPressed", false);
-                isRightMovement = false;
-                isFirstRight = true;
-
-                if (instructionText == false)
+                if (movementCount == 2)
                 {
-                    prBText.SetActive(false);
-                    plTText.SetActive(true);
+                    //actioning movement animations with an integer
+                    anim.SetInteger("leftMovement", 0);
+                    anim.SetInteger("rightMovement", 1);
 
-                    rBText.SetActive(false);
-                    lTText.SetActive(true);
+                    //comments in function, also increasing integer for below function
+                    TextCheck();
+                    movementCount++;
+                }
+                else
+                {
+                    //comments in functions
+                    WrongPressed();
+                    FailTextCheck();
                 }
             }
-            else
-            {
-                anim.SetBool("wrongPressed", true);
-                anim.SetInteger("rightMovement", 0);
-                anim.SetInteger("leftMovement", 0);
-                parent.PlayFailNarrativeElement();
-                soundEffectManager.PlayFailSound();
-                instructionText = false;
-                instructionCount = 0;
-                prTText.SetActive(false);
-                prBText.SetActive(true);
-
-                rTText.SetActive(false);
-                rBText.SetActive(true);
-            }
-        } 
+        }
     }
 
     void RightMovement1(float value)
     {
-        if (gameStarted == true)
+        if (gameStarted == true && canInput == true)
         {
-            if (canInput == true)
+            if(check.gameWon == false && timer.countdownBar > 0)
             {
-                if (isFirstRight == true && check.gameWon == false)
+                if (movementCount == 3)
                 {
+                    //actioning movement animations with an integer
                     anim.SetInteger("rightMovement", 2);
-                    anim.SetInteger("leftMovement", 0);
-                    anim.SetBool("wrongPressed", false);
-                    isFirstRight = false;
-                    isLeftMovement = true;
+
+                    //comments in function, also reseting integer for below function
+                    TextCheck();
+                    movementCount = 0;
+
+                    //playing success sounds for correct movement, and the parent narrative text
+                    soundEffectManager.PlaySucessSound();
                     successCount++;
                     parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
-                    soundEffectManager.PlaySucessSound();
-
-                    if (instructionText == false)
-                    {
-                        plTText.SetActive(false);
-                        plBText.SetActive(true);
-
-                        lTText.SetActive(false);
-                        lBText.SetActive(true);
-                    }
                 }
                 else if (value > 0.95f)
                 {
-                    anim.SetBool("wrongPressed", true);
-                    anim.SetInteger("rightMovement", 0);
-                    anim.SetInteger("leftMovement", 0);
-                    isFirstRight = false;
-                    isRightMovement = true;
-                    parent.PlayFailNarrativeElement();
-                    soundEffectManager.PlayFailSound();
-                    instructionText = false;
-                    instructionCount = 0;
-                    prBText.SetActive(false);
-                    plTText.SetActive(true);
-
-                    rBText.SetActive(false);
-                    lTText.SetActive(true);
+                    //comments in functions
+                    WrongPressed();
+                    FailTextCheck();
                 }
 
                 canInput = false;
             }
-        }  
+        }
+    }
+
+    public void WrongPressed()
+    {
+        //actioning fail animation with bool
+        anim.SetBool("wrongPressed", true);
+        anim.SetInteger("leftMovement", 0);
+        anim.SetInteger("rightMovement", 0);
+
+        //playing fail text and sounds
+        parent.PlayFailNarrativeElement();
+        soundEffectManager.PlayFailSound();
+
+        //reseting instruction text to show UI
+        instructionText = false;
+        instructionCount = 0;
+        StartCoroutine("WrongReset");
+    }
+
+    public IEnumerator WrongReset()
+    {
+        //using IEnumerator to wait before setting bool to false
+        yield return new WaitForSeconds(1);
+        anim.SetBool("wrongPressed", false);
+    }
+
+    public void DisableText()
+    {
+        lBText.SetActive(false);
+        rTText.SetActive(false);
+        rBText.SetActive(false);
+        lTText.SetActive(false);
+
+        plBText.SetActive(false);
+        prTText.SetActive(false);
+        prBText.SetActive(false);
+        plTText.SetActive(false);
+    }
+
+    public void TextCheck()
+    {
+        DisableText();
+
+        if (instructionText == false)
+        {
+            //using a switch to show correct UI buttons by tracking movementCount and activating buttons
+            switch (movementCount)
+            {
+                case 0:
+                    prTText.SetActive(true);
+                    rTText.SetActive(true);
+                    break;
+                case 1:
+                    prBText.SetActive(true);
+                    rBText.SetActive(true);
+                    break;
+                case 2:
+                    plTText.SetActive(true);
+                    lTText.SetActive(true);
+                    break;
+                case 3:
+                    plBText.SetActive(true);
+                    lBText.SetActive(true);
+                    break;
+            }
+        }
+    }
+
+    public void FailTextCheck()
+    {
+        DisableText();
+
+        //using a switch to show correct UI buttons by tracking movementCount and activating buttons
+        switch (movementCount)
+        {
+            case 0:
+                plBText.SetActive(true);
+                lBText.SetActive(true);
+                break;
+            case 1:
+                prTText.SetActive(true);
+                rTText.SetActive(true);
+                break;
+            case 2:
+                prBText.SetActive(true);
+                rBText.SetActive(true);
+                break;
+            case 3:
+                plTText.SetActive(true);
+                lTText.SetActive(true);
+                break;
+        }
+    }
+
+    public void InstructionText()
+    {
+        //checking instructionCount increased in LeftMovement to set bool after 3 correct movements
+        if (instructionCount == 3)
+        {
+            instructionText = true;
+        }
+        //checking bool to disable instruction text
+        if (instructionText == true)
+        {
+            DisableText();
+        }
     }
 
     public void ReturnToMain(string scene)

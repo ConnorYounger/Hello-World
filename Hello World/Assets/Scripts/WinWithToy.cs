@@ -7,22 +7,18 @@ public class WinWithToy : MonoBehaviour
     public GameObject toyBall;
     public GameObject winText;
     public GameObject baby;
-    public GameObject activate;
+    public GameObject winMenu;
 
-    public float pauseTimer = 0;
+    public float winDelay = 0;
 
-    public GameObject lBText;
-    public GameObject rTText;
-    public GameObject rBText;
-    public GameObject lTText;
-
-    public QWOP disableText;
+    public QWOP call;
     private Animator anim;
 
     public bool gameWon = false;
 
     void Start()
     {
+        //setting up animations
         anim = baby.GetComponent<Animator>();
     }
 
@@ -30,12 +26,12 @@ public class WinWithToy : MonoBehaviour
     {
         if(gameWon == true)
         {
-            pauseTimer += Time.deltaTime;
+            winDelay += Time.deltaTime;
         }
 
-        if (pauseTimer >= 5)
+        if (winDelay >= 5)
         {
-            activate.SetActive(true);
+            winMenu.SetActive(true);
         }
     }
 
@@ -43,15 +39,16 @@ public class WinWithToy : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
-            winText.SetActive(true);
-            anim.SetBool("gotBall", true);
             gameWon = true;
-            lBText.SetActive(false);
-            lTText.SetActive(false);
-            rBText.SetActive(false);
-            rTText.SetActive(false);
-            disableText.parent.PlayWinNarrative();
-            disableText.soundEffectManager.PlayWinSound();
+            winText.SetActive(true);
+
+            //setting bool to play animation
+            anim.SetBool("gotBall", true);
+
+            //calling functions and variables from QWOP script to disable text, show UI text, and play sounds 
+            call.DisableText();
+            call.parent.PlayWinNarrative();
+            call.soundEffectManager.PlayWinSound();
         }
     }
 }
