@@ -1265,7 +1265,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e564a46d-7000-479f-b346-38d4b9d5874a"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1275,7 +1275,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fc7ad2cf-a511-42df-8762-7ab11f3bc4bc"",
+                    ""id"": ""b6a2f10d-372e-4a0b-a73a-ab938c4a4806"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",

@@ -57,7 +57,9 @@ public class RollOver : MonoBehaviour
     {
         controls.RollOver.SwingLeft.performed += ctx => SwingLeft();
         controls.RollOver.SwingRight.performed += ctx => SwingRight();
-        controls.RollOver.LegMovement.performed += ctx => LegUp();
+        controls.RollOver.LegMovement.canceled += ctx => LegDown();
+
+        controls.RollOver.LegMovement.performed += ctx => LegUp(ctx.ReadValue<float>());
         controls.RollOver.LegMovement.canceled += ctx => LegDown();
     }
 
@@ -107,6 +109,21 @@ public class RollOver : MonoBehaviour
         gameStarted = true;
     }
 
+    void LegUp(float value)
+    {
+        if (gameStarted == true)
+        {
+            anim.SetBool("legUp", true);
+            isLegUp = true;
+            liftButton.SetActive(false);
+            swingButton.SetActive(true);
+
+            pliftButton.SetActive(false);
+            pswingButton.SetActive(true);
+            StartCoroutine(SwingAnimation());
+        }
+    }
+
     void LegDown()
     {
         if(gameStarted == true)
@@ -126,21 +143,6 @@ public class RollOver : MonoBehaviour
                 swingButton.SetActive(false);
                 pswingButton.SetActive(false);
             }
-        }
-    }
-
-    void LegUp()
-    {
-        if(gameStarted == true)
-        {
-            anim.SetBool("legUp", true);
-            isLegUp = true;
-            liftButton.SetActive(false);
-            swingButton.SetActive(true);
-
-            pliftButton.SetActive(false);
-            pswingButton.SetActive(true);
-            StartCoroutine(SwingAnimation());
         }
     }
 
