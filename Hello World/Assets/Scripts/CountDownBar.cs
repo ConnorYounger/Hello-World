@@ -3,31 +3,24 @@ using UnityEngine.UI;
 
 public class CountDownBar : MonoBehaviour
 {
-    public static bool allowInputs;
-    private bool countDown = true;
     public bool gameStarted = false;
-    public float countDownTime = 60;
-    public float pauseTimer = 0;
+    public bool soundCheck = true;
+    public float loseDelay = 0;
 
-    public GameObject loseText;
     public GameObject baby;
-    public GameObject pauseMenu;
-    public GameObject activate;
-    
-    public WinWithToy winWithToy;
-    public QWOP disableText;
-    
+    public GameObject loseMenu;
+
+    public WinWithToy check;
+    public QWOP call;
+    public ParentNarrative parent;
+    public ExerciseSoundEffectsManager soundEffectManager;
+
     public Slider countdownBar;
     private Animator anim;
 
     private void Awake()
     {
         anim = baby.GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
-        //Set the max value to the refill time
         countdownBar.value = countdownBar.maxValue;
     }
 
@@ -40,42 +33,42 @@ public class CountDownBar : MonoBehaviour
     {
         if (gameStarted == true)
         {
-            if (winWithToy.gameWon == false)
+            countdownBar.value -= Time.deltaTime;
+
+            if (countdownBar.value <= 0 && check.gameWon == false)
             {
-                if (countDown) //Scale the countdown time to go faster than the refill time
-                    countdownBar.value -= Time.deltaTime;
-
-                //If we are at 0, start to refill
-                if (countdownBar.value <= 0)
+                if (soundCheck == true)
                 {
-                    if (countDown == true)
-                    {
-                        disableText.soundEffectManager.PlayLoseSound();
-                        disableText.soundEffectManager.PlayBabyCrySound();
-                    }
-
-                    countDown = false;
-                    allowInputs = false;
-                    anim.SetBool("timeOut", true);
-                    loseText.SetActive(true);
-                    Destroy(disableText.lBText);
-                    Destroy(disableText.rTText);
-                    Destroy(disableText.rBText);
-                    Destroy(disableText.lTText);
-                    disableText.parent.PlayLoseNarrative();
-                    pauseTimer += Time.deltaTime;
-
-                    if (pauseTimer >= 5)
-                    {
-                        activate.SetActive(true);
-                    }
+                    //calling from QWOP to play sounds
+                    soundEffectManager.PlayLoseSound();
+                    StartCoroutine("DelaySound");
                 }
-                else
+
+                //making sure audio only plays once
+                soundCheck = false;
+             
+                //enabling UI lose text
+                parent.PlayLoseNarrative();
+
+                //setting bool to activate lose animation
+                anim.SetBool("timeOut", true);
+
+                //calling function from QWOP to disable text
+                call.DisableText();
+
+                loseDelay += Time.deltaTime;
+
+                if (loseDelay >= 5)
                 {
-                    countDown = true;
-                    allowInputs = true;
+                    loseMenu.SetActive(true);
                 }
             }
         }
+    }
+
+    public IEnumerator DelaySound()
+    {
+        yield return new WaitForSeconds(3);
+        soundEffectManager.PlayBabyCrySound();
     }
 }
