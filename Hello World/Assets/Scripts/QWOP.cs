@@ -71,7 +71,7 @@ public class QWOP : MonoBehaviour
     {
         if (gameStarted == true)
         {
-            if(check.gameWon == false && timer.countdownBar.value > 0)
+            if(check.gameWon == false && timer.countdownBar > 0)
             {
                 if (movementCount == 0)
                 {
@@ -101,7 +101,7 @@ public class QWOP : MonoBehaviour
     {
         if (gameStarted == true && canInput == true)
         {
-            if(check.gameWon == false && timer.countdownBar.value > 0)
+            if(check.gameWon == false && timer.countdownBar > 0)
             {
                 if (movementCount == 1)
                 {
@@ -131,7 +131,7 @@ public class QWOP : MonoBehaviour
     {
         if (gameStarted == true)
         {
-            if(check.gameWon == false && timer.countdownBar.value > 0)
+            if(check.gameWon == false && timer.countdownBar > 0)
             {
                 if (movementCount == 2)
                 {
@@ -157,7 +157,7 @@ public class QWOP : MonoBehaviour
     {
         if (gameStarted == true && canInput == true)
         {
-            if(check.gameWon == false && timer.countdownBar.value > 0)
+            if(check.gameWon == false && timer.countdownBar > 0)
             {
                 if (movementCount == 3)
                 {

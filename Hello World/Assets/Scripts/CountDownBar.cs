@@ -16,30 +16,23 @@ public class CountDownBar : MonoBehaviour
     public ParentNarrative parent;
     public ExerciseSoundEffectsManager soundEffectManager;
 
-    public Slider countdownBar;
+    public float countdownBar = 0;
     private Animator anim;
 
     private void Awake()
     {
         //setting up animations to play
         anim = baby.GetComponent<Animator>();
-        //setting countDownBar to the max value
-        countdownBar.value = countdownBar.maxValue;
-    }
-
-    public void StartExercise()
-    {
-        gameStarted = true;
     }
 
     private void Update()
     {
-        if (gameStarted == true)
+        if (call.gameStarted == true)
         {
             //starting timer 
-            countdownBar.value -= Time.deltaTime;
+            countdownBar -= Time.deltaTime;
 
-            if (countdownBar.value <= 0 && check.gameWon == false)
+            if (countdownBar <= 0 && check.gameWon == false)
             {
                 if (soundCheck == true)
                 {
