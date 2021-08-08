@@ -102,7 +102,6 @@ public class QWOP : MonoBehaviour
                 {
                     plBText.SetActive(false);
                     prTText.SetActive(true);
-
                     lBText.SetActive(false);
                     rTText.SetActive(true);
                     instructionCount++;
@@ -110,16 +109,9 @@ public class QWOP : MonoBehaviour
             }
             else
             {
-                anim.SetBool("wrongPressed", true);
-                anim.SetInteger("leftMovement", 0);
-                anim.SetInteger("rightMovement", 0);
-                parent.PlayFailNarrativeElement();
-                soundEffectManager.PlayFailSound();
-                instructionText = false;
-                instructionCount = 0;
+                WrongPressed();
                 lTText.SetActive(false);
                 lBText.SetActive(true);
-
                 plTText.SetActive(false);
                 plBText.SetActive(true);
             }
@@ -152,18 +144,11 @@ public class QWOP : MonoBehaviour
                 }
                 else if (value > 0.95f)
                 {
-                    anim.SetBool("wrongPressed", true);
-                    anim.SetInteger("leftMovement", 0);
-                    anim.SetInteger("rightMovement", 0);
+                    WrongPressed();
                     isFirstLeft = false;
                     isLeftMovement = true;
-                    parent.PlayFailNarrativeElement();
-                    soundEffectManager.PlayFailSound();
-                    instructionText = false;
-                    instructionCount = 0;
                     plBText.SetActive(false);
                     prTText.SetActive(true);
-
                     lBText.SetActive(false);
                     rTText.SetActive(true);
                 }
@@ -196,16 +181,9 @@ public class QWOP : MonoBehaviour
             }
             else
             {
-                anim.SetBool("wrongPressed", true);
-                anim.SetInteger("rightMovement", 0);
-                anim.SetInteger("leftMovement", 0);
-                parent.PlayFailNarrativeElement();
-                soundEffectManager.PlayFailSound();
-                instructionText = false;
-                instructionCount = 0;
+                WrongPressed();
                 prTText.SetActive(false);
                 prBText.SetActive(true);
-
                 rTText.SetActive(false);
                 rBText.SetActive(true);
             }
@@ -240,18 +218,11 @@ public class QWOP : MonoBehaviour
                 }
                 else if (value > 0.95f)
                 {
-                    anim.SetBool("wrongPressed", true);
-                    anim.SetInteger("rightMovement", 0);
-                    anim.SetInteger("leftMovement", 0);
+                    WrongPressed();
                     isFirstRight = false;
                     isRightMovement = true;
-                    parent.PlayFailNarrativeElement();
-                    soundEffectManager.PlayFailSound();
-                    instructionText = false;
-                    instructionCount = 0;
                     prBText.SetActive(false);
                     plTText.SetActive(true);
-
                     rBText.SetActive(false);
                     lTText.SetActive(true);
                 }
@@ -259,6 +230,17 @@ public class QWOP : MonoBehaviour
                 canInput = false;
             }
         }  
+    }
+
+    public void WrongPressed()
+    {
+        anim.SetBool("wrongPressed", true);
+        anim.SetInteger("leftMovement", 0);
+        anim.SetInteger("rightMovement", 0);
+        parent.PlayFailNarrativeElement();
+        soundEffectManager.PlayFailSound();
+        instructionText = false;
+        instructionCount = 0;
     }
 
     public void ReturnToMain(string scene)
