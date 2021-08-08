@@ -97,35 +97,32 @@ public class QWOP : MonoBehaviour
 
     void LeftMovement1(float value)
     {
-        if (gameStarted == true)
+        if (gameStarted == true && canInput == true)
         {
-            if (canInput == true)
+            if (isFirstLeft == true && check.gameWon == false)
             {
-                if (isFirstLeft == true && check.gameWon == false)
-                {
-                    anim.SetBool("wrongPressed", false);
-                    anim.SetInteger("leftMovement", 2);
-                    anim.SetInteger("rightMovement", 0);
-                    isFirstLeft = false;
-                    isRightMovement = true;
-                    soundEffectManager.PlaySucessSound();
-                    InstructionText();
-                    TextCheck();
-                    textCount++;
-                }
-                else if (value > 0.95f)
-                {
-                    WrongPressed();
-                    isFirstLeft = false;
-                    isLeftMovement = true;
-                    plBText.SetActive(false);
-                    prTText.SetActive(true);
-                    lBText.SetActive(false);
-                    rTText.SetActive(true);
-                }
-
-                canInput = false;
+                anim.SetBool("wrongPressed", false);
+                anim.SetInteger("leftMovement", 2);
+                anim.SetInteger("rightMovement", 0);
+                isFirstLeft = false;
+                isRightMovement = true;
+                soundEffectManager.PlaySucessSound();
+                InstructionText();
+                TextCheck();
+                textCount++;
             }
+            else if (value > 0.95f)
+            {
+                WrongPressed();
+                isFirstLeft = false;
+                isLeftMovement = true;
+                plBText.SetActive(false);
+                prTText.SetActive(true);
+                lBText.SetActive(false);
+                rTText.SetActive(true);
+            }
+
+            canInput = false;
         }
     }
 
@@ -156,36 +153,33 @@ public class QWOP : MonoBehaviour
 
     void RightMovement1(float value)
     {
-        if (gameStarted == true)
+        if (gameStarted == true && canInput == true)
         {
-            if (canInput == true)
+            if (isFirstRight == true && check.gameWon == false)
             {
-                if (isFirstRight == true && check.gameWon == false)
-                {
-                    anim.SetInteger("rightMovement", 2);
-                    anim.SetInteger("leftMovement", 0);
-                    anim.SetBool("wrongPressed", false);
-                    isFirstRight = false;
-                    isLeftMovement = true;
-                    successCount++;
-                    parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
-                    soundEffectManager.PlaySucessSound();
-                    TextCheck();
-                    textCount = 0;
-                }
-                else if (value > 0.95f)
-                {
-                    WrongPressed();
-                    isFirstRight = false;
-                    isRightMovement = true;
-                    prBText.SetActive(false);
-                    plTText.SetActive(true);
-                    rBText.SetActive(false);
-                    lTText.SetActive(true);
-                }
-
-                canInput = false;
+                anim.SetInteger("rightMovement", 2);
+                anim.SetInteger("leftMovement", 0);
+                anim.SetBool("wrongPressed", false);
+                isFirstRight = false;
+                isLeftMovement = true;
+                successCount++;
+                parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
+                soundEffectManager.PlaySucessSound();
+                TextCheck();
+                textCount = 0;
             }
+            else if (value > 0.95f)
+            {
+                WrongPressed();
+                isFirstRight = false;
+                isRightMovement = true;
+                prBText.SetActive(false);
+                plTText.SetActive(true);
+                rBText.SetActive(false);
+                lTText.SetActive(true);
+            }
+
+            canInput = false;
         }
     }
 
@@ -198,6 +192,13 @@ public class QWOP : MonoBehaviour
         soundEffectManager.PlayFailSound();
         instructionText = false;
         instructionCount = 0;
+        StartCoroutine("WrongReset");
+    }
+
+    public IEnumerator WrongReset()
+    {
+        yield return new WaitForSeconds(1);
+        anim.SetBool("wrongPressed", false);
     }
 
     public void TextCheck()
