@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class QWOP : MonoBehaviour
 {
+    #region Variables
     public GameObject lBText;
     public GameObject rTText;
     public GameObject rBText;
@@ -31,6 +32,7 @@ public class QWOP : MonoBehaviour
     private bool canInput = true;
     public bool instructionText = false;
     public bool gameStarted = false;
+    #endregion
 
     private void Awake()
     {
