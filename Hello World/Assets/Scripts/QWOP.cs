@@ -100,26 +100,29 @@ public class QWOP : MonoBehaviour
     {
         if (gameStarted == true && canInput == true)
         {
-            if (movementCount == 1 && check.gameWon == false)
+            if(check.gameWon == false)
             {
-                //actioning movement animations with an integer
-                anim.SetInteger("leftMovement", 2);
+                if (movementCount == 1)
+                {
+                    //actioning movement animations with an integer
+                    anim.SetInteger("leftMovement", 2);
 
-                //comments in function, also increasing integer for below function
-                TextCheck();
-                movementCount++;
+                    //comments in function, also increasing integer for below function
+                    TextCheck();
+                    movementCount++;
 
-                //playing success sounds for correct movement
-                soundEffectManager.PlaySucessSound();
+                    //playing success sounds for correct movement
+                    soundEffectManager.PlaySucessSound();
+                }
+                else if (value > 0.95f)
+                {
+                    //comments in functions
+                    WrongPressed();
+                    FailTextCheck();
+                }
+
+                canInput = false;
             }
-            else if (value > 0.95f)
-            {
-                //comments in functions
-                WrongPressed();
-                FailTextCheck();
-            }
-
-            canInput = false;
         }
     }
 
@@ -127,21 +130,24 @@ public class QWOP : MonoBehaviour
     {
         if (gameStarted == true)
         {
-            if (movementCount == 2 && check.gameWon == false)
+            if(check.gameWon == false)
             {
-                //actioning movement animations with an integer
-                anim.SetInteger("leftMovement", 0);
-                anim.SetInteger("rightMovement", 1);
+                if (movementCount == 2)
+                {
+                    //actioning movement animations with an integer
+                    anim.SetInteger("leftMovement", 0);
+                    anim.SetInteger("rightMovement", 1);
 
-                //comments in function, also increasing integer for below function
-                TextCheck();
-                movementCount++;
-            }
-            else
-            {
-                //comments in functions
-                WrongPressed();
-                FailTextCheck();
+                    //comments in function, also increasing integer for below function
+                    TextCheck();
+                    movementCount++;
+                }
+                else
+                {
+                    //comments in functions
+                    WrongPressed();
+                    FailTextCheck();
+                }
             }
         }
     }
@@ -150,28 +156,31 @@ public class QWOP : MonoBehaviour
     {
         if (gameStarted == true && canInput == true)
         {
-            if (movementCount == 3 && check.gameWon == false)
+            if(check.gameWon == false)
             {
-                //actioning movement animations with an integer
-                anim.SetInteger("rightMovement", 2);
+                if (movementCount == 3)
+                {
+                    //actioning movement animations with an integer
+                    anim.SetInteger("rightMovement", 2);
 
-                //comments in function, also reseting integer for below function
-                TextCheck();
-                movementCount = 0;
+                    //comments in function, also reseting integer for below function
+                    TextCheck();
+                    movementCount = 0;
 
-                //playing success sounds for correct movement, and the parent narrative text
-                soundEffectManager.PlaySucessSound();
-                successCount++;
-                parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
+                    //playing success sounds for correct movement, and the parent narrative text
+                    soundEffectManager.PlaySucessSound();
+                    successCount++;
+                    parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
+                }
+                else if (value > 0.95f)
+                {
+                    //comments in functions
+                    WrongPressed();
+                    FailTextCheck();
+                }
+
+                canInput = false;
             }
-            else if (value > 0.95f)
-            {
-                //comments in functions
-                WrongPressed();
-                FailTextCheck();
-            }
-
-            canInput = false;
         }
     }
 
