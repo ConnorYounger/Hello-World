@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,9 @@ public class CountDownBar : MonoBehaviour
 
     private void Awake()
     {
+        //setting up animations to play
         anim = baby.GetComponent<Animator>();
+        //setting countDownBar to the max value
         countdownBar.value = countdownBar.maxValue;
     }
 
@@ -33,6 +36,7 @@ public class CountDownBar : MonoBehaviour
     {
         if (gameStarted == true)
         {
+            //starting timer 
             countdownBar.value -= Time.deltaTime;
 
             if (countdownBar.value <= 0 && check.gameWon == false)
