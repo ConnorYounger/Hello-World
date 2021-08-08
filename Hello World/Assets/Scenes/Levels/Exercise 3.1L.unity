@@ -1562,9 +1562,19 @@ PrefabInstance:
     - target: {fileID: 1259929889819246092, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3541302030366791547, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4036774287610560092, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524750084607461831, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1684,6 +1694,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4524750085383238117, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4524750086332091120, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
         type: 3}
       propertyPath: m_IsActive
@@ -1799,6 +1814,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 486177763}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &486177776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4524750084415714777, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 486177763}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486177765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6e43d2b25c90f48b9c4f3165317df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &494803914
 GameObject:
   m_ObjectHideFlags: 0
@@ -3926,7 +3953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 2073359996}
-  animation: {fileID: 1594752299}
+  call: {fileID: 486177776}
   soundEffectsManager: {fileID: 1756817089}
   liftButton: {fileID: 486177766}
   swingButton: {fileID: 486177765}
@@ -6533,18 +6560,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &1594752299 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4524750084415714777, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1073435459}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c6e43d2b25c90f48b9c4f3165317df5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1626538034
 GameObject:
   m_ObjectHideFlags: 0

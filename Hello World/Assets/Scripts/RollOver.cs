@@ -8,7 +8,7 @@ public class RollOver : MonoBehaviour
     private Animator anim;
     private MiniGameInputs controls;
     public ParentNarrative parent;
-    public AnalogStickTweener animation;
+    public AnalogStickTweener call;
     public ExerciseSoundEffectsManager soundEffectsManager;
 
     public GameObject liftButton;
@@ -57,7 +57,6 @@ public class RollOver : MonoBehaviour
     {
         controls.RollOver.SwingLeft.performed += ctx => SwingLeft();
         controls.RollOver.SwingRight.performed += ctx => SwingRight();
-        controls.RollOver.LegMovement.canceled += ctx => LegDown();
 
         controls.RollOver.LegMovement.performed += ctx => LegUp(ctx.ReadValue<float>());
         controls.RollOver.LegMovement.canceled += ctx => LegDown();
@@ -120,7 +119,7 @@ public class RollOver : MonoBehaviour
 
             pliftButton.SetActive(false);
             pswingButton.SetActive(true);
-            StartCoroutine(SwingAnimation());
+            StartCoroutine("SwingAnimation");
         }
     }
 
@@ -150,7 +149,7 @@ public class RollOver : MonoBehaviour
     {
         while (isLegUp == true)
         {
-            animation.StartCoroutine("TiltHorizontal");
+            call.StartCoroutine("TiltHorizontal");
             yield return new WaitForSeconds(4);
         }
     }
