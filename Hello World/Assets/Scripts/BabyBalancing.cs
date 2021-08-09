@@ -19,6 +19,10 @@ public class BabyBalancing : MonoBehaviour
     public float winAngle = 20;
     public float winAngleHoldTime = 5;
     private float currentHoldTime;
+    private bool madeSucessSound;
+    private bool canMakeSucessSound = true;
+    private bool madeFailSound;
+    private bool canMakeFailSound = true;
 
     [Header("UI")]
     public GameObject babyFellEGO;
@@ -122,6 +126,14 @@ public class BabyBalancing : MonoBehaviour
                 if(currentHoldTime < winAngleHoldTime)
                 {
                     currentHoldTime += Time.deltaTime;
+
+                    if (canMakeSucessSound)
+                    {
+                        madeSucessSound = true;
+                        canMakeSucessSound = false;
+
+                        parent.NarrativeElement(parent.encouragingDialougeTexts[0]);
+                    }
                 }
                 else
                 {
@@ -131,8 +143,50 @@ public class BabyBalancing : MonoBehaviour
             else
             {
                 currentHoldTime = 0;
+
+                if (madeSucessSound)
+                {
+                    madeSucessSound = false;
+
+                    StartCoroutine("ResetSucessSound");
+                }
+            }
+
+            // fail text
+            if (withinFailAngle())
+            {
+                if (canMakeFailSound)
+                {
+                    madeFailSound = true;
+                    canMakeFailSound = false;
+
+                    parent.PlayFailNarrativeElement();
+                }
+            }
+            else
+            {
+                if (madeFailSound)
+                {
+                    madeFailSound = false;
+
+                    StartCoroutine("ResetFailSound");
+                }
             }
         }
+    }
+
+    IEnumerator ResetSucessSound()
+    {
+        yield return new WaitForSeconds(2);
+
+        canMakeSucessSound = true;
+    }
+
+    IEnumerator ResetFailSound()
+    {
+        yield return new WaitForSeconds(2);
+
+        canMakeFailSound = true;
     }
 
     void AngelWin()
@@ -156,6 +210,14 @@ public class BabyBalancing : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    bool withinFailAngle()
+    {
+        if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y < CalculateRotationValue(maxBalanceValue - (2 *winAngle)) || spine.transform.localRotation.y < 0 && spine.transform.localRotation.y > -CalculateRotationValue(maxBalanceValue - (2 * winAngle)))
+            return false;
+        else
+            return true;
     }
 
     void PlayerMovement()
