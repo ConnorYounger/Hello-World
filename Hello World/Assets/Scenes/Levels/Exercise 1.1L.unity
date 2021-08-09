@@ -2818,6 +2818,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1546321183439915043}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &549253086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7529612604373930214, guid: 73eddc82e1a887e43b0631395ce77e5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1403315271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967d0e3b7a3f4c24db9a5e194c9b63b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &553000618
 GameObject:
   m_ObjectHideFlags: 0
@@ -7358,7 +7370,7 @@ MonoBehaviour:
   controllerSprites: 1
   memoryMetreSlider: {fileID: 1947284081}
   playerCanInput: 1
-  parent: {fileID: 1272474484}
+  parent: {fileID: 549253086}
   discoveryMode: 0
   discoveryPlayer: {fileID: 0}
   audioSource: {fileID: 1347250225}
