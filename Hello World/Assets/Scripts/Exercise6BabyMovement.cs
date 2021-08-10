@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class Exercise6BabyMovement : MonoBehaviour
 {
     public bool simpleMovement = false;
+    public bool babySteering;
     public float movementSpeed = 1;
     public float stepTime = 0.16f;
     private float currentStepTime;
@@ -15,8 +16,14 @@ public class Exercise6BabyMovement : MonoBehaviour
 
     public BabyBalancing babyBalancing;
     public ParentNarrative parent;
-    public Transform winZone;
+    public Transform winZone1;
+    public Transform winZone2;
+    public bool turnPlayerAround = true;
+    private bool turningAround;
+    private bool hasReachedWinZone1;
     public float winDistamce = 2;
+
+    private Vector3 targetRotation;
 
     private MiniGameInputs controls;
     private Vector2 move;
@@ -76,13 +83,78 @@ public class Exercise6BabyMovement : MonoBehaviour
 
         MoveForward();
         CheckForWinZone();
+        BabyTurnAround();
     }
 
     void CheckForWinZone()
     {
-        if(Vector3.Distance(transform.position, winZone.position) < winDistamce && !gameEnd)
+        if(Vector3.Distance(transform.position, winZone1.position) < winDistamce && !gameEnd && !hasReachedWinZone1)
+        {
+            hasReachedWinZone1 = true;
+
+            if (turnPlayerAround)
+            {
+                StartCoroutine("TurnPlayerAround");
+            }
+        }
+
+        if(Vector3.Distance(transform.position, winZone2.position) < winDistamce && !gameEnd && hasReachedWinZone1)
         {
             Win();
+        }
+    }
+
+    IEnumerator TurnPlayerAround()
+    {
+        StopCoroutine("ReseMovementCoolDown");
+        canMove = false;
+        animator.SetInteger("babyFoot", 0);
+        turningAround = true;
+        targetRotation = new Vector3(0, transform.rotation.y + 180, 0);
+
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetInteger("babyFoot", 1);
+
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetInteger("babyFoot", 0);
+
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetInteger("babyFoot", 1);
+
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetInteger("babyFoot", 0);
+
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetInteger("babyFoot", 1);
+
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetInteger("babyFoot", 0);
+
+        yield return new WaitForSeconds(.75f);
+
+        animator.SetInteger("babyFoot", 1);
+
+        yield return new WaitForSeconds(1f);
+
+        animator.SetInteger("babyFoot", 0);
+        
+        yield return new WaitForSeconds(1.25f);
+
+        turningAround = false;
+        canMove = true;
+    }
+
+    void BabyTurnAround()
+    {
+        if (turningAround)
+        {
+            transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, targetRotation, Time.deltaTime);
         }
     }
 
@@ -181,7 +253,7 @@ public class Exercise6BabyMovement : MonoBehaviour
     void ComplexPlayerMovement()
     {
         // Rotation
-        if (currentStepTime > 0)
+        if (currentStepTime > 0 && babySteering)
         {
             Vector3 rotation = new Vector3(transform.rotation.x, move.x, transform.rotation.z);
             transform.Rotate(rotation * Time.deltaTime * 100);
