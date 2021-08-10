@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,8 +10,7 @@ public class DiscoveryModeController : MonoBehaviour
 {
     #region Variables
     public GameObject player;
-    public float exerciseIndex;
-    
+    public GameObject btnPanel;
     public Button btnBack;
     public Button btnNext;
 
@@ -27,6 +28,7 @@ public class DiscoveryModeController : MonoBehaviour
     public TMP_Text text9m;
     public TMP_Text text12m;
 
+    private float exerciseIndex;
     private string sceneToLoad;
     #endregion
 
@@ -40,10 +42,25 @@ public class DiscoveryModeController : MonoBehaviour
 
         btnBack.onClick.AddListener(delegate { LoadScene("Main"); });
         btnNext.onClick.AddListener(delegate { LoadScene(sceneToLoad); });
+
+        StartCoroutine(DelayButtons());
+    }
+
+    private IEnumerator DelayButtons()
+    {
+        yield return new WaitForSeconds(10);
+
+        btnPanel.SetActive(true);
+        
+        yield return new WaitForSeconds(.5f);
+
+        EventSystem.current.SetSelectedGameObject(btnNext.gameObject);
     }
 
     private void UnloadObjects()
     {
+        btnPanel.SetActive(false);
+
         month3.SetActive(false);
         month5.SetActive(false);
         month7.SetActive(false);
