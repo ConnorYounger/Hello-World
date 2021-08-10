@@ -3186,6 +3186,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 441794839}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &463744024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8383425973604903997, guid: 93bdbe6e9adcd3e4b8b55fea204189b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1732453962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6e43d2b25c90f48b9c4f3165317df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &464191668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7827,8 +7839,8 @@ MonoBehaviour:
   bottom: {fileID: 1139130953}
   bottomRotateDifference: 3
   animator: {fileID: 0}
-  analogStickX: {fileID: 0}
-  analogStickP: {fileID: 0}
+  analogStickX: {fileID: 463744024}
+  analogStickP: {fileID: 463744024}
   parent: {fileID: 23931204}
   exercise6Baby: {fileID: 0}
   resetWaitTime: 3
