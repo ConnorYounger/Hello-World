@@ -13,7 +13,6 @@ public class GameModeManager : MonoBehaviour
     [Header("Discovery Mode")]
     public DiscoveryPlayer discoveryPlayer;
     public float exerciseIndex = 1.1f;
-    public string cardIndex = "1Out";
 
     private bool discoveryModeDebug = false;
 
@@ -73,6 +72,7 @@ public class GameModeManager : MonoBehaviour
     public void DiscoverySceneSwitch()
     {
         discoveryPlayer.exerciseIndex = exerciseIndex;
+
 
 
         discoveryPlayer.SavePlayer();
