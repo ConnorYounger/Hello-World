@@ -1,12 +1,8 @@
-using TMPro;
 using UnityEngine;
 
 public class DiscoveryPlayer : MonoBehaviour
 {
-    //public string babyName;
-    //public string babyModel;
     public float exerciseIndex;
-    public string cardIndex;
 
     public void SavePlayer()
     {
@@ -17,9 +13,6 @@ public class DiscoveryPlayer : MonoBehaviour
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
-        //babyName = data.babyName;
-        //babyModel = data.babyModel;
         exerciseIndex = data.exerciseIndex;
-        cardIndex = data.cardIndex;
     }
 }

@@ -8,101 +8,66 @@ public class DiscoveryModeController : MonoBehaviour
     #region Variables
     public GameObject player;
     public float exerciseIndex;
-    public string cardIndex;
     
     public Button btnBack;
     public Button btnNext;
 
-    [Header("Stage Cards")]
-    public Image stage1In;
-    public Image stage1Out;
-    public Image stage2In;
-    public Image stage2Out;
-    public Image stage3In;
-    public Image stage3Out;
-    public Image stage4In;
-    public Image stage4Out;
-    public Image stage5In;
-    public Image stage5Out;
-    public Image stage6In;
-    public Image stage6Out;
+    [Header("Milestone Pictures")]
+    public GameObject month3;
+    public GameObject month5;
+    public GameObject month7;
+    public GameObject month9;
+    public GameObject month12;
+
+    private string sceneToLoad;
     #endregion
 
     private void Start()
     {
         player.GetComponent<DiscoveryPlayer>().LoadPlayer();
 
+        DeactivatePics();
         LoadIndexData();
-        ShowMilestoneCard();
+        UpdateDiscovery();
 
         btnBack.onClick.AddListener(delegate { LoadScene("Main"); });
-        btnNext.onClick.AddListener(ContinueDiscovery);
+        btnNext.onClick.AddListener(delegate { LoadScene(sceneToLoad); });
     }
 
-    private void ContinueDiscovery()
+    private void DeactivatePics()
     {
-        switch (cardIndex)
-        {
-            case "1In":
-                LoadScene("Exercise 1.1 Discovery");
-                break;
-            case "1Out":
-                cardIndex = "2In";
-                ShowMilestoneCard();
-                break;
-            case "2In":
-                LoadScene("Exercise 2.1 Discovery");
-                break;
-            case "2Out":
-                cardIndex = "3In";
-                ShowMilestoneCard();
-                break;
-            //Add more exercises
-            default:
-                LoadScene("Main");
-                break;
-        }
+        month3.SetActive(false);
+        month5.SetActive(false);
+        month7.SetActive(false);
+        month9.SetActive(false);
+        month12.SetActive(false);
     }
 
-    private void ShowMilestoneCard()
+    private void UpdateDiscovery()
     {
-        switch (cardIndex)
+        switch (exerciseIndex)
         {
-            case "1In":
-                stage1In.enabled = true;
+            case 1:
+                month3.SetActive(true);
+                sceneToLoad = "Workout";
                 break;
-            case "1Out":
-                stage1Out.enabled = true;
+            case 2:
+                month5.SetActive(true);
+                sceneToLoad = "The little one said";
                 break;
-            case "2In":
-                stage2In.enabled = true;
+            case 3:
+                month7.SetActive(true);
+                sceneToLoad = "Jelly on a plate";
                 break;
-            case "2Out":
-                stage2Out.enabled = true;
+            case 4:
+                month9.SetActive(true);
+                sceneToLoad = "Off you go";
                 break;
-            case "3In":
-                stage3In.enabled = true;
-                break;
-            case "3Out":
-                stage3Out.enabled = true;
-                break;
-            case "4In":
-                stage4In.enabled = true;
-                break;
-            case "4Out":
-                stage4Out.enabled = true;
-                break;
-            case "5In":
-                stage5In.enabled = true;
-                break;
-            case "5Out":
-                stage5Out.enabled = true;
-                break;
-            case "6In":
-                stage6In.enabled = true;
+            case 5:
+                month12.SetActive(true);
+                sceneToLoad = "One small step";
                 break;
             default:
-                stage1In.enabled = true;
                 break;
         }
     }
@@ -115,6 +80,5 @@ public class DiscoveryModeController : MonoBehaviour
     private void LoadIndexData()
     {
         exerciseIndex = player.GetComponent<DiscoveryPlayer>().exerciseIndex;
-        cardIndex = player.GetComponent<DiscoveryPlayer>().cardIndex;
     }
 }

@@ -281,7 +281,7 @@ public class SimonSays : MonoBehaviour
         if (discoveryMode)
         {
             discoveryPlayer.exerciseIndex = 1.1f;
-            discoveryPlayer.cardIndex = "1Out";
+
             discoveryPlayer.SavePlayer();
         }
 

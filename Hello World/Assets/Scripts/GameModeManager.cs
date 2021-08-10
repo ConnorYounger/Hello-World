@@ -73,7 +73,7 @@ public class GameModeManager : MonoBehaviour
     public void DiscoverySceneSwitch()
     {
         discoveryPlayer.exerciseIndex = exerciseIndex;
-        discoveryPlayer.cardIndex = cardIndex;
+
 
         discoveryPlayer.SavePlayer();
 

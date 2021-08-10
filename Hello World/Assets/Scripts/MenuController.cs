@@ -80,7 +80,6 @@ public class MenuController : MonoBehaviour
         btnAudioBack.onClick.AddListener(GoToOptionsTop);
 
         btnNewGame.onClick.AddListener(StartNewDiscovery);
-        //btnContinue.onClick.AddListener(delegate { NavigateMenus("xxx"); });
         btnCribBack.onClick.AddListener(delegate { NavigateMenus("Toy Box"); });
 
         btnPlaymatBack.onClick.AddListener(delegate { NavigateMenus("Toy Box"); });
@@ -92,7 +91,7 @@ public class MenuController : MonoBehaviour
     private void StartNewDiscovery()
     {
         player.exerciseIndex = 0.1f;
-        player.cardIndex = "1In";
+
         player.SavePlayer();
         PlayerPrefs.SetString("gameMode", "Discovery");
 

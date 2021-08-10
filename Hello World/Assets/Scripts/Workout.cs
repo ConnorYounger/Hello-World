@@ -449,7 +449,7 @@ public class Workout : MonoBehaviour
         if (discoveryMode)
         {
             discoveryPlayer.exerciseIndex = 2.1f;
-            discoveryPlayer.cardIndex = "2Out";
+
             discoveryPlayer.SavePlayer();
         }
     }
