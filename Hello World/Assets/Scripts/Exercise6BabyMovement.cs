@@ -19,11 +19,12 @@ public class Exercise6BabyMovement : MonoBehaviour
     public Transform winZone1;
     public Transform winZone2;
     public bool turnPlayerAround = true;
-    private bool turningAround;
+    public bool turningAround;
     private bool hasReachedWinZone1;
     public float winDistamce = 2;
 
     private Vector3 targetRotation;
+    private float turnForce = 1;
 
     private MiniGameInputs controls;
     private Vector2 move;
@@ -109,52 +110,73 @@ public class Exercise6BabyMovement : MonoBehaviour
         StopCoroutine("ReseMovementCoolDown");
         canMove = false;
         animator.SetInteger("babyFoot", 0);
+        turnForce = 1;
         turningAround = true;
         targetRotation = new Vector3(0, transform.rotation.y + 180, 0);
 
-        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("babyTurn", true);
 
-        animator.SetInteger("babyFoot", 1);
-
-        yield return new WaitForSeconds(0.5f);
-
-        animator.SetInteger("babyFoot", 0);
+        babyBalancing.canTilt = false;
+        babyBalancing.turn = true;
+        //babyBalancing.StartCoroutine("SetRotationToDefult");
 
         yield return new WaitForSeconds(0.5f);
 
-        animator.SetInteger("babyFoot", 1);
+        //animator.SetInteger("babyFoot", 1);
 
         yield return new WaitForSeconds(0.5f);
 
-        animator.SetInteger("babyFoot", 0);
+        //animator.SetInteger("babyFoot", 0);
 
         yield return new WaitForSeconds(0.5f);
 
-        animator.SetInteger("babyFoot", 1);
+        //animator.SetInteger("babyFoot", 1);
 
         yield return new WaitForSeconds(0.5f);
 
-        animator.SetInteger("babyFoot", 0);
+        //animator.SetInteger("babyFoot", 0);
 
-        yield return new WaitForSeconds(.75f);
+        yield return new WaitForSeconds(0.5f);
 
-        animator.SetInteger("babyFoot", 1);
+        //animator.SetInteger("babyFoot", 1);
+        turnForce += 1f;
+        babyBalancing.turn = false;
+        babyBalancing.StartCoroutine("SetRotationToDefult");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
-        animator.SetInteger("babyFoot", 0);
-        
-        yield return new WaitForSeconds(1.25f);
+        //animator.SetInteger("babyFoot", 0);
+        turnForce += 2f;
+
+        yield return new WaitForSeconds(0.5f);
+
+        //animator.SetInteger("babyFoot", 1);
+        turnForce += 4f;
+
+        yield return new WaitForSeconds(0.5f);
+
+        //animator.SetInteger("babyFoot", 0);
+        //turnForce += 4f;
+
+        //yield return new WaitForSeconds(0.5f);
+
+        animator.SetBool("babyTurn", false);
 
         turningAround = false;
         canMove = true;
+
+        babyBalancing.tiltMultiplier = 0;
+        babyBalancing.canTilt = true;
     }
 
     void BabyTurnAround()
     {
         if (turningAround)
         {
-            transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, targetRotation, Time.deltaTime);
+            transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, targetRotation, turnForce * Time.deltaTime);
+
+            //Vector3 spineTarget = new Vector3(babyBalancing.spine.transform.eulerAngles.x, 50, babyBalancing.spine.transform.eulerAngles.z);
+            //babyBalancing.spine.transform.eulerAngles = Vector3.Lerp(babyBalancing.spine.transform.eulerAngles, spineTarget, turnForce * Time.deltaTime);
         }
     }
 

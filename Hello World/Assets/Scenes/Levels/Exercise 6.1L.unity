@@ -587,7 +587,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69524395}
-  m_LocalRotation: {x: 0.6642432, y: -0.24244781, z: -0.24244781, w: 0.6642432}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -0.006, y: 0.2, z: -0.201}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10365,6 +10365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBalanceValue: 60
   maxTiltMultiplier: 0.5
+  tiltMultiplier: 0
   playerRotateSpeed: -100
   canTilt: 1
   sitting: 0
@@ -10380,6 +10381,7 @@ MonoBehaviour:
   analogStickP: {fileID: 1320928913}
   parent: {fileID: 479406990}
   exercise6Baby: {fileID: 1162091835}
+  turn: 0
   resetWaitTime: 4.5
   soundManager: {fileID: 1368509804}
 --- !u!4 &1108928308
@@ -10902,6 +10904,7 @@ MonoBehaviour:
   winZone1: {fileID: 206871927}
   winZone2: {fileID: 1458059569}
   turnPlayerAround: 1
+  turningAround: 0
   winDistamce: 0.7
   canMove: 1
   winUI: {fileID: 1950383256}
@@ -11554,9 +11557,9 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights:
   - 0
   - 100
-  - 35
-  - 77
-  - 44
+  - 32.091873
+  - 80.39921
+  - 39.945232
   m_RootBone: {fileID: 853049088}
   m_AABB:
     m_Center: {x: -0.20298052, y: 0.03752049, z: -0.00000011920929}
@@ -11592,7 +11595,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exerciseIndex: 0
-  cardIndex: 
 --- !u!4 &1283072143
 Transform:
   m_ObjectHideFlags: 0

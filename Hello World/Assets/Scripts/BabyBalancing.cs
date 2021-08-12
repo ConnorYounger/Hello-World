@@ -10,7 +10,7 @@ public class BabyBalancing : MonoBehaviour
     [Header("Balancing Variables")]
     public float maxBalanceValue = 90;
     public float maxTiltMultiplier = 1;
-    private float tiltMultiplier;
+    [HideInInspector()] public float tiltMultiplier;
     public float playerRotateSpeed = 1;
     private float balanceValue = 0;
     public bool canTilt;
@@ -44,6 +44,7 @@ public class BabyBalancing : MonoBehaviour
     [Space()]
     public ParentNarrative parent;
     public Exercise6BabyMovement exercise6Baby;
+    public bool turn;
     public float resetWaitTime = 3;
 
     public ExerciseSoundEffectsManager soundManager;
@@ -114,6 +115,10 @@ public class BabyBalancing : MonoBehaviour
             Tilt();
             PlayerMovement();
             BalanceWinCheck();
+        }
+        else if (exercise6Baby && turn)
+        {
+            ResetRotation();
         }
     }
 
@@ -282,6 +287,32 @@ public class BabyBalancing : MonoBehaviour
                 BabyFallOver(false);
             }
         }
+    }
+
+    void ResetRotation()
+    {
+        if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y < CalculateMaxBalanceValue())
+        {
+            //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), transform.localRotation.w);
+            spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, spine.transform.localRotation.y - (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), spine.transform.localRotation.z, spine.transform.localRotation.w);
+            //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, bottom.transform.localRotation.y + CalculateBottomDifference(tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), bottom.transform.localRotation.z, bottom.transform.localRotation.w);
+            left = false;
+        }
+        else if (spine.transform.localRotation.y < 0 && spine.transform.localRotation.y > -CalculateMaxBalanceValue())
+        {
+            //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z - (tiltMultiplier * Time.deltaTime) * CalculateTiltSmoothValue(), transform.localRotation.w);
+            spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, spine.transform.localRotation.y + (tiltMultiplier * Time.deltaTime) * CalculateTiltSmoothValue(), spine.transform.localRotation.z, spine.transform.localRotation.w);
+            //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, bottom.transform.localRotation.y - CalculateBottomDifference(tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), bottom.transform.localRotation.z, bottom.transform.localRotation.w);
+            left = true;
+        }
+    }
+
+    public IEnumerator SetRotationToDefult()
+    {
+        yield return new WaitForSeconds(0);
+        balanceValue = 0;
+        spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, CalculateRotationValue(balanceValue), spine.transform.localRotation.z, spine.transform.localRotation.w);
+
     }
 
     void BabyFallOver(bool value)
