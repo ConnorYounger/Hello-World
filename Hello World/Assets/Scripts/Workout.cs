@@ -215,7 +215,6 @@ public class Workout : MonoBehaviour
 
             if (checkpoint2Left && checkpoint2Right)
             {
-                animator.SetInteger("Stage", 2);
                 UIControlsSwitch();
 
                 SucessfulSitUp();
@@ -400,6 +399,24 @@ public class Workout : MonoBehaviour
         //resetCoolDown = resetCoolDownTime;
 
         sitUpCount++;
+
+        switch (sitUpCount)
+        {
+            case 3:
+                animator.SetInteger("Count", 1);
+                break;
+            case 5:
+                animator.SetInteger("Count", 2);
+                break;
+            case 7:
+                animator.SetInteger("Count", 3);
+                break;
+            case 9:
+                animator.SetInteger("Count", 4);
+                break;
+        }
+
+        animator.SetInteger("Stage", 2);
 
         if (parent && sitUpCount < sitUpGoal)
             parent.NarrativeElement(parent.sucessDialougeTexts[sitUpCount - 1]);
