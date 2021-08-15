@@ -191,16 +191,16 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: -167.414, y: 90.016, z: 0}
-        inSlope: {x: -32.343994, y: 0, z: 0}
-        outSlope: {x: -32.343994, y: 0, z: 0}
+        value: {x: -141.511, y: 90.016, z: 0}
+        inSlope: {x: -40.875, y: 0, z: 0}
+        outSlope: {x: -40.875, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1.5
-        value: {x: -175.5, y: 90.016, z: 0}
+        value: {x: -163.087, y: 90.016, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -1537,16 +1537,16 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: -167.414
-        inSlope: -32.343994
-        outSlope: -32.343994
+        value: -141.511
+        inSlope: -40.875
+        outSlope: -40.875
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.5
-        value: -175.5
+        value: -163.087
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2617,7 +2617,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB R Forearm
+    path: TB Spine/TB Spine1/TB Neck/TB Head/Main Camera
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2627,17 +2627,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB R Forearm
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB R Forearm
+    path: TB Spine/TB Spine1/TB Neck/TB Head/Main Camera
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2656,8 +2646,18 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB R Forearm
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: TB Spine/TB Spine1/TB Neck/TB Head/Main Camera
+    path: TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB R Forearm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2667,7 +2667,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: TB Spine/TB Spine1/TB Neck/TB Head/Main Camera
+    path: TB Spine/TB Spine1/TB R Clavicle/TB R UpperArm/TB R Forearm
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
