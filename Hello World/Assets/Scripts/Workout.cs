@@ -79,6 +79,9 @@ public class Workout : MonoBehaviour
     public bool discoveryMode;
     public DiscoveryPlayer discoveryPlayer;
 
+    [Header("Particles")]
+    public ParticleSystem[] cryParticles;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
@@ -485,6 +488,16 @@ public class Workout : MonoBehaviour
 
         if (soundManager)
             soundManager.PlayLoseSound();
+
+        //animator.Play("Cry");
+
+        if(cryParticles.Length > 0)
+        {
+            foreach(ParticleSystem particle in cryParticles)
+            {
+                particle.Play();
+            }
+        }
     }
 
     void UpdateSliders()
