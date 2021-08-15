@@ -64,6 +64,9 @@ public class SimonSays : MonoBehaviour
 
     private ExerciseSoundEffectsManager soundManager;
 
+    [Header("Particles")]
+    public ParticleSystem[] cryParticles;
+
     private void Awake()
     {
         controls = new MiniGameInputs();
@@ -280,7 +283,7 @@ public class SimonSays : MonoBehaviour
 
         if (discoveryMode)
         {
-            discoveryPlayer.exerciseIndex = 1.1f;
+            discoveryPlayer.exerciseIndex = 1f;
 
             discoveryPlayer.SavePlayer();
         }
@@ -352,6 +355,16 @@ public class SimonSays : MonoBehaviour
         if (parent)
         {
             parent.PlayLoseNarrative();
+        }
+
+        animator.Play("Cry");
+
+        if (cryParticles.Length > 0)
+        {
+            foreach (ParticleSystem particle in cryParticles)
+            {
+                particle.Play();
+            }
         }
 
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
