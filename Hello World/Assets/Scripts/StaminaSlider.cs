@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class StaminaSlider : MonoBehaviour
 {
@@ -63,6 +66,7 @@ public class StaminaSlider : MonoBehaviour
                 if (loseTimer >= 5)
                 {
                     loseMenu.SetActive(true);
+                    EventSystem.current.SetSelectedGameObject(GameObject.Find("LoseButton"));
                 }
             }
         }

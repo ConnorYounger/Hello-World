@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CountDownBar : MonoBehaviour
 {
@@ -58,6 +59,7 @@ public class CountDownBar : MonoBehaviour
                 if (loseDelay >= 5)
                 {
                     loseMenu.SetActive(true);
+                    EventSystem.current.SetSelectedGameObject(GameObject.Find("LoseButton"));
                 }
             }
         }
