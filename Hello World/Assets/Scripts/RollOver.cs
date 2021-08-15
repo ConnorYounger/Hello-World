@@ -30,9 +30,8 @@ public class RollOver : MonoBehaviour
     public bool win = false;
     public bool gameStarted = false;
 
-    public float failTimer = 0;
-    public float timeLimit = 0;
-    public float coolDown = 0;
+    public float timerCheck = 0;
+    public int timeLimit = 0;
     public float pauseTimer = 0;
 
     private void Awake()
@@ -73,22 +72,12 @@ public class RollOver : MonoBehaviour
         {
             if (isLegUp == true)
             {
-                failTimer += Time.deltaTime;
-                coolDown += Time.deltaTime;
+                timerCheck += Time.deltaTime;
             }
 
-            if (failTimer >= timeLimit && leftSwingAmount < 7)
+            if (timerCheck >= timeLimit && leftSwingAmount < 7)
             {
-                anim.SetBool("legUp", false);
-                anim.SetInteger("leftSwing", 0);
-                anim.SetInteger("rightSwing", 0);
-                leftSwingAmount = 0;
-                rightSwingAmount = 0;
-                failTimer = 0;
-                coolDown = 0;
-                isLegUp = false;
-                parent.PlayFailNarrativeElement();
-                soundEffectsManager.PlayFailSound();
+                LegDown();
             }
 
             if (win == true)
@@ -134,11 +123,15 @@ public class RollOver : MonoBehaviour
                 anim.SetInteger("rightSwing", 0);
                 leftSwingAmount = 0;
                 rightSwingAmount = 0;
-                liftButton.SetActive(true);
-                pliftButton.SetActive(true);
+                timerCheck = 0;
+
                 isLegUp = false;
                 parent.PlayFailNarrativeElement();
                 soundEffectsManager.PlayFailSound();
+
+                liftButton.SetActive(true);
+                pliftButton.SetActive(true);
+
                 swingButton.SetActive(false);
                 pswingButton.SetActive(false);
             }
@@ -158,15 +151,14 @@ public class RollOver : MonoBehaviour
     {
         if(gameStarted == true)
         {
-            if (leftMovement == true && coolDown >= 1)
+            if (leftMovement == true && timerCheck >= 1)
             {
                 leftSwingAmount++;
                 successCount++;
                 anim.SetInteger("leftSwing", leftSwingAmount);
                 leftMovement = false;
                 rightMovement = true;
-                failTimer = 0;
-                coolDown = 0;
+                timerCheck = 0;
                 parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
                 soundEffectsManager.PlaySucessSound();
             }
@@ -193,14 +185,13 @@ public class RollOver : MonoBehaviour
     {
         if (gameStarted == true)
         {
-            if (rightMovement == true && coolDown >= 1)
+            if (rightMovement == true && timerCheck >= 1)
             {
                 rightSwingAmount++;
                 anim.SetInteger("rightSwing", rightSwingAmount);
                 rightMovement = false;
                 leftMovement = true;
-                failTimer = 0;
-                coolDown = 0;
+                timerCheck = 0;
                 soundEffectsManager.PlaySucessSound();
             }
         }
