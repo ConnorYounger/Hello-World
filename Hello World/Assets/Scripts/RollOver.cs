@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +7,7 @@ public class RollOver : MonoBehaviour
     private Animator anim;
     private MiniGameInputs controls;
     public ParentNarrative parent;
-    public AnalogStickTweener call;
+    public AnalogStickTweener ast;
     public ExerciseSoundEffectsManager soundEffectsManager;
 
     public GameObject liftButton;
@@ -17,23 +16,19 @@ public class RollOver : MonoBehaviour
     public GameObject pswingButton;
 
     public GameObject parentText;
-    public GameObject winText;
-    public GameObject activate;
-    
+    public GameObject winMenu;
+
     private int leftSwingAmount = 0;
     private int rightSwingAmount = 0;
-    private int successCount = 0;
 
-    private bool leftMovement = true;
-    private bool rightMovement = false;
+    private bool movement = true;
     public bool isLegUp = false;
     public bool win = false;
     public bool gameStarted = false;
 
-    public float failTimer = 0;
-    public float timeLimit = 0;
-    public float coolDown = 0;
-    public float pauseTimer = 0;
+    public float timerCheck = 0;
+    public int timeLimit = 0;
+    public float winTimer = 0;
 
     private void Awake()
     {
@@ -69,35 +64,25 @@ public class RollOver : MonoBehaviour
 
     public void Update()
     {
-        if(gameStarted == true)
+        if (gameStarted == true)
         {
             if (isLegUp == true)
             {
-                failTimer += Time.deltaTime;
-                coolDown += Time.deltaTime;
+                timerCheck += Time.deltaTime;
             }
 
-            if (failTimer >= timeLimit && leftSwingAmount < 7)
+            if (timerCheck >= timeLimit && leftSwingAmount < 7)
             {
-                anim.SetBool("legUp", false);
-                anim.SetInteger("leftSwing", 0);
-                anim.SetInteger("rightSwing", 0);
-                leftSwingAmount = 0;
-                rightSwingAmount = 0;
-                failTimer = 0;
-                coolDown = 0;
-                isLegUp = false;
-                parent.PlayFailNarrativeElement();
-                soundEffectsManager.PlayFailSound();
+                LegDown();
             }
 
             if (win == true)
             {
-                pauseTimer += Time.deltaTime;
+                winTimer += Time.deltaTime;
 
-                if (pauseTimer >= 5)
+                if (winTimer >= 5)
                 {
-                    activate.SetActive(true);
+                    winMenu.SetActive(true);
                 }
             }
         }
@@ -114,18 +99,20 @@ public class RollOver : MonoBehaviour
         {
             anim.SetBool("legUp", true);
             isLegUp = true;
-            liftButton.SetActive(false);
-            swingButton.SetActive(true);
 
-            pliftButton.SetActive(false);
+            //setting UI to show movement input action
+            DisableText();
+            swingButton.SetActive(true);
             pswingButton.SetActive(true);
+
             StartCoroutine("SwingAnimation");
+
         }
     }
 
     void LegDown()
     {
-        if(gameStarted == true)
+        if (gameStarted == true)
         {
             if (leftSwingAmount < 7)
             {
@@ -134,75 +121,101 @@ public class RollOver : MonoBehaviour
                 anim.SetInteger("rightSwing", 0);
                 leftSwingAmount = 0;
                 rightSwingAmount = 0;
-                liftButton.SetActive(true);
-                pliftButton.SetActive(true);
+                timerCheck = 0;
+
+                //resetting bools for swing movement restart
+                movement = true;
+
                 isLegUp = false;
+
+                //playing fail sound and parent UI text
                 parent.PlayFailNarrativeElement();
                 soundEffectsManager.PlayFailSound();
-                swingButton.SetActive(false);
-                pswingButton.SetActive(false);
+
+                //setting UI to show movement input action
+                DisableText();
+                liftButton.SetActive(true);
+                pliftButton.SetActive(true);
             }
         }
     }
 
     private IEnumerator SwingAnimation()
     {
-        while (isLegUp == true)
+        if(isLegUp == true)
         {
-            call.StartCoroutine("TiltHorizontal");
-            yield return new WaitForSeconds(4);
+            if (movement == true && leftSwingAmount < 3)
+            {
+                ast.StopCoroutine("TiltRight");
+                ast.StartCoroutine("TiltLeft");
+                yield return new WaitForSeconds(4);
+            }
+
+            if (movement == false && rightSwingAmount <= 2)
+            {
+                ast.StopCoroutine("TiltLeft");
+                ast.StartCoroutine("TiltRight");
+                yield return new WaitForSeconds(4);
+            }
         }
     }
 
     void SwingLeft()
     {
-        if(gameStarted == true)
+        if (gameStarted == true)
         {
-            if (leftMovement == true && coolDown >= 1)
+            if (movement == true && timerCheck >= 1)
             {
                 leftSwingAmount++;
-                successCount++;
                 anim.SetInteger("leftSwing", leftSwingAmount);
-                leftMovement = false;
-                rightMovement = true;
-                failTimer = 0;
-                coolDown = 0;
-                parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
+
+                movement = false;
+                timerCheck = 0;
+                parent.NarrativeElement(parent.sucessDialougeTexts[leftSwingAmount - 1]);
                 soundEffectsManager.PlaySucessSound();
+                StartCoroutine("SwingAnimation");
+
+                if(leftSwingAmount >= 3)
+                {
+                    DisableText();
+                }
             }
 
             if (leftSwingAmount == 7)
             {
-                liftButton.SetActive(false);
-                swingButton.SetActive(false);
-
-                pliftButton.SetActive(false);
-                pswingButton.SetActive(false);
-
+                DisableText();
                 parentText.SetActive(false);
-                winText.SetActive(true);
                 parent.PlayWinNarrative();
                 soundEffectsManager.PlayWinSound();
+                gameStarted = false;
                 win = true;
             }
         }
-        
+
     }
 
     void SwingRight()
     {
         if (gameStarted == true)
         {
-            if (rightMovement == true && coolDown >= 1)
+            if (movement == false && timerCheck >= 1)
             {
                 rightSwingAmount++;
                 anim.SetInteger("rightSwing", rightSwingAmount);
-                rightMovement = false;
-                leftMovement = true;
-                failTimer = 0;
-                coolDown = 0;
+                movement = true;
+                timerCheck = 0;
                 soundEffectsManager.PlaySucessSound();
+                StartCoroutine("SwingAnimation");
             }
         }
+    }
+
+    public void DisableText()
+    {
+        liftButton.SetActive(false);
+        swingButton.SetActive(false);
+
+        pliftButton.SetActive(false);
+        pswingButton.SetActive(false);
     }
 }

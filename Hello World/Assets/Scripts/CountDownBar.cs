@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CountDownBar : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class CountDownBar : MonoBehaviour
     public ParentNarrative parent;
     public ExerciseSoundEffectsManager soundEffectManager;
 
-    public float countdownBar = 0;
+    public float gameTimer = 0;
     private Animator anim;
 
     private void Awake()
@@ -30,9 +31,9 @@ public class CountDownBar : MonoBehaviour
         if (call.gameStarted == true)
         {
             //starting timer 
-            countdownBar -= Time.deltaTime;
+            gameTimer -= Time.deltaTime;
 
-            if (countdownBar <= 0 && check.gameWon == false)
+            if (gameTimer <= 0 && check.gameWon == false)
             {
                 if (soundCheck == true)
                 {
@@ -58,6 +59,7 @@ public class CountDownBar : MonoBehaviour
                 if (loseDelay >= 5)
                 {
                     loseMenu.SetActive(true);
+                    EventSystem.current.SetSelectedGameObject(GameObject.Find("LoseButton"));
                 }
             }
         }

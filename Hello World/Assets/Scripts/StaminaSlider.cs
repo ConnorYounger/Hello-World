@@ -1,37 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class StaminaSlider : MonoBehaviour
 {
-    public static bool allowInputs;
-    private bool countDown = true;
+    private bool soundCheck = true;
     public bool gameStarted = false;
-    public float countDownTime = 60;
 
-    public Slider countdownBar;
+    public float gameTimer;
     private Animator anim;
     public GameObject baby;
     public GameObject loseText;
-    public float pauseTimer = 0;
+    public GameObject loseMenu;
 
-    public GameObject liftButton;
-    public GameObject swingButton;
+    public float loseTimer = 0;
+
     public GameObject parentText;
 
-    public RollOver timerCheck;
-    public GameObject activate;
+    public RollOver check;
+    
 
     private void Awake()
     {
         anim = baby.GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
-        //Set the max value to the refill time
-        countdownBar.value = countdownBar.maxValue;
     }
 
     public void StartExercise()
@@ -41,41 +33,42 @@ public class StaminaSlider : MonoBehaviour
 
     private void Update()
     {
-        if(gameStarted == true)
+        if (gameStarted == true)
         {
-            if (countDown == true)
-            {
-                countdownBar.value -= Time.deltaTime;
-            }
+            gameTimer -= Time.deltaTime;
 
             //If we are at 0, start to refill
-            if (countdownBar.value <= 0)
+            if (gameTimer <= 0 && check.win == false)
             {
-                if (countDown == true)
+                if (soundCheck == true)
                 {
-                    timerCheck.soundEffectsManager.PlayLoseSound();
-                    timerCheck.soundEffectsManager.PlayBabyCrySound();
+                    //playing lose sounds when game failed
+                    check.soundEffectsManager.PlayLoseSound();
+                    check.soundEffectsManager.PlayBabyCrySound();
                 }
 
-                countDown = false;
-                allowInputs = false;
+                //making sure audio only plays once
+                soundCheck = false;
+
+                //playing fail animation
                 anim.SetBool("timeOut", true);
-                liftButton.SetActive(false);
-                swingButton.SetActive(false);
-                loseText.SetActive(true);
-                timerCheck.parent.PlayLoseNarrative();
-                pauseTimer += Time.deltaTime;
 
-                if (pauseTimer >= 5)
+                //disabling instruction UI in game
+                check.DisableText();
+
+                //displaying lose UI and parent UI
+                loseText.SetActive(true);
+                check.parent.PlayLoseNarrative();
+
+                //starting timer delay for lose menu
+                loseTimer += Time.deltaTime;
+
+                if (loseTimer >= 5)
                 {
-                    activate.SetActive(true);
+                    loseMenu.SetActive(true);
+                    EventSystem.current.SetSelectedGameObject(GameObject.Find("LoseButton"));
                 }
             }
-            else
-            {
-                countDown = true;
-                allowInputs = true;
-            }
-        } 
+        }
     }
 }
