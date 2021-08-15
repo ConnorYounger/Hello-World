@@ -69,6 +69,9 @@ public class BabyBalancing : MonoBehaviour
     public void ExerciseStart()
     {
         canTilt = true;
+
+        if (balancingAnimator)
+            balancingAnimator.enabled = true;
     }
 
     IEnumerator UpDateAnimatedUI()
@@ -116,7 +119,7 @@ public class BabyBalancing : MonoBehaviour
         {
             Tilt();
             PlayerMovement();
-            BalanceWinCheck();
+            BalanceWinCheck();            
         }
         else if (exercise6Baby && turn)
         {
@@ -403,6 +406,9 @@ public class BabyBalancing : MonoBehaviour
         if (babyFellEGO)
             babyFellEGO.SetActive(true);
 
+        if (balancingAnimator)
+            balancingAnimator.SetBool("babyFall", true);
+
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
 
@@ -419,6 +425,9 @@ public class BabyBalancing : MonoBehaviour
 
         if (exercise6Baby)
             exercise6Baby.BabyFellUpdateUI();
+
+        if (balancingAnimator)
+            balancingAnimator.SetBool("babyFall", false);
     }
 
     public void SwitchScene(string scene)
