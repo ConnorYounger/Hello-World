@@ -16,7 +16,6 @@ public class RollOver : MonoBehaviour
     public GameObject pswingButton;
 
     public GameObject parentText;
-    public GameObject winText;
     public GameObject winMenu;
     
     private int leftSwingAmount = 0;
@@ -148,18 +147,23 @@ public class RollOver : MonoBehaviour
     {
         while (isLegUp == true)
         {
-            if(leftMovement == true)
+            if(leftMovement == true && leftSwingAmount < 3)
             {
                 ast.StopCoroutine("TiltRight");
                 ast.StartCoroutine("TiltLeft");
                 yield return new WaitForSeconds(4);
             }
 
-            if(rightMovement == true)
+            if(rightMovement == true && leftSwingAmount < 3)
             {
                 ast.StopCoroutine("TiltLeft");
                 ast.StartCoroutine("TiltRight");
                 yield return new WaitForSeconds(4);
+            }
+
+            if(leftSwingAmount == 3)
+            {
+                ast.StopAllCoroutines();
             }
         }
     }
@@ -176,7 +180,7 @@ public class RollOver : MonoBehaviour
                 leftMovement = false;
                 rightMovement = true;
                 timerCheck = 0;
-                parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
+                parent.NarrativeElement(parent.sucessDialougeTexts[leftSwingAmount - 1]);
                 soundEffectsManager.PlaySucessSound();
                 StartCoroutine("SwingAnimation");
             }
@@ -185,7 +189,6 @@ public class RollOver : MonoBehaviour
             {
                 DisableText();
                 parentText.SetActive(false);
-                winText.SetActive(true);
                 parent.PlayWinNarrative();
                 soundEffectsManager.PlayWinSound();
                 win = true;
