@@ -11,7 +11,7 @@ public class WinWithToy : MonoBehaviour
 
     public float winDelay = 0;
 
-    public QWOP call;
+    public QWOP QWOP;
     private Animator anim;
 
     public bool gameWon = false;
@@ -46,9 +46,9 @@ public class WinWithToy : MonoBehaviour
             anim.SetBool("gotBall", true);
 
             //calling functions and variables from QWOP script to disable text, show UI text, and play sounds 
-            call.DisableText();
-            call.parent.PlayWinNarrative();
-            call.soundEffectManager.PlayWinSound();
+            QWOP.DisableText();
+            QWOP.parent.PlayWinNarrative();
+            QWOP.soundEffectManager.PlayWinSound();
         }
     }
 }

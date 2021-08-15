@@ -3024,6 +3024,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4524750084415714773, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4524750084607461831, guid: 2ac93bf8f67f4fb47acc182a66481a1b,
         type: 3}
       propertyPath: m_IsActive
@@ -6604,21 +6609,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 2073359996}
-  call: {fileID: 486177776}
+  ast: {fileID: 486177776}
   soundEffectsManager: {fileID: 1756817089}
   liftButton: {fileID: 486177766}
   swingButton: {fileID: 486177765}
   pliftButton: {fileID: 2098788309}
   pswingButton: {fileID: 65273241}
   parentText: {fileID: 717203414}
-  winText: {fileID: 679954462}
-  activate: {fileID: 1609208566}
+  winText: {fileID: 906077352}
+  winMenu: {fileID: 0}
   isLegUp: 0
   win: 0
   gameStarted: 0
   timerCheck: 0
-  timeLimit: 4
-  pauseTimer: 0
+  timeLimit: 5
+  winTimer: 0
 --- !u!1 &942209123
 GameObject:
   m_ObjectHideFlags: 0

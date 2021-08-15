@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +7,7 @@ public class RollOver : MonoBehaviour
     private Animator anim;
     private MiniGameInputs controls;
     public ParentNarrative parent;
-    public AnalogStickTweener call;
+    public AnalogStickTweener ast;
     public ExerciseSoundEffectsManager soundEffectsManager;
 
     public GameObject liftButton;
@@ -18,7 +17,7 @@ public class RollOver : MonoBehaviour
 
     public GameObject parentText;
     public GameObject winText;
-    public GameObject activate;
+    public GameObject winMenu;
     
     private int leftSwingAmount = 0;
     private int rightSwingAmount = 0;
@@ -32,7 +31,7 @@ public class RollOver : MonoBehaviour
 
     public float timerCheck = 0;
     public int timeLimit = 0;
-    public float pauseTimer = 0;
+    public float winTimer = 0;
 
     private void Awake()
     {
@@ -82,11 +81,11 @@ public class RollOver : MonoBehaviour
 
             if (win == true)
             {
-                pauseTimer += Time.deltaTime;
+                winTimer += Time.deltaTime;
 
-                if (pauseTimer >= 5)
+                if (winTimer >= 5)
                 {
-                    activate.SetActive(true);
+                    winMenu.SetActive(true);
                 }
             }
         }
@@ -103,12 +102,14 @@ public class RollOver : MonoBehaviour
         {
             anim.SetBool("legUp", true);
             isLegUp = true;
-            liftButton.SetActive(false);
-            swingButton.SetActive(true);
 
-            pliftButton.SetActive(false);
+            //setting UI to show movement input action
+            DisableText();
+            swingButton.SetActive(true);
             pswingButton.SetActive(true);
+
             StartCoroutine("SwingAnimation");
+
         }
     }
 
@@ -125,15 +126,20 @@ public class RollOver : MonoBehaviour
                 rightSwingAmount = 0;
                 timerCheck = 0;
 
+                //resetting bools for swing movement restart
+                leftMovement = true;
+                rightMovement = false;
+
                 isLegUp = false;
+
+                //playing fail sound and parent UI text
                 parent.PlayFailNarrativeElement();
                 soundEffectsManager.PlayFailSound();
 
+                //setting UI to show movement input action
+                DisableText();
                 liftButton.SetActive(true);
                 pliftButton.SetActive(true);
-
-                swingButton.SetActive(false);
-                pswingButton.SetActive(false);
             }
         }
     }
@@ -142,8 +148,19 @@ public class RollOver : MonoBehaviour
     {
         while (isLegUp == true)
         {
-            call.StartCoroutine("TiltHorizontal");
-            yield return new WaitForSeconds(4);
+            if(leftMovement == true)
+            {
+                ast.StopCoroutine("TiltRight");
+                ast.StartCoroutine("TiltLeft");
+                yield return new WaitForSeconds(4);
+            }
+
+            if(rightMovement == true)
+            {
+                ast.StopCoroutine("TiltLeft");
+                ast.StartCoroutine("TiltRight");
+                yield return new WaitForSeconds(4);
+            }
         }
     }
 
@@ -161,16 +178,12 @@ public class RollOver : MonoBehaviour
                 timerCheck = 0;
                 parent.NarrativeElement(parent.sucessDialougeTexts[successCount - 1]);
                 soundEffectsManager.PlaySucessSound();
+                StartCoroutine("SwingAnimation");
             }
 
             if (leftSwingAmount == 7)
             {
-                liftButton.SetActive(false);
-                swingButton.SetActive(false);
-
-                pliftButton.SetActive(false);
-                pswingButton.SetActive(false);
-
+                DisableText();
                 parentText.SetActive(false);
                 winText.SetActive(true);
                 parent.PlayWinNarrative();
@@ -193,7 +206,17 @@ public class RollOver : MonoBehaviour
                 leftMovement = true;
                 timerCheck = 0;
                 soundEffectsManager.PlaySucessSound();
+                StartCoroutine("SwingAnimation");
             }
         }
+    }
+
+    public void DisableText()
+    {
+        liftButton.SetActive(false);
+        swingButton.SetActive(false);
+
+        pliftButton.SetActive(false);
+        pswingButton.SetActive(false);
     }
 }
