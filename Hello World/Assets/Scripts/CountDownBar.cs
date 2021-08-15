@@ -16,7 +16,7 @@ public class CountDownBar : MonoBehaviour
     public ParentNarrative parent;
     public ExerciseSoundEffectsManager soundEffectManager;
 
-    public float countdownBar = 0;
+    public float gameTimer = 0;
     private Animator anim;
 
     private void Awake()
@@ -30,9 +30,9 @@ public class CountDownBar : MonoBehaviour
         if (call.gameStarted == true)
         {
             //starting timer 
-            countdownBar -= Time.deltaTime;
+            gameTimer -= Time.deltaTime;
 
-            if (countdownBar <= 0 && check.gameWon == false)
+            if (gameTimer <= 0 && check.gameWon == false)
             {
                 if (soundCheck == true)
                 {

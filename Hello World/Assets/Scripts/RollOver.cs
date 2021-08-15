@@ -17,13 +17,11 @@ public class RollOver : MonoBehaviour
 
     public GameObject parentText;
     public GameObject winMenu;
-    
+
     private int leftSwingAmount = 0;
     private int rightSwingAmount = 0;
-    private int successCount = 0;
 
-    private bool leftMovement = true;
-    private bool rightMovement = false;
+    private bool movement = true;
     public bool isLegUp = false;
     public bool win = false;
     public bool gameStarted = false;
@@ -66,7 +64,7 @@ public class RollOver : MonoBehaviour
 
     public void Update()
     {
-        if(gameStarted == true)
+        if (gameStarted == true)
         {
             if (isLegUp == true)
             {
@@ -114,7 +112,7 @@ public class RollOver : MonoBehaviour
 
     void LegDown()
     {
-        if(gameStarted == true)
+        if (gameStarted == true)
         {
             if (leftSwingAmount < 7)
             {
@@ -126,8 +124,7 @@ public class RollOver : MonoBehaviour
                 timerCheck = 0;
 
                 //resetting bools for swing movement restart
-                leftMovement = true;
-                rightMovement = false;
+                movement = true;
 
                 isLegUp = false;
 
@@ -147,38 +144,32 @@ public class RollOver : MonoBehaviour
     {
         while (isLegUp == true)
         {
-            if(leftMovement == true && leftSwingAmount < 3)
+            if (movement == true)
             {
                 ast.StopCoroutine("TiltRight");
                 ast.StartCoroutine("TiltLeft");
                 yield return new WaitForSeconds(4);
             }
 
-            if(rightMovement == true && leftSwingAmount < 3)
+            if (movement == false)
             {
                 ast.StopCoroutine("TiltLeft");
                 ast.StartCoroutine("TiltRight");
                 yield return new WaitForSeconds(4);
-            }
-
-            if(leftSwingAmount == 3)
-            {
-                ast.StopAllCoroutines();
             }
         }
     }
 
     void SwingLeft()
     {
-        if(gameStarted == true)
+        if (gameStarted == true)
         {
-            if (leftMovement == true && timerCheck >= 1)
+            if (movement == true && timerCheck >= 1)
             {
                 leftSwingAmount++;
-                successCount++;
                 anim.SetInteger("leftSwing", leftSwingAmount);
-                leftMovement = false;
-                rightMovement = true;
+
+                movement = false;
                 timerCheck = 0;
                 parent.NarrativeElement(parent.sucessDialougeTexts[leftSwingAmount - 1]);
                 soundEffectsManager.PlaySucessSound();
@@ -194,19 +185,18 @@ public class RollOver : MonoBehaviour
                 win = true;
             }
         }
-        
+
     }
 
     void SwingRight()
     {
         if (gameStarted == true)
         {
-            if (rightMovement == true && timerCheck >= 1)
+            if (movement == false && timerCheck >= 1)
             {
                 rightSwingAmount++;
                 anim.SetInteger("rightSwing", rightSwingAmount);
-                rightMovement = false;
-                leftMovement = true;
+                movement = true;
                 timerCheck = 0;
                 soundEffectsManager.PlaySucessSound();
                 StartCoroutine("SwingAnimation");
