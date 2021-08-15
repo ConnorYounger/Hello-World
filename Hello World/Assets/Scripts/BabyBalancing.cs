@@ -37,6 +37,7 @@ public class BabyBalancing : MonoBehaviour
     public float bottomRotateDifference = 3;
 
     public Animator animator;
+    public Animator balancingAnimator;
     public AnalogStickTweener analogStickX;
     public AnalogStickTweener analogStickP;
     private bool left;
@@ -48,6 +49,7 @@ public class BabyBalancing : MonoBehaviour
     public float resetWaitTime = 3;
 
     public ExerciseSoundEffectsManager soundManager;
+    public DiscoveryPlayer discoveryPlayer;
 
     private void Awake()
     {
@@ -233,9 +235,7 @@ public class BabyBalancing : MonoBehaviour
         else
             dir = 1;
 
-        //Vector3 rotation = new Vector3(transform.localRotation.x, transform.localRotation.y, move.x);
         Vector3 rotation = new Vector3(spine.transform.localRotation.x, move.x * dir, spine.transform.localRotation.z);
-        //transform.Rotate(rotation * Time.deltaTime * playerRotateSpeed);
         spine.transform.Rotate(rotation * Time.deltaTime * playerRotateSpeed);
     }
 
@@ -254,16 +254,12 @@ public class BabyBalancing : MonoBehaviour
 
         if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y < CalculateMaxBalanceValue())
         {
-            //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), transform.localRotation.w);
             spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, spine.transform.localRotation.y + (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), spine.transform.localRotation.z, spine.transform.localRotation.w);
-            //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, bottom.transform.localRotation.y + CalculateBottomDifference(tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), bottom.transform.localRotation.z, bottom.transform.localRotation.w);
             left = false;
         }
         else if (spine.transform.localRotation.y < 0 && spine.transform.localRotation.y > -CalculateMaxBalanceValue())
         {
-            //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z - (tiltMultiplier * Time.deltaTime) * CalculateTiltSmoothValue(), transform.localRotation.w);
             spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, spine.transform.localRotation.y - (tiltMultiplier * Time.deltaTime) * CalculateTiltSmoothValue(), spine.transform.localRotation.z, spine.transform.localRotation.w);
-            //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, bottom.transform.localRotation.y - CalculateBottomDifference(tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), bottom.transform.localRotation.z, bottom.transform.localRotation.w);
             left = true;
         }
         else if (spine.transform.localRotation.y == 0)
@@ -271,9 +267,7 @@ public class BabyBalancing : MonoBehaviour
             int rand = Random.Range(0, 2);
             balanceValue = rand > 0 ? -0.001f : 0.001f;
 
-            //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, CalculateRotationValue(balanceValue), transform.localRotation.w);
             spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, CalculateRotationValue(balanceValue), spine.transform.localRotation.z, spine.transform.localRotation.w);
-            //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, CalculateBottomDifference(CalculateRotationValue(balanceValue)), bottom.transform.localRotation.z, bottom.transform.localRotation.w);
         }
 
         if (!sitting)
@@ -287,22 +281,34 @@ public class BabyBalancing : MonoBehaviour
                 BabyFallOver(false);
             }
         }
+        else
+        {
+            if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y >= CalculateRotationValue(30))
+            {
+                balancingAnimator.SetBool("leftTilt", true);
+            }
+            else if (spine.transform.localRotation.y < 0 && spine.transform.localRotation.y <= -CalculateRotationValue(30))
+            {
+                balancingAnimator.SetBool("rightTilt", true);
+            }
+            else
+            {
+                balancingAnimator.SetBool("rightTilt", false);
+                balancingAnimator.SetBool("leftTilt", false);
+            }
+        }
     }
 
     void ResetRotation()
     {
         if (spine.transform.localRotation.y > 0 && spine.transform.localRotation.y < CalculateMaxBalanceValue())
         {
-            //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), transform.localRotation.w);
             spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, spine.transform.localRotation.y - (tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), spine.transform.localRotation.z, spine.transform.localRotation.w);
-            //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, bottom.transform.localRotation.y + CalculateBottomDifference(tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), bottom.transform.localRotation.z, bottom.transform.localRotation.w);
             left = false;
         }
         else if (spine.transform.localRotation.y < 0 && spine.transform.localRotation.y > -CalculateMaxBalanceValue())
         {
-            //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z - (tiltMultiplier * Time.deltaTime) * CalculateTiltSmoothValue(), transform.localRotation.w);
             spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, spine.transform.localRotation.y + (tiltMultiplier * Time.deltaTime) * CalculateTiltSmoothValue(), spine.transform.localRotation.z, spine.transform.localRotation.w);
-            //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, bottom.transform.localRotation.y - CalculateBottomDifference(tiltMultiplier * Time.deltaTime * CalculateTiltSmoothValue()), bottom.transform.localRotation.z, bottom.transform.localRotation.w);
             left = true;
         }
     }
@@ -404,9 +410,7 @@ public class BabyBalancing : MonoBehaviour
     {
         Debug.Log("Restart");
 
-        //transform.localRotation = new Quaternion(transform.localRotation.x, transform.localRotation.y, 0, transform.localRotation.w);
         spine.transform.localRotation = new Quaternion(spine.transform.localRotation.x, 0, spine.transform.localRotation.z, spine.transform.localRotation.w);
-        //bottom.transform.localRotation = new Quaternion(bottom.transform.localRotation.x, 0, bottom.transform.localRotation.z, bottom.transform.localRotation.w);
         canTilt = true;
         tiltMultiplier = 0;
 

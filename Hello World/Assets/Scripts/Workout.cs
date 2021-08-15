@@ -468,7 +468,7 @@ public class Workout : MonoBehaviour
 
         if (discoveryMode)
         {
-            discoveryPlayer.exerciseIndex = 2.1f;
+            discoveryPlayer.exerciseIndex = 2f;
 
             discoveryPlayer.SavePlayer();
         }
@@ -487,11 +487,14 @@ public class Workout : MonoBehaviour
             parent.NarrativeElement(parent.loseText);
 
         if (soundManager)
+        {
             soundManager.PlayLoseSound();
+            soundManager.PlayBabyCrySound();
+        }
 
         //animator.Play("Cry");
 
-        if(cryParticles.Length > 0)
+        if (cryParticles.Length > 0)
         {
             foreach(ParticleSystem particle in cryParticles)
             {

@@ -283,7 +283,7 @@ public class SimonSays : MonoBehaviour
 
         if (discoveryMode)
         {
-            discoveryPlayer.exerciseIndex = 1.1f;
+            discoveryPlayer.exerciseIndex = 1f;
 
             discoveryPlayer.SavePlayer();
         }
