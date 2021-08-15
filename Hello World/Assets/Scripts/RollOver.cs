@@ -142,16 +142,16 @@ public class RollOver : MonoBehaviour
 
     private IEnumerator SwingAnimation()
     {
-        while (isLegUp == true)
+        if(isLegUp == true)
         {
-            if (movement == true)
+            if (movement == true && leftSwingAmount < 3)
             {
                 ast.StopCoroutine("TiltRight");
                 ast.StartCoroutine("TiltLeft");
                 yield return new WaitForSeconds(4);
             }
 
-            if (movement == false)
+            if (movement == false && rightSwingAmount <= 2)
             {
                 ast.StopCoroutine("TiltLeft");
                 ast.StartCoroutine("TiltRight");
@@ -174,6 +174,11 @@ public class RollOver : MonoBehaviour
                 parent.NarrativeElement(parent.sucessDialougeTexts[leftSwingAmount - 1]);
                 soundEffectsManager.PlaySucessSound();
                 StartCoroutine("SwingAnimation");
+
+                if(leftSwingAmount >= 3)
+                {
+                    DisableText();
+                }
             }
 
             if (leftSwingAmount == 7)
@@ -182,6 +187,7 @@ public class RollOver : MonoBehaviour
                 parentText.SetActive(false);
                 parent.PlayWinNarrative();
                 soundEffectsManager.PlayWinSound();
+                gameStarted = false;
                 win = true;
             }
         }

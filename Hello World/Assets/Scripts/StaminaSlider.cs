@@ -35,7 +35,7 @@ public class StaminaSlider : MonoBehaviour
             gameTimer -= Time.deltaTime;
 
             //If we are at 0, start to refill
-            if (gameTimer <= 0)
+            if (gameTimer <= 0 && check.win == false)
             {
                 if (soundCheck == true)
                 {
