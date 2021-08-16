@@ -64,6 +64,16 @@ public class RollOver : MonoBehaviour
 
     public void Update()
     {
+        if (win == true)
+        {
+            winTimer += Time.deltaTime;
+
+            if(winTimer >= 5)
+            {
+                winMenu.SetActive(true);
+            }
+        }
+
         if (gameStarted == true)
         {
             if (isLegUp == true)
@@ -74,16 +84,6 @@ public class RollOver : MonoBehaviour
             if (timerCheck >= timeLimit && leftSwingAmount < 7)
             {
                 LegDown();
-            }
-
-            if (win == true)
-            {
-                winTimer += Time.deltaTime;
-
-                if (winTimer >= 5)
-                {
-                    winMenu.SetActive(true);
-                }
             }
         }
     }
@@ -142,7 +142,7 @@ public class RollOver : MonoBehaviour
 
     private IEnumerator SwingAnimation()
     {
-        if(isLegUp == true)
+        if (isLegUp == true)
         {
             if (movement == true && leftSwingAmount < 3)
             {
@@ -175,7 +175,7 @@ public class RollOver : MonoBehaviour
                 soundEffectsManager.PlaySucessSound();
                 StartCoroutine("SwingAnimation");
 
-                if(leftSwingAmount >= 3)
+                if (leftSwingAmount >= 3)
                 {
                     DisableText();
                 }
