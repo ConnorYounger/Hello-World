@@ -81,27 +81,32 @@ public class DiscoveryModeController : MonoBehaviour
             case 1:
                 text3m.enabled = true;
                 month3.SetActive(true);
-                sceneToLoad = "Workout";
+                sceneToLoad = "Exercise 2.1L";
+                //sceneToLoad = "Workout";
                 break;
             case 2:
                 text5m.enabled = true;
                 month5.SetActive(true);
-                sceneToLoad = "The little one said";
+                sceneToLoad = "Exercise 3.1L";
+                //sceneToLoad = "The little one said";
                 break;
             case 3:
                 text7m.enabled = true;
                 month7.SetActive(true);
-                sceneToLoad = "Jelly on a plate";
+                sceneToLoad = "Exercise 4.1L";
+                //sceneToLoad = "Jelly on a plate";
                 break;
             case 4:
                 text9m.enabled = true;
                 month9.SetActive(true);
-                sceneToLoad = "Off you go";
+                sceneToLoad = "Exercise 5.1L";
+                //sceneToLoad = "Off you go";
                 break;
             case 5:
                 text12m.enabled = true;
                 month12.SetActive(true);
-                sceneToLoad = "One small step";
+                sceneToLoad = "Exercise 6.1L";
+                //sceneToLoad = "One small step";
                 break;
             default:
                 break;
