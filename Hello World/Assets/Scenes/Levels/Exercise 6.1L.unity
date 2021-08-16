@@ -9317,6 +9317,7 @@ MonoBehaviour:
   bottom: {fileID: 0}
   bottomRotateDifference: 3
   animator: {fileID: 1162091836}
+  balancingAnimator: {fileID: 0}
   analogStickX: {fileID: 758995718}
   analogStickP: {fileID: 1320928913}
   parent: {fileID: 479406990}
@@ -9324,6 +9325,7 @@ MonoBehaviour:
   turn: 0
   resetWaitTime: 4.5
   soundManager: {fileID: 1368509804}
+  discoveryPlayer: {fileID: 0}
 --- !u!4 &1108928308
 Transform:
   m_ObjectHideFlags: 0
@@ -10446,6 +10448,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NPC Baby (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424127779512550323, guid: bc77ed2173c4c664b9e387d738a95c47,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1424127780401641170, guid: bc77ed2173c4c664b9e387d738a95c47,
         type: 3}
@@ -15245,7 +15252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 72039ae2faf04b84f94636b785b7da59, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 8bd66e72fecc07149a4ce067d8003d3d, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1

@@ -2052,7 +2052,7 @@ Animator:
   m_GameObject: {fileID: 258800484}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4c6114f3d0854d54e910d0098ec9f743, type: 2}
+  m_Controller: {fileID: 9100000, guid: 35e723303320c10409d3e25762f3b4bd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4225,7 +4225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &496655286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6919,6 +6919,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Baby
       objectReference: {fileID: 0}
+    - target: {fileID: 1424127779512550323, guid: bc77ed2173c4c664b9e387d738a95c47,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1424127780401641170, guid: bc77ed2173c4c664b9e387d738a95c47,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -8464,6 +8469,7 @@ MonoBehaviour:
   bottom: {fileID: 1139130953}
   bottomRotateDifference: 3
   animator: {fileID: 0}
+  balancingAnimator: {fileID: 258800486}
   analogStickX: {fileID: 463744024}
   analogStickP: {fileID: 463744024}
   parent: {fileID: 23931204}
@@ -8471,6 +8477,7 @@ MonoBehaviour:
   turn: 0
   resetWaitTime: 3
   soundManager: {fileID: 1614400336}
+  discoveryPlayer: {fileID: 0}
 --- !u!4 &1139130955
 Transform:
   m_ObjectHideFlags: 0
@@ -11252,7 +11259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1435617241
 AudioListener:
   m_ObjectHideFlags: 0
