@@ -328,6 +328,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'WinDolly 6.1 '
       objectReference: {fileID: 0}
+    - target: {fileID: 4753557453488168720, guid: 622f9ab1866c2eb46abc935b4353705e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4753557453488168721, guid: 622f9ab1866c2eb46abc935b4353705e,
         type: 3}
       propertyPath: m_Waypoints.Array.size
@@ -873,7 +878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &48147254
 Animator:
   serializedVersion: 3
@@ -6484,7 +6489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &660643957
 Animator:
   serializedVersion: 3
@@ -8214,6 +8219,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IntroDolly 6.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4753557453488168720, guid: 622f9ab1866c2eb46abc935b4353705e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4753557453488168721, guid: 622f9ab1866c2eb46abc935b4353705e,
         type: 3}
       propertyPath: m_Waypoints.Array.data[0].position.x
@@ -8484,8 +8494,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897583704}
-  m_LocalRotation: {x: 0.19798963, y: -0.1721556, z: 0.035346173, w: 0.9643201}
-  m_LocalPosition: {x: 15.055135, y: 0.40267587, z: 8.392057}
+  m_LocalRotation: {x: 0.22720377, y: 0.5984388, z: -0.18217269, w: 0.74636626}
+  m_LocalPosition: {x: 16.953892, y: 1.1851182, z: 11.402887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9750,6 +9760,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'StartDolly 6.1 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753557453488168720, guid: 622f9ab1866c2eb46abc935b4353705e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4753557453488168721, guid: 622f9ab1866c2eb46abc935b4353705e,
         type: 3}
@@ -13242,7 +13257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1639339783
 Animator:
   serializedVersion: 3
@@ -16600,7 +16615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1788889964
 Animator:
   serializedVersion: 3
@@ -18040,7 +18055,7 @@ MonoBehaviour:
   discoveryModeButton: {fileID: 801317129}
   toyBoxModeButton: {fileID: 568796944}
   discoveryPlayer: {fileID: 1283072142}
-  exerciseIndex: 1.1
+  exerciseIndex: 6
 --- !u!1 &1955855231
 GameObject:
   m_ObjectHideFlags: 0
@@ -18524,6 +18539,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LoseDolly 6.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753557453488168720, guid: 622f9ab1866c2eb46abc935b4353705e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4753557453488168721, guid: 622f9ab1866c2eb46abc935b4353705e,
         type: 3}

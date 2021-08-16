@@ -1766,7 +1766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &186996031
 Animator:
   serializedVersion: 3
@@ -2294,7 +2294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &375355368
 Animator:
   serializedVersion: 3
@@ -2450,8 +2450,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392391673}
-  m_LocalRotation: {x: 0.3727237, y: 0.35120463, z: -0.15494661, w: 0.8448219}
-  m_LocalPosition: {x: 14.327099, y: 0.27222446, z: 11.065786}
+  m_LocalRotation: {x: 0.4104814, y: -0.008206607, z: 0.0036943918, w: 0.9118246}
+  m_LocalPosition: {x: 15.168131, y: 0.95370686, z: 9.035633}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3644,6 +3644,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IntroDolly 3.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6588699050416667546, guid: ab981750547afe840a0d22eac15224a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab981750547afe840a0d22eac15224a0, type: 3}
 --- !u!114 &595189626 stripped
@@ -3729,6 +3734,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LoseDolly 3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5464404557497211857, guid: e6eca7a8abd13a94db6c1bcab75f4273,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5464404557497211859, guid: e6eca7a8abd13a94db6c1bcab75f4273,
         type: 3}
@@ -5426,6 +5436,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartDolly 3.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5883873138454643775, guid: e0f3b757501820c459c6e279f153790d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f3b757501820c459c6e279f153790d, type: 3}
 --- !u!114 &829105268 stripped
@@ -6153,6 +6168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinDolly 3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7847807876753286920, guid: 9078250f3b3455d459de87dddc858a18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7847807876753286922, guid: 9078250f3b3455d459de87dddc858a18,
         type: 3}
@@ -6897,7 +6917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1217466408
 Animator:
   serializedVersion: 3
@@ -7393,7 +7413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1291672519
 Animator:
   serializedVersion: 3
@@ -8734,7 +8754,7 @@ MonoBehaviour:
   discoveryModeButton: {fileID: 2038405181}
   toyBoxModeButton: {fileID: 776567213}
   discoveryPlayer: {fileID: 1513544667}
-  exerciseIndex: 3.1
+  exerciseIndex: 3
 --- !u!114 &1609208569
 MonoBehaviour:
   m_ObjectHideFlags: 0
