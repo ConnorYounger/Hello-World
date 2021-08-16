@@ -75,6 +75,6 @@ public class GameModeManager : MonoBehaviour
 
         discoveryPlayer.SavePlayer();
 
-        SceneManager.LoadScene("DiscoveryMilestones");
+        SceneManager.LoadScene("F_Discovery");
     }
 }
