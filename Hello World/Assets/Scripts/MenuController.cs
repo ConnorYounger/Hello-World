@@ -12,7 +12,7 @@ public class MenuController : MonoBehaviour
     #region Variables
     private EventSystem eventSystem;
     public DiscoveryPlayer player;
-        
+
     [Header("Menu Canvas")]
     public GameObject shelfCanvas;
     public GameObject cribCanvas;
@@ -64,11 +64,11 @@ public class MenuController : MonoBehaviour
         eventSystem = EventSystem.current;
 
         ResetCanvasUI();
-        
+
         btnPlay.onClick.AddListener(delegate { NavigateMenus("Toy Box"); });
         btnOptions.onClick.AddListener(delegate { NavigateMenus("Change Table"); });
         btnExit.onClick.AddListener(delegate { NavigateMenus("Door"); });
-        
+
         btnDiscovery.onClick.AddListener(delegate { NavigateMenus("Crib"); });
         btnToyBox.onClick.AddListener(delegate { NavigateMenus("Playmat"); });
         btnToyBoxBack.onClick.AddListener(delegate { NavigateMenus("Shelf"); });
@@ -80,13 +80,43 @@ public class MenuController : MonoBehaviour
         btnAudioBack.onClick.AddListener(GoToOptionsTop);
 
         btnNewGame.onClick.AddListener(StartNewDiscovery);
+        btnContinue.onClick.AddListener(ContinueDiscovery);
         btnCribBack.onClick.AddListener(delegate { NavigateMenus("Toy Box"); });
 
         btnPlaymatBack.onClick.AddListener(delegate { NavigateMenus("Toy Box"); });
 
         btnExitYes.onClick.AddListener(Application.Quit);
         btnExitNo.onClick.AddListener(delegate { NavigateMenus("Shelf"); });
+    }
+
+    private void ContinueDiscovery()
+    {
+        PlayerPrefs.SetString("gameMode", "Discovery");
+        
+        player.LoadPlayer();
+        float i = player.exerciseIndex;
+
+        switch (i)
+        {
+            case 1:
+                SceneManager.LoadScene("Exercise 2.1L");
+                break;
+            case 2:
+                SceneManager.LoadScene("Exercise 3.1L");
+                break;
+            case 3:
+                SceneManager.LoadScene("Exercise 4.1L");
+                break;
+            case 4:
+                SceneManager.LoadScene("Exercise 5.1L");
+                break;
+            case 5:
+                SceneManager.LoadScene("Exercise 6.1L");
+                break;
+            default:
+                break;
         }
+    }
 
     private void StartNewDiscovery()
     {
@@ -95,7 +125,7 @@ public class MenuController : MonoBehaviour
         player.SavePlayer();
         PlayerPrefs.SetString("gameMode", "Discovery");
 
-        SceneManager.LoadScene("DiscoveryMilestones");
+        SceneManager.LoadScene("Exercise 1.1L");
     }
 
     #region Options Menu
@@ -114,7 +144,7 @@ public class MenuController : MonoBehaviour
     }
 
     private void GoToOptionsTop()
-    {        
+    {
         panelAudio.SetActive(false);
         panelDisplay.SetActive(false);
         panelOptions.SetActive(true);

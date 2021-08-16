@@ -58,6 +58,6 @@ public class PauseMenuController : MonoBehaviour
     private void ExitGame()
     {
         //exit scene, load main menu
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("F_Menu");
     }
 }
