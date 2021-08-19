@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class CountDownBar : MonoBehaviour
@@ -12,8 +11,8 @@ public class CountDownBar : MonoBehaviour
     public GameObject baby;
     public GameObject loseMenu;
 
-    public WinWithToy check;
-    public QWOP call;
+    public WinWithToy wwt;
+    public QWOP qwop;
     public ParentNarrative parent;
     public ExerciseSoundEffectsManager soundEffectManager;
     public ExerciseStart startManager;
@@ -29,13 +28,15 @@ public class CountDownBar : MonoBehaviour
 
     private void Update()
     {
-        if (call.gameStarted == true)
+        if (qwop.gameManager == true)
         {
             //starting timer 
             gameTimer -= Time.deltaTime;
 
-            if (gameTimer <= 0 && check.gameWon == false)
+            if (gameTimer <= 0 && wwt.gameWon == false)
             {
+                qwop.gameManager = false;
+
                 startManager.PlayLoseCutscene();
 
                 if (soundCheck == true)
@@ -55,7 +56,7 @@ public class CountDownBar : MonoBehaviour
                 anim.SetBool("timeOut", true);
 
                 //calling function from QWOP to disable text
-                call.DisableText();
+                qwop.DisableText();
 
                 loseDelay += Time.deltaTime;
 

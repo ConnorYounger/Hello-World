@@ -31,7 +31,7 @@ public class QWOP : MonoBehaviour
 
     private bool canInput = true;
     public bool instructionText = false;
-    public bool gameStarted = false;
+    public bool gameManager = false;
     #endregion
 
     private void Awake()
@@ -66,12 +66,12 @@ public class QWOP : MonoBehaviour
 
     public void StartExercise()
     {
-        gameStarted = true;
+        gameManager = true;
     }
 
     void LeftMovement()
     {
-        if (gameStarted == true)
+        if (gameManager == true)
         {
             if(check.gameWon == false && timer.gameTimer > 0)
             {
@@ -101,7 +101,7 @@ public class QWOP : MonoBehaviour
 
     void LeftMovement1(float value)
     {
-        if (gameStarted == true && canInput == true)
+        if (gameManager == true && canInput == true)
         {
             if(check.gameWon == false && timer.gameTimer > 0)
             {
@@ -131,7 +131,7 @@ public class QWOP : MonoBehaviour
 
     void RightMovement()
     {
-        if (gameStarted == true)
+        if (gameManager == true)
         {
             if(check.gameWon == false && timer.gameTimer > 0)
             {
@@ -157,7 +157,7 @@ public class QWOP : MonoBehaviour
 
     void RightMovement1(float value)
     {
-        if (gameStarted == true && canInput == true)
+        if (gameManager == true && canInput == true)
         {
             if(check.gameWon == false && timer.gameTimer > 0)
             {

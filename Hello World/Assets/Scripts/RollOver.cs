@@ -24,7 +24,7 @@ public class RollOver : MonoBehaviour
     private bool movement = true;
     public bool isLegUp = false;
     public bool win = false;
-    public bool gameStarted = false;
+    public bool gameManager = false;
 
     public float timerCheck = 0;
     public int timeLimit = 0;
@@ -76,7 +76,7 @@ public class RollOver : MonoBehaviour
             }
         }
 
-        if (gameStarted == true)
+        if (gameManager == true)
         {
             if (isLegUp == true)
             {
@@ -92,12 +92,12 @@ public class RollOver : MonoBehaviour
 
     public void StartExercise()
     {
-        gameStarted = true;
+        gameManager = true;
     }
 
     void LegUp(float value)
     {
-        if (gameStarted == true)
+        if (gameManager == true)
         {
             anim.SetBool("legUp", true);
             isLegUp = true;
@@ -114,7 +114,7 @@ public class RollOver : MonoBehaviour
 
     void LegDown()
     {
-        if (gameStarted == true)
+        if (gameManager == true)
         {
             if (leftSwingAmount < 7)
             {
@@ -164,7 +164,7 @@ public class RollOver : MonoBehaviour
 
     void SwingLeft()
     {
-        if (gameStarted == true)
+        if (gameManager == true)
         {
             if (movement == true && timerCheck >= 1)
             {
@@ -189,7 +189,7 @@ public class RollOver : MonoBehaviour
                 parentText.SetActive(false);
                 parent.PlayWinNarrative();
                 soundEffectsManager.PlayWinSound();
-                gameStarted = false;
+                gameManager = false;
                 win = true;
                 startManager.PlayWinCutscene();
             }
@@ -199,7 +199,7 @@ public class RollOver : MonoBehaviour
 
     void SwingRight()
     {
-        if (gameStarted == true)
+        if (gameManager == true)
         {
             if (movement == false && timerCheck >= 1)
             {

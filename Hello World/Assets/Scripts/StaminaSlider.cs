@@ -18,7 +18,7 @@ public class StaminaSlider : MonoBehaviour
 
     public GameObject parentText;
 
-    public RollOver check;
+    public RollOver rollOver;
     public ExerciseStart startManager;
     
 
@@ -39,15 +39,17 @@ public class StaminaSlider : MonoBehaviour
             gameTimer -= Time.deltaTime;
 
             //If we are at 0, start to refill
-            if (gameTimer <= 0 && check.win == false)
+            if (gameTimer <= 0 && rollOver.win == false)
             {
+                rollOver.gameManager = false;
+
                 startManager.PlayLoseCutscene();
 
                 if (soundCheck == true)
                 {
                     //playing lose sounds when game failed
-                    check.soundEffectsManager.PlayLoseSound();
-                    check.soundEffectsManager.PlayBabyCrySound();
+                    rollOver.soundEffectsManager.PlayLoseSound();
+                    rollOver.soundEffectsManager.PlayBabyCrySound();
                 }
 
                 //making sure audio only plays once
@@ -57,11 +59,11 @@ public class StaminaSlider : MonoBehaviour
                 anim.SetBool("timeOut", true);
 
                 //disabling instruction UI in game
-                check.DisableText();
+                rollOver.DisableText();
 
                 //displaying lose UI and parent UI
                 loseText.SetActive(true);
-                check.parent.PlayLoseNarrative();
+                rollOver.parent.PlayLoseNarrative();
 
                 //starting timer delay for lose menu
                 loseTimer += Time.deltaTime;
