@@ -1215,6 +1215,14 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MenuButtons"",
+                    ""type"": ""Button"",
+                    ""id"": ""f51ab158-0ecb-4072-83e5-7c3f5dcf0d4c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -1303,6 +1311,50 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32f38f12-4e36-47c6-8f6a-e9ee5c760fc9"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90cc7c24-182a-4377-be5f-d8b76788094a"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6562f24c-f282-43e7-9a79-59b7fa2fba85"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bef1feee-cc14-4daf-95af-b246bdca4948"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuButtons"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1513,6 +1565,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         m_RollOver_SwingRight = m_RollOver.FindAction("SwingRight", throwIfNotFound: true);
         m_RollOver_LegMovement = m_RollOver.FindAction("LegMovement", throwIfNotFound: true);
         m_RollOver_Pause = m_RollOver.FindAction("Pause", throwIfNotFound: true);
+        m_RollOver_MenuButtons = m_RollOver.FindAction("MenuButtons", throwIfNotFound: true);
         // Blinking
         m_Blinking = asset.FindActionMap("Blinking", throwIfNotFound: true);
         m_Blinking_Key1 = m_Blinking.FindAction("Key1", throwIfNotFound: true);
@@ -1893,6 +1946,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_RollOver_SwingRight;
     private readonly InputAction m_RollOver_LegMovement;
     private readonly InputAction m_RollOver_Pause;
+    private readonly InputAction m_RollOver_MenuButtons;
     public struct RollOverActions
     {
         private @MiniGameInputs m_Wrapper;
@@ -1901,6 +1955,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         public InputAction @SwingRight => m_Wrapper.m_RollOver_SwingRight;
         public InputAction @LegMovement => m_Wrapper.m_RollOver_LegMovement;
         public InputAction @Pause => m_Wrapper.m_RollOver_Pause;
+        public InputAction @MenuButtons => m_Wrapper.m_RollOver_MenuButtons;
         public InputActionMap Get() { return m_Wrapper.m_RollOver; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1922,6 +1977,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnPause;
+                @MenuButtons.started -= m_Wrapper.m_RollOverActionsCallbackInterface.OnMenuButtons;
+                @MenuButtons.performed -= m_Wrapper.m_RollOverActionsCallbackInterface.OnMenuButtons;
+                @MenuButtons.canceled -= m_Wrapper.m_RollOverActionsCallbackInterface.OnMenuButtons;
             }
             m_Wrapper.m_RollOverActionsCallbackInterface = instance;
             if (instance != null)
@@ -1938,6 +1996,9 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @MenuButtons.started += instance.OnMenuButtons;
+                @MenuButtons.performed += instance.OnMenuButtons;
+                @MenuButtons.canceled += instance.OnMenuButtons;
             }
         }
     }
@@ -2110,6 +2171,7 @@ public class @MiniGameInputs : IInputActionCollection, IDisposable
         void OnSwingRight(InputAction.CallbackContext context);
         void OnLegMovement(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnMenuButtons(InputAction.CallbackContext context);
     }
     public interface IBlinkingActions
     {
