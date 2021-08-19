@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class Exercise6BabyMovement : MonoBehaviour
 {
+    public ExerciseStart startManager;
+    public AudioClip turnAroundEncouragement;
+
     public bool simpleMovement = false;
     public bool babySteering;
     public float movementSpeed = 1;
@@ -142,6 +145,12 @@ public class Exercise6BabyMovement : MonoBehaviour
         turnForce += 1f;
         babyBalancing.turn = false;
         babyBalancing.StartCoroutine("SetRotationToDefult");
+
+        if (startManager && turnAroundEncouragement)
+        {
+            startManager.audioSource.clip = turnAroundEncouragement;
+            startManager.audioSource.Play();
+        }
 
         yield return new WaitForSeconds(0.5f);
 
@@ -316,6 +325,9 @@ public class Exercise6BabyMovement : MonoBehaviour
 
             EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
         }
+
+        if (startManager)
+            startManager.PlayWinCutscene();
     }
 
     public void Lose()
@@ -327,5 +339,8 @@ public class Exercise6BabyMovement : MonoBehaviour
 
         if (soundManager)
             soundManager.PlayLoseSound();
+
+        if (startManager)
+            startManager.PlayLoseCutscene();
     }
 }
