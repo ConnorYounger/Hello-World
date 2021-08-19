@@ -30,12 +30,26 @@ public class ExerciseStart : MonoBehaviour
     public float playCamDelay = 1;
     public GameObject[] hiddenObjects;
 
+    [Header("Cutscene Audio")]
+    public AudioClip introAudio;
+    public AudioClip winAudio;
+    public AudioClip loseAudio;
+    private AudioSource audioSource;
+
     private void Start()
     {
         if (startPP)
             SetStartProfile();
 
+        audioSource = gameObject.GetComponent<AudioSource>();
+
         StartCoroutine("StartExerciseWaitTime");
+
+        if (audioSource)
+        {
+            audioSource.clip = introAudio;
+            audioSource.Play();
+        }
     }
 
     IEnumerator StartExerciseWaitTime()
@@ -100,6 +114,12 @@ public class ExerciseStart : MonoBehaviour
         }
 
         SetHiddenObjects(true);
+
+        if (audioSource)
+        {
+            audioSource.clip = winAudio;
+            audioSource.Play();
+        }
     }
 
     public void PlayLoseCutscene()
@@ -114,6 +134,12 @@ public class ExerciseStart : MonoBehaviour
         }
 
         SetHiddenObjects(true);
+
+        if (audioSource)
+        {
+            audioSource.clip = loseAudio;
+            audioSource.Play();
+        }
     }
 
     void SetHiddenObjects(bool value)

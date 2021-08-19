@@ -482,11 +482,7 @@ public class Workout : MonoBehaviour
             discoveryPlayer.SavePlayer();
         }
 
-        if (startManager)
-            startManager.PlayWinCutscene();
-
-        animator.SetBool("Start", false);
-        animator.Play("BabyWorkOutStartIdle");
+        StartCoroutine("PlayWinCutscene");
     }
 
     void Lose()
@@ -519,6 +515,17 @@ public class Workout : MonoBehaviour
 
         if (startManager)
             startManager.PlayLoseCutscene();
+
+        animator.SetBool("Start", false);
+        animator.Play("BabyWorkOutStartIdle");
+    }
+
+    IEnumerator PlayWinCutscene()
+    {
+        yield return new WaitForSeconds(2);
+
+        if (startManager)
+            startManager.PlayWinCutscene();
 
         animator.SetBool("Start", false);
         animator.Play("BabyWorkOutStartIdle");
