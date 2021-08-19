@@ -35,8 +35,6 @@ public class CountDownBar : MonoBehaviour
 
             if (gameTimer <= 0 && wwt.gameWon == false)
             {
-                qwop.gameManager = false;
-
                 startManager.PlayLoseCutscene();
 
                 if (soundCheck == true)
