@@ -7255,7 +7255,7 @@ MonoBehaviour:
   winMenu: {fileID: 1609208566}
   isLegUp: 0
   win: 0
-  gameStarted: 0
+  gameManager: 0
   timerCheck: 0
   timeLimit: 5
   winTimer: 0
@@ -7273,13 +7273,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStarted: 0
-  gameTimer: 45
+  gameTimer: 5
   baby: {fileID: 927069434}
   loseText: {fileID: 969488655}
   loseMenu: {fileID: 172618249}
   loseTimer: 0
   parentText: {fileID: 717203414}
-  check: {fileID: 927069435}
+  rollOver: {fileID: 927069435}
   startManager: {fileID: 253995203}
 --- !u!1 &944685219
 GameObject:
@@ -8550,10 +8550,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: -1
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1256143290}
+    m_SelectOnDown: {fileID: 1131296156}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -8965,10 +8965,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: -1
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1256143290}
+    m_SelectOnDown: {fileID: 1131296156}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
