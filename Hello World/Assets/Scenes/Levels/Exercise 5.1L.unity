@@ -3237,6 +3237,21 @@ PrefabInstance:
       objectReference: {fileID: 392391677}
     - target: {fileID: 992203713022603046, guid: 69609504f15768f4fa678c511aeace16,
         type: 3}
+      propertyPath: winAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d57dd6d655a219479c6055a5f8ea1c7, type: 3}
+    - target: {fileID: 992203713022603046, guid: 69609504f15768f4fa678c511aeace16,
+        type: 3}
+      propertyPath: loseAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: e2c37131cefc9b34d8ca7e6ff69c5acc, type: 3}
+    - target: {fileID: 992203713022603046, guid: 69609504f15768f4fa678c511aeace16,
+        type: 3}
+      propertyPath: introAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: c67b7930fcd5a6e41a9c5e6bc0a9eec3, type: 3}
+    - target: {fileID: 992203713022603046, guid: 69609504f15768f4fa678c511aeace16,
+        type: 3}
       propertyPath: dialoguePanel
       value: 
       objectReference: {fileID: 1203085153}
@@ -6730,7 +6745,8 @@ MonoBehaviour:
   baby: {fileID: 1541069276}
   winMenu: {fileID: 789503467}
   winDelay: 0
-  QWOP: {fileID: 0}
+  QWOP: {fileID: 1541069277}
+  startManager: {fileID: 1104326094}
   gameWon: 0
 --- !u!54 &1072945829
 Rigidbody:
@@ -9602,6 +9618,7 @@ MonoBehaviour:
   call: {fileID: 1541069277}
   parent: {fileID: 1881738501}
   soundEffectManager: {fileID: 1313159438}
+  startManager: {fileID: 1104326094}
   gameTimer: 45
 --- !u!1 &1543244720
 GameObject:
