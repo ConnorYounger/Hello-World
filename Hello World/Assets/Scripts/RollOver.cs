@@ -30,6 +30,8 @@ public class RollOver : MonoBehaviour
     public int timeLimit = 0;
     public float winTimer = 0;
 
+    public ExerciseStart startManager;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -189,6 +191,7 @@ public class RollOver : MonoBehaviour
                 soundEffectsManager.PlayWinSound();
                 gameStarted = false;
                 win = true;
+                startManager.PlayWinCutscene();
             }
         }
 

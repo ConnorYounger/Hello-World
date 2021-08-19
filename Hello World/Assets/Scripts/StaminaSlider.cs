@@ -19,6 +19,7 @@ public class StaminaSlider : MonoBehaviour
     public GameObject parentText;
 
     public RollOver check;
+    public ExerciseStart startManager;
     
 
     private void Awake()
@@ -40,6 +41,8 @@ public class StaminaSlider : MonoBehaviour
             //If we are at 0, start to refill
             if (gameTimer <= 0 && check.win == false)
             {
+                startManager.PlayLoseCutscene();
+
                 if (soundCheck == true)
                 {
                     //playing lose sounds when game failed

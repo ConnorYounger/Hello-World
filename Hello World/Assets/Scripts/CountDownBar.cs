@@ -16,6 +16,7 @@ public class CountDownBar : MonoBehaviour
     public QWOP call;
     public ParentNarrative parent;
     public ExerciseSoundEffectsManager soundEffectManager;
+    public ExerciseStart startManager;
 
     public float gameTimer = 0;
     private Animator anim;
@@ -35,6 +36,8 @@ public class CountDownBar : MonoBehaviour
 
             if (gameTimer <= 0 && check.gameWon == false)
             {
+                startManager.PlayLoseCutscene();
+
                 if (soundCheck == true)
                 {
                     //calling from QWOP to play sounds

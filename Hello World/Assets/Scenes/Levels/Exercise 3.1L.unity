@@ -5891,7 +5891,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Contine
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75e098f76a7132c4cbd5d9e5af84ae99, type: 2}
   m_sharedMaterial: {fileID: 7789387970595682687, guid: 75e098f76a7132c4cbd5d9e5af84ae99,
@@ -7259,6 +7259,7 @@ MonoBehaviour:
   timerCheck: 0
   timeLimit: 5
   winTimer: 0
+  startManager: {fileID: 253995203}
 --- !u!114 &927069438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7279,6 +7280,7 @@ MonoBehaviour:
   loseTimer: 0
   parentText: {fileID: 717203414}
   check: {fileID: 927069435}
+  startManager: {fileID: 253995203}
 --- !u!1 &944685219
 GameObject:
   m_ObjectHideFlags: 0

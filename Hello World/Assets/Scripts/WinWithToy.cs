@@ -12,6 +12,7 @@ public class WinWithToy : MonoBehaviour
     public float winDelay = 0;
 
     public QWOP QWOP;
+    public ExerciseStart startManager;
     private Animator anim;
 
     public bool gameWon = false;
@@ -39,6 +40,8 @@ public class WinWithToy : MonoBehaviour
     {
         if (other.tag.Equals("Player"))
         {
+            startManager.PlayWinCutscene();
+
             gameWon = true;
             winText.SetActive(true);
 
