@@ -27,6 +27,7 @@ public class SimonSays : MonoBehaviour
     private List<SimonSaysInputs> buttonListSave;
 
     public Animator animator;
+    private int currentAni;
 
     [Header("UI Elements")]
     public Canvas uICanvas;
@@ -479,9 +480,14 @@ public class SimonSays : MonoBehaviour
 
     IEnumerator PlayAnimation()
     {
-        int rand = Random.Range(1, 6);
+        //int rand = Random.Range(1, 6);
 
-        animator.SetInteger("moveState", rand);
+        currentAni++;
+
+        if (currentAni >= 7)
+            currentAni = 1;
+
+        animator.SetInteger("moveState", currentAni);
 
         yield return new WaitForSeconds(0.5f);
 
