@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class Workout : MonoBehaviour
 {
     public GameObject baby;
+    public ExerciseStart startManager;
 
     public int sitUpGoal = 10;
     private int sitUpCount;
@@ -107,6 +108,14 @@ public class Workout : MonoBehaviour
 
     public void StartExercise()
     {
+        StartCoroutine("UpdateStartAnimation");
+    }
+
+    IEnumerator UpdateStartAnimation()
+    {
+        yield return new WaitForSeconds(startManager.playCamDelay);
+
+        animator.SetBool("Start", true);
         gameFinished = false;
     }
 
@@ -472,6 +481,12 @@ public class Workout : MonoBehaviour
 
             discoveryPlayer.SavePlayer();
         }
+
+        if (startManager)
+            startManager.PlayWinCutscene();
+
+        animator.SetBool("Start", false);
+        animator.Play("BabyWorkOutStartIdle");
     }
 
     void Lose()
@@ -501,6 +516,12 @@ public class Workout : MonoBehaviour
                 particle.Play();
             }
         }
+
+        if (startManager)
+            startManager.PlayLoseCutscene();
+
+        animator.SetBool("Start", false);
+        animator.Play("BabyWorkOutStartIdle");
     }
 
     void UpdateSliders()

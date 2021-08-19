@@ -43,6 +43,7 @@ public class BabyBalancing : MonoBehaviour
     private bool left;
 
     [Space()]
+    public ExerciseStart startManager;
     public ParentNarrative parent;
     public Exercise6BabyMovement exercise6Baby;
     public bool turn;
@@ -208,6 +209,9 @@ public class BabyBalancing : MonoBehaviour
 
         if (soundManager)
             soundManager.PlayWinSound();
+
+        if (startManager)
+            startManager.PlayWinCutscene();
 
         winEGO.SetActive(true);
         EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
@@ -409,6 +413,9 @@ public class BabyBalancing : MonoBehaviour
         if (balancingAnimator)
             balancingAnimator.SetBool("babyFall", true);
 
+        if (startManager)
+            startManager.PlayLoseCutscene();
+
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
 
@@ -428,6 +435,9 @@ public class BabyBalancing : MonoBehaviour
 
         if (balancingAnimator)
             balancingAnimator.SetBool("babyFall", false);
+
+        if (startManager)
+            startManager.StartExercise();
     }
 
     public void SwitchScene(string scene)

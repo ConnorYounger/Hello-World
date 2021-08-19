@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 public class SimonSays : MonoBehaviour
 {
     public List<SimonSaysInputs> possibleButtonInputs;
+    public ExerciseStart startManager;
 
     public int maxMemory = 5;
     public int maxPacience = 5;
@@ -89,15 +90,15 @@ public class SimonSays : MonoBehaviour
         controls.SimonSays.DPadUp.performed += ctx => PlayerInput(controls.SimonSays.DPadUp);
         controls.SimonSays.DPadDown.performed += ctx => PlayerInput(controls.SimonSays.DPadDown);
 
-        controls.SimonSays.Click1.performed += ctx => TriggerInput(controls.SimonSays.Click1, ctx.ReadValue<float>());
-        controls.SimonSays.Click1.canceled += ctx => TriggerInput(controls.SimonSays.Click1, 0);
+        //controls.SimonSays.Click1.performed += ctx => TriggerInput(controls.SimonSays.Click1, ctx.ReadValue<float>());
+        //controls.SimonSays.Click1.canceled += ctx => TriggerInput(controls.SimonSays.Click1, 0);
 
-        controls.SimonSays.Click2.performed += ctx => TriggerInput(controls.SimonSays.Click2, ctx.ReadValue<float>());
-        controls.SimonSays.Click2.canceled += ctx => TriggerInput(controls.SimonSays.Click2, 0);
+        //controls.SimonSays.Click2.performed += ctx => TriggerInput(controls.SimonSays.Click2, ctx.ReadValue<float>());
+        //controls.SimonSays.Click2.canceled += ctx => TriggerInput(controls.SimonSays.Click2, 0);
 
         //
-        controls.SimonSays.KClick1.performed += ctx => PlayerInput(controls.SimonSays.Click1);
-        controls.SimonSays.KClick2.performed += ctx => PlayerInput(controls.SimonSays.Click2);
+        //controls.SimonSays.KClick1.performed += ctx => PlayerInput(controls.SimonSays.Click1);
+        //controls.SimonSays.KClick2.performed += ctx => PlayerInput(controls.SimonSays.Click2);
 
     }
 
@@ -288,6 +289,9 @@ public class SimonSays : MonoBehaviour
             discoveryPlayer.SavePlayer();
         }
 
+        if (startManager)
+            startManager.PlayWinCutscene();
+
         EventSystem.current.SetSelectedGameObject(GameObject.Find("MainMenuButton"));
     }
 
@@ -366,6 +370,14 @@ public class SimonSays : MonoBehaviour
                 particle.Play();
             }
         }
+
+        for (int i = 0; i < comboPanel.transform.childCount; i++)
+        {
+            comboPanel.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
+        if (startManager)
+            startManager.PlayLoseCutscene();
 
         EventSystem.current.SetSelectedGameObject(GameObject.Find("RestartButton"));
     }
