@@ -40,7 +40,7 @@ public class DiscoveryModeController : MonoBehaviour
         LoadIndexData();
         UpdateDiscovery();
 
-        btnBack.onClick.AddListener(delegate { LoadScene("Main"); });
+        btnBack.onClick.AddListener(delegate { LoadScene("F_Menu"); });
         btnNext.onClick.AddListener(delegate { LoadScene(sceneToLoad); });
 
         StartCoroutine(DelayButtons());
