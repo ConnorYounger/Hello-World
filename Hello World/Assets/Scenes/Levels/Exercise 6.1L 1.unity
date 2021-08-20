@@ -530,7 +530,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Contine
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75e098f76a7132c4cbd5d9e5af84ae99, type: 2}
   m_sharedMaterial: {fileID: 7789387970595682687, guid: 75e098f76a7132c4cbd5d9e5af84ae99,
@@ -12270,6 +12270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9d2de820ec3264b8b54b1a9b153d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startManager: {fileID: 0}
+  turnAroundEncouragement: {fileID: 0}
   simpleMovement: 0
   babySteering: 0
   movementSpeed: 1

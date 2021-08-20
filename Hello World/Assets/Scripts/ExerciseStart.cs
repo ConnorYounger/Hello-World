@@ -33,8 +33,10 @@ public class ExerciseStart : MonoBehaviour
     [Header("Cutscene Audio")]
     public AudioClip introAudio;
     public AudioClip winAudio;
+    public AudioClip winAudio2;
+    public float winAudio2Time = 2;
     public AudioClip loseAudio;
-    private AudioSource audioSource;
+    [HideInInspector] public AudioSource audioSource;
 
     private void Start()
     {
@@ -119,7 +121,18 @@ public class ExerciseStart : MonoBehaviour
         {
             audioSource.clip = winAudio;
             audioSource.Play();
+
+            if (winAudio2)
+                StartCoroutine("PlayWinAudio2");
         }
+    }
+
+    IEnumerator PlayWinAudio2()
+    {
+        yield return new WaitForSeconds(winAudio2Time);
+
+        audioSource.clip = winAudio2;
+        audioSource.Play();
     }
 
     public void PlayLoseCutscene()
