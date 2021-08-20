@@ -166,7 +166,7 @@ public class RollOver : MonoBehaviour
     {
         if (gameManager == true)
         {
-            if (movement == true && timerCheck >= 1)
+            if (movement == true && timerCheck >= 0.5)
             {
                 leftSwingAmount++;
                 anim.SetInteger("leftSwing", leftSwingAmount);
@@ -201,7 +201,7 @@ public class RollOver : MonoBehaviour
     {
         if (gameManager == true)
         {
-            if (movement == false && timerCheck >= 1)
+            if (movement == false && timerCheck >= 0.5)
             {
                 rightSwingAmount++;
                 anim.SetInteger("rightSwing", rightSwingAmount);
