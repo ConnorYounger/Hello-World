@@ -507,7 +507,7 @@ public class OptionsMenu : MonoBehaviour
     {
         for (int i  = 0; i < resolutions.Length; i++)
         {
-            var res = resolutions[i].width + "x" + resolutions[i].height;
+            var res = resolutions[i].ToString();
             resolutionsText.Add(res);
 
             if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
